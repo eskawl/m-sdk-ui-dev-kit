@@ -41,6 +41,7 @@ export type HighlightedValueProps = {
 export type LegendItem = {
   label: string
   color: string
+  hidden?: boolean
 }
 
 export type ChartContainerProps = {
@@ -66,6 +67,8 @@ export type ChartContainerProps = {
   footerClassName?: string
   className?: string
   children: React.ReactNode
+  hiddenIndices?: number[]
+  onToggleDataset?: (index: number) => void
 }
 
 /**
@@ -93,35 +96,36 @@ export const ChartContainer = React.forwardRef<HTMLDivElement, ChartContainerPro
       footerClassName,
       className,
       children,
+      // hiddenIndices,
+      onToggleDataset,
     },
     ref,
   ) => {
-    const [hiddenIndices, setHiddenIndices] = React.useState<Set<number>>(new Set())
+    // const [hiddenIndices, setHiddenIndices] = React.useState<Set<number>>(new Set())
 
     const toggleDataset = React.useCallback((index: number) => {
-      setHiddenIndices((prev) => {
-        const next = new Set(prev)
-        if (next.has(index)) next.delete(index)
-        else next.add(index)
-        return next
-      })
+      // setHiddenIndices((prev) => {
+      //   const next = new Set(prev)
+      //   if (next.has(index)) next.delete(index)
+      //   else next.add(index)
+      //   return next
+      // })
+      onToggleDataset?.(index)
     }, [])
 
     const useGridLayout = (legendData && legendData.length > 0) || highlightedValue || rangeSelector
     const hasHeaderRow1 = header ?? title ?? (rangeSelector && rangeSelector.options.length > 0)
     const hasLegendRow = legendData && legendData.length > 0
 
-    const injectHiddenDatasets = (child: React.ReactNode): React.ReactNode =>
-      React.isValidElement(child)
-        ? React.cloneElement(child as React.ReactElement<{ hiddenDatasets?: Set<number> }>, {
-            hiddenDatasets: hiddenIndices,
-          })
-        : child
+    // const injectHiddenDatasets = (child: React.ReactNode): React.ReactNode =>
+    //   React.isValidElement(child)
+    //     ? React.cloneElement(child as React.ReactElement<{ hiddenDatasets?: Set<number> }>, {
+    //         hiddenDatasets: hiddenIndices,
+    //       })
+    //     : child
 
-    const chartChildren =
-      hasLegendRow && hiddenIndices.size > 0
-        ? React.Children.map(children, injectHiddenDatasets)
-        : children
+    const chartChildren = children
+    // const hiddenIndicesSet = new Set(hiddenIndices)
 
     return (
       <div
@@ -173,7 +177,7 @@ export const ChartContainer = React.forwardRef<HTMLDivElement, ChartContainerPro
               {hasLegendRow && (
                 <div className="mining-sdk-chart-container__legend">
                   {legendData!.map((item, i) => {
-                    const isHidden = hiddenIndices.has(i)
+                    const isHidden = item.hidden
                     return (
                       <button
                         key={i}

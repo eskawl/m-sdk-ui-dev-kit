@@ -11,6 +11,7 @@ import _map from 'lodash/map'
 import _max from 'lodash/max'
 import _round from 'lodash/round'
 import _size from 'lodash/size'
+import _debounce from 'lodash/debounce'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   autoscaleProvider,
@@ -47,6 +48,8 @@ const LineChart = ({
   disableAutoRange = false,
   unit = '',
   beginAtZero = false,
+  showPointMarkers = false,
+  height = 240,
 }: LightWeightLineChartProps): JSX.Element => {
   const chartContainerRef = useRef<HTMLDivElement | null>(null)
   const lineSeriesRef = useRef<LineSeriesApi[]>([])
@@ -62,9 +65,24 @@ const LineChart = ({
   const priceScaleWidthCache = useRef<Map<number, number>>(new Map())
   const lastAppliedPriceScaleWidth = useRef(0)
 
+  const debouncedResetTimeScale = useMemo(
+    () =>
+      _debounce(() => {
+        chartRef.current?.timeScale().fitContent()
+      }, 250),
+    [],
+  )
+
+  useEffect(() => {
+    window.addEventListener('resize', debouncedResetTimeScale)
+    return () => {
+      window.removeEventListener('resize', debouncedResetTimeScale)
+    }
+  }, [])
+
   const chartOptions = useMemo(
     () => ({
-      height: 240,
+      height,
       autoSize: true,
       layout: {
         textColor: CHART_COLORS.WHITE_ALPHA_06,
@@ -150,6 +168,7 @@ const LineChart = ({
       },
     }),
     [
+      height,
       backgroundColor,
       customDateFormat,
       horizontalLineLabelVisible,
@@ -224,6 +243,7 @@ const LineChart = ({
           lastValueVisible: false,
           crosshairMarkerVisible: false,
           priceLineVisible: false,
+          pointMarkersVisible: showPointMarkers,
         }
 
         lineSeriesOptions.autoscaleInfoProvider = autoscaleProvider(beginAtZero)
@@ -470,7 +490,10 @@ const LineChart = ({
           'mining-sdk-lw-line-chart-tooltip--no-min-width': skipMinWidth,
         })}
         ref={toolTipRef}
-        style={{ display: showTooltip ? 'block' : 'none' }}
+        style={{
+          display: showTooltip ? 'block' : 'none',
+          // display: 'block',
+        }}
       />
     </div>
   )

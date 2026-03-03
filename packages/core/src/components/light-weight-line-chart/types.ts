@@ -101,4 +101,12 @@ export type LightWeightLineChartProps = {
    * Starts the value axis at 0
    */
   beginAtZero?: boolean
+  /**
+   * Show a marker on the line
+   */
+  showPointMarkers?: boolean
+  /**
+   * Controls the height of the chart. Default: 240
+   */
+  height?: number
 }

@@ -8,11 +8,11 @@ $_prefix: mining-sdk-lw-line-chart;
     position: relative;
   }
 
-  &-tooltip {
+  .#{$_prefix}-tooltip {
     min-width: 270px;
     position: absolute;
-    background: (--var-mining-sdk-color-dark-black);
-    color: (--mining-sdk-color-light-grey);
+    background: var(--mining-sdk-color-dark-black);
+    color: var(--mining-sdk-color-light-grey);
     font-size: 12px;
     font-weight: normal;
     padding: 13px;
