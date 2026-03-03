@@ -1,5 +1,5 @@
 import type { IChartApi } from '@mining-sdk/core'
-import { ChartContainer, LightWeightLineChart } from '@mining-sdk/core'
+import { ChartContainer, LineChart } from '@mining-sdk/core'
 import { useRef, useState } from 'react'
 
 const RANGE_OPTIONS = [
@@ -87,7 +87,7 @@ export const LwLineChartExample = (): JSX.Element => {
         <section>
           <h3>Basic</h3>
           <ChartContainer title="Revenue over time">
-            <LightWeightLineChart
+            <LineChart
               customLabel="Revenue"
               timeline="5m"
               chartRef={ref1}
@@ -123,7 +123,7 @@ export const LwLineChartExample = (): JSX.Element => {
             legendData={legendData}
             onToggleDataset={handleToggleDataset}
           >
-            <LightWeightLineChart
+            <LineChart
               customLabel="Revenue"
               timeline="5m"
               chartRef={ref2}
@@ -152,7 +152,7 @@ export const LwLineChartExample = (): JSX.Element => {
               </span>
             }
           >
-            <LightWeightLineChart
+            <LineChart
               customLabel="Pool"
               timeline="5m"
               chartRef={ref3}
@@ -218,7 +218,7 @@ export const LwLineChartExample = (): JSX.Element => {
               </span>
             }
           >
-            <LightWeightLineChart
+            <LineChart
               customLabel="Revenue"
               timeline="5m"
               chartRef={ref4}

@@ -96,11 +96,6 @@ const LwLineChartExample = lazy(() =>
   })),
 )
 
-const LineChartExample = lazy(() =>
-  import('./examples/line-chart-example').then((module) => ({
-    default: module.LineChartExample,
-  })),
-)
 const BarChartExample = lazy(() =>
   import('./examples/bar-chart-example').then((module) => ({ default: module.BarChartExample })),
 )
@@ -214,8 +209,7 @@ export const router = createBrowserRouter([
       { path: 'mosaic', element: withSuspense(MosaicPageDemo) },
       { path: 'mining-icons', element: withSuspense(MiningIconsExample) },
       { path: 'empty-state', element: withSuspense(EmptyStatePage) },
-      { path: 'line-chart', element: withSuspense(LineChartExample) },
-      { path: 'lw-line-chart', element: withSuspense(LwLineChartExample) },
+      { path: 'line-chart', element: withSuspense(LwLineChartExample) },
       { path: 'bar-chart', element: withSuspense(BarChartExample) },
       { path: 'area-chart', element: withSuspense(AreaChartExample) },
       { path: 'doughnut-chart', element: withSuspense(DoughnutChartPage) },

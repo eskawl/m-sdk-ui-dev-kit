@@ -27,7 +27,7 @@ import type { LightWeightLineChartProps } from './types'
 /**
  * Line Chart for time series data
  */
-const LineChart = ({
+const LightWeightLineChart = ({
   chartRef,
   data,
   yTicksFormatter,
@@ -499,5 +499,5 @@ const LineChart = ({
   )
 }
 
-export const LightWeightLineChart = withErrorBoundary(LineChart, 'LightWeightLineChart')
+export const LineChart = withErrorBoundary(LightWeightLineChart, 'LightWeightLineChart')
 export * from './types'
