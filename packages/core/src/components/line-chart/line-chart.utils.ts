@@ -21,7 +21,7 @@ import {
   SCALE_PADDING_FACTOR_FOR_INT,
   TOOLTIP_DEFAULT_OFFSET,
   VISIBLE_POINTS_BY_TIMELINE,
-} from './light-weight-line-chart.constants'
+} from './line-chart.constants'
 
 export type LineDataPoint = { x: number; y: number | null | undefined }
 export type ExtraTooltipData = Record<number, string>

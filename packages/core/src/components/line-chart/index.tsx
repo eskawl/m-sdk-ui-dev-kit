@@ -17,9 +17,9 @@ import {
   autoscaleProvider,
   buildTooltipHTML,
   getVisibleDataPointsForTimeline,
-} from './light-weight-line-chart.utils'
-import type { LineDataset, LineSeriesApi } from './light-weight-line-chart.utils'
-import { CHART_COLORS, GAP, OFFSET } from './light-weight-line-chart.constants'
+} from './line-chart.utils'
+import type { LineDataset, LineSeriesApi } from './line-chart.utils'
+import { CHART_COLORS, GAP, OFFSET } from './line-chart.constants'
 import { withErrorBoundary } from '../error-boundary'
 import { cn } from '../../utils'
 import type { LightWeightLineChartProps } from './types'
