@@ -492,7 +492,6 @@ const LightWeightLineChart = ({
         ref={toolTipRef}
         style={{
           display: showTooltip ? 'block' : 'none',
-          // display: 'block',
         }}
       />
     </div>
