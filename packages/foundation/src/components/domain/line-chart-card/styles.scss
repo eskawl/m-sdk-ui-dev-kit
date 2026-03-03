@@ -1,0 +1,247 @@
+$_prefix: mining-sdk-line-chart-card;
+
+.#{$_prefix}__header {
+  @include flex-center;
+  gap: 10px;
+
+  .#{$_prefix}__header-container {
+    flex: 1;
+    padding-top: 20px;
+    border-top: 1px solid var(--mining-sdk-color-white-2);
+  }
+
+  .#{$_prefix}__header-legend-column {
+    @include flex_column_align_center;
+    padding-bottom: 6px;
+    flex: 1;
+  }
+}
+
+.#{$_prefix}__detail-legend-labels {
+  @include flex_row;
+  gap: 25px;
+  row-gap: 16px;
+
+  .#{$_prefix}__legend-container {
+    @include flex_row;
+    gap: 8px;
+    cursor: pointer;
+    opacity: 1;
+
+    .#{$_prefix}__legend-container--hidden {
+      opacity: 0.3;
+    }
+
+    .#{$_prefix}__legend-icons {
+      width: 20px;
+    }
+
+    .#{$_prefix}__detail-legend {
+      @include flex_column;
+
+      .#{$_prefix}__detail-legend-label {
+        @include flex_row;
+
+        span {
+          font-size: 12px;
+        }
+      }
+
+      .#{$_prefix}__detail-legend-value {
+        @include flex_center;
+        gap: 10px;
+
+        .#{$_prefix}__detail-legend-value-text {
+          font-size: 16px;
+          font-weight: 700;
+        }
+
+        .#{$_prefix}__detail-legend-value-label {
+          font-size: 16px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+.#{$_prefix}__pct-change-indicator {
+  &-value {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--mining-sdk-color-white);
+
+    &--variant-increase {
+      color: var(--mining-sdk-color-brick-green);
+    }
+
+    &--variant-decrease {
+      color: var(--mining-sdk-color-brick-red);
+    }
+  }
+}
+
+.#{$_prefix}__legend-labels {
+  @include flex_row;
+  width: 100%;
+  gap: 30px;
+  row-gap: 16px;
+
+  .#{$_prefix}__legend-container {
+    @include flex_row;
+    gap: 8px;
+    cursor: pointer;
+    opacity: 1;
+
+    .#{$_prefix}__legend-container--hidden {
+      opacity: 0.3;
+    }
+
+    .#{$_prefix}__legend-color {
+      width: 12px;
+      height: 12px;
+    }
+
+    .#{$_prefix}__legend-text {
+      flex: 1;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 14px;
+      text-align: start;
+      color: var(--mining-sdk-color-white-7);
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      background-color: var(--mining-sdk-color-background-dark);
+    }
+  }
+}
+
+.#{$_prefix}__toggle {
+  @include flex_row;
+  margin-bottom: 20px;
+  justify-content: space-between;
+
+  &-title {
+    font-size: 17px;
+    color: var(--mining-sdk-color-white-5);
+  }
+
+  &-header {
+    @include flex_center_justify_end;
+
+    &-header-content {
+      @include flex_column_align_center;
+    }
+  }
+}
+
+.#{$_prefix}__current-value {
+  @include flex_row;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 10px;
+
+  &-text {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--mining-sdk-color-primary);
+  }
+
+  &-unit-text {
+    font-size: 16px;
+    font-weight: 600;
+    min-width: 45px;
+    color: var(--mining-sdk-color-white-5);
+  }
+}
+
+.#{$_prefix}-footer {
+  &-text {
+    &--primary {
+      color: var(--mining-sdk-color-primary);
+      font-weight: 800;
+      font-size: 14px;
+    }
+    &--secondary {
+      color: var(--mining-sdk-color-dark-grey);
+      font-size: 14px;
+    }
+    &--large {
+      color: var(--mining-sdk-color-dark-grey);
+      font-size: 15px;
+    }
+  }
+
+  &-row {
+    @include flex_row;
+  }
+
+  &-container {
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &--variant-flex {
+      display: flex;
+    }
+
+    &--orient-row {
+      flex-direction: row;
+    }
+  }
+
+  &__min-max-avg {
+    @include flex_row;
+    flex: 1;
+    gap: 10px;
+  }
+
+  &-stats {
+    @include flex_row;
+    gap: 20px;
+    padding: 20px 10px 10px;
+
+    &--width-full {
+      width: 100%;
+    }
+
+    &--justify-between {
+      justify-content: space-between;
+    }
+
+    &-column {
+      @include flex_column;
+      gap: 10px;
+    }
+
+    &-row {
+      @include flex_align;
+      gap: 10px;
+
+      @media (max-width: 1000px) {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      &--justify-between {
+        justify-content: space-between;
+      }
+    }
+
+    &__label {
+      @include flex_row;
+    }
+
+    &__value {
+      @include flex_row;
+      color: var(--mining-sdk-color-white);
+    }
+  }
+}
