@@ -67,7 +67,7 @@ export type ChartContainerProps = {
   footerClassName?: string
   className?: string
   children: React.ReactNode
-  hiddenIndices?: number[]
+  /** Callback when a legend is clicked */
   onToggleDataset?: (index: number) => void
 }
 
@@ -96,36 +96,17 @@ export const ChartContainer = React.forwardRef<HTMLDivElement, ChartContainerPro
       footerClassName,
       className,
       children,
-      // hiddenIndices,
       onToggleDataset,
     },
     ref,
   ) => {
-    // const [hiddenIndices, setHiddenIndices] = React.useState<Set<number>>(new Set())
-
     const toggleDataset = React.useCallback((index: number) => {
-      // setHiddenIndices((prev) => {
-      //   const next = new Set(prev)
-      //   if (next.has(index)) next.delete(index)
-      //   else next.add(index)
-      //   return next
-      // })
       onToggleDataset?.(index)
     }, [])
 
     const useGridLayout = (legendData && legendData.length > 0) || highlightedValue || rangeSelector
     const hasHeaderRow1 = header ?? title ?? (rangeSelector && rangeSelector.options.length > 0)
     const hasLegendRow = legendData && legendData.length > 0
-
-    // const injectHiddenDatasets = (child: React.ReactNode): React.ReactNode =>
-    //   React.isValidElement(child)
-    //     ? React.cloneElement(child as React.ReactElement<{ hiddenDatasets?: Set<number> }>, {
-    //         hiddenDatasets: hiddenIndices,
-    //       })
-    //     : child
-
-    const chartChildren = children
-    // const hiddenIndicesSet = new Set(hiddenIndices)
 
     return (
       <div
@@ -231,7 +212,7 @@ export const ChartContainer = React.forwardRef<HTMLDivElement, ChartContainerPro
               {empty && !loading && (
                 <div className="mining-sdk-chart-container__empty">{emptyMessage}</div>
               )}
-              {!empty && chartChildren}
+              {!empty && children}
             </div>
           </>
         ) : (
@@ -253,7 +234,7 @@ export const ChartContainer = React.forwardRef<HTMLDivElement, ChartContainerPro
               {empty && !loading && (
                 <div className="mining-sdk-chart-container__empty">{emptyMessage}</div>
               )}
-              {!empty && chartChildren}
+              {!empty && children}
             </div>
           </>
         )}
