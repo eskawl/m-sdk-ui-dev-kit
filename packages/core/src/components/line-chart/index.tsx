@@ -28,7 +28,7 @@ import type { LightWeightLineChartProps } from './types'
  * Line Chart for time series data
  */
 const LightWeightLineChart = ({
-  chartRef,
+  chartRef: providedChartRef,
   data,
   yTicksFormatter,
   customLabel,
@@ -64,6 +64,15 @@ const LightWeightLineChart = ({
   const lastTimelineRef = useRef<string | undefined>(undefined)
   const priceScaleWidthCache = useRef<Map<number, number>>(new Map())
   const lastAppliedPriceScaleWidth = useRef(0)
+
+  const chartRef = useRef<IChartApi | null>(null)
+  const handleChartRef = (apiRef?: IChartApi): void => {
+    const api = apiRef ?? null
+    if (providedChartRef) {
+      providedChartRef.current = api
+    }
+    chartRef.current = api
+  }
 
   const debouncedResetTimeScale = useMemo(
     () =>
@@ -185,9 +194,8 @@ const LightWeightLineChart = ({
   useEffect(() => {
     if (!chartRef?.current && chartContainerRef.current) {
       if (chartRef) {
-        chartRef.current = createChart(
-          chartContainerRef.current,
-          chartOptions as Parameters<typeof createChart>[1],
+        handleChartRef(
+          createChart(chartContainerRef.current, chartOptions as Parameters<typeof createChart>[1]),
         )
       }
     }

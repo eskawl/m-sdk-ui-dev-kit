@@ -19,7 +19,7 @@ export type LightWeightLineChartProps = {
   /**
    * Mutable ref to hold the LightWeightCharts reference
    */
-  chartRef: MutableRefObject<IChartApi | null>
+  chartRef?: MutableRefObject<IChartApi | null>
   /**
    * Data of the chart
    */

@@ -40,11 +40,13 @@ const BAR_CHART_REVENUE = {
 }
 
 const LINE_CHART_HASHRATE = {
-  labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
   datasets: [
     {
       label: 'Hashrate (TH/s)',
-      data: [140, 198, 180, 220],
+      data: [140, 198, 180, 220].map((y, i) => ({
+        x: new Date(`2026-01-0${i + 1}`).valueOf(),
+        y,
+      })),
       borderColor: 'rgb(34, 197, 94)',
       backgroundColor: 'rgba(34, 197, 94, 0.1)',
       tension: 0.4,
@@ -53,11 +55,13 @@ const LINE_CHART_HASHRATE = {
 }
 
 const LINE_CHART_TEMPERATURE = {
-  labels: ['00:00', '06:00', '12:00', '18:00', '24:00'],
   datasets: [
     {
       label: 'Temperature (°C)',
-      data: [55, 62, 68, 65, 58],
+      data: [55, 62, 68, 65, 58].map((y, i) => ({
+        x: new Date(`2026-01-0${i + 1}`).valueOf(),
+        y,
+      })),
       borderColor: 'rgb(239, 68, 68)',
       backgroundColor: 'rgba(239, 68, 68, 0.1)',
       tension: 0.4,
@@ -66,11 +70,13 @@ const LINE_CHART_TEMPERATURE = {
 }
 
 const LINE_CHART_DAILY_REVENUE = {
-  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
   datasets: [
     {
       label: 'Daily Revenue',
-      data: [12000, 15000, 13000, 17000, 14000, 16000, 18000],
+      data: [12000, 15000, 13000, 17000, 14000, 16000, 18000].map((y, i) => ({
+        x: new Date(`2026-01-0${i + 1}`).valueOf(),
+        y,
+      })),
       borderColor: 'rgb(59, 130, 246)',
       backgroundColor: 'rgba(59, 130, 246, 0.1)',
       tension: 0.4,
@@ -124,13 +130,13 @@ export const ChartWrapperPage = (): React.ReactElement => {
   const miningOutputData = BAR_CHART_MINING_OUTPUT.datasets[0]?.data as number[]
   const miningOutputStats = computeStats(miningOutputData)
 
-  const hashrateData = LINE_CHART_HASHRATE.datasets[0]?.data as number[]
+  const hashrateData = LINE_CHART_HASHRATE.datasets[0]?.data.map(({ y }) => y) ?? []
   const hashrateStats = computeStats(hashrateData)
 
-  const temperatureData = LINE_CHART_TEMPERATURE.datasets[0]?.data as number[]
+  const temperatureData = LINE_CHART_TEMPERATURE.datasets[0]?.data.map(({ y }) => y) ?? []
   const temperatureStats = computeStats(temperatureData)
 
-  const revenueData = LINE_CHART_DAILY_REVENUE.datasets[0]?.data as number[]
+  const revenueData = LINE_CHART_DAILY_REVENUE.datasets[0]?.data.map(({ y }) => y) ?? []
   const revenueStats = computeStats(revenueData)
 
   return (
@@ -432,7 +438,7 @@ export const ChartWrapperPage = (): React.ReactElement => {
               >
                 <LineChart
                   height={300}
-                  formatYLabel={(v) => `${v} TH/s`}
+                  yTicksFormatter={(v) => `${v} TH/s`}
                   data={LINE_CHART_HASHRATE}
                 />
               </ChartContainer>
@@ -469,8 +475,8 @@ export const ChartWrapperPage = (): React.ReactElement => {
               >
                 <LineChart
                   height={300}
-                  showPoints
-                  formatYLabel={(v) => `${v}${UNITS.TEMPERATURE_C}`}
+                  showPointMarkers
+                  yTicksFormatter={(v) => `${v}${UNITS.TEMPERATURE_C}`}
                   data={LINE_CHART_TEMPERATURE}
                 />
               </ChartContainer>
@@ -506,7 +512,7 @@ export const ChartWrapperPage = (): React.ReactElement => {
               >
                 <LineChart
                   height={300}
-                  formatYLabel={(v) => `$${(v / 1000).toFixed(1)}k`}
+                  yTicksFormatter={(v) => `$${(v / 1000).toFixed(1)}k`}
                   data={LINE_CHART_DAILY_REVENUE}
                 />
               </ChartContainer>
@@ -533,8 +539,7 @@ export const ChartWrapperPage = (): React.ReactElement => {
               <ChartContainer title="Hash Rate">
                 <LineChart
                   height={300}
-                  showLegend={false}
-                  formatYLabel={(v) => `${v} TH/s`}
+                  yTicksFormatter={(v) => `${v} TH/s`}
                   data={LINE_CHART_HASHRATE}
                 />
               </ChartContainer>
