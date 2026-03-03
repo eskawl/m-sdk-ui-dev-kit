@@ -53,15 +53,15 @@ export const EmptyTableBody = ({
 }): JSX.Element => {
   return (
     <div
-      className={cn('mining-sdk-table__empty-body', {
+      className={cn('mining-sdk-table__empty-body-wrapper', {
         'mining-sdk-table__empty-body--hidden': hideContent,
       })}
     >
       {!hideContent && (
-        <>
+        <div className="mining-sdk-table__empty-body">
           <ArchiveIcon width="128px" height="128px" />
           <p>{description}</p>
-        </>
+        </div>
       )}
     </div>
   )

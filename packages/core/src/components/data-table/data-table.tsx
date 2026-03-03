@@ -308,35 +308,37 @@ export function DataTable<I = unknown>({
 
   return (
     <div className={cn('mining-sdk-table', wrapperClassName)}>
-      <div
-        className={cn(
-          'mining-sdk-table__content-section',
-          {
-            'mining-sdk-table__content-section--empty': !hasData,
-            'mining-sdk-table__content-section--no-overflow': !hasData || loading,
-          },
-          contentClassName,
-        )}
-      >
-        <table
-          className={cn('mining-sdk-table__element', tableClassName, {
-            'mining-sdk-table__element--width-full': fullWidth,
-          })}
-          style={{
-            minWidth: tableBackend.getCenterTotalSize(),
-          }}
-        >
-          <TableHeader table={tableBackend} />
-          {hasData && (
-            <TableBody table={tableBackend} renderExpandedContent={renderExpandedContent} />
+      <div className="mining-sdk-table-content-wrapper">
+        <div
+          className={cn(
+            'mining-sdk-table__content-section',
+            {
+              'mining-sdk-table__content-section--empty': !hasData,
+              'mining-sdk-table__content-section--no-overflow': !hasData || loading,
+            },
+            contentClassName,
           )}
-        </table>
+        >
+          <table
+            className={cn('mining-sdk-table__element', tableClassName, {
+              'mining-sdk-table__element--width-full': fullWidth,
+            })}
+            style={{
+              minWidth: tableBackend.getCenterTotalSize(),
+            }}
+          >
+            <TableHeader table={tableBackend} />
+            {hasData && (
+              <TableBody table={tableBackend} renderExpandedContent={renderExpandedContent} />
+            )}
+          </table>
+          {loading && (
+            <div className="mining-sdk-table__loader-overlay">
+              <Spinner />
+            </div>
+          )}
+        </div>
         {!hasData && <EmptyTableBody hideContent={loading} />}
-        {loading && (
-          <div className="mining-sdk-table__loader-overlay">
-            <Spinner />
-          </div>
-        )}
       </div>
       {showPagination && (
         <div className="mining-sdk-table__pagination-section">
