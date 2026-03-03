@@ -16,4 +16,6 @@
 // export * from './use-copy-to-clipboard'
 // export * from './use-online'
 // export * from './use-window-size'
+export * from './use-chart-data-check'
+export * from './use-notification'
 export * from './use-pagination'

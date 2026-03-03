@@ -145,19 +145,18 @@ $viewport-padding: 24px;
 
     &-content {
       @include flex_align_start_between;
-      
+
       flex: 1;
       gap: 8px;
     }
   }
 
   &__variant {
-    max-width: 16px;
     overflow: hidden;
   }
 
   &__body {
-    padding-left: 28px;
+    padding-left: 33px;
   }
 
   &__title {

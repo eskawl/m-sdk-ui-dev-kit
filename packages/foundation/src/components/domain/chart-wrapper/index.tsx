@@ -1,9 +1,9 @@
 import * as React from 'react'
 
-import { cn, EmptyState, Spinner } from '@mining-sdk/core'
 import type { SpinnerProps } from '@mining-sdk/core'
+import { cn, EmptyState, Spinner } from '@mining-sdk/core'
 import { CHART_EMPTY_DESCRIPTION } from '../../../constants/charts'
-import { useChartDataCheck } from '../../../hooks/use-chart-data-check'
+import { useChartDataCheck } from '../../../hooks'
 
 const SPINNER_COLOR: SpinnerProps['color'] = 'secondary'
 

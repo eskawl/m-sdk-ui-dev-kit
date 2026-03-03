@@ -5,7 +5,7 @@
  */
 
 // Store setup
-// export * from './store'
+export * from './store'
 // export * from './hooks'
 
 // Slices

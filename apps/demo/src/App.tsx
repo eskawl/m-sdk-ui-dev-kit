@@ -1,10 +1,12 @@
 import type { SidebarMenuItem } from '@mining-sdk/core'
 import { Sidebar } from '@mining-sdk/core'
+import { store } from '@mining-sdk/foundation'
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
 import { useMemo, useRef, useState } from 'react'
+import { Provider } from 'react-redux'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { COMPONENT_NAV } from './constants/navigation'
 import './App.scss'
+import { COMPONENT_NAV } from './constants/navigation'
 
 const App = (): JSX.Element => {
   const navigate = useNavigate()
@@ -91,7 +93,9 @@ const App = (): JSX.Element => {
       />
       <main className="demo-app__main" ref={mainRef}>
         <div className="demo-app__content">
-          <Outlet />
+          <Provider store={store}>
+            <Outlet />
+          </Provider>
         </div>
       </main>
     </div>
