@@ -97,6 +97,21 @@ export const BasicTable = (): JSX.Element => {
   )
 }
 
+export const ShortTable = (): JSX.Element => {
+  return (
+    <>
+      <h2 className="demo-section__title">Short Table</h2>
+      <div style={{ maxHeight: '200px' }}>
+        <DataTable
+          data={miners.slice(0, 15)}
+          columns={[...columns.slice(0, 4), ...columns.slice(-1)]}
+          contentClassName="demo-table-content--short"
+        />
+      </div>
+    </>
+  )
+}
+
 export const ControlledTable = (): JSX.Element => {
   const [selections, setSelections] = useState<DataTableRowSelectionState>({
     0: false,
@@ -166,6 +181,7 @@ export const DemoTable = (): JSX.Element => {
     <>
       <BasicTable />
       <ControlledTable />
+      <ShortTable />
     </>
   )
 }

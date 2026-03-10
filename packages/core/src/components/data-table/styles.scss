@@ -32,7 +32,7 @@ $_prefix: mining-sdk-table;
     border: 1px solid var(--mining-sdk-table-border);
 
     &::-webkit-scrollbar {
-      width: 6px;
+      width: 4px;
       height: 4px;
     }
 
@@ -94,6 +94,9 @@ $_prefix: mining-sdk-table;
           background-color: var(--mining-sdk-table-header-bg);
           border-spacing: 0;
           font-size: 12px;
+
+          position: sticky;
+          top: 0;
 
           &:hover {
             background-color: var(--mining-sdk-table-header-hover-bg);
