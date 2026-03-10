@@ -36,6 +36,10 @@ $_prefix: mining-sdk-table;
       height: 4px;
     }
 
+    &::-webkit-scrollbar-corner {
+      display: none;
+    }
+
     &::-webkit-scrollbar-track {
       background: transparent;
     }
