@@ -1,0 +1,32 @@
+@use '@mining-sdk/core/styles' as *;
+
+.mining-sdk-status-indicator {
+  @include flex_center;
+
+  width: 24px;
+  height: 24px;
+
+  &__icon {
+    @include flex_center;
+
+    font-size: 16px;
+    transition: color 0.2s ease;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &--inactive {
+    .mining-sdk-status-indicator__icon {
+      color: var(--mining-sdk-color-white);
+
+      &--flash,
+      &--sound {
+        color: var(--mining-sdk-color-white);
+        opacity: 0.6;
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+@use '@mining-sdk/core/styles' as *;
+
+.mining-sdk-bitmain-immersion-pump-station-control-box {
+  background: var(--mining-sdk-color-dark-bg);
+  border: 1px solid var(--mining-sdk-border-default-color);
+  padding: 1.5rem;
+
+  &__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--mining-sdk-color-white);
+    margin: 0 0 1rem;
+  }
+
+  &__content {
+    @include flex_column;
+
+    gap: 0.75rem;
+  }
+
+  &__status {
+    display: flex;
+  }
+
+  &__state {
+    font-size: 0.875rem;
+    font-weight: 600;
+
+    &--on {
+      color: var(--mining-sdk-color-strong-green);
+    }
+
+    &--off {
+      color: var(--mining-sdk-color-brick-red);
+    }
+  }
+}

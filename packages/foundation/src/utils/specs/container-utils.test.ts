@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest'
+import { CONTAINER_SETTINGS_MODEL } from '../../constants/container-constants'
 import {
   getContainerName,
+  getContainerSettingsModel,
   isAntspaceHydro,
   isAntspaceImmersion,
   isBitdeer,
@@ -211,6 +213,40 @@ describe('container utils', () => {
       expect(isBitdeer('bd-1')).toBe(true)
       expect(isMicroBT('mbt-1')).toBe(true)
       expect(isAntspaceHydro('as-hk3')).toBe(true)
+    })
+  })
+
+  describe('getContainerSettingsModel', () => {
+    it('returns null for empty type', () => {
+      expect(getContainerSettingsModel('')).toBeNull()
+    })
+
+    it('returns bitdeer model', () => {
+      expect(getContainerSettingsModel('container-bd-d40')).toBe(CONTAINER_SETTINGS_MODEL.BITDEER)
+    })
+
+    it('returns microbt model', () => {
+      expect(getContainerSettingsModel('container-mbt-100')).toBe(CONTAINER_SETTINGS_MODEL.MICROBT)
+    })
+
+    it('returns hydro model', () => {
+      expect(getContainerSettingsModel('container-as-hk3')).toBe(CONTAINER_SETTINGS_MODEL.HYDRO)
+    })
+
+    it('returns immersion model for bitmain', () => {
+      expect(getContainerSettingsModel('container-bitmain-immersion')).toBe(
+        CONTAINER_SETTINGS_MODEL.IMMERSION,
+      )
+    })
+
+    it('returns immersion model for antspace', () => {
+      expect(getContainerSettingsModel('container-as-immersion')).toBe(
+        CONTAINER_SETTINGS_MODEL.IMMERSION,
+      )
+    })
+
+    it('returns null for unknown type', () => {
+      expect(getContainerSettingsModel('unknown-type')).toBeNull()
     })
   })
 })

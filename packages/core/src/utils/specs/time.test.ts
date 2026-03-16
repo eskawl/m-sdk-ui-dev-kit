@@ -5,6 +5,7 @@ import {
   getLastNDaysEndingYesterday,
   getSmallestAndLargestTs,
   getTimeRange,
+  secondsToMs,
   TimeRangeTypes,
   timeRangeWalker,
 } from '../time'
@@ -136,5 +137,14 @@ describe('timeRangeWalker', () => {
 
     expect(timestamps.length).toBeGreaterThanOrEqual(1)
     expect(timestamps[0]).toBe(1000)
+  })
+})
+
+describe('secondsToMs', () => {
+  it('converts seconds to milliseconds', () => {
+    expect(secondsToMs(0)).toBe(0)
+    expect(secondsToMs(1)).toBe(1000)
+    expect(secondsToMs(60)).toBe(60000)
+    expect(secondsToMs(3600)).toBe(3600000)
   })
 })

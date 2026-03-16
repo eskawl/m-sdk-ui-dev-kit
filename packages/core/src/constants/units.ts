@@ -23,6 +23,7 @@ export const UNITS = {
   APPARENT_POWER_KVA: 'kVA',
   EFFICIENCY_W_PER_TH: 'W/TH',
   EFFICIENCY_W_PER_TH_S: 'W/TH/S',
+  FLOW_M3H_UNICODE: 'm³/h',
 } as const
 
 export const CURRENCY = {

@@ -105,7 +105,7 @@ describe('listViewFilter', () => {
       expect(screen.getByText('3')).toBeInTheDocument()
     })
 
-    it('badge has square and sm size classes when visible', () => {
+    it('badge has sm size classes when visible', () => {
       const onChange = vi.fn()
       const localFilters: LocalFilters = { type: 'S19XP' }
       const { container } = render(
@@ -113,7 +113,6 @@ describe('listViewFilter', () => {
       )
 
       const badge = container.querySelector('.mining-sdk-badge')
-      expect(badge).toHaveClass('mining-sdk-badge--square')
       expect(badge).toHaveClass('mining-sdk-badge--sm')
     })
   })

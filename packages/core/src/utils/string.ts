@@ -106,3 +106,14 @@ export const getMinorLocation = (location: string): string => {
  */
 export const normalizeHexColor = (color: string): string =>
   color.startsWith('#') ? color.slice(1) : color
+
+/**
+ * Safely converts unknown value to string for display
+ * Returns empty string if value is null or undefined
+ */
+export const safeString = (value: unknown): string => {
+  if (value == null) {
+    return ''
+  }
+  return String(value)
+}

@@ -6,6 +6,7 @@ import {
   getMinorLocation,
   getRolesFromAuthToken,
   normalizeHexColor,
+  safeString,
 } from '../string'
 
 describe('getRolesFromAuthToken', () => {
@@ -46,5 +47,18 @@ describe('normalizeHexColor', () => {
   it('strips leading #', () => {
     expect(normalizeHexColor('#ff0000')).toBe('ff0000')
     expect(normalizeHexColor('ff0000')).toBe('ff0000')
+  })
+})
+
+describe('safeString', () => {
+  it('returns empty string for null or undefined', () => {
+    expect(safeString(null)).toBe('')
+    expect(safeString(undefined)).toBe('')
+  })
+
+  it('returns string representation for other types', () => {
+    expect(safeString(123)).toBe('123')
+    expect(safeString(true)).toBe('true')
+    expect(safeString({})).toBe('[object Object]')
   })
 })

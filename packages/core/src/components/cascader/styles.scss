@@ -2,11 +2,12 @@
   padding: 0;
   margin-top: unset;
   background-color: var(--mining-sdk-color-obsidian);
+  max-width: unset;
 }
 
 .mining-sdk-cascader {
   position: relative;
-  display: inline-block;
+  display: block;
 
   &__panels {
     @include flex_row;
@@ -23,7 +24,6 @@
     &--options {
       flex: 1;
       background-color: var(--mining-sdk-color-obsidian);
-      border-left: 1px solid var(--mining-sdk-border-default-color);
     }
 
     &--categories {
@@ -52,6 +52,7 @@
     border-radius: 4px;
     height: 32px;
     cursor: pointer;
+    width: 100%;
     transition: background-color 0.2s ease;
 
     &--disabled {
@@ -132,7 +133,6 @@
 
     .mining-sdk-radio-group {
       gap: 0;
-      padding: 4px;
     }
   }
 
@@ -164,7 +164,7 @@
   // Override TagInput styles for filter context
   .mining-sdk-tag-input__wrapper {
     margin-top: 8px;
-    width: 300px;
+    width: 100%;
     display: block;
     align-items: unset;
     max-height: 150px;

@@ -127,7 +127,18 @@ export const COMPONENT_NAV: SidebarMenuItem[] = [
     id: 'explorer',
     label: 'Explorer',
     icon: <MagnifyingGlassIcon />,
-    items: [{ id: 'device-explorer', label: 'Device Explorer' }],
+    items: [
+      { id: 'device-explorer', label: 'Device Explorer' },
+      {
+        id: 'explorer-containers',
+        label: 'Containers',
+        items: [
+          { id: 'bitdeer-container', label: 'Bitdeer Container' },
+          { id: 'bitmain-container', label: 'Bitmain Container' },
+          { id: 'bitmain-immersion-container', label: 'Bitmain Immersion Container Settingg' },
+        ],
+      },
+    ],
   },
 ]
 

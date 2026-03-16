@@ -1,0 +1,36 @@
+@use '@mining-sdk/core/styles' as *;
+
+.mining-sdk-bitmain-immersion-system-status {
+  background: var(--mining-sdk-color-dark-bg);
+  border: 1px solid var(--mining-sdk-border-default-color);
+  padding: 1.5rem;
+
+  &__header {
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--mining-sdk-color-white);
+    margin: 0;
+  }
+
+  &__content {
+    @include flex_column;
+
+    gap: 1rem;
+  }
+
+  &__item {
+    @include flex_align_between;
+
+    gap: 1rem;
+  }
+
+  &__label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--mining-sdk-color-text-muted);
+  }
+}

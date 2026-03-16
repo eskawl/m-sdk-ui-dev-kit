@@ -62,6 +62,7 @@
   },
   "dependencies": {
     "@mining-sdk/core": "workspace:*",
+    "@radix-ui/react-icons": "catalog:",
     "@radix-ui/react-use-controllable-state": "catalog:",
     "date-fns": "catalog:",
     "date-fns-tz": "catalog:",

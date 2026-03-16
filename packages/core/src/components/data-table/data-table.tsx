@@ -7,15 +7,16 @@ import {
   useReactTable,
 } from '@tanstack/react-table'
 
+import { MinusIcon, PlusIcon } from '@radix-ui/react-icons'
+import { useControllableState } from '@radix-ui/react-use-controllable-state'
 import { useMemo } from 'react'
 import { cn } from '../../utils'
-import { Checkbox } from '../checkbox'
-import { TableHeader } from './data-table-header'
-import { EmptyTableBody, TableBody } from './data-table-body'
-import { useControllableState } from '@radix-ui/react-use-controllable-state'
-import { Pagination } from '../pagination'
-import { MinusIcon, PlusIcon } from '@radix-ui/react-icons'
 import { Button } from '../button'
+import { Checkbox } from '../checkbox'
+import { Pagination } from '../pagination'
+import { Spinner } from '../spinner'
+import { EmptyTableBody, TableBody } from './data-table-body'
+import { TableHeader } from './data-table-header'
 import type {
   DataTableColumnDef,
   DataTableExpandedState,
@@ -24,7 +25,6 @@ import type {
   DataTableRowSelectionState,
   DataTableSortingState,
 } from './types'
-import { Spinner } from '../spinner'
 
 export type DataTableProps<I = unknown> = {
   /**
@@ -66,6 +66,12 @@ export type DataTableProps<I = unknown> = {
    * @default true
    */
   enablePagination?: boolean
+  /**
+   * Add borders to all cells
+   * @default false
+   */
+  bordered?: boolean
+
   /**
    * Specify the pagination params. Object of shape { pageIndex: number, pageSize: number }.
    * If `undefined` then the pagination is managed internally.
@@ -153,6 +159,7 @@ export function DataTable<I = unknown>({
   contentClassName,
   tableClassName,
   loading,
+  bordered = false,
   enableRowExpansion = false,
   canRowExpand = () => true,
   expandedRows: providedExpandedRows,
@@ -312,6 +319,7 @@ export function DataTable<I = unknown>({
             {
               'mining-sdk-table__content-section--empty': !hasData,
               'mining-sdk-table__content-section--no-overflow': !hasData || loading,
+              'mining-sdk-table__content-section--bordered': bordered,
             },
             contentClassName,
           )}
@@ -319,6 +327,7 @@ export function DataTable<I = unknown>({
           <table
             className={cn('mining-sdk-table__element', tableClassName, {
               'mining-sdk-table__element--width-full': fullWidth,
+              'mining-sdk-table__element--bordered': bordered,
             })}
             style={{
               minWidth: tableBackend.getCenterTotalSize(),

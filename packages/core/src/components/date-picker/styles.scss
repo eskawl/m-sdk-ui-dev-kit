@@ -10,6 +10,10 @@
  * react-day-picker v9 class names
  */
 
+.mining-sdk-date-picker__modal {
+  border-radius: 0px !important;
+}
+
 /* ===== Trigger Button ===== */
 .mining-sdk-date-picker__trigger {
   @include inline_flex_align;
@@ -160,6 +164,7 @@
     border-radius: 0;
     position: relative;
     width: fit-content;
+    @include flex_column_align_center;
   }
 
   .rdp-month_caption {
@@ -169,13 +174,8 @@
   /* Month grid - use native table layout for proper column sizing */
   .rdp-month_grid {
     border-collapse: separate;
-    border-spacing: 0 4px;
+    border-spacing: 4px;
     width: 100%;
-  }
-
-  /* Weekday headers */
-  .rdp-weekdays {
-    /* Keep native table display */
   }
 
   .rdp-weekday {
@@ -188,18 +188,10 @@
     padding: 0;
   }
 
-  /* Week rows */
-  .rdp-weeks {
-    /* Keep native tbody display */
-  }
-
-  .rdp-week {
-    /* Keep native tr display */
-  }
-
   /* Day cells - let table auto-distribute width equally across 7 columns */
   .rdp-day {
-    height: 30px;
+    height: 25px;
+    margin-right: 2px;
     padding: 0;
     position: relative;
     text-align: center;
@@ -210,7 +202,7 @@
     @include inline_flex_align;
 
     justify-content: center;
-    width: 32px;
+    width: 27px;
     height: 100%;
     background: none;
     border: none;
@@ -251,7 +243,7 @@
   /* Today */
   .rdp-today .rdp-day_button {
     font-weight: 600;
-    color: var(--mining-sdk-color-primary);
+    border: 1px solid var(--mining-sdk-color-primary);
   }
 
   .rdp-today.rdp-selected .rdp-day_button {
@@ -350,12 +342,14 @@
   flex: 1;
   min-width: 0;
   overflow: hidden;
-  gap: 8px;
-  padding: 12px;
+  gap: 2px;
+  padding: 8px 12px;
   background-color: var(--mining-sdk-color-obsidian);
   border: 1px solid var(--mining-sdk-button-secondary-border);
   font-size: 14px;
   color: var(--mining-sdk-color-text-disabled);
+  height: 100%;
+  justify-content: center;
 }
 
 .mining-sdk-date-picker__summary-title {
@@ -393,7 +387,8 @@
   border: 1px solid var(--mining-sdk-button-secondary-border);
 
   button {
-    padding: 0;
+    padding: 2px 8px;
+    height: auto;
   }
 }
 
@@ -422,6 +417,13 @@
   /* Adjust nav position to account for label margin */
   .rdp-nav {
     top: 32px;
+    @include flex_between;
+
+    width: 100%;
+
+    .rdp-button_previous {
+      margin-left: 25px;
+    }
   }
 
   .rdp-month {
@@ -431,7 +433,7 @@
 
   .rdp-month::before {
     position: absolute;
-    left: 12px;
+    left: 0px;
     top: -20px;
     font-size: 12px;
     font-weight: 800;

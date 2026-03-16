@@ -1,10 +1,10 @@
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
 import * as React from 'react'
 
-import { Label } from '../label'
 import { cn } from '../../utils'
+import { Label } from '../label'
 
-export type InputProps = Omit<React.ComponentProps<'input'>, 'prefix' | 'suffix'> & {
+export type InputProps = Omit<React.ComponentProps<'input'>, 'prefix'> & {
   /**
    * Optional label displayed above the input
    */
@@ -28,26 +28,49 @@ export type InputProps = Omit<React.ComponentProps<'input'>, 'prefix' | 'suffix'
    * Custom className for the root wrapper
    */
   wrapperClassName?: string
+  /**
+   * Prefix element displayed before the input (left side)
+   */
+  prefix?: React.ReactNode
+  /**
+   * Suffix element displayed after the input (right side)
+   */
+  suffix?: React.ReactNode
 }
 
 /**
- * Input component with label support and search variant
+ * Input component with label support, prefix/suffix, and search variant
  *
  * @example
  * ```tsx
  * <Input label="MAC Address" placeholder="Enter MAC address" id="mac" />
  * <Input variant="search" placeholder="Search" />
+ * <Input prefix="$" suffix="USD" placeholder="0.00" />
+ * <Input suffix="°C" placeholder="Temperature" />
  * ```
  */
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { className, wrapperClassName, label, id, variant = 'default', disabled, error, ...props },
+    {
+      className,
+      wrapperClassName,
+      label,
+      id,
+      variant = 'default',
+      disabled,
+      error,
+      prefix,
+      suffix,
+      ...props
+    },
     ref,
   ) => {
     const inputId = id ?? React.useId()
     const errorId = `${inputId}-error`
     const showSearchIcon = variant === 'search'
     const hasError = !!error
+    const hasPrefix = !!prefix
+    const hasSuffix = !!suffix || showSearchIcon
 
     const input = (
       <div
@@ -56,9 +79,16 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           showSearchIcon && 'mining-sdk-input__wrapper--search',
           disabled && 'mining-sdk-input__wrapper--disabled',
           hasError && 'mining-sdk-input__wrapper--error',
+          hasPrefix && 'mining-sdk-input__wrapper--has-prefix',
+          hasSuffix && 'mining-sdk-input__wrapper--has-suffix',
           !label && wrapperClassName,
         )}
       >
+        {prefix && (
+          <span className="mining-sdk-input__prefix" aria-hidden>
+            {prefix}
+          </span>
+        )}
         <input
           ref={ref}
           id={inputId}
@@ -68,6 +98,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           aria-describedby={hasError ? errorId : props['aria-describedby']}
           {...props}
         />
+        {suffix && (
+          <span className="mining-sdk-input__suffix" aria-hidden>
+            {suffix}
+          </span>
+        )}
         {showSearchIcon && (
           <span className="mining-sdk-input__icon" aria-hidden>
             <MagnifyingGlassIcon />

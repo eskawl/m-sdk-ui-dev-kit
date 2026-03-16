@@ -1,3 +1,12 @@
+import type { UnknownRecord } from '@mining-sdk/core'
+import {
+  convertUnits,
+  FALLBACK,
+  formatHashrateUnit,
+  HASHRATE_LABEL_DIVISOR,
+  UNIT_LABELS,
+  UNITS,
+} from '@mining-sdk/core'
 import _capitalize from 'lodash/capitalize'
 import _find from 'lodash/find'
 import _get from 'lodash/get'
@@ -16,15 +25,7 @@ import _split from 'lodash/split'
 import _toUpper from 'lodash/toUpper'
 import { SEVERITY, SEVERITY_COLORS } from '../constants/alerts'
 import { MINER_MODEL_TO_TYPE_MAP } from '../constants/device-constants'
-import {
-  convertUnits,
-  FALLBACK,
-  formatHashrateUnit,
-  HASHRATE_LABEL_DIVISOR,
-  UNIT_LABELS,
-  UNITS,
-} from '@mining-sdk/core'
-import type { UnknownRecord } from '@mining-sdk/core'
+import type { Device } from '../types/device'
 import { MINER_POWER_MODE } from './status-utils'
 
 const FLOAT_PRECISION = 2
@@ -88,6 +89,17 @@ export const getStats = (data: UnknownRecord): UnknownRecord =>
 
 export const getConfig = (data: UnknownRecord): UnknownRecord =>
   (getSnap(data)?.config as UnknownRecord) || {}
+
+export const removeContainerPrefix = (text: string): string => _replace(text, /^container-/, '')
+
+export const getContainerSpecificStats = (data: UnknownRecord): UnknownRecord =>
+  (getStats(data)?.container_specific as UnknownRecord) || {}
+
+export const getContainerSpecificConfig = (data: UnknownRecord): UnknownRecord =>
+  (getConfig(data)?.config as UnknownRecord) || {}
+
+export const getCoolingSystem = (data: UnknownRecord): UnknownRecord =>
+  (getContainerSpecificStats(data as Device)?.cooling_system || {}) as UnknownRecord
 
 export const MinerStatuses = {
   MINING: 'mining',
@@ -200,4 +212,70 @@ export const getOnOffText = (isOn: unknown, fallback = FALLBACK): string => {
     return 'On'
   }
   return 'Off'
+}
+
+/**
+ * Extract and normalize device data from a Device object
+ *
+ * @param device - Device object to extract data from
+ * @returns Tuple of [error, deviceData]
+ *
+ * @example
+ * ```ts
+ * const [error, deviceData] = getDeviceData(device)
+ * if (error) {
+ *   console.error('Device error:', error)
+ * }
+ * if (deviceData) {
+ *   console.log('Device stats:', deviceData.snap.stats)
+ * }
+ * ```
+ */
+export const getDeviceData = (
+  device: Device | null | undefined,
+): [error: string | undefined | null, data: Device | undefined] => {
+  if (!device) {
+    return ['Device Not Found', undefined]
+  }
+
+  const { id, type, tags, rack, last, username, info, containerId, address } = device
+
+  // If no last data, return error with empty snap
+  if (!last) {
+    return [
+      undefined,
+      {
+        id,
+        type,
+        tags,
+        rack,
+        last,
+        username,
+        info,
+        containerId,
+        address,
+        snap: { stats: {}, config: {} },
+        err: 'Last Device info not found',
+      },
+    ]
+  }
+
+  const { err, snap, alerts } = last
+
+  return [
+    err,
+    {
+      id,
+      type,
+      tags,
+      rack,
+      snap: snap ?? { stats: {}, config: {} },
+      alerts,
+      username,
+      info,
+      containerId,
+      address,
+      err,
+    },
+  ]
 }

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import {
+  convertKwToW,
   FALLBACK,
   formatChartDate,
   formatCountTo99Plus,
@@ -242,5 +243,15 @@ describe('formatRelativeTime', () => {
   it('returns days ago', () => {
     const past = new Date(Date.now() - 3 * 86400 * 1000)
     expect(formatRelativeTime(past)).toBe('3d ago')
+  })
+})
+
+describe('convertKwToW', () => {
+  it('converts kW to W', () => {
+    expect(convertKwToW(1)).toBe(1000)
+    expect(convertKwToW('2.5')).toBe(2500)
+  })
+  it('returns NaN if string value was passed', () => {
+    expect(convertKwToW('abc')).toBe(Number.NaN)
   })
 })

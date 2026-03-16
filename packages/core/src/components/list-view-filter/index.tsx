@@ -145,7 +145,7 @@ const ListViewFilter = React.forwardRef<HTMLDivElement, ListViewFilterProps>(
         <Popover open={open} onOpenChange={handleOpenChange}>
           <PopoverTrigger asChild>
             <div className="mining-sdk-list-view-filter__trigger">
-              <Badge color="primary" count={filtersCount} size="sm" square>
+              <Badge color="primary" count={filtersCount} size="sm">
                 <Button variant="secondary" size="sm">
                   <svg
                     viewBox="64 64 896 896"

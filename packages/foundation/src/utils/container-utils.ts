@@ -1,11 +1,3 @@
-import {
-  COMPLETE_CONTAINER_TYPE,
-  CONTAINER_MODEL,
-  CONTAINER_TYPE,
-  CONTAINER_TYPE_NAME_MAP,
-  MAINTENANCE_CONTAINER,
-} from '../constants/container-constants'
-import { CONTAINER_STATUS } from './status-utils'
 import _capitalize from 'lodash/capitalize'
 import _includes from 'lodash/includes'
 import _isEmpty from 'lodash/isEmpty'
@@ -13,7 +5,16 @@ import _slice from 'lodash/slice'
 import _split from 'lodash/split'
 import _toLower from 'lodash/toLower'
 import _toUpper from 'lodash/toUpper'
+import {
+  COMPLETE_CONTAINER_TYPE,
+  CONTAINER_MODEL,
+  CONTAINER_SETTINGS_MODEL,
+  CONTAINER_TYPE,
+  CONTAINER_TYPE_NAME_MAP,
+  MAINTENANCE_CONTAINER,
+} from '../constants/container-constants'
 import { separateByHyphenRegExp, separateByTwoHyphensRegExp } from './device-utils'
+import { CONTAINER_STATUS } from './status-utils'
 
 export const isContainerOffline = (snap: { stats?: { status?: string } } | undefined): boolean =>
   snap?.stats?.status === CONTAINER_STATUS.OFFLINE
@@ -83,4 +84,29 @@ export const getContainerName = (container: string | undefined, type?: string): 
   }
   const [name, model, id] = _slice((container || '').match(separateByTwoHyphensRegExp) || [], 1)
   return `${_capitalize(name)} ${_capitalize(model)} ${id}`
+}
+
+/**
+ * Maps a container type to its corresponding settings model
+ * Used for fetching container settings from the API
+ * @param {string} containerType - The container type (e.g., 'bd', 'mbt', 'as-hk3', etc.)
+ * @returns {string|null} - The settings model ('bd', 'mbt', 'hydro', 'immersion') or null
+ */
+export const getContainerSettingsModel = (containerType: string): string | null => {
+  if (!containerType) return null
+
+  if (isBitdeer(containerType)) {
+    return CONTAINER_SETTINGS_MODEL.BITDEER
+  }
+  if (isMicroBT(containerType)) {
+    return CONTAINER_SETTINGS_MODEL.MICROBT
+  }
+  if (isAntspaceHydro(containerType)) {
+    return CONTAINER_SETTINGS_MODEL.HYDRO
+  }
+  if (isBitmainImmersion(containerType) || isAntspaceImmersion(containerType)) {
+    return CONTAINER_SETTINGS_MODEL.IMMERSION
+  }
+
+  return null
 }

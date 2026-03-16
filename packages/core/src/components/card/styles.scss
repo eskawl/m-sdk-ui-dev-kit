@@ -3,6 +3,7 @@
  */
 
 $mining-sdk-card-cut-edge-size: 8px;
+$mining-sdk-card-cut-before-edge-size: 7.5px;
 
 .mining-sdk-card {
   position: relative;
@@ -34,8 +35,8 @@ $mining-sdk-card-cut-edge-size: 8px;
     left: 0;
     width: 0;
     height: 0;
-    border-top: $mining-sdk-card-cut-edge-size solid var(--mining-sdk-border-default-color);
-    border-right: $mining-sdk-card-cut-edge-size solid transparent;
+    border-top: $mining-sdk-card-cut-before-edge-size solid var(--mining-sdk-border-default-color);
+    border-right: $mining-sdk-card-cut-before-edge-size solid transparent;
     transition: border-color 0.4s;
     z-index: 1;
   }

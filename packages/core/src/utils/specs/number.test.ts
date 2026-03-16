@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest'
 
-import { convertUnits, getPercentChange, percentage, shouldDisplayValue } from '../number'
+import {
+  convertUnits,
+  getPercentChange,
+  percentage,
+  safeNumber,
+  shouldDisplayValue,
+} from '../number'
 
 describe('percentage', () => {
   it('calculates percentage correctly', () => {
@@ -49,5 +55,18 @@ describe('getPercentChange', () => {
   it('returns null for invalid inputs', () => {
     expect(getPercentChange(100, 0)).toBe(null)
     expect(getPercentChange(Infinity, 100)).toBe(null)
+  })
+})
+
+describe('safeNumber', () => {
+  it('returns number for valid inputs', () => {
+    expect(safeNumber(42)).toBe(42)
+    expect(safeNumber('3.14')).toBe(3.14)
+  })
+
+  it('returns 0 for non-numeric inputs', () => {
+    expect(safeNumber(null)).toBe(0)
+    expect(safeNumber(undefined)).toBe(0)
+    expect(safeNumber('abc')).toBe(0)
   })
 })

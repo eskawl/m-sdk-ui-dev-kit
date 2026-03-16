@@ -33,6 +33,7 @@ export default antfu(
       'style/brace-style': 'off',
       'style/member-delimiter-style': 'off',
       'antfu/if-newline': 'off',
+      'test/prefer-lowercase-title': 'off',
       'unicorn/filename-case': [
         'error',
         {

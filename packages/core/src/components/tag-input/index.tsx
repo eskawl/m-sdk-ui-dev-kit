@@ -125,18 +125,19 @@ export type TagInputProps = {
   renderDropdown?: (props: TagInputDropdownProps) => React.ReactNode
 }
 
-function getOptionValue(opt: TagInputOption): string {
-  return typeof opt === 'string' ? opt : opt.value
-}
+const getOptionValue = (opt: TagInputOption): string => (typeof opt === 'string' ? opt : opt.value)
 
-function getOptionLabel(opt: TagInputOption): string {
-  return typeof opt === 'string' ? opt : opt.label
-}
+const getOptionLabel = (opt: TagInputOption): string => (typeof opt === 'string' ? opt : opt.label)
 
-function defaultFilter(options: TagInputOption[], query: string): TagInputOption[] {
+const defaultFilter = (options: TagInputOption[], query: string): TagInputOption[] => {
   if (!query.trim()) return options
   const q = query.toLowerCase()
   return options.filter((opt) => getOptionLabel(opt).toLowerCase().includes(q))
+}
+
+const getLabelFromTag = (tag: string, options: TagInputOption[]): string => {
+  const opt = options.find((o) => getOptionValue(o) === tag)
+  return opt ? getOptionLabel(opt) : tag
 }
 
 /**
@@ -404,13 +405,20 @@ const TagInput = React.forwardRef<TagInputRef | HTMLInputElement, TagInputProps>
                 {tags.map((tag, i) => (
                   <span key={`${tag}-${i}`} className="mining-sdk-tag-input__tag">
                     <span className="mining-sdk-tag-input__tag-chip">
-                      {tag}
+                      {getLabelFromTag(tag, options)}
                       <button
                         type="button"
                         className="mining-sdk-tag-input__tag-remove"
                         onClick={(e) => {
                           e.stopPropagation()
                           removeTag(i)
+                        }}
+                        onMouseDown={(e) => {
+                          // Prevent input blur which would close the dropdown
+                          e.preventDefault()
+                        }}
+                        onPointerDown={(e) => {
+                          e.stopPropagation()
                         }}
                         aria-label={`Remove ${tag}`}
                         tabIndex={-1}

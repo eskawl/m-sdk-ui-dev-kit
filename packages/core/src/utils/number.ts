@@ -112,6 +112,15 @@ export const getPercentChange = (currentValue: number, historicalValue: number):
   return percentChange || null
 }
 
+/**
+ * Safely converts unknown value to number
+ * Returns 0 if value is not a number
+ */
+export const safeNumber = (value: unknown): number => {
+  const num = Number(value)
+  return Number.isNaN(num) ? 0 : num
+}
+
 // ============================================================================
 // Energy / Power / Mining Constants
 // ============================================================================

@@ -348,3 +348,6 @@ export const formatRelativeTime = (date: Date | string): string => {
  */
 export const toCssSize = (value?: number | string): string | undefined =>
   typeof value === 'number' ? `${value}px` : value
+
+export const convertKwToW = (valueInKw: number | string): number =>
+  valueInKw && !Number.isNaN(Number(valueInKw)) ? Number(valueInKw) * 1000 : Number.NaN

@@ -1,13 +1,6 @@
-import type { UnknownRecord } from '@mining-sdk/core'
-
-export type DeviceSnap = {
-  stats?: UnknownRecord
-  config?: UnknownRecord
-}
-
 export type DeviceLast = {
   err?: string | null
-  snap?: DeviceSnap
+  snap?: Partial<ContainerSnap>
   alerts?: unknown[] | null
   [key: string]: unknown
 }
@@ -31,6 +24,43 @@ export type Device = {
   [key: string]: unknown
 }
 
+export type ContainerInfo = {
+  container: string
+  cooling_system: Record<string, unknown>
+  cdu: Record<string, unknown>
+  primary_supply_temp: number
+  second_supply_temp1: number
+  second_supply_temp2: number
+  supply_liquid_temp: number
+  supply_liquid_set_temp: number
+  supply_liquid_pressure: number
+  return_liquid_pressure: number
+}
+
+export type ContainerStats = {
+  status: string
+  ambient_temp_c: number
+  humidity_percent: number
+  power_w: number
+  container_specific: Record<string, unknown>
+  distribution_box1_power_w: number
+  distribution_box2_power_w: number
+  [key: string]: unknown
+}
+
+export type ContainerLast = {
+  snap: {
+    stats?: Partial<ContainerStats>
+  }
+  alerts: unknown[] | null
+  err: string | null
+}
+
+export type Container = {
+  info?: Partial<ContainerInfo>
+  last?: Partial<ContainerLast>
+} & Device
+
 export type PowerMeter = {
   last?: {
     snap?: {
@@ -46,15 +76,9 @@ export type LvCabinetRecord = {
   powerMeters?: PowerMeter[]
 }
 
-export type ContainerStats = {
-  status?: string
-  ambient_temp_c?: number
-  humidity_percent?: number
-  power_w?: number
-}
-
 export type ContainerSnap = {
-  stats?: ContainerStats
+  stats?: Partial<ContainerStats>
+  config?: Record<string, unknown>
 }
 
 export type MinerHashrateMhs = {

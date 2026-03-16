@@ -65,6 +65,10 @@ $_prefix: mining-sdk-table;
       overflow-x: hidden;
     }
 
+    &--bordered {
+      border: 1px solid var(--mining-sdk-table-border);
+    }
+
     .#{$_prefix}__loader-overlay {
       position: absolute;
       top: 0;
@@ -87,6 +91,34 @@ $_prefix: mining-sdk-table;
 
       &--width-full {
         width: 100%;
+      }
+
+      &--bordered {
+        border-collapse: separate;
+        border-spacing: 0;
+
+        thead tr {
+          th {
+            border-right: 1px solid var(--mining-sdk-table-border);
+            border-bottom: 1px solid var(--mining-sdk-table-border);
+
+            &:last-child {
+              border-right: none;
+            }
+          }
+        }
+
+        tbody {
+          .#{$_prefix}__body-row {
+            td {
+              border-right: 1px solid var(--mining-sdk-table-border);
+
+              &:last-child {
+                border-right: none;
+              }
+            }
+          }
+        }
       }
 
       thead tr {

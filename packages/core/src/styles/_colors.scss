@@ -54,6 +54,7 @@
     --mining-sdk-border-default-color: #424242;
     --mining-sdk-color-brick-red: #ff3b30;
     --mining-sdk-color-brick-green: #34c759;
+    --mining-sdk-color-brick-green-rgb: 52, 199, 89; /*  #34c759 in Hex  */
     --mining-sdk-color-dark-green: #18251c;
     --mining-sdk-color-strong-green: #03c04a;
     --mining-sdk-color-mint-green: #6ee7b7;
@@ -64,10 +65,14 @@
     --mining-sdk-color-white-rgb: 255, 255, 255; /* #ffffff in Hex */
     --mining-sdk-color-orange-warning: 245, 158, 11; /* #f59e0b in Hex */
     --mining-sdk-color-low-yellow: 246, 238, 92; /* #f6ee5c in Hex */
+    --mining-sdk-color-gold: 255, 215, 0; /* #ffd700 in Hex */
     --mining-sdk-color-sleep-blue: 59, 130, 246; /* #3b82f6 in Hex */
     --mining-sdk-color-dark-grey: 159, 166, 172; /* #9fa6ac in Hex */
     --mining-sdk-color-purple-high: 139, 92, 246; /* #8b5cf6 in Hex */
     --mining-sdk-color-primary-rgb: 247, 147, 26; /* #f7931a in RGB */
+    --mining-sdk-color-light-blue: #22afff;
+    --mining-sdk-color-blue: #357af6;
+    --mining-sdk-color-blue-rgb: 53, 122, 246; /* #357AF6 in RGB */
 
     /* Neutral / Gray scale */
     --mining-sdk-color-gray-900: #1f1f1f;
@@ -80,6 +85,9 @@
     --mining-sdk-color-dark-bg: #1a1a1a;
     --mining-sdk-color-brown-selected: #6b5a3d;
     --mining-sdk-color-light-grey: #d9d9d9;
+    --mining-sdk-color-darker-grey: #404040;
+    --mining-sdk-color-onyx: #141414;
+    --mining-sdk-color-dark: #0e0e0e;
 
     /* Overlays */
     --mining-sdk-overlay-bg: rgba(0, 0, 0, 0.45);

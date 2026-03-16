@@ -3,12 +3,22 @@ import * as React from 'react'
 import type { ComponentSize } from '../../types'
 import { cn } from '../../utils'
 
+export type IndicatorColor =
+  | 'red'
+  | 'gray'
+  | 'blue'
+  | 'yellow'
+  | 'green'
+  | 'purple'
+  | 'amber'
+  | 'slate'
+
 export type IndicatorProps = {
   /**
    * Color variant of the indicator
    * @default 'gray'
    */
-  color?: 'red' | 'gray' | 'blue' | 'yellow' | 'green' | 'purple' | 'amber' | 'slate'
+  color?: IndicatorColor
   /**
    * Size variant of the indicator
    * @default 'md'

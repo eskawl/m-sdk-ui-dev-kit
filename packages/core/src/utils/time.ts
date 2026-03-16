@@ -156,3 +156,16 @@ export function* timeRangeWalker(
     yield currentTs
   }
 }
+
+/**
+ * Convert seconds to milliseconds
+ *
+ * @param seconds - Number of seconds
+ * @returns Equivalent number of milliseconds
+ *
+ * @example
+ * ```ts
+ * secondsToMs(60)  // 60000
+ * ```
+ */
+export const secondsToMs = (seconds: number): number => seconds * 1000

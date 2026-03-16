@@ -7,7 +7,7 @@ $_prefix: 'mining-sdk-pool-details-popover';
     gap: 16px;
     border: none;
     padding: 16px;
-    background-color: var(--mining-sdk-color-black);
+    background-color: rgb(var(--mining-sdk-color-black));
   }
 
   .mining-sdk-dialog__header {

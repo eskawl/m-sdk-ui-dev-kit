@@ -1,0 +1,16 @@
+@use '@mining-sdk/core/styles' as *;
+@import './pump-shared';
+
+.mining-sdk-bitdeer-pumps {
+  padding: 15px;
+  background-color: var(--mining-sdk-color-surface);
+  border: 1px solid var(--mining-sdk-dialog-border-color);
+
+  &__status {
+    @include pump-status;
+  }
+
+  &__title {
+    @include pump-title;
+  }
+}

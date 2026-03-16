@@ -1,9 +1,9 @@
-import { flexRender } from '@tanstack/react-table'
+import { TriangleDownIcon, TriangleUpIcon } from '@radix-ui/react-icons'
 import type { Header, Table } from '@tanstack/react-table'
+import { flexRender } from '@tanstack/react-table'
+import React from 'react'
 import { cn } from '../../utils'
 import { SimpleTooltip } from '../tooltip'
-import { TriangleDownIcon, TriangleUpIcon } from '@radix-ui/react-icons'
-import React from 'react'
 
 type TableHeaderProps<I> = {
   table: Table<I>

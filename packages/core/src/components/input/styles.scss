@@ -5,11 +5,12 @@
  * - Hover: Light gray border
  * - Focus: Orange/amber border
  * - Search variant: Magnifying glass icon on the right
+ * - Prefix/Suffix: Additional content before/after input
  */
 
 .mining-sdk-input-root {
   @include flex_column;
-  
+
   gap: 0.5rem;
   width: 100%;
   min-width: 0;
@@ -31,6 +32,24 @@
   &--search {
     .mining-sdk-input {
       padding-right: 2.5rem;
+    }
+  }
+
+  &--has-prefix {
+    .mining-sdk-input {
+      padding-left: 2.5rem;
+    }
+  }
+
+  &--has-suffix {
+    .mining-sdk-input {
+      padding-right: 2.5rem;
+    }
+  }
+
+  &--has-prefix.mining-sdk-input__wrapper--has-suffix {
+    .mining-sdk-input {
+      padding-inline: 2.5rem;
     }
   }
 
@@ -57,13 +76,25 @@
   color: rgb(var(--mining-sdk-color-error, #ef4444));
 }
 
+.mining-sdk-input__prefix,
+.mining-sdk-input__suffix,
 .mining-sdk-input__icon {
   @include flex_center;
 
   position: absolute;
-  right: 0.75rem;
   color: var(--mining-sdk-input-placeholder-color, #999999);
   pointer-events: none;
+  font-size: var(--mining-sdk-font-size, 14px);
+  line-height: var(--mining-sdk-line-height, 22px);
+}
+
+.mining-sdk-input__prefix {
+  left: 0.75rem;
+}
+
+.mining-sdk-input__suffix,
+.mining-sdk-input__icon {
+  right: 0.75rem;
 }
 
 .mining-sdk-input {
@@ -98,5 +129,18 @@
 
   &:disabled {
     cursor: not-allowed;
+  }
+
+  /* Hide number input spinner arrows - Chrome, Safari, Edge, Opera */
+  &[type='number']::-webkit-outer-spin-button,
+  &[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Hide number input spinner arrows - Firefox */
+  &[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
   }
 }

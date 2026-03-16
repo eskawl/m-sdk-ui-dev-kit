@@ -1,0 +1,13 @@
+@import '../pump-shared';
+
+.mining-sdk-pump-box {
+  @include pump-container;
+
+  &__status {
+    @include pump-status;
+  }
+
+  &__title {
+    @include pump-title;
+  }
+}

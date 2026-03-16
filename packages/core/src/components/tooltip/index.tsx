@@ -46,9 +46,14 @@ const TooltipArrow = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TooltipPrimitive.Arrow
     ref={ref}
-    className={cn('mining-sdk-tooltip__arrow', className)}
+    asChild
+    width={14}
+    height={7}
     {...props}
-  />
+    className={cn('mining-sdk-tooltip__arrow', className)}
+  >
+    <span />
+  </TooltipPrimitive.Arrow>
 ))
 TooltipArrow.displayName = 'TooltipArrow'
 
