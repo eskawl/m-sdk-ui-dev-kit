@@ -301,9 +301,6 @@ export function DataTable<I = unknown>({
       pageSize: size,
     })
 
-  const needsPagination = tableBackend.getPageCount() > 1
-  const showPagination = enablePagination && needsPagination
-
   const hasData = Boolean(data.length)
 
   return (
@@ -340,7 +337,7 @@ export function DataTable<I = unknown>({
         </div>
         {!hasData && <EmptyTableBody hideContent={loading} />}
       </div>
-      {showPagination && (
+      {enablePagination && (
         <div className="mining-sdk-table__pagination-section">
           <Pagination
             total={data.length}
