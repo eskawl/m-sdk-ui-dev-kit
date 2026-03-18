@@ -117,6 +117,7 @@
 
   &__button {
     min-width: 32px;
+    min-height: 32px;
     height: 32px;
     font-size: 14px;
     color: var(--mining-sdk-color-primary);
@@ -126,8 +127,16 @@
 
     &--prev,
     &--next {
+      width: 32px;
+      min-width: 32px;
+      height: 32px;
+      min-height: 32px;
       padding: 0;
       color: rgba(var(--mining-sdk-color-white-rgb), 0.8);
+
+      .mining-sdk-button__content {
+        padding: 0;
+      }
 
       &:hover {
         border-color: var(--mining-sdk-button-secondary-border);
@@ -135,8 +144,20 @@
         background: var(--mining-sdk-button-primary-bg-hover-overlay);
       }
     }
+
+    &--page {
+      height: 32px;
+      min-width: 32px;
+      min-height: 32px;
+      padding: 0 8px;
+
+      .mining-sdk-button__content {
+        padding: 0;
+      }
+    }
+
     &--active {
-      border-color: transparent;
+      border: none;
       background: rgba(var(--mining-sdk-color-primary-rgb), 0.2);
     }
 

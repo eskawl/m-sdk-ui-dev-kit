@@ -160,7 +160,7 @@ export const FormPerformancePageReal = (): React.ReactElement => {
             <>
               {runCount > 0 && <span className={styles.testsRunText}>Tests run: {runCount}</span>}
               {cachedResultsRef.current && (
-                <Button onClick={handleClearCache} variant="secondary" size="small">
+                <Button onClick={handleClearCache} variant="secondary">
                   Clear Cache & Re-measure
                 </Button>
               )}

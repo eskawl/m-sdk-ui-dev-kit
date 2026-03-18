@@ -1,6 +1,6 @@
 .mosaic-grid {
-  display: flex;
-  flex-direction: column;
+  @include flex_column;
+
   gap: 16px;
 
   // Desktop: use CSS Grid with named areas

@@ -204,15 +204,13 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
           <div className="mining-sdk-pagination__pages">
             {/* Previous Button */}
             <Button
-              variant="secondary"
-              size={size}
+              variant="icon"
+              icon={<ChevronLeftIcon />}
               disabled={!hasPrev || disabled}
               onClick={() => handlePageChange(current - 1)}
               className="mining-sdk-pagination__button mining-sdk-pagination__button--prev"
               aria-label="Previous page"
-            >
-              <ChevronLeftIcon />
-            </Button>
+            />
             {getPageNumbers().map((item, index) => {
               if (item.type === 'ellipsis') {
                 return (
@@ -239,7 +237,6 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
                 <Button
                   key={item.value}
                   variant={item.value === current ? 'primary' : 'secondary'}
-                  size={size}
                   disabled={disabled}
                   onClick={() => handlePageChange(item.value)}
                   className={cn(
@@ -255,15 +252,13 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
             })}
             {/* Next Button */}
             <Button
-              variant="secondary"
-              size={size}
+              variant="icon"
+              icon={<ChevronRightIcon />}
               disabled={!hasNext || disabled}
               onClick={() => handlePageChange(current + 1)}
               className="mining-sdk-pagination__button mining-sdk-pagination__button--next"
               aria-label="Next page"
-            >
-              <ChevronRightIcon />
-            </Button>
+            />
           </div>
         </div>
 

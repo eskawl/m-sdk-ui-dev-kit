@@ -1,162 +1,163 @@
-/**
- * Button Component Styles
- */
+$animation-duration: 0.3s;
+
+$button-icon-size: 12px;
+$button-min-height-link: 18px;
+$button-min-height-common: 40px;
+$button-min-width-loading: 80px;
+$button-content-line-height: 18px;
+$button-min-height-tertiary: 30px;
 
 .mining-sdk-button {
-  @include inline_flex_align;
-  
-  justify-content: center;
-  border-radius: var(--mining-sdk-radius);
-  font-family: var(--font-mono);
-  font-size: var(--mining-sdk-font-size);
-  line-height: var(--mining-sdk-line-height);
-  font-weight: var(--mining-sdk-font-weight);
-  gap: 0.5rem;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: colors 0.2s;
-  box-shadow: var(--mining-sdk-shadow);
+  @include flex_center;
 
-  &:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 2px hsl(var(--ring));
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-  }
+  cursor: pointer;
+  box-shadow: none;
+  padding: 10px 21px;
+  border: 1px solid transparent;
+  font-family: var(--font-mono);
+  min-height: $button-min-height-common;
+  transition:
+    background-color $animation-duration ease,
+    border-color $animation-duration ease,
+    color $animation-duration ease;
 
   &:disabled {
-    pointer-events: none;
     opacity: 0.5;
+    cursor: not-allowed;
   }
 
-  // Variants
+  &__content {
+    @include flex_align;
+
+    gap: 8px;
+    line-height: $button-content-line-height;
+  }
+
+  &__children {
+    @include flex_center;
+
+    letter-spacing: 0;
+    font-size: var(--button-font-size, 14px);
+    font-weight: var(--button-font-weight, 500);
+  }
+
+  &__icon {
+    @include flex_center;
+
+    svg {
+      width: $button-icon-size;
+      height: $button-icon-size;
+    }
+  }
+
+  &__loading {
+    @include flex_center;
+
+    min-width: $button-min-width-loading;
+    color: inherit;
+
+    .mining-sdk-spinner {
+      transform: scale(0.75);
+      transform-origin: center;
+    }
+
+    .mining-sdk-spinner__circle {
+      border-color: currentColor;
+      border-top-color: transparent;
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+
   &--variant-primary {
-    background: var(--mining-sdk-button-primary-bg);
-    color: var(--mining-sdk-button-primary-text);
-
-    &:hover {
-      background:
-        linear-gradient(
-          0deg,
-          var(--mining-sdk-button-primary-bg-hover-overlay) 0%,
-          var(--mining-sdk-button-primary-bg-hover-overlay) 100%
-        ),
-        var(--mining-sdk-button-primary-bg);
-      color: var(--mining-sdk-button-primary-text-hover);
-    }
-  }
-
-  &--variant-danger {
-    background: var(--mining-sdk-button-danger-bg);
-    color: var(--mining-sdk-button-danger-text);
-    border-color: var(--mining-sdk-button-danger-border);
-    box-shadow: none;
-
-    &:hover {
-      opacity: 0.9;
-    }
-  }
-
-  &--variant-outline {
-    border: 1px solid hsl(var(--input));
-    background: hsl(var(--background));
-    color: hsl(var(--foreground));
-    box-shadow: none;
-
-    &:hover {
-      background: hsl(var(--accent));
-      color: hsl(var(--accent-foreground));
-    }
+    color: rgb(var(--mining-sdk-color-black));
+    background-color: var(--mining-sdk-color-primary);
   }
 
   &--variant-secondary {
-    background: var(--mining-sdk-button-secondary-bg);
-    color: var(--mining-sdk-button-secondary-text);
+    color: var(--mining-sdk-color-white-7);
+    background-color: var(--mining-sdk-button-secondary-bg);
     border-color: var(--mining-sdk-button-secondary-border);
-    box-shadow: none;
-
-    &:hover {
-      border-color: var(--mining-sdk-button-secondary-border-hover);
-    }
   }
 
-  &--variant-ghost {
-    background: transparent;
-    color: hsl(var(--foreground));
-    box-shadow: none;
+  &--variant-danger {
+    color: var(--mining-sdk-color-white);
+    background-color: var(--mining-sdk-button-danger-bg);
+  }
 
-    &:hover {
-      background: hsl(var(--accent));
-      color: hsl(var(--accent-foreground));
-    }
+  &--variant-tertiary {
+    padding: 5px 21px;
+    line-height: normal;
+    align-self: flex-start;
+    color: var(--mining-sdk-color-primary);
+    min-height: $button-min-height-tertiary;
+    background-color: var(--mining-sdk-orange-dimmer);
+
+    --button-font-size: 12px;
+    --button-font-weight: 700;
   }
 
   &--variant-link {
-    background: transparent;
-    color: hsl(217 91% 60%); // Bright blue for visibility
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    box-shadow: none;
+    border: none;
+    padding: unset;
+    min-width: unset;
+    position: relative;
+    line-height: normal;
+    max-height: fit-content;
+    background-color: transparent;
+    min-height: $button-min-height-link;
+    color: var(--mining-sdk-color-primary);
 
-    &:hover {
-      text-decoration: underline;
-      opacity: 0.8;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      opacity: 0;
+      background-color: currentColor;
+      transition: opacity $animation-duration ease;
     }
   }
 
-  // Sizes
-  &--size-sm {
-    height: 2.25rem;
-    padding: 0 0.75rem;
-    border-radius: calc(var(--radius) - 2px);
+  &--variant-icon {
+    padding: 10px 13px;
+    color: var(--mining-sdk-color-white-7);
+    background-color: var(--mining-sdk-button-secondary-bg);
+    border-color: var(--mining-sdk-button-secondary-border);
   }
 
-  &--size-md {
-    height: 2.5rem;
-    padding: 0.5625rem 3.5rem;
-    min-width: 8.75rem;
-  }
+  &:not(:disabled):hover {
+    &.mining-sdk-button--variant-primary {
+      background: var(--mining-sdk-color-primary-button-hover);
+    }
 
-  &--size-lg {
-    height: 2.75rem;
-    padding: 0.5rem 2rem;
-  }
+    &.mining-sdk-button--variant-secondary {
+      background: var(--mining-sdk-color-background-dark);
+      border-color: var(--mining-sdk-button-secondary-border-hover);
+    }
 
-  &--size-icon {
-    height: 2.5rem;
-    width: 2.5rem;
-    padding: 0;
-  }
-}
+    &.mining-sdk-button--variant-danger {
+      background: var(--mining-sdk-button-danger-bg-hover);
+    }
 
-.mining-sdk-button--full-width {
-  width: 100%;
-}
+    &.mining-sdk-button--variant-tertiary {
+      background-color: var(--mining-sdk-color-primary);
+      color: rgb(var(--mining-sdk-color-black));
+    }
 
-.mining-sdk-button--icon-only {
-  padding: 0;
-  aspect-ratio: 1 / 1;
-}
+    &.mining-sdk-button--variant-link {
+      &::after {
+        opacity: 1;
+      }
+    }
 
-.mining-sdk-button__spinner {
-  width: 1rem;
-  height: 1rem;
-  border-radius: 9999px;
-  border: 2px solid hsl(var(--foreground) / 0.3);
-  border-top-color: hsl(var(--foreground));
-  animation: mining-sdk-button-spin 0.7s linear infinite;
-}
-
-.mining-sdk-button__icon {
-  @include inline_flex_align;
-}
-
-.mining-sdk-button__label {
-  @include inline_flex_align;
-}
-
-@keyframes mining-sdk-button-spin {
-  to {
-    transform: rotate(360deg);
+    &.mining-sdk-button--variant-icon {
+      background: var(--mining-sdk-color-background-dark);
+      border-color: var(--mining-sdk-button-secondary-border-hover);
+    }
   }
 }

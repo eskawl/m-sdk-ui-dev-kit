@@ -14,7 +14,7 @@ const TOAST_DURATION = 5000
 
 const TOAST_DEMO_CONFIGS: Array<{
   variant: ToastVariant
-  buttonVariant: 'primary' | 'secondary' | 'danger' | 'outline'
+  buttonVariant: 'primary' | 'secondary' | 'danger' | 'tertiary'
   buttonText: string
   title: string
   description?: string
@@ -42,20 +42,20 @@ const TOAST_DEMO_CONFIGS: Array<{
   },
   {
     variant: 'info',
-    buttonVariant: 'outline',
+    buttonVariant: 'secondary',
     buttonText: 'Show Info Toast',
     title: 'Info',
     description: 'Here is some helpful information.',
   },
   {
     variant: 'info',
-    buttonVariant: 'outline',
+    buttonVariant: 'secondary',
     buttonText: 'Show Toast (No Description)',
     title: 'Title Only',
   },
   {
     variant: 'info',
-    buttonVariant: 'outline',
+    buttonVariant: 'secondary',
     buttonText: 'Long Text and Description',
     title: 'Long title Long title Long title Long title Long title',
     description:
@@ -64,7 +64,7 @@ const TOAST_DEMO_CONFIGS: Array<{
 ]
 
 const HOOK_DEMO_CONFIGS: Array<{
-  buttonVariant: 'primary' | 'secondary' | 'danger' | 'outline'
+  buttonVariant: 'primary' | 'secondary' | 'danger' | 'tertiary'
   buttonText: string
   hookMethod: 'notifySuccess' | 'notifyError' | 'notifyWarning' | 'notifyInfo'
   title: string
@@ -93,14 +93,14 @@ const HOOK_DEMO_CONFIGS: Array<{
   },
   {
     hookMethod: 'notifyInfo',
-    buttonVariant: 'outline',
+    buttonVariant: 'secondary',
     buttonText: 'Hook: Info',
     title: 'Info via Hook!',
     description: 'This info toast was triggered using the hook.',
   },
   {
     hookMethod: 'notifyInfo',
-    buttonVariant: 'outline',
+    buttonVariant: 'secondary',
     buttonText: 'Hook: No Description',
     title: 'Title Only (Hook)',
   },
@@ -155,7 +155,7 @@ export const ToastPage = (): JSX.Element => {
           {TOAST_POSITIONS.map((pos) => (
             <Button
               key={pos}
-              variant={toastPosition === pos ? 'primary' : 'outline'}
+              variant={toastPosition === pos ? 'primary' : 'secondary'}
               onClick={() => setToastPosition(pos)}
             >
               {pos}

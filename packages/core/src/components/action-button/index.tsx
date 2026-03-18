@@ -59,7 +59,6 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild disabled={disabled}>
           <Button
-            size="sm"
             ref={ref}
             loading={loading}
             variant={variant}
@@ -87,10 +86,10 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
             <div className="mining_sdk_action_button__description">{confirmation.description}</div>
           )}
           <div className="mining_sdk_action_button__actions">
-            <Button variant="secondary" size="sm" onClick={handleCancel}>
+            <Button variant="secondary" onClick={handleCancel}>
               {confirmation.cancelLabel ?? 'Cancel'}
             </Button>
-            <Button variant="primary" size="sm" onClick={handleConfirm}>
+            <Button variant="primary" onClick={handleConfirm}>
               {confirmation.confirmLabel ?? 'OK'}
             </Button>
           </div>

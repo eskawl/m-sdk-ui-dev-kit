@@ -119,9 +119,10 @@ export const BaseThresholdForm = ({
    */
   const toTitleCase = (str: string): string => {
     return str
-      .replace(/([A-Z])/g, ' $1')
+      .replace(/[-_]/g, ' ') // Replace underscores and hyphens with spaces
+      .replace(/([a-z])([A-Z])/g, '$1 $2') // Add space before capitals in camelCase
       .trim()
-      .replace(/^./, (char) => char.toUpperCase())
+      .replace(/\s+/g, ' ') // Normalize multiple spaces to single space
       .split(' ')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
       .join(' ')
@@ -195,7 +196,7 @@ export const BaseThresholdForm = ({
 
       data.push({
         key: i,
-        state: toTitleCase(key.replace(/([A-Z])/g, ' $1').trim()),
+        state: toTitleCase(key),
         range,
         color: (
           <Indicator
@@ -310,15 +311,12 @@ export const BaseThresholdForm = ({
       {/* Action Buttons */}
       {isEditing && (
         <div className="mining-sdk-base-threshold-form__action-buttons">
-          <Button size="sm" onClick={handleCancel}>
-            Cancel
-          </Button>
-          <Button size="sm" variant="danger" color="red" onClick={handleReset}>
+          <Button onClick={handleCancel}>Cancel</Button>
+          <Button variant="danger" color="red" onClick={handleReset}>
             Reset Values to Default
           </Button>
           <Button
             variant="primary"
-            size="sm"
             onClick={handleSave}
             disabled={isSaving || isSiteLoading || isSettingsLoading}
           >

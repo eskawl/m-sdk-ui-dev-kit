@@ -68,6 +68,8 @@
       border: 0;
       width: 32px;
       height: 32px;
+      min-width: unset;
+      min-height: unset;
       background: transparent;
       color: var(--mining-sdk-color-white-60);
       transition:
@@ -80,8 +82,8 @@
       }
 
       &:hover {
-        color: var(--mining-sdk-color-white);
-        background: var(--mining-sdk-color-white-12);
+        color: var(--mining-sdk-color-white) !important;
+        background: var(--mining-sdk-color-white-12) !important;
       }
     }
 

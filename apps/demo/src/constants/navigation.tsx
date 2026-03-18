@@ -121,6 +121,9 @@ export const COMPONENT_NAV: SidebarMenuItem[] = [
       { id: 'pool-details-card', label: 'Pool Details Card' },
       { id: 'pool-details-popover', label: 'Pool Details Popover' },
       { id: 'stats-export', label: 'Stats Export Dropdown' },
+      { id: 'widget-top-row', label: 'Widget Top Row' },
+      { id: 'logs-card', label: 'Logs Card' },
+      { id: 'tanks-box', label: 'Tanks Box' },
     ],
   },
   {
@@ -135,7 +138,8 @@ export const COMPONENT_NAV: SidebarMenuItem[] = [
         items: [
           { id: 'bitdeer-container', label: 'Bitdeer Container' },
           { id: 'bitmain-container', label: 'Bitmain Container' },
-          { id: 'bitmain-immersion-container', label: 'Bitmain Immersion Container Settingg' },
+          { id: 'bitmain-immersion-container', label: 'Bitmain Immersion Container' },
+          { id: 'micro-bt-container', label: 'Micro BT Container' },
         ],
       },
     ],

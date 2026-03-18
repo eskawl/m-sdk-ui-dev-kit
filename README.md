@@ -153,7 +153,7 @@ import { Button, Dialog, Switch } from '@mining-sdk/core'
 import '@mining-sdk/core/styles.css'
 
 const App = () => {
-  return <Button variant="outline">Click me</Button>
+  return <Button variant="secondary">Click me</Button>
 }
 ```
 

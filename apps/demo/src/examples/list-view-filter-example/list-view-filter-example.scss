@@ -21,8 +21,8 @@
   }
 
   &__toolbar-actions {
-    display: flex;
-    align-items: center;
+    @include flex_align;
+
     gap: 1rem;
 
     @media (max-width: 480px) {
@@ -48,9 +48,8 @@
   }
 
   &__active-filters-tags {
-    display: flex;
+    @include flex_wrap;
     gap: 0.5rem;
-    flex-wrap: wrap;
   }
 
   &__grid {

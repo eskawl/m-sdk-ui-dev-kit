@@ -28,6 +28,7 @@
     --mining-sdk-color-warning: #ffc107;
 
     --mining-sdk-color-primary-hover: #f7931acc;
+    --mining-sdk-color-primary-button-hover: #f8a348;
     --mining-sdk-color-primary-hover-light: #e8a140;
 
     /* Loader/Spinner Colors */
@@ -47,6 +48,8 @@
 
     /* Common Component Colors */
     --mining-sdk-color-white: #ffffff;
+    --mining-sdk-color-white-alpha-026: #ffffff26;
+    --mining-sdk-color-white-alpha-024: #ffffff24;
     --mining-sdk-color-white-transparent: #ffffff1a;
     --mining-sdk-color-text-secondary: #ffffffd9;
     --mining-sdk-color-text-disabled: #ffffff80;
@@ -192,6 +195,7 @@
     --mining-sdk-button-secondary-bg: #17130f;
 
     --mining-sdk-button-danger-bg: #ef4444;
+    --mining-sdk-button-danger-bg-hover: #f36060;
     --mining-sdk-button-danger-text: #ffffff;
     --mining-sdk-button-danger-border: #ef4444;
 

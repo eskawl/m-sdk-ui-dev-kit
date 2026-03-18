@@ -7,8 +7,10 @@ import { ChartWrapperPage } from './pages'
 import { BitdeerPage } from './pages/explorer-containers/bitdeer/bitdeer-page'
 import { BitmainImmersionPage } from './pages/explorer-containers/bitmain-immersion/bitmain-immersion-page'
 import BitmainPage from './pages/explorer-containers/bitmain/bitmain-page'
+import { MicroBTPage } from './pages/explorer-containers/micro-bt/micro-bt-page'
 import { MosaicPageDemo } from './pages/mosaic-page/mosaic.page'
 import { StateExportsPage } from './pages/stats-export-page'
+import { WidgetTopRowPage } from './pages/widget-top-row-page'
 
 // Lazy load ALL pages to eliminate unused JavaScript and CSS
 const HomePage = lazy(() => import('./pages/home-page').then((m) => ({ default: m.HomePage })))
@@ -57,6 +59,9 @@ const GaugeChartPage = lazy(() =>
 )
 const LoaderPage = lazy(() =>
   import('./pages/loader-page').then((m) => ({ default: m.LoaderPage })),
+)
+const LogsCardPage = lazy(() =>
+  import('./pages/logs-card-page').then((m) => ({ default: m.LogsCardPage })),
 )
 const NotFoundPage = lazy(() =>
   import('./pages/not-found-page').then((m) => ({ default: m.NotFoundPage })),
@@ -157,6 +162,10 @@ const DeviceExplorerPage = lazy(() =>
   })),
 )
 
+const TanksBoxPage = lazy(() =>
+  import('./pages/tanks-box-page').then((m) => ({ default: m.TanksBoxPage })),
+)
+
 const SectionLoader = (): JSX.Element => (
   <div
     style={{
@@ -226,7 +235,10 @@ export const router = createBrowserRouter(
         { path: 'sidebar', element: withSuspense(SidebarPage) },
         { path: 'spinner', element: withSuspense(SpinnerPage) },
         { path: 'loader', element: withSuspense(LoaderPage) },
+        { path: 'logs-card', element: withSuspense(LogsCardPage) },
         { path: 'stats-export', element: withSuspense(StateExportsPage) },
+        { path: 'widget-top-row', element: withSuspense(WidgetTopRowPage) },
+        { path: 'tanks-box', element: withSuspense(TanksBoxPage) },
         { path: 'error-boundary', element: withSuspense(ErrorBoundaryPage) },
         { path: 'error-card', element: withSuspense(ErrorCardPage) },
         { path: 'active-incidents-card', element: withSuspense(ActiveIncidentsCardPage) },
@@ -239,6 +251,7 @@ export const router = createBrowserRouter(
           path: 'bitmain-immersion-container',
           element: withSuspense(BitmainImmersionPage),
         },
+        { path: 'micro-bt-container', element: withSuspense(MicroBTPage) },
         { path: '*', element: withSuspense(NotFoundPage) },
       ],
     },

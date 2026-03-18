@@ -215,9 +215,11 @@ export function DataTable<I = unknown>({
               id: 'row-expand',
               header: '',
               cell: ({ row }) => (
-                <Button size="sm" onClick={row.getToggleExpandedHandler()}>
-                  {row.getIsExpanded() ? <MinusIcon /> : <PlusIcon />}
-                </Button>
+                <Button
+                  variant="icon"
+                  onClick={row.getToggleExpandedHandler()}
+                  icon={row.getIsExpanded() ? <MinusIcon /> : <PlusIcon />}
+                />
               ),
               maxSize: 50,
             }),
@@ -347,7 +349,7 @@ export function DataTable<I = unknown>({
         </div>
         {!hasData && <EmptyTableBody hideContent={loading} />}
       </div>
-      {showPagination && (
+      {enablePagination && (
         <div className="mining-sdk-table__pagination-section">
           <Pagination
             total={data.length}

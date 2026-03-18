@@ -3,6 +3,22 @@ import _map from 'lodash/map'
 import _join from 'lodash/join'
 import type { Device } from '../types/device'
 
+export const getAlertsDescription = (
+  alerts: Alert[],
+  getFormattedDate?: (date: Date) => string,
+): string => {
+  const formattedMessages = _map(
+    alerts,
+    (alert: Alert) =>
+      `${
+        getFormattedDate
+          ? getFormattedDate(new Date(alert.createdAt))
+          : new Date(alert.createdAt).toLocaleString()
+      } : ${alert.description}`,
+  )
+  return _join(formattedMessages, ',\n\n')
+}
+
 export const getAlertsString = (
   alerts: Alert[],
   getFormattedDate?: (date: Date) => string,

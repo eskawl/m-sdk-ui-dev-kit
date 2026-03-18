@@ -78,9 +78,7 @@ const columns = [
     header: 'Actions',
     cell: (info) => (
       // eslint-disable-next-line no-alert
-      <Button size="sm" onClick={() => window.alert(JSON.stringify(info.row.original))}>
-        Details
-      </Button>
+      <Button onClick={() => window.alert(JSON.stringify(info.row.original))}>Details</Button>
     ),
   }),
 ]

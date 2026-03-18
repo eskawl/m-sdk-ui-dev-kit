@@ -17,9 +17,7 @@ export const CardPage = (): JSX.Element => {
             </div>
           </Card.Body>
           <Card.Footer>
-            <Button variant="secondary" size="sm">
-              View Details
-            </Button>
+            <Button variant="secondary">View Details</Button>
           </Card.Footer>
         </Card>
         <Card className="demo-section__card-grid__card demo-section__card-grid__card--narrow">

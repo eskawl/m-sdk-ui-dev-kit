@@ -10,6 +10,7 @@ vi.mock('../base-threshold-form', () => ({
       {thresholdConfigs.map((config: any) => (
         <div key={config.type} data-testid={`config-${config.type}`}>
           {config.title}
+          {config.unit && <span>{config.unit}</span>}
         </div>
       ))}
     </div>

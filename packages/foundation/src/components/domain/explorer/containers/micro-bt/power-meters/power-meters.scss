@@ -1,0 +1,19 @@
+@use '@mining-sdk/core/styles' as *;
+
+.mining-sdk-power-meters {
+  @include flex_column;
+
+  gap: 1.5rem;
+
+  &__panel {
+    padding: 1.5rem;
+    min-width: 300px;
+    width: 100%;
+    border: 1px solid var(--mining-sdk-color-border);
+
+    @media (min-width: 768px) {
+      min-width: 300px;
+      width: auto;
+    }
+  }
+}

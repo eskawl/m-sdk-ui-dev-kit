@@ -3,6 +3,7 @@ import { UNITS } from '@mining-sdk/core'
 import { describe, expect, it } from 'vitest'
 import type { Device } from '../../types/device'
 import {
+  appendContainerToTag,
   formatPowerConsumption,
   getCabinetTitle,
   getConfig,
@@ -673,7 +674,7 @@ describe('device utils', () => {
               },
             },
           },
-        }
+        } as unknown as Device
 
         const result = getContainerSpecificStats(data)
 
@@ -692,7 +693,7 @@ describe('device utils', () => {
               },
             },
           },
-        }
+        } as unknown as Device
 
         const result = getContainerSpecificStats(data)
 
@@ -704,7 +705,7 @@ describe('device utils', () => {
           last: {
             snap: {},
           },
-        }
+        } as unknown as Device
 
         const result = getContainerSpecificStats(data)
 
@@ -714,7 +715,7 @@ describe('device utils', () => {
       it('returns empty object when snap is missing', () => {
         const data = {
           last: {},
-        }
+        } as unknown as Device
 
         const result = getContainerSpecificStats(data)
 
@@ -722,7 +723,7 @@ describe('device utils', () => {
       })
 
       it('returns empty object when last is missing', () => {
-        const data = {}
+        const data = {} as unknown as Device
 
         const result = getContainerSpecificStats(data)
 
@@ -730,13 +731,13 @@ describe('device utils', () => {
       })
 
       it('returns empty object when data is undefined', () => {
-        const result = getContainerSpecificStats(undefined as any)
+        const result = getContainerSpecificStats(undefined as unknown as Device)
 
         expect(result).toEqual({})
       })
 
       it('returns empty object when data is null', () => {
-        const result = getContainerSpecificStats(null as any)
+        const result = getContainerSpecificStats(null as unknown as Device)
 
         expect(result).toEqual({})
       })
@@ -756,7 +757,7 @@ describe('device utils', () => {
               },
             },
           },
-        }
+        } as unknown as Device
 
         const result = getContainerSpecificStats(data)
 
@@ -778,7 +779,7 @@ describe('device utils', () => {
               },
             },
           },
-        }
+        } as unknown as Device
 
         const result = getContainerSpecificStats(data)
 
@@ -794,7 +795,7 @@ describe('device utils', () => {
               },
             },
           },
-        }
+        } as unknown as Device
 
         const result = getContainerSpecificStats(data)
 
@@ -816,7 +817,7 @@ describe('device utils', () => {
               },
             },
           },
-        }
+        } as unknown as Device
 
         const result = getContainerSpecificStats(data)
 
@@ -959,6 +960,15 @@ describe('device utils', () => {
         expect(data?.address).toBe('192.168.1.1')
         expect(data?.alerts).toEqual([{ type: 'warning' }])
       })
+    })
+  })
+
+  describe('appendContainerToTag', () => {
+    it('should append container to tag', () => {
+      const tag = 'tag1'
+      const result = appendContainerToTag(tag)
+
+      expect(result).toBe('container-tag1')
     })
   })
 })

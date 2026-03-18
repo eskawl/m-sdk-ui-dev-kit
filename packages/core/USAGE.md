@@ -46,7 +46,7 @@ const MyComponent = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Open</Button>
+        <Button variant="secondary">Open</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -64,21 +64,54 @@ const MyComponent = () => {
 
 ```tsx
 import { Button } from '@mining-sdk/core'
+import { PlusIcon } from '@radix-ui/react-icons'
 
-// Variants
+// Variants (default: secondary)
 <Button variant="primary">Primary</Button>
-<Button variant="danger">Danger</Button>
-<Button variant="outline">Outline</Button>
 <Button variant="secondary">Secondary</Button>
-<Button variant="ghost">Ghost</Button>
+<Button variant="danger">Danger</Button>
+<Button variant="tertiary">Tertiary</Button>
 <Button variant="link">Link</Button>
+<Button variant="icon" icon={<PlusIcon />} />
 
-// Sizes
-<Button size="sm">Small</Button>
-<Button size="md">Default</Button>
-<Button size="lg">Large</Button>
-<Button size="icon">🔥</Button>
+// With icon
+<Button variant="primary" icon={<PlusIcon />} iconPosition="left">
+  Add Item
+</Button>
+<Button variant="secondary" icon={<PlusIcon />} iconPosition="right">
+  Add Item
+</Button>
+
+// Loading state
+<Button variant="primary" loading>
+  Submit
+</Button>
+
+// Full width
+<Button variant="primary" fullWidth>
+  Full Width Button
+</Button>
+
+// Customization (className on root, contentClassName on inner content)
+<Button className="my-button" contentClassName="my-content">
+  Custom Styled
+</Button>
 ```
+
+**Button props:**
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `variant` | `'primary' \| 'secondary' \| 'danger' \| 'tertiary' \| 'link' \| 'icon'` | Visual style (default: `secondary`) |
+| `icon` | `ReactNode` | Icon element |
+| `iconPosition` | `'left' \| 'right'` | Icon placement (default: `left`) |
+| `loading` | `boolean` | Shows spinner, disables button |
+| `fullWidth` | `boolean` | Stretches to container width |
+| `className` | `string` | Root button element |
+| `contentClassName` | `string` | Inner content wrapper |
+| `disabled` | `boolean` | Disabled state |
+
+Also accepts standard `<button>` HTML attributes. **No `size` prop.**
 
 ### Checkbox
 
@@ -244,10 +277,22 @@ The components use CSS variables for theming. Customize them in your global CSS:
 
 ### Custom Classes
 
-All components accept a `className` prop:
+All components accept a `className` prop. Button also supports `contentClassName` for the inner content wrapper:
 
 ```tsx
 <Button className="my-custom-class">Custom Button</Button>
+<Button contentClassName="my-content-class">Custom Content</Button>
+```
+
+### Button CSS Variables
+
+Override typography per button via CSS variables:
+
+```css
+.my-button {
+  --button-font-size: 12px;
+  --button-font-weight: 700;
+}
 ```
 
 ## TypeScript

@@ -134,7 +134,7 @@ export const BitMainImmersionSystemDemo = (): ReactElement => {
                     setSelectedPreset(key)
                     setUseCustom(false)
                   }}
-                  variant={selectedPreset === key && !useCustom ? 'primary' : 'outline'}
+                  variant={selectedPreset === key && !useCustom ? 'primary' : 'secondary'}
                 >
                   {key === 'allNormal' && 'All Normal'}
                   {key === 'disconnected' && 'Disconnected'}

@@ -308,9 +308,7 @@ export const ListViewFilterExample = (): JSX.Element => {
               onChange={handleFilterChange}
             />
             {Object.keys(filters).length > 0 && (
-              <Button size="sm" onClick={handleClearFilters}>
-                Clear Filters
-              </Button>
+              <Button onClick={handleClearFilters}>Clear Filters</Button>
             )}
           </div>
 

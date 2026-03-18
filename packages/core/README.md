@@ -56,7 +56,7 @@ const App = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Open Dialog</Button>
+        <Button variant="secondary">Open Dialog</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

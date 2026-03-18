@@ -206,7 +206,6 @@ export const BitmainChartsDemo = (): ReactElement => {
               key={value}
               onClick={() => setTimeline(value)}
               variant={timeline === value ? 'primary' : 'secondary'}
-              size="sm"
             >
               {label}
             </Button>

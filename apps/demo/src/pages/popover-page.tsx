@@ -41,7 +41,7 @@ export const PopoverPage = (): JSX.Element => {
             />
 
             <SimplePopover
-              trigger={<Button variant="outline">With Arrow</Button>}
+              trigger={<Button variant="secondary">With Arrow</Button>}
               content={
                 <div style={{ padding: '8px' }}>
                   <h4 style={{ margin: '0 0 8px 0' }}>Arrow Popover</h4>

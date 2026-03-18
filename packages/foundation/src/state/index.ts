@@ -6,6 +6,7 @@
 
 // Slices
 export * from './slices/auth-slice'
+export * from './slices/devices-slice'
 export * from './slices/notification-slice'
 export * from './slices/timezone-slice'
 

@@ -45,6 +45,7 @@ export type ContainerStats = {
   container_specific: Record<string, unknown>
   distribution_box1_power_w: number
   distribution_box2_power_w: number
+  stats: Record<string, unknown>
   [key: string]: unknown
 }
 

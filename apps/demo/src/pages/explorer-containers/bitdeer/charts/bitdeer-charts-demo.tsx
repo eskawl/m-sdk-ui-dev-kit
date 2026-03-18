@@ -145,7 +145,6 @@ export const BitdeerChartsDemo = (): ReactElement => {
               key={value}
               onClick={() => setTimeline(value)}
               variant={timeline === value ? 'primary' : 'secondary'}
-              size="sm"
             >
               {label}
             </Button>

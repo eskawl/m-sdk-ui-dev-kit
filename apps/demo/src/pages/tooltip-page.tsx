@@ -24,7 +24,7 @@ export const TooltipPage = (): JSX.Element => {
             </SimpleTooltip>
 
             <SimpleTooltip content="Tooltip at the bottom" side="bottom">
-              <Button variant="outline">Hover me (bottom)</Button>
+              <Button variant="tertiary">Hover me (bottom)</Button>
             </SimpleTooltip>
 
             <SimpleTooltip content="Tooltip on the left side" side="left">
@@ -96,7 +96,7 @@ export const TooltipPage = (): JSX.Element => {
               }
               side="bottom"
             >
-              <Button variant="outline">Long Content</Button>
+              <Button variant="secondary">Long Content</Button>
             </SimpleTooltip>
           </div>
         </section>

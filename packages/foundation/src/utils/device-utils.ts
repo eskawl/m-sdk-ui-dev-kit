@@ -92,14 +92,14 @@ export const getConfig = (data: UnknownRecord): UnknownRecord =>
 
 export const removeContainerPrefix = (text: string): string => _replace(text, /^container-/, '')
 
-export const getContainerSpecificStats = (data: UnknownRecord): UnknownRecord =>
+export const getContainerSpecificStats = (data: Device): UnknownRecord =>
   (getStats(data)?.container_specific as UnknownRecord) || {}
 
-export const getContainerSpecificConfig = (data: UnknownRecord): UnknownRecord =>
+export const getContainerSpecificConfig = (data: Device): UnknownRecord =>
   (getConfig(data)?.config as UnknownRecord) || {}
 
-export const getCoolingSystem = (data: UnknownRecord): UnknownRecord =>
-  (getContainerSpecificStats(data as Device)?.cooling_system || {}) as UnknownRecord
+export const getCoolingSystem = (data: Device): UnknownRecord =>
+  (getContainerSpecificStats(data)?.cooling_system || {}) as UnknownRecord
 
 export const MinerStatuses = {
   MINING: 'mining',
@@ -279,3 +279,5 @@ export const getDeviceData = (
     },
   ]
 }
+
+export const appendContainerToTag = (deviceId: string): string => `container-${deviceId}`

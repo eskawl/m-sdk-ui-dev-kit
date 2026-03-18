@@ -59,13 +59,11 @@ const DialogHeader = ({
       {closable && (
         <DialogClose asChild>
           <Button
-            size="sm"
-            variant="ghost"
+            icon={<Cross2Icon />}
             onClick={onClose}
+            variant="secondary"
             className="mining-sdk-dialog__header__close"
-          >
-            <Cross2Icon />
-          </Button>
+          />
         </DialogClose>
       )}
     </div>
