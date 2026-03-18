@@ -9,6 +9,8 @@ type TableHeaderProps<I> = {
   table: Table<I>
 }
 
+const SORT_ICON_SIZE = 24
+
 export function TableHeader<I = unknown>({ table }: TableHeaderProps<I>): JSX.Element {
   const renderTableHeaderCell = (header: Header<I, unknown>): React.ReactNode => {
     const isSorted = header.column.getIsSorted()
@@ -27,8 +29,8 @@ export function TableHeader<I = unknown>({ table }: TableHeaderProps<I>): JSX.El
         <div className="mining-sdk-table-header-content">
           {flexRender(header.column.columnDef.header, header.getContext())}
           {{
-            asc: <TriangleUpIcon />,
-            desc: <TriangleDownIcon />,
+            asc: <TriangleUpIcon height={SORT_ICON_SIZE} width={SORT_ICON_SIZE} />,
+            desc: <TriangleDownIcon height={SORT_ICON_SIZE} width={SORT_ICON_SIZE} />,
           }[header.column.getIsSorted() as string] ?? null}
         </div>
       </th>

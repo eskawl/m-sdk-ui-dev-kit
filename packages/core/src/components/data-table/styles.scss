@@ -155,6 +155,10 @@ $_prefix: mining-sdk-table;
               display: flex;
               justify-content: space-between;
               align-items: center;
+
+              svg {
+                color: var(--mining-sdk-color-primary);
+              }
             }
           }
         }
