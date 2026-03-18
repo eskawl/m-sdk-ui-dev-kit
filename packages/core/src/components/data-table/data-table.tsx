@@ -349,7 +349,7 @@ export function DataTable<I = unknown>({
         </div>
         {!hasData && <EmptyTableBody hideContent={loading} />}
       </div>
-      {enablePagination && (
+      {showPagination && (
         <div className="mining-sdk-table__pagination-section">
           <Pagination
             total={data.length}
