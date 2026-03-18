@@ -1,6 +1,104 @@
 import type { ChartDataset } from 'chart.js'
 import { describe, expect, it } from 'vitest'
-import { getChartDataAvailability, hasDataValues } from '../chart'
+
+import { getChartDataAvailability, hasDataValues, hexToOpacity, processDataset } from '../chart'
+
+describe('hexToOpacity', () => {
+  it('should convert 6-digit hex to rgba with default opacity', () => {
+    expect(hexToOpacity('#FF0000')).toBe('rgba(255, 0, 0, 0.2)')
+  })
+
+  it('should convert 6-digit hex to rgba with custom opacity', () => {
+    expect(hexToOpacity('#FF0000', 0.5)).toBe('rgba(255, 0, 0, 0.5)')
+  })
+
+  it('should convert 3-digit hex to rgba', () => {
+    expect(hexToOpacity('#F00')).toBe('rgba(255, 0, 0, 0.2)')
+  })
+
+  it('should handle hex without # prefix', () => {
+    expect(hexToOpacity('FF0000')).toBe('rgba(255, 0, 0, 0.2)')
+  })
+
+  it('should handle black color', () => {
+    expect(hexToOpacity('#000000')).toBe('rgba(0, 0, 0, 0.2)')
+  })
+
+  it('should handle white color', () => {
+    expect(hexToOpacity('#FFFFFF')).toBe('rgba(255, 255, 255, 0.2)')
+  })
+
+  it('should throw TypeError for non-string input', () => {
+    expect(() => hexToOpacity(123 as unknown as string)).toThrow(TypeError)
+  })
+})
+
+describe('processDataset', () => {
+  it('should merge new data into empty existing dataset', () => {
+    const newData = {
+      default: [
+        { ts: 1, value: 10 },
+        { ts: 2, value: 20 },
+      ],
+    }
+    const existing = {} as Record<string, unknown[]>
+
+    const result = processDataset(newData, existing)
+
+    expect(result.default).toHaveLength(2)
+  })
+
+  it('should deduplicate by ts key', () => {
+    const newData = { default: [{ ts: 1, value: 20 }] }
+    const existing = {
+      default: [
+        { ts: 1, value: 10 },
+        { ts: 2, value: 15 },
+      ],
+    }
+
+    const result = processDataset(newData, existing)
+
+    expect(result.default).toHaveLength(2)
+    const item = (result.default as Array<{ ts: number; value: number }>).find((d) => d.ts === 1)
+    expect(item?.value).toBe(20)
+  })
+
+  it('should apply processor function', () => {
+    const newData = { default: [{ ts: 1, value: 10 }] }
+    const existing = {} as Record<string, unknown[]>
+    const processor = (data: unknown) =>
+      (data as Array<{ ts: number; value: number }>).map((d) => ({ ...d, value: d.value * 2 }))
+
+    const result = processDataset(newData, existing, processor)
+
+    const item = (result.default as Array<{ ts: number; value: number }>)[0]
+    expect(item?.value).toBe(20)
+  })
+
+  it('should handle multiple keys', () => {
+    const newData = {
+      hashrate: [{ ts: 1, value: 100 }],
+      power: [{ ts: 1, value: 200 }],
+    }
+    const existing = {} as Record<string, unknown[]>
+
+    const result = processDataset(newData, existing)
+
+    expect(Object.keys(result)).toEqual(['hashrate', 'power'])
+    expect(result.hashrate).toHaveLength(1)
+    expect(result.power).toHaveLength(1)
+  })
+
+  it('should handle null processor', () => {
+    const newData = { default: [{ ts: 1, value: 10 }] }
+    const existing = {} as Record<string, unknown[]>
+
+    const result = processDataset(newData, existing, null)
+
+    expect(result.default).toHaveLength(1)
+  })
+})
 
 describe('chartUtils', () => {
   describe('getChartDataAvailability', () => {

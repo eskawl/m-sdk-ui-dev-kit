@@ -3,6 +3,90 @@ import type { ChartDataset } from '../types'
 import { isNil, isPlainObject } from './validation'
 
 /**
+ * Convert a hex color string to an rgba string with the given opacity
+ *
+ * @param hex - Hex color string (e.g. '#FF0000' or '#F00')
+ * @param opacity - Opacity value between 0 and 1 (default: 0.2)
+ * @returns rgba color string
+ *
+ * @example
+ * ```ts
+ * hexToOpacity('#FF0000')       // 'rgba(255, 0, 0, 0.2)'
+ * hexToOpacity('#FF0000', 0.5)  // 'rgba(255, 0, 0, 0.5)'
+ * hexToOpacity('#F00')          // 'rgba(255, 0, 0, 0.2)'
+ * ```
+ */
+export const hexToOpacity = (hex: string, opacity = 0.2): string => {
+  if (typeof hex !== 'string') {
+    throw new TypeError(
+      `Expected a string for HEX color, but received ${typeof hex} ${JSON.stringify(hex)}`,
+    )
+  }
+
+  let cleanedHex = hex.replace('#', '')
+
+  if (cleanedHex.length === 3) {
+    cleanedHex = cleanedHex
+      .split('')
+      .map((char) => char + char)
+      .join('')
+  }
+
+  const r = Number.parseInt(cleanedHex.slice(0, 2), 16)
+  const g = Number.parseInt(cleanedHex.slice(2, 4), 16)
+  const b = Number.parseInt(cleanedHex.slice(4, 6), 16)
+
+  return `rgba(${r}, ${g}, ${b}, ${opacity})`
+}
+
+type ProcessDataProcessor = ((data: unknown) => unknown) | null | undefined
+
+/**
+ * Merge new time-series data into existing dataset, deduplicating by `ts` key.
+ *
+ * @param newData - Object keyed by dataset name, each value is an array of data points with `ts`
+ * @param existingData - Previously accumulated dataset in the same shape
+ * @param processor - Optional transform applied to each newData array before merging
+ * @returns Merged dataset
+ *
+ * @example
+ * ```ts
+ * const merged = processDataset(
+ *   { default: [{ ts: 1, value: 10 }] },
+ *   { default: [{ ts: 0, value: 5 }] },
+ * )
+ * // { default: [{ ts: 0, value: 5 }, { ts: 1, value: 10 }] }
+ * ```
+ */
+export const processDataset = (
+  newData: Record<string, unknown[]>,
+  existingData: Record<string, unknown[]>,
+  processor: ProcessDataProcessor = null,
+): Record<string, unknown[]> => {
+  const result: Record<string, unknown[]> = {}
+
+  for (const key of Object.keys(newData)) {
+    const processedData = processor ? processor(newData[key]) : newData[key]
+    const existingByTs = new Map<number | string, unknown>()
+    const existingArr = existingData[key] as Array<{ ts: number | string }> | undefined
+    if (existingArr) {
+      for (const item of existingArr) {
+        existingByTs.set(item.ts, item)
+      }
+    }
+    const newArr = processedData as Array<{ ts: number | string }> | undefined
+    if (newArr) {
+      for (const item of newArr) {
+        existingByTs.set(item.ts, item)
+      }
+    }
+    result[key] = Array.from(existingByTs.values())
+  }
+
+  return result
+}
+
+/**
  * Check if chart datasets have any data available
  *
  * @param datasets - Array of Chart.js datasets

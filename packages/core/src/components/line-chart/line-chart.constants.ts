@@ -25,3 +25,28 @@ export const CHART_COLORS = {
   WHITE_ALPHA_02: '#FFFFFF33',
   WHITE_ALPHA_06: '#FFFFFF99',
 }
+
+// Line chart card constants
+export const CHART_MIN_HEIGHT = 400
+export const DEFAULT_QUERY_LIMIT = 288
+
+const TIMELINE_CONFIG = {
+  '20s': { ms: 20 * 1000, format: 'HH:mm:ss' },
+  '1m': { ms: 60 * 1000, format: 'HH:mm' },
+  '5m': { ms: 5 * 60 * 1000, format: 'HH:mm' },
+  '30m': { ms: 30 * 60 * 1000, format: 'HH:mm' },
+  '1h': { ms: 60 * 60 * 1000, format: 'HH:mm' },
+  '3h': { ms: 3 * 60 * 60 * 1000, format: 'HH:mm' },
+  '1D': { ms: 24 * 60 * 60 * 1000, format: 'MMM dd' },
+} as const
+
+export type Timeline = keyof typeof TIMELINE_CONFIG
+
+const DEFAULT_TIMELINE_CONFIG = { ms: 60 * 60 * 1000, format: 'HH:mm' } as const
+
+const getTimeline = (timeline: string) =>
+  TIMELINE_CONFIG[timeline as Timeline] ?? DEFAULT_TIMELINE_CONFIG
+
+export const timelineToMs = (timeline: string): number => getTimeline(timeline).ms
+
+export const getTimelineDateFormat = (timeline: string): string => getTimeline(timeline).format

@@ -100,6 +100,10 @@ const PoolDetailsPopoverPage = lazy(() =>
   })),
 )
 
+const LineChartCardPage = lazy(() =>
+  import('./pages/line-chart-card-page').then((m) => ({ default: m.LineChartCardPage })),
+)
+
 const LwLineChartExample = lazy(() =>
   import('./examples/lightweight-line-chart-example').then((module) => ({
     default: module.LwLineChartExample,
@@ -231,6 +235,7 @@ export const router = createBrowserRouter(
         { path: 'gauge-chart', element: withSuspense(GaugeChartPage) },
         { path: 'chart-container', element: withSuspense(ChartContainerPage) },
         { path: 'chart-wrapper', element: withSuspense(ChartWrapperPage) },
+        { path: 'line-chart-card', element: withSuspense(LineChartCardPage) },
         { path: 'tabs', element: withSuspense(TabsPage) },
         { path: 'breadcrumbs', element: withSuspense(BreadcrumbsPage) },
         { path: 'pagination', element: withSuspense(PaginationExample) },
