@@ -28,6 +28,7 @@ export default defineConfig({
         'src/test/**',
         'src/test-utils/**',
         'src/**/*.d.ts',
+        'src/**/icons/**',
       ],
       thresholds: {
         lines: 94,

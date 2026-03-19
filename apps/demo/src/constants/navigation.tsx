@@ -80,6 +80,7 @@ export const COMPONENT_NAV: SidebarMenuItem[] = [
       { id: 'gauge-chart', label: 'Gauge Chart' },
       { id: 'chart-container', label: 'Chart Container' },
       { id: 'chart-wrapper', label: 'Chart wrapper' },
+      { id: 'line-chart-card', label: 'Line Chart Card' },
     ],
   },
   {
@@ -124,6 +125,10 @@ export const COMPONENT_NAV: SidebarMenuItem[] = [
       { id: 'widget-top-row', label: 'Widget Top Row' },
       { id: 'logs-card', label: 'Logs Card' },
       { id: 'tanks-box', label: 'Tanks Box' },
+      {
+        id: 'bitmain-immersion-summary-box',
+        label: 'Bitmain Immersion Summary Box',
+      },
     ],
   },
   {
@@ -140,6 +145,14 @@ export const COMPONENT_NAV: SidebarMenuItem[] = [
           { id: 'bitmain-container', label: 'Bitmain Container' },
           { id: 'bitmain-immersion-container', label: 'Bitmain Immersion Container' },
           { id: 'micro-bt-container', label: 'Micro BT Container' },
+        ],
+      },
+      {
+        id: 'explorer-details-view',
+        label: 'Details View',
+        items: [
+          { id: 'single-stat-card', label: 'Single Stat Card' },
+          { id: 'secondary-stat-card', label: 'Secondary Stat Card' },
         ],
       },
     ],

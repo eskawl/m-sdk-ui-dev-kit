@@ -1,0 +1,137 @@
+@use '@mining-sdk/core/styles' as *;
+
+.mining-sdk-single-stat-card {
+  @include flex_column;
+
+  gap: 3px;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
+
+  @media (min-width: 768px) {
+    font-size: 12px;
+  }
+
+  &--row {
+    @include flex_row;
+  }
+
+  &--secondary,
+  &--tertiary {
+    @include flex_align_start_between;
+
+    flex-wrap: nowrap;
+    overflow: hidden;
+    padding: 12px;
+  }
+
+  &--tertiary {
+    border: 1px solid var(--stat-color);
+
+    .mining-sdk-single-stat-card__text,
+    .mining-sdk-single-stat-card__name,
+    .mining-sdk-single-stat-card__subtitle,
+    .mining-sdk-single-stat-card__value {
+      color: var(--stat-color, inherit);
+    }
+  }
+
+  &--flash {
+    animation: flash-border 1s infinite;
+
+    .mining-sdk-single-stat-card__name,
+    .mining-sdk-single-stat-card__subtitle,
+    .mining-sdk-single-stat-card__value {
+      animation: flash-text 1s infinite;
+    }
+  }
+
+  &--superflash {
+    animation: flash-border 0.5s infinite;
+
+    .mining-sdk-single-stat-card__name,
+    .mining-sdk-single-stat-card__subtitle,
+    .mining-sdk-single-stat-card__value {
+      animation: flash-text 0.5s infinite;
+      font-weight: 500;
+    }
+  }
+
+  &__text {
+    @include flex_column;
+
+    gap: 3px;
+  }
+
+  &__name {
+    white-space: nowrap;
+
+    .mining-sdk-single-stat-card--primary & {
+      color: rgba(var(--mining-sdk-color-white-rgb), 0.5);
+    }
+
+    @media (min-width: 768px) {
+      font-size: 12px;
+    }
+  }
+
+  &__subtitle {
+    .mining-sdk-single-stat-card--primary & {
+      color: rgba(var(--mining-sdk-color-white-rgb), 0.5);
+    }
+
+    @media (min-width: 768px) {
+      .mining-sdk-single-stat-card--secondary &,
+      .mining-sdk-single-stat-card--tertiary & {
+        font-size: 12px;
+      }
+    }
+  }
+
+  &__value {
+    font-size: 10px;
+    color: var(--mining-sdk-color-white);
+
+    .mining-sdk-single-stat-card--secondary &,
+    .mining-sdk-single-stat-card--tertiary & {
+      text-align: end;
+    }
+
+    .mining-sdk-single-stat-card--primary & {
+      font-size: 10px;
+      white-space: nowrap;
+    }
+
+    .mining-sdk-single-stat-card--long-value & {
+      font-size: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .mining-sdk-single-stat-card--primary & {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@keyframes flash-border {
+  0%,
+  100% {
+    border-color: rgba(var(--mining-sdk-color-black), 0.5);
+  }
+  50% {
+    border-color: var(--stat-color, inherit);
+  }
+}
+
+@keyframes flash-text {
+  0%,
+  100% {
+    color: var(--mining-sdk-color-white);
+  }
+  50% {
+    color: var(--stat-color, inherit);
+  }
+}

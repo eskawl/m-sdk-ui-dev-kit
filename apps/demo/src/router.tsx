@@ -8,6 +8,8 @@ import { BitdeerPage } from './pages/explorer-containers/bitdeer/bitdeer-page'
 import { BitmainImmersionPage } from './pages/explorer-containers/bitmain-immersion/bitmain-immersion-page'
 import BitmainPage from './pages/explorer-containers/bitmain/bitmain-page'
 import { MicroBTPage } from './pages/explorer-containers/micro-bt/micro-bt-page'
+import { SecondaryStatCardDemo } from './pages/explorer-details-view/secondary-stat-card/secondary-stat-card-demo'
+import { SingleStatCardDemo } from './pages/explorer-details-view/single-stat-card/single-stat-card-demo'
 import { MosaicPageDemo } from './pages/mosaic-page/mosaic.page'
 import { StateExportsPage } from './pages/stats-export-page'
 import { WidgetTopRowPage } from './pages/widget-top-row-page'
@@ -98,6 +100,10 @@ const PoolDetailsPopoverPage = lazy(() =>
   })),
 )
 
+const LineChartCardPage = lazy(() =>
+  import('./pages/line-chart-card-page').then((m) => ({ default: m.LineChartCardPage })),
+)
+
 const LwLineChartExample = lazy(() =>
   import('./examples/lightweight-line-chart-example').then((module) => ({
     default: module.LwLineChartExample,
@@ -165,6 +171,11 @@ const DeviceExplorerPage = lazy(() =>
 const TanksBoxPage = lazy(() =>
   import('./pages/tanks-box-page').then((m) => ({ default: m.TanksBoxPage })),
 )
+const BitMainImmersionSummaryBoxPage = lazy(() =>
+  import('./pages/bitmain-immersion-summary-box-page').then((m) => ({
+    default: m.BitMainImmersionSummaryBoxPage,
+  })),
+)
 
 const SectionLoader = (): JSX.Element => (
   <div
@@ -229,6 +240,7 @@ export const router = createBrowserRouter(
         { path: 'gauge-chart', element: withSuspense(GaugeChartPage) },
         { path: 'chart-container', element: withSuspense(ChartContainerPage) },
         { path: 'chart-wrapper', element: withSuspense(ChartWrapperPage) },
+        { path: 'line-chart-card', element: withSuspense(LineChartCardPage) },
         { path: 'tabs', element: withSuspense(TabsPage) },
         { path: 'breadcrumbs', element: withSuspense(BreadcrumbsPage) },
         { path: 'pagination', element: withSuspense(PaginationExample) },
@@ -239,6 +251,10 @@ export const router = createBrowserRouter(
         { path: 'stats-export', element: withSuspense(StateExportsPage) },
         { path: 'widget-top-row', element: withSuspense(WidgetTopRowPage) },
         { path: 'tanks-box', element: withSuspense(TanksBoxPage) },
+        {
+          path: 'bitmain-immersion-summary-box',
+          element: withSuspense(BitMainImmersionSummaryBoxPage),
+        },
         { path: 'error-boundary', element: withSuspense(ErrorBoundaryPage) },
         { path: 'error-card', element: withSuspense(ErrorCardPage) },
         { path: 'active-incidents-card', element: withSuspense(ActiveIncidentsCardPage) },
@@ -252,6 +268,8 @@ export const router = createBrowserRouter(
           element: withSuspense(BitmainImmersionPage),
         },
         { path: 'micro-bt-container', element: withSuspense(MicroBTPage) },
+        { path: 'secondary-stat-card', element: withSuspense(SecondaryStatCardDemo) },
+        { path: 'single-stat-card', element: withSuspense(SingleStatCardDemo) },
         { path: '*', element: withSuspense(NotFoundPage) },
       ],
     },
