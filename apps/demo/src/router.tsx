@@ -171,6 +171,11 @@ const DeviceExplorerPage = lazy(() =>
 const TanksBoxPage = lazy(() =>
   import('./pages/tanks-box-page').then((m) => ({ default: m.TanksBoxPage })),
 )
+const BitMainImmersionSummaryBoxPage = lazy(() =>
+  import('./pages/bitmain-immersion-summary-box-page').then((m) => ({
+    default: m.BitMainImmersionSummaryBoxPage,
+  })),
+)
 
 const SectionLoader = (): JSX.Element => (
   <div
@@ -246,6 +251,10 @@ export const router = createBrowserRouter(
         { path: 'stats-export', element: withSuspense(StateExportsPage) },
         { path: 'widget-top-row', element: withSuspense(WidgetTopRowPage) },
         { path: 'tanks-box', element: withSuspense(TanksBoxPage) },
+        {
+          path: 'bitmain-immersion-summary-box',
+          element: withSuspense(BitMainImmersionSummaryBoxPage),
+        },
         { path: 'error-boundary', element: withSuspense(ErrorBoundaryPage) },
         { path: 'error-card', element: withSuspense(ErrorCardPage) },
         { path: 'active-incidents-card', element: withSuspense(ActiveIncidentsCardPage) },

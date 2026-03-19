@@ -125,6 +125,10 @@ export const COMPONENT_NAV: SidebarMenuItem[] = [
       { id: 'widget-top-row', label: 'Widget Top Row' },
       { id: 'logs-card', label: 'Logs Card' },
       { id: 'tanks-box', label: 'Tanks Box' },
+      {
+        id: 'bitmain-immersion-summary-box',
+        label: 'Bitmain Immersion Summary Box',
+      },
     ],
   },
   {
