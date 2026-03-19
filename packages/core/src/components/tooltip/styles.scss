@@ -55,6 +55,11 @@
     animation-timing-function: ease-in;
   }
 
+  &-main {
+    overflow-y: auto;
+    max-height: 300px;
+  }
+
   /* Responsive: Mobile adjustments */
   @media (max-width: 768px) {
     max-width: 200px;
