@@ -1,54 +1,37 @@
 /**
-* Tooltip Component Styles (mining-os theme)
-*
-* Based on mining-os tooltip design:
- * - Dark background (#0E0E0E)
- * - Orange border (#F7931A)
- * - Smooth fade in/out animations
- * - Mobile responsive
+ * Tooltip Component Styles (mining-os theme)
  */
 
 .mining-sdk-tooltip__content {
-  --mining-sdk-tooltip-border-width: 0.5px;
   --mining-sdk-tooltip-border-color: var(--mining-sdk-color-primary);
   --mining-sdk-tooltip-surface-color: var(--mining-sdk-popover-bg);
-  --mining-sdk-tooltip-arrow-base-size: 8px;
-  --mining-sdk-tooltip-arrow-join-mask-size: 2px;
 
-  /* Layout */
-  max-width: 250px;
-  padding: 8px 12px;
+  max-width: 200px;
+  padding: 6px 10px;
   z-index: 10001;
   word-wrap: break-word;
   position: relative;
 
-  /* Colors */
   color: var(--mining-sdk-color-white);
   background-color: var(--mining-sdk-tooltip-surface-color);
-  border: var(--mining-sdk-tooltip-border-width) solid var(--mining-sdk-tooltip-border-color);
+  border: 1px solid var(--mining-sdk-tooltip-border-color);
 
-  /* Typography */
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 400;
   line-height: 1.4;
 
-  /* Effects */
-  box-shadow: var(--mining-sdk-shadow-sm);
   border-radius: 2px;
 
-  /* Animations */
   animation-duration: 0.09s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 
-  /* Entry animation */
   &[data-state='delayed-open'],
   &[data-state='instant-open'] {
     animation-name: mining-sdk-tooltip-fade-in;
   }
 
-  /* Exit animation */
   &[data-state='closed'] {
     animation-name: mining-sdk-tooltip-fade-out;
     animation-duration: 0.15s;
@@ -60,11 +43,9 @@
     max-height: 300px;
   }
 
-  /* Responsive: Mobile adjustments */
-  @media (max-width: 768px) {
-    max-width: 200px;
-    padding: 6px 10px;
-    font-size: 12px;
+  @media (min-width: 768px) {
+    max-width: 250px;
+    padding: 8px 12px;
   }
 }
 
@@ -73,20 +54,28 @@
   width: 14px;
   height: 7px;
   position: relative;
-  background: var(--mining-sdk-tooltip-border-color);
-  clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+  overflow: visible;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    background: var(--mining-sdk-tooltip-border-color);
+  }
 
   &::after {
     content: '';
-    display: block;
     position: absolute;
-    inset: 0;
+    top: -1px;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: var(--mining-sdk-tooltip-surface-color);
-    clip-path: polygon(-5% -20%, 50% 86%, 105% -20%);
+    clip-path: polygon(0 0, 100% 0, 82.8% 25%, 50% 82.3%, 17.2% 25%);
   }
 }
 
-/* Animations */
 @keyframes mining-sdk-tooltip-fade-in {
   from {
     opacity: 0;
