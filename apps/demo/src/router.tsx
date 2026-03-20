@@ -60,6 +60,7 @@ const FormElementsPage = lazy(() =>
 const GaugeChartPage = lazy(() =>
   import('./pages/gauge-chart-page').then((m) => ({ default: m.GaugeChartPage })),
 )
+const InputPage = lazy(() => import('./pages/input-page').then((m) => ({ default: m.InputPage })))
 const LoaderPage = lazy(() =>
   import('./pages/loader-page').then((m) => ({ default: m.LoaderPage })),
 )
@@ -207,6 +208,7 @@ export const router = createBrowserRouter(
         { path: 'action-button', element: withSuspense(ActionButtonPage) },
         { path: 'buttons', element: withSuspense(ButtonsPage) },
         { path: 'form-elements', element: withSuspense(FormElementsPage) },
+        { path: 'input', element: withSuspense(InputPage) },
         { path: 'select', element: withSuspense(SelectPage) },
         { path: 'checkbox-switch', element: withSuspense(CheckboxExample) },
         { path: 'radio', element: withSuspense(RadioExample) },

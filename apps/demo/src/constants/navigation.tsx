@@ -25,6 +25,7 @@ export const COMPONENT_NAV: SidebarMenuItem[] = [
       { id: 'action-button', label: 'Action Button' },
       { id: 'buttons', label: 'Buttons' },
       { id: 'form-elements', label: 'Form Elements' },
+      { id: 'input', label: 'Input' },
       { id: 'select', label: 'Select' },
       { id: 'checkbox-switch', label: 'Checkbox & Switch' },
       { id: 'radio', label: 'Radio' },
