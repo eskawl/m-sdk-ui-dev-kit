@@ -176,14 +176,22 @@ const DeviceExplorerPage = lazy(() =>
 const TanksBoxPage = lazy(() =>
   import('./pages/tanks-box-page').then((m) => ({ default: m.TanksBoxPage })),
 )
+
 const BitMainImmersionSummaryBoxPage = lazy(() =>
   import('./pages/bitmain-immersion-summary-box-page').then((m) => ({
     default: m.BitMainImmersionSummaryBoxPage,
   })),
 )
+
 const MicroBTWidgetBoxPage = lazy(() =>
   import('./pages/micro-bt-widget-box-page').then((m) => ({
     default: m.MicroBTWidgetBoxPage,
+  })),
+)
+
+const SupplyLiquidBoxPage = lazy(() =>
+  import('./pages/supply-liquid-box-page').then((m) => ({
+    default: m.SupplyLiquidBoxPage,
   })),
 )
 
@@ -271,6 +279,7 @@ export const router = createBrowserRouter(
           path: 'micro-bt-widget-box',
           element: withSuspense(MicroBTWidgetBoxPage),
         },
+        { path: 'supply-liquid-box', element: withSuspense(SupplyLiquidBoxPage) },
         { path: 'error-boundary', element: withSuspense(ErrorBoundaryPage) },
         { path: 'error-card', element: withSuspense(ErrorCardPage) },
         { path: 'active-incidents-card', element: withSuspense(ActiveIncidentsCardPage) },

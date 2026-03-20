@@ -135,6 +135,7 @@ export const COMPONENT_NAV: SidebarMenuItem[] = [
         id: 'micro-bt-widget-box',
         label: 'Micro BT Widget Box',
       },
+      { id: 'supply-liquid-box', label: 'Supply Liquid Box' },
     ],
   },
   {

@@ -1,0 +1,16 @@
+@use '@mining-sdk/core/styles' as *;
+
+.mining-sdk-supply-liquid-box {
+  @include flex_column;
+  gap: 16px;
+}
+
+.mining-sdk-supply-liquid-box__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  & > :first-child {
+    grid-column: 1 / -1;
+  }
+}
