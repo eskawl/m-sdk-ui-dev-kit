@@ -1,0 +1,19 @@
+@use '@mining-sdk/core/styles' as *;
+
+.mining-sdk-miner-info-card {
+  @include flex_column;
+
+  font-family: var(--font-mono);
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid var(--mining-sdk-color-white-transparent);
+  overflow: auto;
+
+  &__label {
+    font-size: 16px;
+    color: var(--mining-sdk-color-white);
+    text-transform: uppercase;
+    font-weight: 400;
+    padding: 8px 10px;
+  }
+}
