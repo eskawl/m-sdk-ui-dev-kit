@@ -153,6 +153,7 @@ export const COMPONENT_NAV: SidebarMenuItem[] = [
         items: [
           { id: 'single-stat-card', label: 'Single Stat Card' },
           { id: 'secondary-stat-card', label: 'Secondary Stat Card' },
+          { id: 'stats-group-card', label: 'Stats group card' },
         ],
       },
     ],
