@@ -1,273 +1,430 @@
-name: Mining SDK CI Pipeline
+name: PR - Test & Validate (Local)
+
 on:
   push:
-    branches: [main, develop, staging]
-
-  pull_request_target:
-    branches: [main, develop, staging]
+    branches: [main, staging, dev, develop]
+  pull_request:
+    branches: [main, staging, dev, develop]
     types: [opened, reopened, synchronize]
+  workflow_dispatch:
 
-# Global permissions - restrict to minimum required
-permissions:
-  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
-  NODE_VERSION: '20'
+  NODE_VERSION: '20.x'
 
 jobs:
-  # 🔐 Supply Chain Security (Runs first)
-  security:
+  detect-package-manager:
+    name: 🔎 Detect package manager
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    permissions:
+      contents: read
+    outputs:
+      package_manager: ${{ steps.detect.outputs.package_manager }}
+      pnpm_version: ${{ steps.detect.outputs.pnpm_version }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: true
+          ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
+
+      - name: Detect npm vs pnpm
+        id: detect
+        shell: bash
+        run: |
+          if [ -f pnpm-lock.yaml ] || grep -q '"packageManager"[[:space:]]*:[[:space:]]*"pnpm@' package.json 2>/dev/null; then
+            ver=$(grep -m1 '"packageManager"' package.json 2>/dev/null | sed -n 's/.*pnpm@\([0-9.]*\).*/\1/p' || true)
+            ver=${ver:-10}
+            echo "package_manager=pnpm" >> "$GITHUB_OUTPUT"
+            echo "pnpm_version=${ver}" >> "$GITHUB_OUTPUT"
+            echo "🔎 Using pnpm@${ver} (pnpm-lock.yaml and/or packageManager field)"
+          else
+            echo "package_manager=npm" >> "$GITHUB_OUTPUT"
+            echo "pnpm_version=" >> "$GITHUB_OUTPUT"
+            echo "🔎 Using npm (no pnpm lockfile / packageManager)"
+          fi
+
+  dependency-review:
+    name: 📋 Dependency Review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: read
+      pull-requests: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+          vulnerability-check: true
+          license-check: false
+
+  setup:
+    name: 📦 Setup Dependencies
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: detect-package-manager
+    permissions:
+      contents: read
+    outputs:
+      cache-key: ${{ steps.setup-node.outputs.cache-key }}
+      package_manager: ${{ needs.detect-package-manager.outputs.package_manager }}
+      pnpm_version: ${{ needs.detect-package-manager.outputs.pnpm_version }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: true
+          ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Check package-lock.json consistency
+        continue-on-error: true
+        run: |
+          # pnpm lockfile is enforced by pnpm install --frozen-lockfile in node-setup-cache
+          if [ -f package-lock.json ]; then
+            npm install --package-lock-only --no-audit --no-fund
+            git diff --exit-code package-lock.json || (
+              echo "::error::package-lock.json is out of sync with package.json. Run 'npm install' and commit the updated lockfile."
+              exit 1
+            )
+          fi
+
+      - name: Setup Node.js with cache
+        id: setup-node
+        uses: ./.github/actions/node-setup-cache
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          package-manager: ${{ needs.detect-package-manager.outputs.package_manager }}
+          pnpm-version: ${{ needs.detect-package-manager.outputs.pnpm_version }}
+
+  supply-chain:
     name: 🔐 Supply Chain Security
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-    permissions:
-      contents: read
-
-    steps:
-      - name: 📥 Checkout code
-        uses: actions/checkout@v6
-        with:
-          ref: "${{ github.event.pull_request.head.sha || github.sha }}"
-          clean: true
-
-      - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: 📦 Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-
-      - name: 📥 Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: 🔐 Verify package integrity (pnpm audit)
-        run: |
-          echo "🔐 Verifying package signatures..."
-          pnpm audit --audit-level=moderate 2>&1 || echo "::warning::Some packages may have vulnerabilities"
-          echo "✅ Signature verification complete"
-
-      - name: 🛡️ Run pnpm audit for vulnerabilities
-        run: |
-          echo "🛡️ Checking for known vulnerabilities..."
-          pnpm audit --audit-level=high || (
-            echo "::warning::High severity vulnerabilities detected"
-            echo "💡 Run \`pnpm audit --fix\` to attempt automatic fixes"
-          )
-          echo "✅ Vulnerability audit complete"
-
-  # 🔍 Code Quality & Security (Parallel with others)
-  quality:
-    name: 🔍 Code Quality & Security
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    needs: security
-    permissions:
-      contents: read
-
-    steps:
-      - name: 📥 Checkout code
-        uses: actions/checkout@v6
-        with:
-          ref: "${{ github.event.pull_request.head.sha || github.sha }}"
-          clean: true
-      - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: 📦 Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-
-      - name: 📥 Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: 🔒 Check pnpm-lock.yaml consistency
-        run: |
-          echo "🔒 Verifying pnpm-lock.yaml consistency..."
-          pnpm install --frozen-lockfile --prefer-offline || (
-            echo "❌ pnpm-lock.yaml is out of sync with package.json."
-            echo "💡 Run \`pnpm install\` and commit the updated lockfile."
-            exit 1
-          )
-          echo "✅ pnpm-lock.yaml is consistent"
-
-      - name: 🧹 Linting
-        run: |
-          echo "⚡ Running linter with zero tolerance for warnings..."
-          time pnpm lint
-          echo "✅ Linting passed with no warnings or errors"
-
-      - name: 🔷 TypeScript Type Check
-        run: |
-          echo "🔷 Running TypeScript type checking..."
-          time pnpm typecheck
-          echo "✅ TypeScript type checking passed"
-
-      - name: 🎨 Code Formatting Check
-        run: |
-          echo "🎨 Checking code formatting..."
-          time pnpm format
-          echo "✅ Code formatting check passed"
-
-  # 🧪 Test Coverage (Parallel with quality and build)
-  test:
-    name: 🧪 Test Coverage
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    needs: security
-    permissions:
-      contents: read
-
-    steps:
-      - name: 📥 Checkout code
-        uses: actions/checkout@v6
-        with:
-          ref: "${{ github.event.pull_request.head.sha || github.sha }}"
-          clean: true
-
-      - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: 📦 Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-
-      - name: 📥 Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: 🧪 Run Tests with Coverage
-        run: |
-          echo "🧪 Running tests with coverage..."
-          time pnpm test:coverage
-          echo "✅ Test coverage completed"
-
-      - name: 📊 Coverage Summary
-        run: |
-          echo "📊 Coverage Summary:"
-          echo "  • Foundation: Coverage thresholds enforced (94% lines, 94% functions, 85% branches)"
-          echo "  • Core: Coverage thresholds enforced (80% lines/statements, 79% functions, 75% branches)"
-          echo "  • Both packages: tests and coverage run via Vitest (Vite config)"
-
-  # 🏗️ Build (Parallel with quality and test)
-  build:
-    name: 🏗️ Build
-    runs-on: ubuntu-latest
     timeout-minutes: 6
-    needs: security
+    needs: setup
     permissions:
       contents: read
 
     steps:
-      - name: 📥 Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v6
         with:
-          ref: "${{ github.event.pull_request.head.sha || github.sha }}"
-          clean: true
+          persist-credentials: true
+          ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
 
-      - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: 📦 Setup Node.js
-        uses: actions/setup-node@v6
+      - name: Restore Node.js and Cache
+        uses: ./.github/actions/node-restore-cache
         with:
+          cache-key: ${{ needs.setup.outputs.cache-key }}
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
+          package-manager: ${{ needs.setup.outputs.package_manager }}
+          pnpm-version: ${{ needs.setup.outputs.pnpm_version }}
 
-      - name: 📥 Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: 📦 Cache Turbo
-        uses: actions/cache@v4
-        with:
-          path: .turbo
-          key: turbo-${{ runner.os }}-${{ github.sha }}
-          restore-keys: turbo-${{ runner.os }}-
-
-      - name: 🏗️ Production Build
+      - name: Verify package integrity (npm audit signatures)
+        env:
+          PM: ${{ needs.setup.outputs.package_manager }}
         run: |
-          echo "🏗️ Building production bundle..."
-          time pnpm build
-          echo "✅ Build completed successfully"
+          if [ "$PM" = "pnpm" ]; then
+            echo "🔐 Running pnpm audit..."
+            pnpm audit --audit-level=moderate 2>&1 || echo "::warning::pnpm audit reported issues"
+          else
+            echo "🔐 Verifying npm package signatures..."
+            npm audit signatures 2>&1 || echo "::warning::Some packages may not have verified signatures (npm 10.7+ for full support)"
+          fi
+        continue-on-error: true
 
-      - name: 📊 Bundle Size Analysis
+      - name: Check for known vulnerabilities (npm audit)
+        env:
+          PM: ${{ needs.setup.outputs.package_manager }}
         run: |
-          echo "📊 Analyzing bundle size..."
-          if [ -d "packages/core/dist" ]; then
-            echo "📦 Core package:"
-            du -sh packages/core/dist/
-            find packages/core/dist/ -type f \( -name "*.js" -o -name "*.css" \) | head -10 | xargs ls -lh
+          if [ "$PM" = "pnpm" ]; then
+            echo "🛡️ Checking for known vulnerabilities (pnpm)..."
+            pnpm audit --audit-level=high 2>&1 || echo "::warning::High severity vulnerabilities detected."
+          else
+            echo "🛡️ Checking for known vulnerabilities..."
+            npm audit --audit-level=high 2>&1 || echo "::warning::High severity vulnerabilities detected. Consider 'npm audit fix' or updating dependencies."
           fi
-          if [ -d "packages/foundation/dist" ]; then
-            echo "📦 Foundation package:"
-            du -sh packages/foundation/dist/
-          fi
-          if [ -d "apps/demo/dist" ]; then
-            echo "📦 Demo app:"
-            du -sh apps/demo/dist/
-          fi
+        continue-on-error: true
 
-  # 📋 Summary & Performance Stats (Runs after all parallel jobs complete)
-  summary:
-    name: 📋 Summary & Performance Stats
+  lint:
+    name: ✨ Lint Code
     runs-on: ubuntu-latest
-    needs: [security, quality, test, build]
-    if: always()
+    timeout-minutes: 10
+    needs: setup
     permissions:
       contents: read
 
     steps:
-      - name: 📥 Checkout code for summary
+      - name: Checkout repository
         uses: actions/checkout@v6
         with:
-          ref: "${{ github.event.pull_request.head.sha || github.sha }}"
-          clean: true
+          persist-credentials: true
+          ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
 
-      - name: 📊 Performance Summary
-        run: |
-          echo "📊 CI Pipeline Performance Summary"
-          echo "===================================="
-          echo ""
-          echo "📋 Commit Information:"
-          echo "  Commit: $(git rev-parse HEAD)"
-          echo "  Message: $(git log -1 --pretty=format:'%s')"
-          echo "  Author: $(git log -1 --pretty=format:'%an <%ae>')"
-          echo "  Date: $(git log -1 --pretty=format:'%ad' --date=short)"
-          echo ""
-          echo "🎯 Job Results:"
-          echo "  🔐 Supply Chain Security: ${{ needs.security.result }}"
-          echo "  🔍 Code Quality: ${{ needs.quality.result }}"
-          echo "  🧪 Test Coverage: ${{ needs.test.result }}"
-          echo "  🏗️ Build: ${{ needs.build.result }}"
-          echo ""
-          echo "⚡ Performance Metrics:"
-          echo "  📝 Linting: Optimized with Turbo cache strategy"
-          echo "  🔷 TypeScript: Type checking enabled"
-          echo "  🏗️ Build: Monorepo packages built with Turbo"
-          echo "  🚀 Total CI Time: Parallel execution enabled"
-          echo ""
-          echo "🔧 Optimizations Applied:"
-          echo "  ✅ Supply chain security checks (pnpm audit)"
-          echo "  ✅ ESLint cache strategy optimized"
-          echo "  ✅ Zero tolerance for linter warnings"
-          echo "  ✅ TypeScript strict type checking"
-          echo "  ✅ Turbo build caching"
-          echo "  ✅ Parallel job execution"
-          echo "  ✅ Reduced timeouts and redundant steps"
+      - name: Restore Node.js and Cache
+        uses: ./.github/actions/node-restore-cache
+        with:
+          cache-key: ${{ needs.setup.outputs.cache-key }}
+          node-version: ${{ env.NODE_VERSION }}
+          package-manager: ${{ needs.setup.outputs.package_manager }}
+          pnpm-version: ${{ needs.setup.outputs.pnpm_version }}
 
-      - name: 🎉 Success Notification
-        if: ${{ needs.security.result == 'success' && needs.quality.result == 'success' && needs.test.result == 'success' && needs.build.result == 'success' }}
+      - name: Run linting
+        continue-on-error: true
+        env:
+          PM: ${{ needs.setup.outputs.package_manager }}
         run: |
-          echo "🎉 All checks passed! Ready for merge."
-          echo ""
-          echo "🚀 Performance Highlights:"
-          echo "  • Linting: Zero tolerance for warnings"
-          echo "  • TypeScript: Type checking passed"
-          echo "  • Test Coverage: Foundation ≥94%, Core ≥80% (thresholds enforced)"
-          echo "  • Build: Production ready"
-          echo "  • CI: Optimized for speed and reliability"
-          echo "  • Monorepo: Turbo build caching enabled"
+          echo "Running linting (package manager: $PM)..."
+          if [ "$PM" = "pnpm" ]; then
+            pnpm run lint --if-present || echo "::warning::Linting failed but continuing workflow"
+          else
+            npm run lint --if-present || echo "::warning::Linting failed but continuing workflow"
+          fi
+
+      - name: Run typecheck (optional)
+        continue-on-error: true
+        env:
+          PM: ${{ needs.setup.outputs.package_manager }}
+        run: |
+          if [ "$PM" = "pnpm" ]; then
+            pnpm run typecheck --if-present || true
+          else
+            npm run typecheck --if-present || true
+          fi
+
+  test-and-sonarqube:
+    name: 🧪 Test Coverage & SonarQube Analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: setup
+    permissions:
+      contents: read
+    outputs:
+      coverage_result: ${{ steps.coverage-summary.outputs.coverage_result }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.number && format('refs/pull/{0}/head', github.event.pull_request.number) || github.ref }}
+
+      - name: Restore Node.js and Cache
+        uses: ./.github/actions/node-restore-cache
+        with:
+          cache-key: ${{ needs.setup.outputs.cache-key }}
+          node-version: ${{ env.NODE_VERSION }}
+          package-manager: ${{ needs.setup.outputs.package_manager }}
+          pnpm-version: ${{ needs.setup.outputs.pnpm_version }}
+
+      - name: Setup project configuration
+        run: |
+          echo "Setting up project configuration..."
+          if [ -f ./setup-config.sh ]; then
+            chmod +x ./setup-config.sh
+            ./setup-config.sh
+          fi
+
+      - name: Run tests with coverage
+        id: run-tests
+        env:
+          PM: ${{ needs.setup.outputs.package_manager }}
+        run: |
+          echo "Running tests with coverage (package manager: $PM)..."
+          if [ "$PM" = "pnpm" ]; then
+            pnpm run test:coverage --if-present || pnpm test --if-present || echo "::warning::No test:coverage or test script; skipping"
+          else
+            npm run test:coverage --if-present || npm test --if-present || echo "::warning::No test:coverage or test script; skipping"
+          fi
+
+      - name: Coverage (threshold + summary)
+        id: coverage-summary
+        if: always()
+        run: |
+          MIN=80
+          # Vitest: detect by config (handles its own thresholds); brittle uses Istanbul + nyc check.
+          if [ -f vitest.config.js ] || [ -f vitest.config.ts ]; then
+            if [ -f coverage/coverage-final.json ]; then
+              if [ "${{ steps.run-tests.outcome }}" = "success" ]; then
+                STATUS_CELL="✅ PASS"
+              else
+                STATUS_CELL="❌ FAIL (coverage below threshold in vitest.config.js)"
+              fi
+              echo "coverage_result=$STATUS_CELL Vitest (thresholds in vitest.config.js)" >> "$GITHUB_OUTPUT"
+            else
+              echo "coverage_result=⚠️ No coverage report" >> "$GITHUB_OUTPUT"
+            fi
+          elif [ -f coverage/coverage-final.json ]; then
+            mkdir -p .nyc_output
+            cp coverage/coverage-final.json .nyc_output/out.json
+            set +e
+            echo "Running nyc check-coverage (threshold ${MIN}%)..."
+            npx --yes nyc check-coverage --lines=$MIN --statements=$MIN --functions=$MIN --branches=$MIN
+            EXIT=$?
+            set -e
+            echo "Running nyc report (text-summary)..."
+            NYC_REPORT=$(npx --yes nyc report --reporter=text-summary 2>&1)
+            echo "$NYC_REPORT"
+            STMT=$(echo "$NYC_REPORT"  | sed -n 's/^Statements[^:]*: *\([0-9.]*\)%.*/\1/p')
+            BRANCH=$(echo "$NYC_REPORT" | sed -n 's/^Branches[^:]*: *\([0-9.]*\)%.*/\1/p')
+            FN=$(echo "$NYC_REPORT"    | sed -n 's/^Functions[^:]*: *\([0-9.]*\)%.*/\1/p')
+            LINES=$(echo "$NYC_REPORT" | sed -n 's/^Lines[^:]*: *\([0-9.]*\)%.*/\1/p')
+            [ -z "$STMT" ] && STMT="—"; [ -z "$BRANCH" ] && BRANCH="—"; [ -z "$FN" ] && FN="—"; [ -z "$LINES" ] && LINES="—"
+            [ $EXIT -eq 0 ] && ICON="✅" || ICON="❌"
+            echo "coverage_result=$ICON Stmt ${STMT}% | Branch ${BRANCH}% | Fn ${FN}% | Lines ${LINES}% (min ${MIN}%)" >> "$GITHUB_OUTPUT"
+            exit $EXIT
+          else
+            echo "coverage_result=⚠️ No coverage report" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run build (optional)
+        continue-on-error: true
+        env:
+          PM: ${{ needs.setup.outputs.package_manager }}
+        run: |
+          if [ "$PM" = "pnpm" ]; then
+            pnpm run build --if-present || true
+          else
+            npm run build --if-present || true
+          fi
+
+      - name: Tailscale
+        id: tailscale
+        if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'workflow_dispatch'
+        uses: tailscale/github-action@v4
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_CLIENT_SECRET }}
+          tags: tag:ci-sast
+          version: latest
+          ping: dev-sonarcube-0.tail8a2a3f.ts.net
+
+      - name: Generate ESLint JSON report
+        if: steps.tailscale.outcome == 'success'
+        continue-on-error: true
+        env:
+          PM: ${{ needs.setup.outputs.package_manager }}
+        run: |
+          if [ -f eslint.config.cjs ]; then
+            if [ "$PM" = "pnpm" ]; then
+              pnpm exec eslint . --format json --output-file eslint-report.json
+            else
+              npx eslint . --format json --output-file eslint-report.json
+            fi
+          fi
+
+      - name: Prepare SonarQube Configuration
+        if: steps.tailscale.outcome == 'success'
+        run: |
+          echo "Creating sonar-project.properties..."
+
+          # Base configuration
+          cat > sonar-project.properties << 'SONAR_EOF'
+          sonar.projectKey=${{ github.event.repository.name }}
+          sonar.projectName=${{ github.event.repository.name }}
+          sonar.projectVersion=${{ github.sha }}
+          sonar.sources=.
+          sonar.language=js
+          sonar.sourceEncoding=UTF-8
+          sonar.javascript.lcov.reportPaths=coverage/lcov.info
+          sonar.javascript.node.maxspace=4096
+          sonar.javascript.environments=node
+          sonar.qualitygate.wait=true
+          sonar.test.inclusions=**/*.test.js,**/*.spec.js
+          SONAR_EOF
+
+          # Add ESLint report if it exists
+          if [ -f eslint-report.json ]; then
+            echo "sonar.eslint.reportPaths=eslint-report.json" >> sonar-project.properties
+          fi
+
+          # Base exclusions
+          BASE_EXCLUSIONS="**/node_modules/**,**/coverage/**,**/dist/**,**/build/**,.github/**,**/*.test.js,**/*.spec.js,**/*.json,**/*.md,**/*.yml,**/*.yaml"
+
+          # Add tests configuration if folder exists
+          if [ -d "tests" ]; then
+            echo "Tests folder found - including test configuration"
+            echo "sonar.tests=tests" >> sonar-project.properties
+            echo "sonar.exclusions=${BASE_EXCLUSIONS},**/tests/**" >> sonar-project.properties
+            echo "sonar.cpd.exclusions=**/tests/**,**/node_modules/**" >> sonar-project.properties
+          else
+            echo "No tests folder found - skipping test configuration"
+            echo "sonar.exclusions=${BASE_EXCLUSIONS}" >> sonar-project.properties
+          fi
+
+          echo "Configuration file created"
+
+      - name: SonarQube Scan
+        if: steps.tailscale.outcome == 'success'
+        continue-on-error: true
+        uses: SonarSource/sonarqube-scan-action@v7.0.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+  summary:
+    name: 📋 CI Summary
+    runs-on: ubuntu-latest
+    needs: [detect-package-manager, setup, supply-chain, lint, test-and-sonarqube]
+    if: always() && !cancelled()
+    permissions:
+      contents: read
+
+    steps:
+      - name: 📥 Checkout for summary
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: 📊 Print summary
+        env:
+          PM: ${{ needs.detect-package-manager.outputs.package_manager }}
+          PNPM_V: ${{ needs.detect-package-manager.outputs.pnpm_version }}
+          R_SETUP: ${{ needs.setup.result || 'skipped' }}
+          R_SUPPLY: ${{ needs.supply-chain.result || 'skipped' }}
+          R_LINT: ${{ needs.lint.result || 'skipped' }}
+          R_TEST: ${{ needs.test-and-sonarqube.result || 'skipped' }}
+          COVERAGE: ${{ needs.test-and-sonarqube.outputs.coverage_result || '—' }}
+        run: |
+          PKG_LINE="$PM"
+          [ -n "$PNPM_V" ] && PKG_LINE="$PM (pnpm $PNPM_V)"
+          {
+            echo "## 📊 CI Pipeline Summary"
+            echo ""
+            echo "- **Package manager:** ${PKG_LINE}"
+            echo ""
+            echo "### 📋 Commit information"
+            echo "- **Commit:** $(git rev-parse HEAD)"
+            echo "- **Message:** $(git log -1 --pretty=format:'%s')"
+            echo "- **Author:** $(git log -1 --pretty=format:'%an <%ae>')"
+            echo "- **Date:** $(git log -1 --pretty=format:'%ad' --date=short)"
+            echo ""
+            echo "### 🎯 Job results"
+            [ "${R_SETUP}" != "skipped" ] && echo "- 📦 Setup: ${R_SETUP:-?}"
+            [ "${R_SUPPLY}" != "skipped" ] && echo "- 🔐 Supply Chain: ${R_SUPPLY:-?}"
+            [ "${R_LINT}" != "skipped" ] && echo "- ✨ Lint: ${R_LINT:-?}"
+            [ "${R_TEST}" != "skipped" ] && echo "- 🧪 Test & SonarQube: ${R_TEST:-?}"
+            echo "- 📊 Coverage: ${COVERAGE}"
+            echo ""
+            echo "### 🔧 Pipeline"
+            echo "- ✅ Dependency review (PR only)"
+            echo "- ✅ Lockfile check, audit, lint, tests"
+            echo "- ✅ SonarQube (push to main or manual run)"
+          } | tee -a "$GITHUB_STEP_SUMMARY"

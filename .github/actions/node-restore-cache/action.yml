@@ -1,0 +1,81 @@
+name: 'Node Restore Cache'
+description: 'Restore Node.js dependencies from cache'
+
+inputs:
+  cache-key:
+    description: 'Cache key from setup-node step'
+    required: true
+  node-version:
+    description: 'Node.js version (must match node-setup-cache)'
+    required: false
+    default: '20.x'
+  package-manager:
+    description: 'auto (detect), pnpm, or npm — should match node-setup-cache'
+    required: false
+    default: 'auto'
+  pnpm-version:
+    description: 'pnpm version when package-manager is pnpm'
+    required: false
+    default: ''
+
+runs:
+  using: composite
+  steps:
+    - name: Restore node modules cache
+      id: cache-node-modules
+      uses: actions/cache/restore@v4
+      with:
+        path: node_modules
+        key: ${{ inputs.cache-key }}
+        restore-keys: |
+          node-modules-${{ runner.os }}-${{ inputs.node-version }}-
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: Resolve package manager
+      id: pm
+      shell: bash
+      env:
+        PM_INPUT: ${{ inputs.package-manager }}
+        VER_INPUT: ${{ inputs.pnpm-version }}
+      run: |
+        if [ "$PM_INPUT" = "auto" ]; then
+          if [ -f pnpm-lock.yaml ] || grep -q '"packageManager"[[:space:]]*:[[:space:]]*"pnpm@' package.json 2>/dev/null; then
+            echo "package_manager=pnpm" >> "$GITHUB_OUTPUT"
+            ver=$(grep -m1 '"packageManager"' package.json 2>/dev/null | sed -n 's/.*pnpm@\([0-9.]*\).*/\1/p' || true)
+            echo "pnpm_version=${ver:-10}" >> "$GITHUB_OUTPUT"
+          else
+            echo "package_manager=npm" >> "$GITHUB_OUTPUT"
+            echo "pnpm_version=" >> "$GITHUB_OUTPUT"
+          fi
+        else
+          echo "package_manager=${PM_INPUT}" >> "$GITHUB_OUTPUT"
+          if [ "$PM_INPUT" = "pnpm" ]; then
+            echo "pnpm_version=${VER_INPUT:-10}" >> "$GITHUB_OUTPUT"
+          else
+            echo "pnpm_version=" >> "$GITHUB_OUTPUT"
+          fi
+        fi
+
+    - name: Setup pnpm
+      if: steps.pm.outputs.package_manager == 'pnpm'
+      uses: pnpm/action-setup@v4
+      with:
+        version: ${{ steps.pm.outputs.pnpm_version }}
+
+    - name: Install Dependencies
+      if: steps.cache-node-modules.outputs.cache-hit != 'true'
+      shell: bash
+      env:
+        PKG_MGR: ${{ steps.pm.outputs.package_manager }}
+      run: |
+        if [ "$PKG_MGR" = "pnpm" ]; then
+          pnpm install --frozen-lockfile
+        elif [ -f package-lock.json ]; then
+          npm ci
+        else
+          npm install
+        fi
