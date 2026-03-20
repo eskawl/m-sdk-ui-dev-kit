@@ -76,6 +76,9 @@ const PopoverPage = lazy(() =>
 const SelectPage = lazy(() =>
   import('./pages/select-page').then((m) => ({ default: m.SelectPage })),
 )
+const SelectorPage = lazy(() =>
+  import('./pages/selector-page').then((m) => ({ default: m.SelectorPage })),
+)
 const SidebarPage = lazy(() =>
   import('./pages/sidebar-page').then((m) => ({ default: m.SidebarPage })),
 )
@@ -215,6 +218,7 @@ export const router = createBrowserRouter(
         { path: 'form-elements', element: withSuspense(FormElementsPage) },
         { path: 'input', element: withSuspense(InputPage) },
         { path: 'select', element: withSuspense(SelectPage) },
+        { path: 'selector', element: withSuspense(SelectorPage) },
         { path: 'checkbox-switch', element: withSuspense(CheckboxExample) },
         { path: 'radio', element: withSuspense(RadioExample) },
         { path: 'date-pickers', element: withSuspense(DatePickersPage) },

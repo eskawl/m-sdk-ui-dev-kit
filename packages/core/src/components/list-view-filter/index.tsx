@@ -100,7 +100,7 @@ const ListViewFilter = React.forwardRef<HTMLDivElement, ListViewFilterProps>(
       const values: CascaderValue[] = []
 
       Object.entries(localFilters).forEach(([key, vals]) => {
-        const optionGroup = options.find((opt) => opt.value === key)
+        const optionGroup = options.find(({ value }) => value === key)
         if (!optionGroup) return
 
         // Handle array of values

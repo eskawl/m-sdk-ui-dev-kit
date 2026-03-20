@@ -197,9 +197,9 @@ export function FormSelect<
               </SelectTrigger>
             </FormControl>
             <SelectContent>
-              {options.map((option) => (
-                <SelectItem key={option.value} value={option.value} disabled={option.disabled}>
-                  {option.label}
+              {options.map(({ value, label, disabled }) => (
+                <SelectItem key={value} value={value} disabled={disabled}>
+                  {label}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -392,15 +392,15 @@ export function FormRadioGroup<
               orientation={orientation}
               {...radioGroupProps}
             >
-              {options.map((option) => {
-                const id = `${field.name}-${option.value}`
+              {options.map(({ value, label, disabled }) => {
+                const id = `${field.name}-${value}`
                 return (
                   <div
-                    key={option.value}
+                    key={value}
                     style={{ display: 'flex', alignItems: 'center', gap: '0.375rem' }}
                   >
-                    <Radio value={option.value} id={id} disabled={option.disabled} />
-                    <Label htmlFor={id}>{option.label}</Label>
+                    <Radio value={value} id={id} disabled={disabled} />
+                    <Label htmlFor={id}>{label}</Label>
                   </div>
                 )
               })}

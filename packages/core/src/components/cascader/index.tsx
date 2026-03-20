@@ -261,7 +261,7 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
 
     const isCategorySelected = React.useCallback(
       (categoryValue: string | number | boolean) => {
-        const category = options.find((opt) => opt.value === categoryValue)
+        const category = options.find(({ value }) => value === categoryValue)
         if (!category?.children) return false
 
         return category.children
@@ -273,7 +273,7 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
 
     const isCategoryIndeterminate = React.useCallback(
       (categoryValue: string | number | boolean) => {
-        const category = options.find((opt) => opt.value === categoryValue)
+        const category = options.find(({ value }) => value === categoryValue)
         if (!category?.children) return false
 
         const selectedChildren = category.children.filter((child) =>
@@ -319,7 +319,7 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
 
     const handleCategoryToggle = React.useCallback(
       (categoryValue: string | number | boolean, checked: boolean) => {
-        const category = options.find((opt) => opt.value === categoryValue)
+        const category = options.find(({ value }) => value === categoryValue)
         if (!category?.children) return
 
         let newValue: CascaderValue[]
@@ -340,7 +340,7 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
 
     const activeOptions = React.useMemo(() => {
       if (!activeCategory) return []
-      const category = options.find((opt) => String(opt.value) === activeCategory)
+      const category = options.find(({ value }) => String(value) === activeCategory)
       return category?.children || []
     }, [activeCategory, options])
 
@@ -403,10 +403,10 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
 
       const search = searchValue.toLowerCase()
       return flattenedOptions.filter(
-        (opt) =>
-          opt.categoryLabel.toLowerCase().includes(search) ||
-          opt.optionLabel.toLowerCase().includes(search) ||
-          opt.label.toLowerCase().includes(search),
+        ({ categoryLabel, optionLabel, label }) =>
+          categoryLabel.toLowerCase().includes(search) ||
+          optionLabel.toLowerCase().includes(search) ||
+          label.toLowerCase().includes(search),
       )
     }, [flattenedOptions, searchValue])
 
@@ -607,18 +607,18 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                   {/* Left Panel - Categories */}
                   {showLeftPanel && (
                     <div className="mining-sdk-cascader__panel mining-sdk-cascader__panel--categories">
-                      {options.map((option) => {
-                        const isActive = String(option.value) === activeCategory
-                        const categorySelected = isCategorySelected(option.value)
-                        const categoryIndeterminate = isCategoryIndeterminate(option.value)
+                      {options.map(({ value, label, disabled }) => {
+                        const isActive = String(value) === activeCategory
+                        const categorySelected = isCategorySelected(value)
+                        const categoryIndeterminate = isCategoryIndeterminate(value)
 
                         return (
                           <div
-                            key={String(option.value)}
+                            key={String(value)}
                             className={cn(
                               'mining-sdk-cascader__category',
                               isActive && 'mining-sdk-cascader__category--active',
-                              option.disabled && 'mining-sdk-cascader__category--disabled',
+                              disabled && 'mining-sdk-cascader__category--disabled',
                             )}
                           >
                             {multiple && (
@@ -631,9 +631,9 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                                       : false
                                 }
                                 onCheckedChange={(checked) =>
-                                  handleCategoryToggle(option.value, checked as boolean)
+                                  handleCategoryToggle(value, checked as boolean)
                                 }
-                                disabled={option.disabled}
+                                disabled={disabled}
                                 size="sm"
                                 color="primary"
                                 className="mining-sdk-cascader__category-checkbox"
@@ -644,13 +644,11 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                               className="mining-sdk-cascader__category-button"
                               onMouseDown={(e) => {
                                 e.preventDefault()
-                                if (!option.disabled) setActiveCategory(String(option.value))
+                                if (!disabled) setActiveCategory(String(value))
                               }}
-                              disabled={option.disabled}
+                              disabled={disabled}
                             >
-                              <span className="mining-sdk-cascader__category-label">
-                                {option.label}
-                              </span>
+                              <span className="mining-sdk-cascader__category-label">{label}</span>
                               <ChevronRightIcon className="mining-sdk-cascader__category-arrow" />
                             </button>
                           </div>
@@ -666,9 +664,9 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                         {multiple ? (
                           <>
                             {activeOptions
-                              .filter((opt) => {
+                              .filter(({ label }) => {
                                 if (!inputValue.trim()) return true
-                                return opt.label.toLowerCase().includes(inputValue.toLowerCase())
+                                return label.toLowerCase().includes(inputValue.toLowerCase())
                               })
                               .map((option) => {
                                 const selection = [
@@ -712,9 +710,9 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                             className="mining-sdk-cascader__radio-group"
                           >
                             {activeOptions
-                              .filter((opt) => {
+                              .filter(({ label }) => {
                                 if (!inputValue.trim()) return true
-                                return opt.label.toLowerCase().includes(inputValue.toLowerCase())
+                                return label.toLowerCase().includes(inputValue.toLowerCase())
                               })
                               .map((option) => {
                                 const selection = [
@@ -746,9 +744,9 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                           </RadioGroup>
                         )}
 
-                        {activeOptions.filter((opt) => {
+                        {activeOptions.filter(({ label }) => {
                           if (!inputValue.trim()) return true
-                          return opt.label.toLowerCase().includes(inputValue.toLowerCase())
+                          return label.toLowerCase().includes(inputValue.toLowerCase())
                         }).length === 0 && (
                           <EmptyState description={inputValue ? 'No data' : 'No options'} />
                         )}

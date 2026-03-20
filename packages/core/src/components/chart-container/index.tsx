@@ -129,13 +129,13 @@ export const ChartContainer = React.forwardRef<HTMLDivElement, ChartContainerPro
               {rangeSelector && rangeSelector.options.length > 0 && (
                 <div role="group" aria-label="Time range">
                   <RadioGroup defaultValue={rangeSelector.value} orientation="horizontal" noGap>
-                    {rangeSelector.options.map((opt) => (
+                    {rangeSelector.options.map(({ value, label }) => (
                       <RadioCard
-                        value={opt.value}
-                        label={opt.label}
-                        key={opt.value}
-                        aria-pressed={rangeSelector.value === opt.value}
-                        onClick={() => rangeSelector.onChange(opt.value)}
+                        value={value}
+                        label={label}
+                        key={value}
+                        aria-pressed={rangeSelector.value === value}
+                        onClick={() => rangeSelector.onChange(value)}
                       />
                     ))}
                   </RadioGroup>

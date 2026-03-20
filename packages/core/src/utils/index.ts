@@ -24,6 +24,9 @@ export * from './chart-tooltip'
 // Class name merging
 export * from './cn'
 
+// Color utilities
+export * from './color'
+
 // Unit conversions (energy, power, pressure, transactions)
 export * from './conversion'
 
