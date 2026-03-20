@@ -130,6 +130,10 @@ export const COMPONENT_NAV: SidebarMenuItem[] = [
         id: 'bitmain-immersion-summary-box',
         label: 'Bitmain Immersion Summary Box',
       },
+      {
+        id: 'micro-bt-widget-box',
+        label: 'Micro BT Widget Box',
+      },
     ],
   },
   {

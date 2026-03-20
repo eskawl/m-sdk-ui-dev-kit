@@ -1,0 +1,23 @@
+@use '@mining-sdk/core/styles' as *;
+
+.mining-sdk-micro-bt-widget-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.mining-sdk-micro-bt-widget-box__item {
+  @include flex_column;
+  gap: 8px;
+}
+
+.mining-sdk-micro-bt-widget-box__title {
+  font-size: 10px;
+  line-height: 12px;
+  color: var(--mining-sdk-color-white-5, #ffffff80);
+}
+
+.mining-sdk-micro-bt-widget-box .mining-sdk-indicator {
+  padding: 4px 8px;
+  gap: 4px;
+}

@@ -178,6 +178,11 @@ const BitMainImmersionSummaryBoxPage = lazy(() =>
     default: m.BitMainImmersionSummaryBoxPage,
   })),
 )
+const MicroBTWidgetBoxPage = lazy(() =>
+  import('./pages/micro-bt-widget-box-page').then((m) => ({
+    default: m.MicroBTWidgetBoxPage,
+  })),
+)
 
 const SectionLoader = (): JSX.Element => (
   <div
@@ -257,6 +262,10 @@ export const router = createBrowserRouter(
         {
           path: 'bitmain-immersion-summary-box',
           element: withSuspense(BitMainImmersionSummaryBoxPage),
+        },
+        {
+          path: 'micro-bt-widget-box',
+          element: withSuspense(MicroBTWidgetBoxPage),
         },
         { path: 'error-boundary', element: withSuspense(ErrorBoundaryPage) },
         { path: 'error-card', element: withSuspense(ErrorCardPage) },
