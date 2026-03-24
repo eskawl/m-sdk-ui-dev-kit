@@ -1,3 +1,5 @@
+import { MinerStatuses } from '../constants/device-constants'
+
 export const CONTAINER_STATUS = {
   RUNNING: 'running',
   OFFLINE: 'offline',
@@ -19,4 +21,12 @@ export const THRESHOLD_LEVEL = {
   ALARM: 'alarm',
   ALARM_HIGH: 'alarmHigh',
   CRITICAL_HIGH: 'criticalHigh',
+} as const
+
+export const SOCKET_STATUSES = {
+  ...MinerStatuses,
+  ...MINER_POWER_MODE,
+  ERROR_MINING: 'errorMining',
+  MINER_DISCONNECTED: 'disconnected',
+  CONNECTING: 'connecting',
 } as const

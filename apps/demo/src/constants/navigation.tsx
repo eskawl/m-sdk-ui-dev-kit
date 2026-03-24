@@ -56,6 +56,7 @@ export const COMPONENT_NAV: SidebarMenuItem[] = [
     label: 'Data Display',
     icon: <LayersIcon />,
     items: [
+      { id: 'alerts', label: 'Alerts' },
       { id: 'table', label: 'Table' },
       { id: 'list-view-filter', label: 'List view filter' },
       { id: 'mosaic', label: 'Mosaic' },
@@ -163,6 +164,7 @@ export const COMPONENT_NAV: SidebarMenuItem[] = [
           { id: 'stats-group-card', label: 'Stats group card' },
           { id: 'miner-info-card', label: 'Miner info card' },
           { id: 'miner-chips-card', label: 'Miner chips card' },
+          { id: 'miners-activity-chart', label: 'Miners activity chart' },
         ],
       },
     ],

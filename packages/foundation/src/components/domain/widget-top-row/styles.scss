@@ -5,11 +5,11 @@
 
   align-items: center;
   gap: 10px;
-  color: var(--mining-sdk-color-white) !important;
+  color: var(--mdk-color-white) !important;
   font-weight: 500;
   font-size: 16px;
   padding: 16px;
-  border-bottom: 1px solid var(--mining-sdk-dialog-border-color);
+  border-bottom: 1px solid var(--mdk-dialog-border-color);
 
   &__inner {
     flex: 1;
@@ -20,7 +20,7 @@
   &__title {
     @include flex_align;
 
-    color: var(--mining-sdk-color-background-light);
+    color: var(--mdk-color-background-light);
     font-size: 15px;
     font-weight: 500;
     flex-grow: 1;
@@ -29,12 +29,12 @@
   &__power {
     font-size: 16px;
     font-weight: 700;
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
 
     span {
       font-size: 13px;
       font-weight: 400;
-      color: var(--mining-sdk-color-gray-450);
+      color: var(--mdk-color-gray-450);
     }
   }
 

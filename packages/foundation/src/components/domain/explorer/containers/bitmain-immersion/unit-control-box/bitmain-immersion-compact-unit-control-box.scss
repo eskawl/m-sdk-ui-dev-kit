@@ -10,17 +10,17 @@
     font-weight: 600;
 
     &--open {
-      color: rgb(var(--mining-sdk-color-success));
+      color: rgb(var(--mdk-color-success));
     }
 
     &--closed {
-      color: var(--mining-sdk-color-text-muted);
+      color: var(--mdk-color-text-muted);
     }
   }
 
   &__transition {
     font-size: 0.875rem;
     font-weight: 600;
-    color: rgb(var(--mining-sdk-color-orange-warning));
+    color: rgb(var(--mdk-color-orange-warning));
   }
 }

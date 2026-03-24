@@ -3,11 +3,11 @@
 .mining-sdk-miner-metric-card {
   padding: 10px;
   position: relative;
-  border: 1px solid var(--mining-sdk-border-default-color);
+  border: 1px solid var(--mdk-border-default-color);
 
   &__title {
     padding: 5px 5px 5px 10px;
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
   }
 
   &__efficiency {
@@ -41,7 +41,7 @@
     @include flex_column;
 
     gap: 8px;
-    background-color: rgba(var(--mining-sdk-color-white-rgb), 0.1);
+    background-color: rgba(var(--mdk-color-white-rgb), 0.1);
     padding: 8px 10px;
   }
 
@@ -51,7 +51,7 @@
     gap: 8px;
     grid-column: span 2;
     padding: 8px 10px;
-    background-color: rgba(var(--mining-sdk-color-white-rgb), 0.1);
+    background-color: rgba(var(--mdk-color-white-rgb), 0.1);
 
     @media (min-width: 1024px) {
       grid-template-columns: 1fr 1fr;
@@ -67,6 +67,6 @@
   }
 
   &__label {
-    color: rgba(var(--mining-sdk-color-white-rgb), 0.6);
+    color: rgba(var(--mdk-color-white-rgb), 0.6);
   }
 }

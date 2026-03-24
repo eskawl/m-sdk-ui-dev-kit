@@ -88,7 +88,7 @@ describe('TankRow', () => {
 
       const label = root.querySelector('.mining-sdk-tanks-box__param-label')
 
-      expect(label).toHaveStyle({ color: 'var(--mining-sdk-color-white-5)' })
+      expect(label).toHaveStyle({ color: 'var(--mdk-color-white-5)' })
     })
 
     it('should render temperature label and value with custom color', () => {
@@ -181,11 +181,11 @@ describe('TankRow', () => {
 
       const labels = root.querySelectorAll('.mining-sdk-tanks-box__param-label')
 
-      expect(labels[1]).toHaveStyle({ color: 'var(--mining-sdk-color-white-5)' })
+      expect(labels[1]).toHaveStyle({ color: 'var(--mdk-color-white-5)' })
 
       const values = root.querySelectorAll('.mining-sdk-tanks-box__param-value')
 
-      expect(values[1]).toHaveStyle({ color: 'var(--mining-sdk-color-white)' })
+      expect(values[1]).toHaveStyle({ color: 'var(--mdk-color-white)' })
     })
 
     it('should render pressure with custom pressure.color', () => {

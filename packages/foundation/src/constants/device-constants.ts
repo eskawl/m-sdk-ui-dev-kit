@@ -18,6 +18,16 @@ export const MINER_BRAND_NAMES = {
   [MINER_TYPE.WHATSMINER]: 'Whatsminer',
 } as const
 
+export const MinerStatuses = {
+  MINING: 'mining',
+  OFFLINE: 'offline',
+  SLEEPING: 'sleeping',
+  ERROR: 'error',
+  NOT_MINING: 'not_mining',
+  MAINTENANCE: 'maintenance',
+  ALERT: 'alert',
+} as const
+
 export const COMPLETE_MINER_TYPES = {
   ANTMINER_AM_S21: 'miner-am-s21',
   WHATSMINER_WM_63: 'miner-wm-m63',

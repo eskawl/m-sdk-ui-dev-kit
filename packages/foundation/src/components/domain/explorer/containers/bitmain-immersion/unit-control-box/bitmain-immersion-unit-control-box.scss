@@ -14,13 +14,13 @@
   &__item-label {
     font-size: 0.875rem;
     font-weight: 600;
-    color: var(--mining-sdk-color-text-muted);
+    color: var(--mdk-color-text-muted);
   }
 
   &__item-value {
     font-size: 0.875rem;
     font-weight: 600;
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
     white-space: nowrap;
   }
 }

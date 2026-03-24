@@ -41,15 +41,15 @@
     border-radius: 50%;
 
     &--critical {
-      background-color: rgb(var(--mining-sdk-color-error));
+      background-color: rgb(var(--mdk-color-error));
     }
 
     &--high {
-      background-color: var(--mining-sdk-color-primary);
+      background-color: var(--mdk-color-primary);
     }
 
     &--medium {
-      background-color: var(--mining-sdk-color-warning);
+      background-color: var(--mdk-color-warning);
     }
   }
 
@@ -74,21 +74,21 @@
 
   &__title-text {
     font-size: 12px;
-    color: var(--mining-sdk-color-background-light);
+    color: var(--mdk-color-background-light);
   }
 
   &__subtitle-text {
     font-size: 10px;
     padding: 5px 0;
     max-width: 100%;
-    color: var(--mining-sdk-color-text-muted);
+    color: var(--mdk-color-text-muted);
   }
 
   &__body-text {
     display: flex;
     gap: 5px;
     font-size: 10px;
-    color: var(--mining-sdk-color-text-muted-warm);
+    color: var(--mdk-color-text-muted-warm);
   }
 
   &__icon-wrapper {

@@ -7,7 +7,7 @@
   height: 70px;
 
   &__name {
-    color: rgb(var(--mining-sdk-color-soft-gray));
+    color: rgb(var(--mdk-color-soft-gray));
     font-size: 12px;
     font-weight: 400;
     line-height: 22px;
@@ -16,7 +16,7 @@
   }
 
   &__value {
-    color: rgb(var(--mining-sdk-color-soft-gray));
+    color: rgb(var(--mdk-color-soft-gray));
     font-size: 14px;
     font-weight: 500;
     line-height: 22px;

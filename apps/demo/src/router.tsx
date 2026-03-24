@@ -16,6 +16,8 @@ import { StatsGroupCardDemo } from './pages/explorer-details-view/stats-group-ca
 import { MosaicPageDemo } from './pages/mosaic-page/mosaic.page'
 import { StateExportsPage } from './pages/stats-export-page'
 import { WidgetTopRowPage } from './pages/widget-top-row-page'
+import { AlertExample } from './examples/alert-example'
+import { MinersActivityChartDemo } from './pages/explorer-details-view/miners-activity-chart/miners-activity-chart-demo'
 
 // Lazy load ALL pages to eliminate unused JavaScript and CSS
 const HomePage = lazy(() => import('./pages/home-page').then((m) => ({ default: m.HomePage })))
@@ -223,6 +225,7 @@ export const router = createBrowserRouter(
       element: <App />,
       children: [
         { index: true, element: withSuspense(HomePage) },
+        { path: 'alerts', element: withSuspense(AlertExample) },
         { path: 'action-button', element: withSuspense(ActionButtonPage) },
         { path: 'buttons', element: withSuspense(ButtonsPage) },
         { path: 'form-elements', element: withSuspense(FormElementsPage) },
@@ -300,6 +303,7 @@ export const router = createBrowserRouter(
         { path: 'stats-group-card', element: withSuspense(StatsGroupCardDemo) },
         { path: 'miner-info-card', element: withSuspense(MinerInfoCardDemo) },
         { path: 'miner-chips-card', element: withSuspense(MinerChipsCardDemo) },
+        { path: 'miners-activity-chart', element: withSuspense(MinersActivityChartDemo) },
         { path: '*', element: withSuspense(NotFoundPage) },
       ],
     },

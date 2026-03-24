@@ -4,7 +4,7 @@
   display: table-row;
   font-size: 0.8125rem; // 13px
   font-weight: 400;
-  color: var(--mining-sdk-color-text-secondary);
+  color: var(--mdk-color-text-secondary);
 
   &__label {
     display: table-cell;
@@ -41,7 +41,7 @@
 @keyframes flashText {
   0%,
   100% {
-    color: var(--mining-sdk-color-text-secondary);
+    color: var(--mdk-color-text-secondary);
   }
   50% {
     opacity: 0.5;

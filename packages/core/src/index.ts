@@ -7,6 +7,7 @@
 // Styled components
 export * from './components/accordion'
 export * from './components/action-button'
+export { Alert as CoreAlert } from './components/alert'
 export * from './components/alert-dialog'
 
 // Chart components

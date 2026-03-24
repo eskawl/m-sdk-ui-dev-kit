@@ -43,15 +43,11 @@ export const LogsCardPage = (): JSX.Element => {
           <h3>LogActivityIcon</h3>
           <div style={{ display: 'flex', gap: '20px', marginTop: '1rem' }}>
             <div>
-              <p style={{ marginBottom: '0.5rem', color: 'var(--mining-sdk-color-white)' }}>
-                Completed
-              </p>
+              <p style={{ marginBottom: '0.5rem', color: 'var(--mdk-color-white)' }}>Completed</p>
               <LogActivityIcon status={ACTIVITY_LOG_STATUS.COMPLETED} />
             </div>
             <div>
-              <p style={{ marginBottom: '0.5rem', color: 'var(--mining-sdk-color-white)' }}>
-                Pending
-              </p>
+              <p style={{ marginBottom: '0.5rem', color: 'var(--mdk-color-white)' }}>Pending</p>
               <LogActivityIcon status={ACTIVITY_LOG_STATUS.PENDING} />
             </div>
           </div>
@@ -64,31 +60,31 @@ export const LogsCardPage = (): JSX.Element => {
             style={{ display: 'flex', gap: '20px', marginTop: '1rem', alignItems: 'flex-start' }}
           >
             <div>
-              <p style={{ marginBottom: '0.5rem', color: 'var(--mining-sdk-color-white)' }}>
+              <p style={{ marginBottom: '0.5rem', color: 'var(--mdk-color-white)' }}>
                 Activity - Completed
               </p>
               <LogDot type={LOG_TYPES.ACTIVITY} status={ACTIVITY_LOG_STATUS.COMPLETED} />
             </div>
             <div>
-              <p style={{ marginBottom: '0.5rem', color: 'var(--mining-sdk-color-white)' }}>
+              <p style={{ marginBottom: '0.5rem', color: 'var(--mdk-color-white)' }}>
                 Activity - Pending
               </p>
               <LogDot type={LOG_TYPES.ACTIVITY} status={ACTIVITY_LOG_STATUS.PENDING} />
             </div>
             <div>
-              <p style={{ marginBottom: '0.5rem', color: 'var(--mining-sdk-color-white)' }}>
+              <p style={{ marginBottom: '0.5rem', color: 'var(--mdk-color-white)' }}>
                 Incidents - Critical
               </p>
               <LogDot type={LOG_TYPES.INCIDENTS} status="Critical" />
             </div>
             <div>
-              <p style={{ marginBottom: '0.5rem', color: 'var(--mining-sdk-color-white)' }}>
+              <p style={{ marginBottom: '0.5rem', color: 'var(--mdk-color-white)' }}>
                 Incidents - High
               </p>
               <LogDot type={LOG_TYPES.INCIDENTS} status="High" />
             </div>
             <div>
-              <p style={{ marginBottom: '0.5rem', color: 'var(--mining-sdk-color-white)' }}>
+              <p style={{ marginBottom: '0.5rem', color: 'var(--mdk-color-white)' }}>
                 Incidents - Medium
               </p>
               <LogDot type={LOG_TYPES.INCIDENTS} status="Medium" />

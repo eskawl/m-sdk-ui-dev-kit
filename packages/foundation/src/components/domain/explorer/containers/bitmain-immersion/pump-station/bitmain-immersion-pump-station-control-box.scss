@@ -1,14 +1,14 @@
 @use '@mdk/core/styles' as *;
 
 .mining-sdk-bitmain-immersion-pump-station-control-box {
-  background: var(--mining-sdk-color-dark-bg);
-  border: 1px solid var(--mining-sdk-border-default-color);
+  background: var(--mdk-color-dark-bg);
+  border: 1px solid var(--mdk-border-default-color);
   padding: 1.5rem;
 
   &__title {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
     margin: 0 0 1rem;
   }
 
@@ -27,11 +27,11 @@
     font-weight: 600;
 
     &--on {
-      color: var(--mining-sdk-color-strong-green);
+      color: var(--mdk-color-strong-green);
     }
 
     &--off {
-      color: var(--mining-sdk-color-brick-red);
+      color: var(--mdk-color-brick-red);
     }
   }
 }

@@ -9,10 +9,10 @@ import {
 } from '@mdk/core'
 import type { UnknownRecord } from '@mdk/core'
 import { getAlertsString } from '../../../../../utils/alerts-utils'
-import { MinerStatuses } from '../../../../../utils/device-utils'
 import type { Alert } from '../../types'
 import _isObject from 'lodash/isObject'
 import { StatusLabel } from '../status-label/status-label'
+import { MinerStatuses } from '../../../../../constants/device-constants'
 
 const MinerStatusIcon = ({ status = '' }): JSX.Element => {
   switch (status) {

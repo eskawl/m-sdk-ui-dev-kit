@@ -32,9 +32,9 @@
     border-radius: 6px;
     transition: all 0.2s ease;
     padding: 8px 32px 8px 36px;
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
     border: 1px solid var(--color-border);
-    background: var(--mining-sdk-sidebar-item-hover-bg);
+    background: var(--mdk-sidebar-item-hover-bg);
 
     &::placeholder {
       color: var(--mdk-input-placeholder-color);
@@ -48,7 +48,7 @@
 
   &__search-clear {
     @include flex_center;
-    
+
     position: absolute;
     right: 20px;
     width: 20px;
@@ -110,6 +110,23 @@
   &__hint {
     font-size: 0.8125rem;
     margin-bottom: 0.75rem;
+  }
+
+  &__alerts {
+    &--content {
+      @include flex_column;
+
+      gap: 20px;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__miners-activity {
+    margin-top: 2rem;
+
+    &--content {
+      margin: 1rem 0;
+    }
   }
 
   &__label {
@@ -437,8 +454,8 @@
     section {
       padding: 1.5rem;
       border-radius: 8px;
-      border: 1px solid var(--mining-sdk-color-white-4);
-      background-color: var(--mining-sdk-color-white-05);
+      border: 1px solid var(--mdk-color-white-4);
+      background-color: var(--mdk-color-white-05);
 
       h3 {
         margin: 0 0 1rem 0;
@@ -504,7 +521,7 @@
 
 .tag-input-custom-dropdown__option {
   @include flex_align_between;
-  
+
   padding: 0.5rem 0.75rem;
   font-size: 14px;
   cursor: pointer;
@@ -512,8 +529,8 @@
 
   &--selected {
     border-radius: 0;
-    color: var(--mining-sdk-color-white);
-    background-color: var(--mining-sdk-table-selected-row-bg);
+    color: var(--mdk-color-white);
+    background-color: var(--mdk-table-selected-row-bg);
   }
 
   &:not(.tag-input-custom-dropdown__option--selected) {
@@ -521,11 +538,11 @@
   }
 
   &--highlighted:not(.tag-input-custom-dropdown__option--selected) {
-    background-color: var(--mining-sdk-color-white-8);
+    background-color: var(--mdk-color-white-8);
   }
 
   &:hover:not(.tag-input-custom-dropdown__option--selected) {
-    background-color: var(--mining-sdk-color-white-8);
+    background-color: var(--mdk-color-white-8);
   }
 }
 

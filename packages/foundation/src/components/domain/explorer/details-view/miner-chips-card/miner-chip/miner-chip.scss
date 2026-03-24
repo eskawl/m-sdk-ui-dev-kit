@@ -6,28 +6,28 @@
   width: 95px;
   margin: 2px;
   padding: 10px 5px;
-  border: 1px solid rgb(var(--mining-sdk-color-soft-gray));
+  border: 1px solid rgb(var(--mdk-color-soft-gray));
 
   &__title {
     font-size: 14px;
-    color: var(--mining-sdk-color-primary);
+    color: var(--mdk-color-primary);
     margin: 0 0 5px;
   }
 
   &__property {
-    color: rgb(var(--mining-sdk-color-soft-gray));
+    color: rgb(var(--mdk-color-soft-gray));
     margin: 0 0 4px;
     font-size: 12px;
   }
 
   &__value {
-    color: var(--mining-sdk-color-text-secondary);
+    color: var(--mdk-color-text-secondary);
     margin-bottom: 8px;
     font-size: 12px;
   }
 
   &__value-type {
-    color: var(--mining-sdk-color-text-secondary);
+    color: var(--mdk-color-text-secondary);
     font-size: 8px;
     margin: 0;
   }

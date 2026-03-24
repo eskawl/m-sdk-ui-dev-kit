@@ -39,7 +39,7 @@ export const TankRow = ({
         <span
           className="mining-sdk-tanks-box__param-label"
           data-flash={flash || undefined}
-          style={{ color: color || 'var(--mining-sdk-color-white-5)' }}
+          style={{ color: color || 'var(--mdk-color-white-5)' }}
         >
           Temperature
         </span>
@@ -47,7 +47,7 @@ export const TankRow = ({
           <span
             className="mining-sdk-tanks-box__param-value"
             data-flash={flash || undefined}
-            style={{ color: color || 'var(--mining-sdk-color-white)' }}
+            style={{ color: color || 'var(--mdk-color-white)' }}
           >
             {`${temperature}${unit}`}
           </span>
@@ -59,7 +59,7 @@ export const TankRow = ({
             className="mining-sdk-tanks-box__param-label"
             data-flash={pressure.flash || undefined}
             style={{
-              color: pressure.color || 'var(--mining-sdk-color-white-5)',
+              color: pressure.color || 'var(--mdk-color-white-5)',
             }}
           >
             Pressure
@@ -71,7 +71,7 @@ export const TankRow = ({
               className="mining-sdk-tanks-box__param-value"
               data-flash={pressure.flash || undefined}
               style={{
-                color: pressure.color || 'var(--mining-sdk-color-white)',
+                color: pressure.color || 'var(--mdk-color-white)',
               }}
             >
               {`${pressure.value} ${UNITS.PRESSURE_BAR}`}

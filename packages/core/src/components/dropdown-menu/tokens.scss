@@ -1,16 +1,16 @@
-@use "sass:map";
+@use 'sass:map';
 
 // COLORS
-$content-border-color: var(--mining-sdk-color-white-2);
-$content-background-color: var(--mining-sdk-color-background-dark);
-$content-item-border-color: var(--mining-sdk-color-white-transparent);
-$content-item-hover-background-color: var(--mining-sdk-color-white-4);
+$content-border-color: var(--mdk-color-white-2);
+$content-background-color: var(--mdk-color-background-dark);
+$content-item-border-color: var(--mdk-color-white-transparent);
+$content-item-hover-background-color: var(--mdk-color-white-4);
 
-$menu-item-text-color: var(--mining-sdk-color-white-7);
-$menu-item-active-text-color: var(--mining-sdk-color-primary);
-$menu-item-active-background-color: var(--mining-sdk-color-primary-10);
+$menu-item-text-color: var(--mdk-color-white-7);
+$menu-item-active-text-color: var(--mdk-color-primary);
+$menu-item-active-background-color: var(--mdk-color-primary-10);
 
-$search-input-background-color: var(--mining-sdk-color-white-transparent);
+$search-input-background-color: var(--mdk-color-white-transparent);
 
 // SIZE CONFIG (CONSISTENT NAMING)
 $dropdown-sizes: (
@@ -29,7 +29,7 @@ $dropdown-sizes: (
     search-input-padding: 8px 12px,
     search-icon-size: 12px,
 
-    empty-padding: 48px 14px
+    empty-padding: 48px 14px,
   ),
 
   md: (
@@ -47,7 +47,7 @@ $dropdown-sizes: (
     search-input-padding: 9px 16px,
     search-icon-size: 14px,
 
-    empty-padding: 54px 18px
+    empty-padding: 54px 18px,
   ),
 
   lg: (
@@ -65,8 +65,8 @@ $dropdown-sizes: (
     search-input-padding: 12px 20px,
     search-icon-size: 16px,
 
-    empty-padding: 71px 26px
-  )
+    empty-padding: 71px 26px,
+  ),
 );
 
 // MIXINS

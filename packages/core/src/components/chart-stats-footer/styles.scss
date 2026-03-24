@@ -30,13 +30,13 @@
   }
 
   &__primary-text {
-    color: var(--mining-sdk-color-primary);
+    color: var(--mdk-color-primary);
     font-weight: 800;
     font-size: 14px;
   }
 
   &__secondary-text {
-    color: rgba(var(--mining-sdk-color-white-rgb), 0.5);
+    color: rgba(var(--mdk-color-white-rgb), 0.5);
     font-size: 14px;
   }
 
@@ -76,7 +76,7 @@
   &__stat-label {
     @include flex_row;
 
-    color: var(--mining-sdk-color-primary);
+    color: var(--mdk-color-primary);
     font-weight: 800;
     font-size: 14px;
   }
@@ -84,7 +84,7 @@
   &__stat-value {
     @include flex_row;
 
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
     font-size: 14px;
   }
 

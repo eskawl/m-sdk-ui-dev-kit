@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { render } from '@testing-library/react'
 import { MinerStatusIndicator } from '../mining-status-indicator'
-import { MinerStatuses } from '../../../../../../utils/device-utils'
+import { MinerStatuses } from '../../../../../../constants/device-constants'
 
 describe('minerStatusIndicator', () => {
   const mockGetFormattedDate = (date: Date) => date.toISOString()

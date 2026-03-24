@@ -17,14 +17,14 @@
   &__title {
     font-weight: 600;
     margin-right: 5px;
-    color: rgb(var(--mining-sdk-color-dark-grey));
+    color: rgb(var(--mdk-color-dark-grey));
     white-space: nowrap;
   }
 
   &__value {
     @include text_ellipsis;
 
-    color: var(--mining-sdk-color-text-secondary);
+    color: var(--mdk-color-text-secondary);
     max-width: 200px;
     text-align: right;
   }

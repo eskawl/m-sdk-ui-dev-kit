@@ -41,7 +41,7 @@
 
   &__label {
     font-size: 12px;
-    color: var(--mining-sdk-color-white-7);
+    color: var(--mdk-color-white-7);
   }
 
   &__value-row {
@@ -53,7 +53,7 @@
   &__value {
     font-size: 16px;
     font-weight: 700;
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
   }
 
   &__unit {
@@ -64,7 +64,7 @@
     font-size: 14px;
     line-height: 14px;
     text-align: start;
-    color: var(--mining-sdk-color-white-7);
+    color: var(--mdk-color-white-7);
     min-width: 0;
   }
 
@@ -76,11 +76,11 @@
     font-weight: 600;
 
     &--positive {
-      color: rgb(var(--mining-sdk-color-success));
+      color: rgb(var(--mdk-color-success));
     }
 
     &--negative {
-      color: rgb(var(--mining-sdk-color-error));
+      color: rgb(var(--mdk-color-error));
     }
   }
 }
