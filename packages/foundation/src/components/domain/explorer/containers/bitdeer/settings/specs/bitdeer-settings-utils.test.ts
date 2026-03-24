@@ -18,12 +18,16 @@ import {
   shouldBitdeerTankPressureSuperflash,
 } from '../bitdeer-settings-utils'
 
-vi.mock('@/utils/device-utils', () => ({
-  getContainerSpecificStats: vi.fn((data) => data?.container_specific),
-  getContainerSpecificConfig: vi.fn((data) => data?.container_config),
-  getStats: vi.fn((data) => data?.stats),
-  getCoolingSystem: vi.fn((data) => data?.cooling_system),
-}))
+vi.mock('@/utils/device-utils', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@/utils/device-utils')>()
+  return {
+    ...actual,
+    getContainerSpecificStats: vi.fn((data) => data?.container_specific),
+    getContainerSpecificConfig: vi.fn((data) => data?.container_config),
+    getStats: vi.fn((data) => data?.stats),
+    getCoolingSystem: vi.fn((data) => data?.cooling_system),
+  }
+})
 
 describe('getBitdeerCoolingSystemData', () => {
   it('extracts cooling system data', () => {
