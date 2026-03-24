@@ -84,20 +84,20 @@ export const DatePicker = React.forwardRef<HTMLButtonElement, DatePickerProps>(
         <PopoverTrigger asChild>
           <Button
             ref={ref}
-            variant="secondary"
-            className={cn('mining-sdk-date-picker__trigger', triggerClassName)}
+            variant="outline"
+            className={cn('mdk-date-picker__trigger', triggerClassName)}
             disabled={disabled}
-            icon={<CalendarIcon className="mining-sdk-date-picker__icon" />}
+            icon={<CalendarIcon className="mdk-date-picker__icon" />}
           >
             {selected ? format(selected, dateFormat) : placeholder}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="mining-sdk-date-picker__content" align="start">
+        <PopoverContent className="mdk-date-picker__content" align="start">
           <DayPicker
             mode="single"
             selected={selected}
             onSelect={handleSelect}
-            className={cn('mining-sdk-date-picker__calendar', calendarClassName, className)}
+            className={cn('mdk-date-picker__calendar', calendarClassName, className)}
             {...props}
           />
         </PopoverContent>
@@ -298,62 +298,61 @@ export const DateRangePicker = React.forwardRef<HTMLButtonElement, DateRangePick
         <PopoverTrigger asChild>
           <Button
             ref={ref}
-            variant="secondary"
-            className={cn('mining-sdk-date-picker__trigger', triggerClassName)}
+            variant="outline"
+            className={cn('mdk-date-picker__trigger', triggerClassName)}
             disabled={disabled}
-            icon={<CalendarIcon className="mining-sdk-date-picker__icon" />}
+            icon={<CalendarIcon className="mdk-date-picker__icon" />}
           >
-            <span className="mining-sdk-date-picker__text">{displayText}</span>
+            <span className="mdk-date-picker__text">{displayText}</span>
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className={cn('mining-sdk-date-picker__modal', modalClassName)}
+          className={cn('mdk-date-picker__modal', modalClassName)}
           align="start"
           collisionPadding={16}
           sideOffset={8}
         >
-          <div className="mining-sdk-date-picker__modal-header">
-            <h3 className="mining-sdk-date-picker__modal-title">Select Date Range</h3>
+          <div className="mdk-date-picker__modal-header">
+            <h3 className="mdk-date-picker__modal-title">Select Date Range</h3>
           </div>
 
-          <div className="mining-sdk-date-picker__modal-body">
-            <div className="mining-sdk-date-picker__calendar-container">
+          <div className="mdk-date-picker__modal-body">
+            <div className="mdk-date-picker__calendar-container">
               <DayPicker
                 mode="range"
                 selected={draftRange}
                 onSelect={handleSelect}
                 numberOfMonths={2}
                 disabled={getDisabledDays()}
-                className={cn('mining-sdk-date-picker__calendar', calendarClassName, className)}
+                className={cn('mdk-date-picker__calendar', calendarClassName, className)}
                 {...props}
               />
             </div>
 
-            <div className="mining-sdk-date-picker__meta">
+            <div className="mdk-date-picker__meta">
               {isRangeComplete && (
-                <div className="mining-sdk-date-picker__summary">
-                  <div className="mining-sdk-date-picker__summary-title">Selected Range</div>
-                  <div className="mining-sdk-date-picker__summary-dates">
-                    <span className="mining-sdk-date-picker__summary-date">
+                <div className="mdk-date-picker__summary">
+                  <div className="mdk-date-picker__summary-title">Selected Range</div>
+                  <div className="mdk-date-picker__summary-dates">
+                    <span className="mdk-date-picker__summary-date">
                       {format(draftRange.from!, 'dd MMM yyyy')}
                     </span>
                     <span>to</span>
-                    <span className="mining-sdk-date-picker__summary-date">
+                    <span className="mdk-date-picker__summary-date">
                       {format(draftRange.to!, 'dd MMM yyyy')}
                     </span>
                   </div>
-                  <div className="mining-sdk-date-picker__summary-count">
-                    {daysSelected} days selected
-                  </div>
+                  <div className="mdk-date-picker__summary-count">{daysSelected} days selected</div>
                 </div>
               )}
 
               {presetItems.length > 0 && (
-                <div className="mining-sdk-date-picker__presets">
+                <div className="mdk-date-picker__presets">
                   {presetItems.map((preset) => (
                     <Button
                       key={preset.label}
                       variant={isPresetActive(preset) ? 'primary' : 'secondary'}
+                      size="sm"
                       onClick={() => handlePresetClick(preset)}
                     >
                       {preset.label}
@@ -364,7 +363,7 @@ export const DateRangePicker = React.forwardRef<HTMLButtonElement, DateRangePick
             </div>
           </div>
 
-          <div className="mining-sdk-date-picker__modal-footer">
+          <div className="mdk-date-picker__modal-footer">
             <Button variant="secondary" onClick={handleClear}>
               Clear Selection
             </Button>

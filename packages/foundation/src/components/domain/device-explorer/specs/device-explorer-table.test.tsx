@@ -20,23 +20,23 @@ describe('deviceExplorerTable', () => {
 
   it('should render table wrapper with correct class', () => {
     const { container } = render(<DeviceExplorerTable {...defaultProps} />)
-    expect(container.querySelector('.mining-sdk-device-explorer__table')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-device-explorer__table')).toBeInTheDocument()
   })
 
   it('should render with miner device type', () => {
     const { container } = render(<DeviceExplorerTable {...defaultProps} deviceType="miner" />)
-    expect(container.querySelector('.mining-sdk-device-explorer__table')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-device-explorer__table')).toBeInTheDocument()
   })
 
   it('should render with cabinet device type', () => {
     const { container } = render(<DeviceExplorerTable {...defaultProps} deviceType="cabinet" />)
-    expect(container.querySelector('.mining-sdk-device-explorer__table')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-device-explorer__table')).toBeInTheDocument()
   })
 
   it('should pass data to table', () => {
     const data: DeviceExplorerDeviceData[] = [{ id: 'dev-1', type: 'container', last: {} }]
     const { container } = render(<DeviceExplorerTable {...defaultProps} data={data} />)
-    expect(container.querySelector('.mining-sdk-device-explorer__table')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-device-explorer__table')).toBeInTheDocument()
   })
 
   it('should accept sorting and onSortingChange', () => {
@@ -48,7 +48,7 @@ describe('deviceExplorerTable', () => {
         onSortingChange={onSortingChange}
       />,
     )
-    expect(container.querySelector('.mining-sdk-device-explorer__table')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-device-explorer__table')).toBeInTheDocument()
   })
 
   it('should accept selections and onSelectionsChange', () => {
@@ -60,6 +60,6 @@ describe('deviceExplorerTable', () => {
         onSelectionsChange={onSelectionsChange}
       />,
     )
-    expect(container.querySelector('.mining-sdk-device-explorer__table')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-device-explorer__table')).toBeInTheDocument()
   })
 })

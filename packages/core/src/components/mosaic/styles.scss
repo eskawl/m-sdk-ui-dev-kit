@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as *;
+
 .mosaic-grid {
   @include flex_column;
 

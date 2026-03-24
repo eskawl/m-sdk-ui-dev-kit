@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 
-const SIDEBAR_STORAGE_KEY = 'mining-sdk-sidebar-state'
-const SECTION_STORAGE_KEY = 'mining-sdk-sidebar-sections'
+const SIDEBAR_STORAGE_KEY = 'mdk-sidebar-state'
+const SECTION_STORAGE_KEY = 'mdk-sidebar-sections'
 
 type SidebarState = {
   expanded: boolean

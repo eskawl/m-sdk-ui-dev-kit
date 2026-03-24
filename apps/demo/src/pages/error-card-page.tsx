@@ -1,4 +1,4 @@
-import { ErrorCard } from '@mining-sdk/core'
+import { ErrorCard } from '@mdk/core'
 
 export const ErrorCardPage = (): JSX.Element => {
   return (

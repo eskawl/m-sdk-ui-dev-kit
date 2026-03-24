@@ -1,4 +1,4 @@
-import { Checkbox, Label, Switch } from '@mining-sdk/core'
+import { Checkbox, Label, Switch } from '@mdk/core'
 
 export const CheckboxExample = (): React.ReactElement => {
   return (

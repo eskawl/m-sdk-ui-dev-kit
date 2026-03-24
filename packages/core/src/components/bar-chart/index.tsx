@@ -259,7 +259,7 @@ export const BarChart = React.forwardRef<HTMLDivElement, BarChartProps>(
     )
 
     return (
-      <div ref={ref} className={cn('mining-sdk-bar-chart', className)} style={{ height }}>
+      <div ref={ref} className={cn('mdk-bar-chart', className)} style={{ height }}>
         <Bar data={chartData} options={mergedOptions} plugins={plugins} />
       </div>
     )

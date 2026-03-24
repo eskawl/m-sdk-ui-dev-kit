@@ -50,13 +50,13 @@ describe('dataTable', () => {
   it('shows loading overlay when loading is true', () => {
     const { container } = render(<DataTable data={sampleData} columns={basicColumns} loading />)
 
-    expect(container.querySelector('.mining-sdk-table__loader-overlay')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-table__loader-overlay')).toBeInTheDocument()
   })
 
   it('applies fullWidth class when fullWidth is true', () => {
     const { container } = render(<DataTable data={sampleData} columns={basicColumns} fullWidth />)
 
-    expect(container.querySelector('.mining-sdk-table__element--width-full')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-table__element--width-full')).toBeInTheDocument()
   })
 
   it('applies custom wrapper and table classNames', () => {
@@ -69,8 +69,8 @@ describe('dataTable', () => {
       />,
     )
 
-    expect(container.querySelector('.mining-sdk-table.custom-wrapper')).toBeInTheDocument()
-    expect(container.querySelector('.mining-sdk-table__element.custom-table')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-table.custom-wrapper')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-table__element.custom-table')).toBeInTheDocument()
   })
 })
 
@@ -118,7 +118,7 @@ describe('dataTable with pagination', () => {
       <DataTable data={manyRows} columns={basicColumns} enablePagination={false} />,
     )
 
-    expect(container.querySelector('.mining-sdk-table__pagination-section')).not.toBeInTheDocument()
+    expect(container.querySelector('.mdk-table__pagination-section')).not.toBeInTheDocument()
   })
 })
 
@@ -188,7 +188,7 @@ describe('tableBody', () => {
     const { container } = render(<TableBody table={table} />)
 
     expect(container.querySelector('tbody')).toBeInTheDocument()
-    expect(container.querySelector('.mining-sdk-table__body-row')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-table__body-row')).toBeInTheDocument()
     expect(screen.getByText('Cell1')).toBeInTheDocument()
   })
 
@@ -233,7 +233,7 @@ describe('emptyTableBody', () => {
   it('hides content when hideContent is true', () => {
     const { container } = render(<EmptyTableBody hideContent />)
 
-    expect(container.querySelector('.mining-sdk-table__empty-body--hidden')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-table__empty-body--hidden')).toBeInTheDocument()
     expect(screen.queryByText('No data present')).not.toBeInTheDocument()
   })
 })

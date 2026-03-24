@@ -1,4 +1,4 @@
-import { BitMainImmersionSummaryBox } from '@mining-sdk/foundation'
+import { BitMainImmersionSummaryBox } from '@mdk/foundation'
 import type { ComponentProps, ReactNode } from 'react'
 import './bitmain-immersion-summary-box-page.scss'
 

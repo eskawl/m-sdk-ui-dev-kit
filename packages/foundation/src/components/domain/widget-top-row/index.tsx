@@ -1,7 +1,7 @@
 import _map from 'lodash/map'
 
-import { cn, formatErrors, formatNumber, SimpleTooltip, unitToKilo } from '@mining-sdk/core'
-import type { ErrorWithTimestamp } from '@mining-sdk/core'
+import { cn, formatErrors, formatNumber, SimpleTooltip, unitToKilo } from '@mdk/core'
+import type { ErrorWithTimestamp } from '@mdk/core'
 
 import { useTimezone } from '../../../hooks/use-timezone'
 import { AlarmInfo } from './alarm-info'

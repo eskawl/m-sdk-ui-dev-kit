@@ -1,5 +1,5 @@
-import { COLOR } from '@mining-sdk/core'
-import { GaugeChartComponent } from '@mining-sdk/foundation'
+import { COLOR } from '@mdk/core'
+import { GaugeChartComponent } from '@mdk/foundation'
 import type { ReactElement } from 'react'
 import './gauge-chart-component-demo.scss'
 

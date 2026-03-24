@@ -1,4 +1,4 @@
-import { ArrowIcon, Indicator } from '@mining-sdk/core'
+import { ArrowIcon, Indicator } from '@mdk/core'
 
 export const IndicatorsExample = (): React.ReactElement => {
   return (

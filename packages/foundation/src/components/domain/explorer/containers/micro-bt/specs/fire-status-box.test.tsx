@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import { FireStatusBox } from '../fire-status-box/fire-status-box'
 
-vi.mock('@mining-sdk/core', () => ({
+vi.mock('@mdk/core', () => ({
   Indicator: vi.fn(({ color, children }) => <div data-color={color}>{children}</div>),
 }))
 

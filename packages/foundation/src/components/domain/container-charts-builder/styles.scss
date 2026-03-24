@@ -1,4 +1,4 @@
-@use '@mining-sdk/core/styles' as *;
+@use '@mdk/core/styles' as *;
 
 .container-charts-builder {
   width: 100%;
@@ -19,6 +19,6 @@
   &__current-value {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--mining-sdk-color-primary);
+    color: var(--mdk-color-primary);
   }
 }

@@ -1,7 +1,7 @@
 import type { ChangeEvent, FocusEvent, ReactElement, ReactNode, WheelEvent } from 'react'
 import { useMemo } from 'react'
 
-import type { UnknownRecord } from '@mining-sdk/core'
+import type { UnknownRecord } from '@mdk/core'
 import {
   Button,
   COLOR,
@@ -12,7 +12,7 @@ import {
   Label,
   Spinner,
   UNITS,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 
 import { getCommonColorMapping } from './helpers'
 import { FlashStatusIndicator, SoundStatusIndicator } from './status-indicator'
@@ -115,15 +115,14 @@ export const BaseThresholdForm = ({
   }
 
   /**
-   * Converts camelCase to Title Case with spaces
+   * Converts camelCase, snake_case, or kebab-case to Title Case with spaces
    */
   const toTitleCase = (str: string): string => {
     return str
-      .replace(/[-_]/g, ' ') // Replace underscores and hyphens with spaces
-      .replace(/([a-z])([A-Z])/g, '$1 $2') // Add space before capitals in camelCase
+      .replace(/([A-Z])/g, ' $1')
+      .replace(/[_-]/g, ' ')
       .trim()
-      .replace(/\s+/g, ' ') // Normalize multiple spaces to single space
-      .split(' ')
+      .split(/\s+/)
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
       .join(' ')
   }
@@ -196,13 +195,10 @@ export const BaseThresholdForm = ({
 
       data.push({
         key: i,
-        state: toTitleCase(key),
+        state: toTitleCase(key.replace(/([A-Z])/g, ' $1').trim()),
         range,
         color: (
-          <Indicator
-            className="mining-sdk-base-threshold-form__color-block"
-            color={colorInfo?.color}
-          >
+          <Indicator className="mdk-base-threshold-form__color-block" color={colorInfo?.color}>
             {colorInfo?.text}
           </Indicator>
         ),
@@ -237,16 +233,16 @@ export const BaseThresholdForm = ({
       }
 
       return (
-        <div key={key} className="mining-sdk-base-threshold-form__flex-col">
+        <div key={key} className="mdk-base-threshold-form__flex-col">
           <Label
-            className="mining-sdk-base-threshold-form__input-label"
+            className="mdk-base-threshold-form__input-label"
             htmlFor={`${thresholdType}-${key}-input`}
           >
             {label} starts at:
           </Label>
           <Input
             id={`${thresholdType}-${key}-input`}
-            className="mining-sdk-threshold-input"
+            className="mdk-threshold-input"
             type="number"
             step={0.1}
             ref={(el) => {
@@ -285,17 +281,15 @@ export const BaseThresholdForm = ({
 
           return (
             <div key={config.type}>
-              <h4 className="mining-sdk-base-threshold-form__section-title">
-                {config.title as string}
-              </h4>
+              <h4 className="mdk-base-threshold-form__section-title">{config.title as string}</h4>
 
               {/* Input Fields */}
-              <div className="mining-sdk-base-threshold-form__flex-row">
+              <div className="mdk-base-threshold-form__flex-row">
                 {getThresholdInputs(config.type, config)}
               </div>
 
               {/* Table */}
-              <div className="mining-sdk-base-threshold-form__table-container">
+              <div className="mdk-base-threshold-form__table-container">
                 <DataTable
                   bordered
                   data={tableData}
@@ -310,13 +304,16 @@ export const BaseThresholdForm = ({
 
       {/* Action Buttons */}
       {isEditing && (
-        <div className="mining-sdk-base-threshold-form__action-buttons">
-          <Button onClick={handleCancel}>Cancel</Button>
-          <Button variant="danger" color="red" onClick={handleReset}>
+        <div className="mdk-base-threshold-form__action-buttons">
+          <Button size="sm" onClick={handleCancel}>
+            Cancel
+          </Button>
+          <Button size="sm" variant="danger" color="red" onClick={handleReset}>
             Reset Values to Default
           </Button>
           <Button
             variant="primary"
+            size="sm"
             onClick={handleSave}
             disabled={isSaving || isSiteLoading || isSettingsLoading}
           >
@@ -327,3 +324,5 @@ export const BaseThresholdForm = ({
     </>
   )
 }
+
+export default BaseThresholdForm

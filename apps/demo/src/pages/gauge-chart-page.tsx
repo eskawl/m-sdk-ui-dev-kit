@@ -1,4 +1,4 @@
-import { ChartContainer, GaugeChart } from '@mining-sdk/core'
+import { ChartContainer, GaugeChart } from '@mdk/core'
 
 export const GaugeChartPage = (): JSX.Element => {
   return (

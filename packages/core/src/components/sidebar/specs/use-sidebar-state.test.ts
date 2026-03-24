@@ -24,7 +24,7 @@ describe('useSidebarExpandedState', () => {
   })
 
   it('returns stored expanded state when available', () => {
-    localStorage.setItem('mining-sdk-sidebar-state', JSON.stringify({ expanded: false }))
+    localStorage.setItem('mdk-sidebar-state', JSON.stringify({ expanded: false }))
 
     const { result } = renderHook(() => useSidebarExpandedState(true))
 
@@ -39,14 +39,12 @@ describe('useSidebarExpandedState', () => {
     })
 
     expect(result.current[0]).toBe(true)
-    expect(localStorage.getItem('mining-sdk-sidebar-state')).toBe(
-      JSON.stringify({ expanded: true }),
-    )
+    expect(localStorage.getItem('mdk-sidebar-state')).toBe(JSON.stringify({ expanded: true }))
   })
 
   it('handles localStorage read errors gracefully', () => {
     const consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
-    localStorage.setItem('mining-sdk-sidebar-state', 'invalid-json')
+    localStorage.setItem('mdk-sidebar-state', 'invalid-json')
 
     const { result } = renderHook(() => useSidebarExpandedState(true))
 
@@ -92,7 +90,7 @@ describe('useSidebarSectionState', () => {
   })
 
   it('returns stored section state when available', () => {
-    localStorage.setItem('mining-sdk-sidebar-sections', JSON.stringify({ 'section-1': false }))
+    localStorage.setItem('mdk-sidebar-sections', JSON.stringify({ 'section-1': false }))
 
     const { result } = renderHook(() => useSidebarSectionState('section-1', true))
 
@@ -108,7 +106,7 @@ describe('useSidebarSectionState', () => {
 
     expect(result.current[0]).toBe(true)
 
-    const stored = JSON.parse(localStorage.getItem('mining-sdk-sidebar-sections') || '{}')
+    const stored = JSON.parse(localStorage.getItem('mdk-sidebar-sections') || '{}')
     expect(stored['section-1']).toBe(true)
   })
 
@@ -124,14 +122,14 @@ describe('useSidebarSectionState', () => {
       result2.current[1](false)
     })
 
-    const stored = JSON.parse(localStorage.getItem('mining-sdk-sidebar-sections') || '{}')
+    const stored = JSON.parse(localStorage.getItem('mdk-sidebar-sections') || '{}')
     expect(stored['section-1']).toBe(true)
     expect(stored['section-2']).toBe(false)
   })
 
   it('handles localStorage read errors gracefully', () => {
     const consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
-    localStorage.setItem('mining-sdk-sidebar-sections', 'invalid-json')
+    localStorage.setItem('mdk-sidebar-sections', 'invalid-json')
 
     const { result } = renderHook(() => useSidebarSectionState('section-1', true))
 
@@ -161,7 +159,7 @@ describe('useSidebarSectionState', () => {
   })
 
   it('returns default when section not in stored state', () => {
-    localStorage.setItem('mining-sdk-sidebar-sections', JSON.stringify({ 'section-1': false }))
+    localStorage.setItem('mdk-sidebar-sections', JSON.stringify({ 'section-1': false }))
 
     const { result } = renderHook(() => useSidebarSectionState('section-2', true))
 
@@ -172,8 +170,8 @@ describe('useSidebarSectionState', () => {
 describe('clearSidebarState', () => {
   beforeEach(() => {
     localStorage.clear()
-    localStorage.setItem('mining-sdk-sidebar-state', JSON.stringify({ expanded: true }))
-    localStorage.setItem('mining-sdk-sidebar-sections', JSON.stringify({ 'section-1': true }))
+    localStorage.setItem('mdk-sidebar-state', JSON.stringify({ expanded: true }))
+    localStorage.setItem('mdk-sidebar-sections', JSON.stringify({ 'section-1': true }))
   })
 
   afterEach(() => {
@@ -183,8 +181,8 @@ describe('clearSidebarState', () => {
   it('removes sidebar state from localStorage', () => {
     clearSidebarState()
 
-    expect(localStorage.getItem('mining-sdk-sidebar-state')).toBe(null)
-    expect(localStorage.getItem('mining-sdk-sidebar-sections')).toBe(null)
+    expect(localStorage.getItem('mdk-sidebar-state')).toBe(null)
+    expect(localStorage.getItem('mdk-sidebar-sections')).toBe(null)
   })
 
   it('handles localStorage errors gracefully', () => {

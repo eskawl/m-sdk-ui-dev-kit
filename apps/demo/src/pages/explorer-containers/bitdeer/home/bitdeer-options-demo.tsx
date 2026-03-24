@@ -1,7 +1,6 @@
-import type { UnknownRecord } from '@mining-sdk/core'
-import { Button } from '@mining-sdk/core'
-import type { Device } from '@mining-sdk/foundation'
-import { BitdeerOptions } from '@mining-sdk/foundation'
+import type { UnknownRecord } from '@mdk/core'
+import { Button } from '@mdk/core'
+import { BitdeerOptions } from '@mdk/foundation'
 import type { ReactElement } from 'react'
 import { useState } from 'react'
 import './bitdeer-options-demo.scss'
@@ -365,7 +364,7 @@ export const BitdeerOptionsDemo = (): ReactElement => {
       <section className="dry-cooler-demo__component">
         <h2>Component Output</h2>
         <div className="dry-cooler-demo__component-wrapper">
-          <BitdeerOptions data={currentScenario.data as Device} />
+          <BitdeerOptions data={currentScenario.data} />
         </div>
       </section>
     </div>

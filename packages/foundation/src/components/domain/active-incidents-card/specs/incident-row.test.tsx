@@ -20,21 +20,17 @@ describe('incidentRow', () => {
 
   it('should render severity indicator', () => {
     const { container } = render(<IncidentRow {...defaultProps} />)
-    expect(
-      container.querySelector('.mining-sdk-active-incidents-card__dot--high'),
-    ).toBeInTheDocument()
+    expect(container.querySelector('.mdk-active-incidents-card__dot--high')).toBeInTheDocument()
   })
 
   it('should render arrow when onClick is provided', () => {
     const { container } = render(<IncidentRow {...defaultProps} onClick={() => {}} />)
-    expect(container.querySelector('.mining-sdk-active-incidents-card__arrow')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-active-incidents-card__arrow')).toBeInTheDocument()
   })
 
   it('should not render arrow when onClick is not provided', () => {
     const { container } = render(<IncidentRow {...defaultProps} />)
-    expect(
-      container.querySelector('.mining-sdk-active-incidents-card__arrow'),
-    ).not.toBeInTheDocument()
+    expect(container.querySelector('.mdk-active-incidents-card__arrow')).not.toBeInTheDocument()
   })
 
   it('should call onClick with id when clicked', () => {
@@ -43,7 +39,7 @@ describe('incidentRow', () => {
 
     const contentElement = screen
       .getByText('Test Incident')
-      .closest('.mining-sdk-active-incidents-card__row-content')
+      .closest('.mdk-active-incidents-card__row-content')
     fireEvent.click(contentElement!)
 
     expect(handleClick).toHaveBeenCalledWith('incident-1')
@@ -53,14 +49,14 @@ describe('incidentRow', () => {
   it('should add clickable class when onClick is provided', () => {
     const { container } = render(<IncidentRow {...defaultProps} onClick={() => {}} />)
     expect(
-      container.querySelector('.mining-sdk-active-incidents-card__row--clickable'),
+      container.querySelector('.mdk-active-incidents-card__row--clickable'),
     ).toBeInTheDocument()
   })
 
   it('should not add clickable class when onClick is not provided', () => {
     const { container } = render(<IncidentRow {...defaultProps} />)
     expect(
-      container.querySelector('.mining-sdk-active-incidents-card__row--clickable'),
+      container.querySelector('.mdk-active-incidents-card__row--clickable'),
     ).not.toBeInTheDocument()
   })
 
@@ -69,14 +65,14 @@ describe('incidentRow', () => {
       <IncidentRow {...defaultProps} severity="critical" />,
     )
     expect(
-      criticalContainer.querySelector('.mining-sdk-active-incidents-card__dot--critical'),
+      criticalContainer.querySelector('.mdk-active-incidents-card__dot--critical'),
     ).toBeInTheDocument()
 
     const { container: mediumContainer } = render(
       <IncidentRow {...defaultProps} severity="medium" />,
     )
     expect(
-      mediumContainer.querySelector('.mining-sdk-active-incidents-card__dot--medium'),
+      mediumContainer.querySelector('.mdk-active-incidents-card__dot--medium'),
     ).toBeInTheDocument()
   })
 

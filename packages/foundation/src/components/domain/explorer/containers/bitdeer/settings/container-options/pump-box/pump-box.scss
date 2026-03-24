@@ -1,6 +1,6 @@
-@import '../pump-shared';
+@use '../pump-shared' as *;
 
-.mining-sdk-pump-box {
+.mdk-pump-box {
   @include pump-container;
 
   &__status {

@@ -1,5 +1,5 @@
 /**
- * @mining-sdk/foundation - Test Utils
+ * @mdk/foundation - Test Utils
  *
  * Testing utilities and helpers for component testing.
  */

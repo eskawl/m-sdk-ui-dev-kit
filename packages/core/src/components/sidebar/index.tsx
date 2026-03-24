@@ -68,24 +68,24 @@ const Sidebar = ({
 
   return (
     <>
-      {showBackdrop && <div className="mining-sdk-sidebar__backdrop" onClick={onClose} />}
+      {showBackdrop && <div className="mdk-sidebar__backdrop" onClick={onClose} />}
 
       <nav
         className={cn(
-          'mining-sdk-sidebar',
-          isExpanded && 'mining-sdk-sidebar--expanded',
-          !visible && 'mining-sdk-sidebar--hidden',
-          overlay && 'mining-sdk-sidebar--overlay',
-          showBackdrop && 'mining-sdk-sidebar--overlay-visible',
-          header && 'mining-sdk-sidebar--with-header',
+          'mdk-sidebar',
+          isExpanded && 'mdk-sidebar--expanded',
+          !visible && 'mdk-sidebar--hidden',
+          overlay && 'mdk-sidebar--overlay',
+          showBackdrop && 'mdk-sidebar--overlay-visible',
+          header && 'mdk-sidebar--with-header',
           className,
         )}
       >
-        {header && <div className="mining-sdk-sidebar__header">{header}</div>}
+        {header && <div className="mdk-sidebar__header">{header}</div>}
 
         <button
           type="button"
-          className="mining-sdk-sidebar__toggle"
+          className="mdk-sidebar__toggle"
           onClick={handleToggle}
           aria-label={
             overlay ? 'Close sidebar' : isExpanded ? 'Collapse sidebar' : 'Expand sidebar'
@@ -94,7 +94,7 @@ const Sidebar = ({
           {isExpanded ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </button>
 
-        <div className="mining-sdk-sidebar__menu">
+        <div className="mdk-sidebar__menu">
           {items.map((item) => (
             <MenuItemInternal
               key={item.id}

@@ -1,4 +1,4 @@
-import { cn, FanIcon } from '@mining-sdk/core'
+import { cn, FanIcon } from '@mdk/core'
 import type { ReactElement } from 'react'
 import './container-fans-legend.scss'
 
@@ -29,21 +29,21 @@ export const ContainerFanLegend = ({
 }: ContainerFanLegendProps): ReactElement => (
   <div
     className={cn(
-      'mining-sdk-container-fan-legend',
+      'mdk-container-fan-legend',
       {
-        'mining-sdk-container-fan-legend--on': enabled,
-        'mining-sdk-container-fan-legend--off': !enabled,
+        'mdk-container-fan-legend--on': enabled,
+        'mdk-container-fan-legend--off': !enabled,
       },
       className,
     )}
   >
-    <span className="mining-sdk-container-fan-legend__number">
+    <span className="mdk-container-fan-legend__number">
       {index !== null && index !== undefined ? String(index) : ''}
     </span>
     <div
-      className={cn('mining-sdk-container-fan-legend__icon', {
-        'mining-sdk-container-fan-legend__icon--on': enabled,
-        'mining-sdk-container-fan-legend__icon--off': !enabled,
+      className={cn('mdk-container-fan-legend__icon', {
+        'mdk-container-fan-legend__icon--on': enabled,
+        'mdk-container-fan-legend__icon--off': !enabled,
       })}
     >
       <FanIcon />

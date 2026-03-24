@@ -1,4 +1,5 @@
-.mining-sdk-list-view-filter {
+@use '../../styles/mixins' as *;
+.mdk-list-view-filter {
   position: relative;
   display: inline-block;
 
@@ -7,14 +8,14 @@
 
     position: relative;
 
-    .mining-sdk-button {
+    .mdk-button {
       transition:
         color,
         border-color 200ms ease;
 
       &:hover {
-        color: var(--mining-sdk-color-primary-hover-light);
-        border-color: var(--mining-sdk-color-primary-hover-light);
+        color: var(--mdk-color-primary-hover-light);
+        border-color: var(--mdk-color-primary-hover-light);
       }
 
       &__label {
@@ -27,27 +28,27 @@
   &__dropdown {
     max-width: 90vw;
     padding: 0;
-    background-color: var(--mining-sdk-color-obsidian);
+    background-color: var(--mdk-color-obsidian);
     border: unset;
   }
 
   &__header {
     padding: 12px;
-    background-color: var(--mining-sdk-color-obsidian);
+    background-color: var(--mdk-color-obsidian);
   }
 
   &__content {
     padding: 0;
   }
 
-  .mining-sdk-cascader {
+  .mdk-cascader {
     border: none;
     background: transparent;
     &__panels {
       border: none;
     }
 
-    .mining-sdk-tag-input__wrapper {
+    .mdk-tag-input__wrapper {
       width: 15vw;
     }
   }

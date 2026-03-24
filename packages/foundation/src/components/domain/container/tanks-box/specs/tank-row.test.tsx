@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 import type { TankRowProps } from '../tank-row'
 import { TankRow } from '../tank-row'
 
-vi.mock('@mining-sdk/core', () => ({
+vi.mock('@mdk/core', () => ({
   Indicator: ({
     color,
     size,

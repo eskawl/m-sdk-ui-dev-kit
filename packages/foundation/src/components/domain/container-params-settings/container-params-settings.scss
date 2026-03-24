@@ -1,8 +1,8 @@
-@use '@mining-sdk/core/styles' as *;
+@use '@mdk/core/styles' as *;
 
-.mining-sdk-container-params {
+.mdk-container-params {
   &__title {
-    color: var(--mining-sdk-color-primary);
+    color: var(--mdk-color-primary);
     font-size: 18px;
     font-style: normal;
     font-weight: 600;
@@ -36,7 +36,7 @@
   &__label {
     @include text_ellipsis;
 
-    color: var(--mining-sdk-color-background-light);
+    color: var(--mdk-color-background-light);
     font-size: 12px;
     font-weight: 600;
     line-height: normal;

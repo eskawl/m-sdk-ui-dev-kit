@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@mining-sdk/core'
+import { Avatar, AvatarFallback, AvatarImage } from '@mdk/core'
 
 export const AvatarPage = (): JSX.Element => {
   return (

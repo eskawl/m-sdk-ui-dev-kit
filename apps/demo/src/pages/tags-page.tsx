@@ -1,4 +1,4 @@
-import { Tag } from '@mining-sdk/core'
+import { Tag } from '@mdk/core'
 
 export const TagsPage = (): JSX.Element => {
   return (

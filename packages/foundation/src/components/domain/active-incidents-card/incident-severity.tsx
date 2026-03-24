@@ -1,4 +1,4 @@
-import { cn } from '@mining-sdk/core'
+import { cn } from '@mdk/core'
 import type { TIncidentSeverity } from './types'
 
 type TIncidentSeverityProps = {
@@ -7,10 +7,7 @@ type TIncidentSeverityProps = {
 
 const IncidentSeverity = ({ severity }: TIncidentSeverityProps): JSX.Element => (
   <div
-    className={cn(
-      'mining-sdk-active-incidents-card__dot',
-      `mining-sdk-active-incidents-card__dot--${severity}`,
-    )}
+    className={cn('mdk-active-incidents-card__dot', `mdk-active-incidents-card__dot--${severity}`)}
   />
 )
 

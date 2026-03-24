@@ -66,18 +66,16 @@ const Radio = React.forwardRef<React.ElementRef<typeof RadioGroupPrimitive.Item>
     <RadioGroupPrimitive.Item
       ref={ref}
       className={cn(
-        'mining-sdk-radio',
-        `mining-sdk-radio--${size}`,
-        `mining-sdk-radio--${color}`,
-        `mining-sdk-radio--radius-${radius}`,
+        'mdk-radio',
+        `mdk-radio--${size}`,
+        `mdk-radio--${color}`,
+        `mdk-radio--radius-${radius}`,
         className,
       )}
       {...props}
     >
       {(label || children) ?? (
-        <RadioGroupPrimitive.Indicator
-          className={cn('mining-sdk-radio__indicator', indicatorClassName)}
-        />
+        <RadioGroupPrimitive.Indicator className={cn('mdk-radio__indicator', indicatorClassName)} />
       )}
     </RadioGroupPrimitive.Item>
   ),
@@ -120,9 +118,9 @@ const RadioGroup = React.forwardRef<
   <RadioGroupPrimitive.Root
     ref={ref}
     className={cn(
-      'mining-sdk-radio-group',
-      `mining-sdk-radio-group--${orientation}`,
-      noGap && 'mining-sdk-radio-group--no-gap',
+      'mdk-radio-group',
+      `mdk-radio-group--${orientation}`,
+      noGap && 'mdk-radio-group--no-gap',
       className,
     )}
     {...props}
@@ -152,10 +150,10 @@ const RadioCard = React.forwardRef<React.ElementRef<typeof RadioGroupPrimitive.I
     <Radio
       ref={ref}
       className={cn(
-        'mining-sdk-radio-card',
-        `mining-sdk-radio-card--${size}`,
-        `mining-sdk-radio-card--${color}`,
-        `mining-sdk-radio-card--radius-${radius}`,
+        'mdk-radio-card',
+        `mdk-radio-card--${size}`,
+        `mdk-radio-card--${color}`,
+        `mdk-radio-card--radius-${radius}`,
         className,
       )}
       {...props}

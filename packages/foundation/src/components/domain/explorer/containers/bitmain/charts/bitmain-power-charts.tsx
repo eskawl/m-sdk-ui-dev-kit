@@ -1,4 +1,4 @@
-import { CHART_COLORS, convertKwToW, UNITS } from '@mining-sdk/core'
+import { CHART_COLORS, convertKwToW, UNITS } from '@mdk/core'
 import type { ReactElement } from 'react'
 import { useMemo } from 'react'
 import type {

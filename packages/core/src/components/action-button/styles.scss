@@ -1,4 +1,5 @@
-.mining_sdk_action_button {
+@use '../../styles/mixins' as *;
+.mdk_action_button {
   &__trigger {
     letter-spacing: 0.05em;
   }
@@ -8,7 +9,7 @@
     border: none !important;
     border-radius: 0 !important;
     padding: 1rem 1.25rem !important;
-    background-color: var(--mining-sdk-color-gray-900) !important;
+    background-color: var(--mdk-color-gray-900) !important;
   }
 
   &__header {
@@ -28,12 +29,12 @@
     }
 
     &--danger {
-      color: var(--mining-sdk-color-brick-red);
+      color: var(--mdk-color-brick-red);
     }
 
     &--primary,
     &--secondary {
-      color: var(--mining-sdk-button-primary-bg);
+      color: var(--mdk-button-primary-bg);
     }
   }
 
@@ -41,14 +42,14 @@
     font-weight: 500;
     font-size: 1rem;
     font-family: var(--font-mono);
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
   }
 
   &__description {
     line-height: 1.7;
     font-size: 0.875rem;
     margin-bottom: 1.25rem;
-    color: var(--mining-sdk-color-text-secondary);
+    color: var(--mdk-color-text-secondary);
   }
 
   &__actions {

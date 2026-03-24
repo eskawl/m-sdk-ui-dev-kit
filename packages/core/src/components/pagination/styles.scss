@@ -1,4 +1,5 @@
-.mining-sdk-pagination {
+@use '../../styles/mixins' as *;
+.mdk-pagination {
   @include flex_center_justify_end;
 
   flex-wrap: wrap;
@@ -7,7 +8,7 @@
 
   &__total {
     font-size: 14px;
-    color: rgb(var(--mining-sdk-color-primary));
+    color: rgb(var(--mdk-color-primary));
     margin-right: auto;
   }
 
@@ -33,7 +34,7 @@
     &--arrow {
       position: absolute;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      color: rgba(var(--mining-sdk-color-white-rgb), 0.25);
+      color: rgba(var(--mdk-color-white-rgb), 0.25);
     }
 
     &--dot {
@@ -45,18 +46,18 @@
 
     &--arrow {
       font-size: 16px;
-      color: var(--mining-sdk-color-primary);
+      color: var(--mdk-color-primary);
       opacity: 0;
       transform: scale(0.5) translateY(10px);
     }
 
     &:hover:not(:disabled) {
-      .mining-sdk-pagination__ellipsis--dot {
+      .mdk-pagination__ellipsis--dot {
         opacity: 0;
         transform: scale(0.5) translateY(-10px);
       }
 
-      .mining-sdk-pagination__ellipsis--arrow {
+      .mdk-pagination__ellipsis--arrow {
         opacity: 1;
         transform: scale(1) translateY(0);
       }
@@ -70,21 +71,21 @@
       min-width: 32px;
       height: 32px;
       padding: 0 8px;
-      background: var(--mining-sdk-color-surface);
-      border: 1px solid var(--mining-sdk-border-default-color);
-      color: rgba(var(--mining-sdk-color-white-rgb), 0.8);
+      background: var(--mdk-color-surface);
+      border: 1px solid var(--mdk-border-default-color);
+      color: rgba(var(--mdk-color-white-rgb), 0.8);
       font-family: var(--font-mono);
       font-size: 14px;
       outline: none;
 
       &[data-state='open'] {
-        border-color: var(--mining-sdk-color-primary);
-        color: rgba(var(--mining-sdk-color-white-rgb), 0.4);
+        border-color: var(--mdk-color-primary);
+        color: rgba(var(--mdk-color-white-rgb), 0.4);
 
-        .mining-sdk-select__icon {
-          color: rgba(var(--mining-sdk-color-white-rgb), 0.4);
+        .mdk-select__icon {
+          color: rgba(var(--mdk-color-white-rgb), 0.4);
         }
-        box-shadow: 0 0 0 2px var(--mining-sdk-cascader-box-shadow-color);
+        box-shadow: 0 0 0 2px var(--mdk-cascader-box-shadow-color);
       }
 
       &:focus {
@@ -99,72 +100,51 @@
 
     &--item {
       font-size: 14px;
-      color: rgba(var(--mining-sdk-color-white-rgb), 0.8);
+      color: rgba(var(--mdk-color-white-rgb), 0.8);
       padding: 4px 8px;
       border-radius: 0;
 
-      .mining-sdk-select__item-indicator {
+      .mdk-select__item-indicator {
         display: none;
       }
 
       &:hover,
       &[data-highlighted] {
-        background: var(--mining-sdk-cascader-active-bg);
-        color: var(--mining-sdk-color-primary);
+        background: var(--mdk-cascader-active-bg);
+        color: var(--mdk-color-primary);
       }
     }
   }
 
   &__button {
     min-width: 32px;
-    min-height: 32px;
     height: 32px;
     font-size: 14px;
-    color: var(--mining-sdk-color-primary);
+    color: var(--mdk-color-primary);
     transition:
       background-color 0.2s,
       color 0.2s;
 
     &--prev,
     &--next {
-      width: 32px;
-      min-width: 32px;
-      height: 32px;
-      min-height: 32px;
       padding: 0;
-      color: rgba(var(--mining-sdk-color-white-rgb), 0.8);
-
-      .mining-sdk-button__content {
-        padding: 0;
-      }
+      color: rgba(var(--mdk-color-white-rgb), 0.8);
 
       &:hover {
-        border-color: var(--mining-sdk-button-secondary-border);
-        color: rgba(var(--mining-sdk-color-white-rgb), 0.8);
-        background: var(--mining-sdk-button-primary-bg-hover-overlay);
+        border-color: var(--mdk-button-secondary-border);
+        color: rgba(var(--mdk-color-white-rgb), 0.8);
+        background: var(--mdk-button-primary-bg-hover-overlay);
       }
     }
-
-    &--page {
-      height: 32px;
-      min-width: 32px;
-      min-height: 32px;
-      padding: 0 8px;
-
-      .mining-sdk-button__content {
-        padding: 0;
-      }
-    }
-
     &--active {
-      border: none;
-      background: rgba(var(--mining-sdk-color-primary-rgb), 0.2);
+      border-color: transparent;
+      background: rgba(var(--mdk-color-primary-rgb), 0.2);
     }
 
     &:not(&--prev):not(&--next):hover {
       border-color: transparent;
-      color: rgba(var(--mining-sdk-color-white-rgb), 0.7);
-      background: var(--mining-sdk-color-primary);
+      color: rgba(var(--mdk-color-white-rgb), 0.7);
+      background: var(--mdk-color-primary);
     }
   }
 

@@ -1,5 +1,5 @@
-import { UNITS } from '@mining-sdk/core'
-import { WidgetTopRow } from '@mining-sdk/foundation'
+import { UNITS } from '@mdk/core'
+import { WidgetTopRow } from '@mdk/foundation'
 
 export const WidgetTopRowPage = (): JSX.Element => (
   <section className="demo-section">

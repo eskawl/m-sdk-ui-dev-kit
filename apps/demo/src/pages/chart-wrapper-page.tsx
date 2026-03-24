@@ -1,13 +1,5 @@
-import {
-  BarChart,
-  Button,
-  ChartContainer,
-  computeStats,
-  LineChart,
-  Loader,
-  UNITS,
-} from '@mining-sdk/core'
-import { ChartWrapper } from '@mining-sdk/foundation'
+import { BarChart, Button, ChartContainer, computeStats, LineChart, Loader, UNITS } from '@mdk/core'
+import { ChartWrapper } from '@mdk/foundation'
 import * as React from 'react'
 
 /**

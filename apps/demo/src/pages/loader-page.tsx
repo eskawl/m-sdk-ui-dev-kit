@@ -1,4 +1,4 @@
-import { Loader, Typography } from '@mining-sdk/core'
+import { Loader, Typography } from '@mdk/core'
 
 export const LoaderPage = (): JSX.Element => {
   return (

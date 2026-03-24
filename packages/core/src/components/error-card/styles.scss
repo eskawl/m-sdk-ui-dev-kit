@@ -1,10 +1,11 @@
-.mining-sdk-error-card {
+@use '../../styles/mixins' as *;
+.mdk-error-card {
   &--card {
     @include flex_column;
 
     gap: 10px;
     padding: 10px;
-    border: 1px solid var(--mining-sdk-color-brick-red);
+    border: 1px solid var(--mdk-color-brick-red);
   }
 
   &--inline {
@@ -17,13 +18,13 @@
     font-family: var(--font-mono);
     font-size: 16px;
     font-weight: 600;
-    color: var(--mining-sdk-color-brick-red);
+    color: var(--mdk-color-brick-red);
   }
 
   &__message {
     font-family: var(--font-mono);
     font-size: 14px;
-    color: var(--mining-sdk-color-brick-red);
+    color: var(--mdk-color-brick-red);
     line-height: 1.5;
   }
 }

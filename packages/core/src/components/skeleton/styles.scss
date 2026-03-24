@@ -1,4 +1,4 @@
-$_prefix: 'mining-sdk-skeleton';
+$_prefix: 'mdk-skeleton';
 
 .#{$_prefix} {
   &__line {
@@ -11,11 +11,11 @@ $_prefix: 'mining-sdk-skeleton';
     );
     border-radius: 4px;
     background-size: 200% 100%;
-    animation: mining-sdk-skeleton-shimmer 1.5s infinite;
+    animation: mdk-skeleton-shimmer 1.5s infinite;
   }
 }
 
-@keyframes mining-sdk-skeleton-shimmer {
+@keyframes mdk-skeleton-shimmer {
   0% {
     background-position: 200% 0;
   }

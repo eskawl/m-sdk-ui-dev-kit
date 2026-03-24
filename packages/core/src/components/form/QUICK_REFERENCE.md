@@ -15,7 +15,7 @@ import {
   Button,
   validators,
   createFieldNames,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 
 // 1. Define schema with validators
 const schema = z.object({
@@ -190,7 +190,7 @@ function MyForm() {
 ## 🔐 Validator Cheat Sheet
 
 ```tsx
-import { validators } from '@mining-sdk/core'
+import { validators } from '@mdk/core'
 
 const schema = z.object({
   // Text validators
@@ -329,7 +329,7 @@ import {
   registerSchema,
   profileSchema,
   contactSchema,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 
 // Use directly
 const form = useForm({

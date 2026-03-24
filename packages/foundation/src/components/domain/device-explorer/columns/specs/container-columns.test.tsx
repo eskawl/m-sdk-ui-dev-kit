@@ -63,7 +63,7 @@ describe('getContainerColumns', () => {
 
       const { container } = render(col!.cell({ row: mockRow } as any) as any)
       expect(
-        container.querySelector('.mining-sdk-device-explorer__table__alarms__status-container'),
+        container.querySelector('.mdk-device-explorer__table__alarms__status-container'),
       ).toBeInTheDocument()
     })
 
@@ -121,7 +121,7 @@ describe('getContainerColumns', () => {
 
       const { container } = render(col!.cell({ row: mockRow } as any) as any)
       expect(
-        container.querySelector('.mining-sdk-device-explorer__table__cell-wrapper'),
+        container.querySelector('.mdk-device-explorer__table__cell-wrapper'),
       ).toBeInTheDocument()
     })
   })

@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 import type { TanksBoxProps } from '../tanks-box'
 import { TanksBox } from '../tanks-box'
 
-vi.mock('@mining-sdk/core', () => ({
+vi.mock('@mdk/core', () => ({
   Indicator: ({
     color,
     size,

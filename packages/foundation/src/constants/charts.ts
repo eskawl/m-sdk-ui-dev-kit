@@ -6,7 +6,7 @@ import {
   getChartAnimationConfig,
   getDataDecimationConfig,
   LABEL_TO_IGNORE,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 
 // Re-export shared constants
 export {
@@ -62,4 +62,4 @@ export type {
   ChartLegendOpacityValue,
   ChartPerformanceKey,
   LabelToIgnoreValue,
-} from '@mining-sdk/core'
+} from '@mdk/core'

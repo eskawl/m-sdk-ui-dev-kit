@@ -2,7 +2,6 @@ import * as React from 'react'
 
 import { cn } from '../../utils'
 import { Loader } from '../loader'
-import { RadioCard, RadioGroup } from '../radio'
 
 function legendFillColor(color: string): string {
   if (color.startsWith('hsl')) {
@@ -113,92 +112,99 @@ export const ChartContainer = React.forwardRef<HTMLDivElement, ChartContainerPro
       <div
         ref={ref}
         className={cn(
-          'mining-sdk-chart-container',
-          useGridLayout && 'mining-sdk-chart-container--grid',
+          'mdk-chart-container',
+          useGridLayout && 'mdk-chart-container--grid',
           className,
         )}
       >
         {useGridLayout ? (
           <>
-            <div className="mining-sdk-chart-container__title-area">
+            <div className="mdk-chart-container__title-area">
               {hasHeaderRow1 &&
-                (header ??
-                  (title && <h3 className="mining-sdk-chart-container__title">{title}</h3>))}
+                (header ?? (title && <h3 className="mdk-chart-container__title">{title}</h3>))}
             </div>
-            <div className="mining-sdk-chart-container__range-area">
+            <div className="mdk-chart-container__range-area">
               {rangeSelector && rangeSelector.options.length > 0 && (
-                <div role="group" aria-label="Time range">
-                  <RadioGroup defaultValue={rangeSelector.value} orientation="horizontal" noGap>
-                    {rangeSelector.options.map(({ value, label }) => (
-                      <RadioCard
-                        value={value}
-                        label={label}
-                        key={value}
-                        aria-pressed={rangeSelector.value === value}
-                        onClick={() => rangeSelector.onChange(value)}
-                      />
-                    ))}
-                  </RadioGroup>
+                <div
+                  className={cn('mdk-chart-container__range-selector', rangeSelector.className)}
+                  style={rangeSelector.style}
+                  role="group"
+                  aria-label="Time range"
+                >
+                  {rangeSelector.options.map((opt) => (
+                    <button
+                      key={opt.value}
+                      type="button"
+                      aria-pressed={rangeSelector.value === opt.value}
+                      className={cn(
+                        'mdk-chart-container__range-btn',
+                        rangeSelector.value === opt.value &&
+                          'mdk-chart-container__range-btn--active',
+                        rangeSelector.buttonClassName,
+                      )}
+                      onClick={() => rangeSelector.onChange(opt.value)}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
-            <div className="mining-sdk-chart-container__legend-area">
+            <div className="mdk-chart-container__legend-area">
               {hasLegendRow && (
-                <div className="mining-sdk-chart-container__legend">
+                <div className="mdk-chart-container__legend">
                   {legendData!.map((item, i) => {
                     const isHidden = item.hidden
                     return (
                       <button
                         key={i}
                         type="button"
-                        className="mining-sdk-chart-container__legend-item"
+                        className="mdk-chart-container__legend-item"
                         style={{ opacity: isHidden ? 0.3 : 1 }}
                         onClick={() => toggleDataset(i)}
                       >
                         <span
-                          className="mining-sdk-chart-container__legend-box"
+                          className="mdk-chart-container__legend-box"
                           style={{
                             backgroundColor: legendFillColor(item.color),
                             borderColor: item.color,
                           }}
                         />
-                        <span className="mining-sdk-chart-container__legend-label">
-                          {item.label}
-                        </span>
+                        <span className="mdk-chart-container__legend-label">{item.label}</span>
                       </button>
                     )
                   })}
                 </div>
               )}
             </div>
-            <div className="mining-sdk-chart-container__highlight-area">
+            <div className="mdk-chart-container__highlight-area">
               {highlightedValue && (
                 <div
                   className={cn(
-                    'mining-sdk-chart-container__highlighted-value',
+                    'mdk-chart-container__highlighted-value',
                     highlightedValue.className,
                   )}
                   style={highlightedValue.style}
                 >
-                  <span className="mining-sdk-chart-container__highlighted-value__number">
+                  <span className="mdk-chart-container__highlighted-value__number">
                     {highlightedValue.value}
                   </span>
                   {highlightedValue.unit && (
-                    <span className="mining-sdk-chart-container__highlighted-value__unit">
+                    <span className="mdk-chart-container__highlighted-value__unit">
                       {highlightedValue.unit}
                     </span>
                   )}
                 </div>
               )}
             </div>
-            <div className="mining-sdk-chart-container__chart-area">
+            <div className="mdk-chart-container__chart-area">
               {loading && (
-                <div className="mining-sdk-chart-container__loading-overlay">
+                <div className="mdk-chart-container__loading-overlay">
                   <Loader />
                 </div>
               )}
               {empty && !loading && (
-                <div className="mining-sdk-chart-container__empty">{emptyMessage}</div>
+                <div className="mdk-chart-container__empty">{emptyMessage}</div>
               )}
               {!empty && children}
             </div>
@@ -206,28 +212,27 @@ export const ChartContainer = React.forwardRef<HTMLDivElement, ChartContainerPro
         ) : (
           <>
             {hasHeaderRow1 && (
-              <div className="mining-sdk-chart-container__header-row">
-                <div className="mining-sdk-chart-container__header-left">
-                  {header ??
-                    (title && <h3 className="mining-sdk-chart-container__title">{title}</h3>)}
+              <div className="mdk-chart-container__header-row">
+                <div className="mdk-chart-container__header-left">
+                  {header ?? (title && <h3 className="mdk-chart-container__title">{title}</h3>)}
                 </div>
               </div>
             )}
-            <div className="mining-sdk-chart-container__body">
+            <div className="mdk-chart-container__body">
               {loading && (
-                <div className="mining-sdk-chart-container__loading-overlay">
+                <div className="mdk-chart-container__loading-overlay">
                   <Loader />
                 </div>
               )}
               {empty && !loading && (
-                <div className="mining-sdk-chart-container__empty">{emptyMessage}</div>
+                <div className="mdk-chart-container__empty">{emptyMessage}</div>
               )}
               {!empty && children}
             </div>
           </>
         )}
         {footer && !loading && !empty && (
-          <div className={cn('mining-sdk-chart-container__footer', footerClassName)}>{footer}</div>
+          <div className={cn('mdk-chart-container__footer', footerClassName)}>{footer}</div>
         )}
       </div>
     )

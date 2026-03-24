@@ -1,4 +1,4 @@
-import { UNITS } from '@mining-sdk/core'
+import { UNITS } from '@mdk/core'
 import type { ReactElement } from 'react'
 import type { Device } from '../../../types'
 import { BaseThresholdForm } from './base-threshold-form'

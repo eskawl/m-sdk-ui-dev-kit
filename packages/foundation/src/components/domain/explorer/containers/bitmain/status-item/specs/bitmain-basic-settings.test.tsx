@@ -78,18 +78,16 @@ describe('bitMainBasicSettings', () => {
   it('should have correct structure', () => {
     const { container } = render(<BitMainBasicSettings data={mockDevice} />)
 
-    expect(container.querySelector('.mining-sdk-bitmain-basic-settings')).toBeInTheDocument()
-    expect(container.querySelectorAll('.mining-sdk-bitmain-basic-settings__section')).toHaveLength(
-      2,
-    )
-    expect(container.querySelector('.mining-sdk-bitmain-basic-settings__title')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-bitmain-basic-settings')).toBeInTheDocument()
+    expect(container.querySelectorAll('.mdk-bitmain-basic-settings__section')).toHaveLength(2)
+    expect(container.querySelector('.mdk-bitmain-basic-settings__title')).toBeInTheDocument()
   })
 
   it('should render sections in correct order', () => {
     const { container } = render(<BitMainBasicSettings data={mockDevice} />)
 
-    const sections = container.querySelectorAll('.mining-sdk-bitmain-basic-settings__section')
-    const title = container.querySelector('.mining-sdk-bitmain-basic-settings__title')
+    const sections = container.querySelectorAll('.mdk-bitmain-basic-settings__section')
+    const title = container.querySelector('.mdk-bitmain-basic-settings__title')
 
     // Cooling system should be in first section
     expect(sections[0]).toContainElement(screen.getByTestId('cooling-system'))

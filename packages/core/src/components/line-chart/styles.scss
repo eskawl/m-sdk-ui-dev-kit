@@ -1,4 +1,4 @@
-$_prefix: mining-sdk-lw-line-chart;
+$_prefix: mdk-lw-line-chart;
 
 .#{$_prefix}-wrapper {
   width: 100%;
@@ -11,8 +11,8 @@ $_prefix: mining-sdk-lw-line-chart;
   .#{$_prefix}-tooltip {
     min-width: 270px;
     position: absolute;
-    background: var(--mining-sdk-color-dark-black);
-    color: var(--mining-sdk-color-light-grey);
+    background: var(--mdk-color-dark-black);
+    color: var(--mdk-color-light-grey);
     font-size: 12px;
     font-weight: normal;
     padding: 13px;

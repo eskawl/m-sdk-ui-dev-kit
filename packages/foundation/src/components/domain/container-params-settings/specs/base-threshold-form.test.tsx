@@ -1,4 +1,4 @@
-import { UNITS } from '@mining-sdk/core'
+import { UNITS } from '@mdk/core'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { useContainerThresholds } from '../../../../hooks/use-container-thresholds'
@@ -30,8 +30,8 @@ vi.mock('../../../../hooks/use-container-thresholds', () => ({
   })),
 }))
 
-vi.mock('@mining-sdk/core', async () => {
-  const actual = await vi.importActual('@mining-sdk/core')
+vi.mock('@mdk/core', async () => {
+  const actual = await vi.importActual('@mdk/core')
   return {
     ...actual,
     DataTable: vi.fn(({ data, columns }) => (

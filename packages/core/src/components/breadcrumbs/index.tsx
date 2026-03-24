@@ -30,7 +30,7 @@ const renderBreadcrumbItem = (
     return (
       <a
         href={item.href}
-        className={cn('mining-sdk-breadcrumbs__link', itemClassName)}
+        className={cn('mdk-breadcrumbs__link', itemClassName)}
         aria-current={ariaCurrent}
       >
         {item.label}
@@ -43,11 +43,7 @@ const renderBreadcrumbItem = (
     return (
       <button
         onClick={item.onClick}
-        className={cn(
-          'mining-sdk-breadcrumbs__link',
-          'mining-sdk-breadcrumbs__link--button',
-          itemClassName,
-        )}
+        className={cn('mdk-breadcrumbs__link', 'mdk-breadcrumbs__link--button', itemClassName)}
         type="button"
         aria-current={ariaCurrent}
       >
@@ -59,11 +55,7 @@ const renderBreadcrumbItem = (
   // Plain text
   return (
     <span
-      className={cn(
-        'mining-sdk-breadcrumbs__link',
-        'mining-sdk-breadcrumbs__link--current',
-        itemClassName,
-      )}
+      className={cn('mdk-breadcrumbs__link', 'mdk-breadcrumbs__link--current', itemClassName)}
       aria-current="page"
     >
       {item.label}
@@ -86,15 +78,15 @@ export const Breadcrumbs = React.forwardRef<HTMLElement, BreadcrumbsProps>(
     ref,
   ) => {
     return (
-      <nav ref={ref} className={cn('mining-sdk-breadcrumbs', className)} aria-label="Breadcrumb">
+      <nav ref={ref} className={cn('mdk-breadcrumbs', className)} aria-label="Breadcrumb">
         {showBack && (
           <button
             onClick={onBackClick}
-            className={cn('mining-sdk-breadcrumbs__back', backClassName)}
+            className={cn('mdk-breadcrumbs__back', backClassName)}
             type="button"
           >
             <svg
-              className="mining-sdk-breadcrumbs__back-icon"
+              className="mdk-breadcrumbs__back-icon"
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
@@ -111,16 +103,16 @@ export const Breadcrumbs = React.forwardRef<HTMLElement, BreadcrumbsProps>(
           </button>
         )}
 
-        <ol className="mining-sdk-breadcrumbs__list">
+        <ol className="mdk-breadcrumbs__list">
           {items.map((item, index) => {
             const isLast = index === items.length - 1
 
             return (
-              <li key={index} className="mining-sdk-breadcrumbs__item">
+              <li key={index} className="mdk-breadcrumbs__item">
                 {renderBreadcrumbItem(item, isLast, itemClassName)}
 
                 {!isLast && (
-                  <span className="mining-sdk-breadcrumbs__separator" aria-hidden="true">
+                  <span className="mdk-breadcrumbs__separator" aria-hidden="true">
                     {separator}
                   </span>
                 )}

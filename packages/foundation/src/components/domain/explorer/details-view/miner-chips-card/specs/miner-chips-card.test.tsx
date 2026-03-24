@@ -1,4 +1,4 @@
-import type { ContainerStats } from '@mining-sdk/foundation'
+import type { ContainerStats } from '@mdk/foundation'
 import { render, screen } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { MinerChip } from '../miner-chip/miner-chip'

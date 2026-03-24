@@ -1,17 +1,18 @@
+@use '../../styles/mixins' as *;
 /* ========================================
    Breadcrumbs Component Styles
    ======================================== */
 
-.mining-sdk-breadcrumbs {
+.mdk-breadcrumbs {
   @include flex_column;
 
   gap: 0.5rem;
 }
 
 /* Back Button */
-.mining-sdk-breadcrumbs__back {
+.mdk-breadcrumbs__back {
   @include inline_flex_align;
-  
+
   all: unset;
   gap: 0.5rem;
   cursor: pointer;
@@ -27,7 +28,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--mining-sdk-color-primary);
+    outline: 2px solid var(--mdk-color-primary);
     outline-offset: 2px;
     border-radius: 4px;
   }
@@ -37,7 +38,7 @@
   }
 }
 
-.mining-sdk-breadcrumbs__back-icon {
+.mdk-breadcrumbs__back-icon {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
@@ -45,7 +46,7 @@
 }
 
 /* Breadcrumb List */
-.mining-sdk-breadcrumbs__list {
+.mdk-breadcrumbs__list {
   @include flex_align;
   
   flex-wrap: wrap;
@@ -55,14 +56,14 @@
   list-style: none;
 }
 
-.mining-sdk-breadcrumbs__item {
+.mdk-breadcrumbs__item {
   @include flex_align;
   
   gap: 0.5rem;
 }
 
 /* Breadcrumb Links */
-.mining-sdk-breadcrumbs__link {
+.mdk-breadcrumbs__link {
   font-size: 0.875rem;
   text-decoration: none;
   transition: color 200ms ease;
@@ -70,7 +71,7 @@
   color: rgb(var(--mining-sdk-breadcrumbs-link-color));
 
   &:hover {
-    color: var(--mining-sdk-breadcrumbs-link-hover-color);
+    color: var(--mdk-breadcrumbs-link-hover-color);
   }
 
   &:focus-visible {
@@ -84,10 +85,10 @@
     cursor: pointer;
     font-family: var(--font-mono);
     font-size: 0.875rem;
-    color: rgb(var(--mining-sdk-breadcrumbs-link-color));
+    color: rgb(var(--mdk-breadcrumbs-link-color));
 
     &:hover {
-      color: var(--mining-sdk-breadcrumbs-link-hover-color);
+      color: var(--mdk-breadcrumbs-link-hover-color);
     }
   }
 
@@ -97,9 +98,9 @@
 }
 
 /* Separator */
-.mining-sdk-breadcrumbs__separator {
+.mdk-breadcrumbs__separator {
   user-select: none;
   font-size: 0.875rem;
   font-family: var(--font-mono);
-  color: var(--mining-sdk-breadcrumbs-separator-color);
+  color: var(--mdk-breadcrumbs-separator-color);
 }

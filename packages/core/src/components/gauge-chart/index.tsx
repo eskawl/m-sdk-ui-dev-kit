@@ -38,14 +38,14 @@ export const GaugeChart = React.forwardRef<HTMLDivElement, GaugeChartProps>(
       arcWidth = 0.2,
       nrOfLevels = 3,
       hideText = false,
-      id = 'mining-sdk-gauge-chart',
+      id = 'mdk-gauge-chart',
       height = 200,
       className,
     },
     ref,
   ) => {
     return (
-      <div ref={ref} className={cn('mining-sdk-gauge-chart', className)} style={{ height }}>
+      <div ref={ref} className={cn('mdk-gauge-chart', className)} style={{ height }}>
         <ReactGaugeChart
           id={id}
           percent={Math.max(0, Math.min(1, percent))}

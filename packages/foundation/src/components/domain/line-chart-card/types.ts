@@ -5,7 +5,7 @@ import type {
   IChartApi,
   LightWeightLineChartProps,
   MinMaxAvg,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 
 export type LineChartCardDataset = {
   /** Label for the dataset (used in legend) */

@@ -1,4 +1,4 @@
-import type { ChartDataset } from '@mining-sdk/core'
+import type { ChartDataset } from '@mdk/core'
 import { describe, expect, it } from 'vitest'
 import { useChartDataCheck } from '../use-chart-data-check'
 

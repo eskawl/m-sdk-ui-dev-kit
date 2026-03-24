@@ -9,7 +9,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         api: 'modern-compiler',
-        additionalData: `@use '@mining-sdk/core/styles' as *;\n`,
+        additionalData: `@use '@mdk/core/styles' as *;\n`,
       } as Record<string, unknown>,
     },
   },

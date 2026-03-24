@@ -169,7 +169,7 @@ describe('form primitives (FormItem, FormControl, FormLabel, FormDescription, Fo
       </FormWrapper>,
     )
 
-    const messageEl = container.querySelector('.mining-sdk-form-message')
+    const messageEl = container.querySelector('.mdk-form-message')
     expect(messageEl).toBeInTheDocument()
     expect(messageEl?.textContent).toMatch(/\u00A0/)
   })
@@ -226,7 +226,7 @@ describe('formInput', () => {
       </FormWrapper>,
     )
 
-    expect(document.querySelector('.mining-sdk-input__wrapper--search')).toBeInTheDocument()
+    expect(document.querySelector('.mdk-input__wrapper--search')).toBeInTheDocument()
   })
 
   it('displays validation error via FormMessage', () => {

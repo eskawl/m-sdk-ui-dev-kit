@@ -1,4 +1,4 @@
-import { StatsGroupCard } from '@mining-sdk/foundation'
+import { StatsGroupCard } from '@mdk/foundation'
 import type { ReactElement } from 'react'
 import './stats-group-card-demo.scss'
 

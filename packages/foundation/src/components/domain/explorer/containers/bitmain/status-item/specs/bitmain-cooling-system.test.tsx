@@ -1,11 +1,11 @@
-import { Indicator } from '@mining-sdk/core'
+import { Indicator } from '@mdk/core'
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import type { Device } from '../../../../../../../types/device'
 import { BitMainCoolingSystem } from '../settings/cooling-system/bitmain-cooling-system'
 
 // Mock dependencies
-vi.mock('@mining-sdk/core', () => ({
+vi.mock('@mdk/core', () => ({
   Indicator: vi.fn(({ color, size, children }) => (
     <div data-testid="indicator" data-color={color} data-size={size}>
       {children}
@@ -159,27 +159,25 @@ describe('bitMainCoolingSystem', () => {
     it('should have correct CSS classes', () => {
       const { container } = render(<BitMainCoolingSystem data={mockDevice} />)
 
-      expect(container.querySelector('.mining-sdk-bitmain-cooling-system')).toBeInTheDocument()
-      expect(
-        container.querySelector('.mining-sdk-bitmain-cooling-system__wrapper'),
-      ).toBeInTheDocument()
-      expect(container.querySelectorAll('.mining-sdk-bitmain-cooling-system__row')).toHaveLength(2)
-      expect(container.querySelectorAll('.mining-sdk-bitmain-cooling-system__item')).toHaveLength(7)
+      expect(container.querySelector('.mdk-bitmain-cooling-system')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-bitmain-cooling-system__wrapper')).toBeInTheDocument()
+      expect(container.querySelectorAll('.mdk-bitmain-cooling-system__row')).toHaveLength(2)
+      expect(container.querySelectorAll('.mdk-bitmain-cooling-system__item')).toHaveLength(7)
     })
 
     it('should have 4 items in first row', () => {
       const { container } = render(<BitMainCoolingSystem data={mockDevice} />)
 
-      const firstRow = container.querySelectorAll('.mining-sdk-bitmain-cooling-system__row')[0]
-      const items = firstRow.querySelectorAll('.mining-sdk-bitmain-cooling-system__item')
+      const firstRow = container.querySelectorAll('.mdk-bitmain-cooling-system__row')[0]
+      const items = firstRow.querySelectorAll('.mdk-bitmain-cooling-system__item')
       expect(items).toHaveLength(4)
     })
 
     it('should have 3 items in second row', () => {
       const { container } = render(<BitMainCoolingSystem data={mockDevice} />)
 
-      const secondRow = container.querySelectorAll('.mining-sdk-bitmain-cooling-system__row')[1]
-      const items = secondRow.querySelectorAll('.mining-sdk-bitmain-cooling-system__item')
+      const secondRow = container.querySelectorAll('.mdk-bitmain-cooling-system__row')[1]
+      const items = secondRow.querySelectorAll('.mdk-bitmain-cooling-system__item')
       expect(items).toHaveLength(3)
     })
   })

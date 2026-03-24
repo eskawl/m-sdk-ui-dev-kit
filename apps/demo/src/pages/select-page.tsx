@@ -7,7 +7,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 
 export const SelectPage = (): JSX.Element => {
   return (

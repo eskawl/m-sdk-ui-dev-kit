@@ -1,4 +1,4 @@
-import { Button, Card } from '@mining-sdk/core'
+import { Button, Card } from '@mdk/core'
 
 export const CardPage = (): JSX.Element => {
   return (

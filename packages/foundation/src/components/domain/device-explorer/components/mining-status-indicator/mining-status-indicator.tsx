@@ -6,8 +6,8 @@ import {
   OfflineStatusIcon,
   SimpleTooltip,
   SleepStatusIcon,
-} from '@mining-sdk/core'
-import type { UnknownRecord } from '@mining-sdk/core'
+} from '@mdk/core'
+import type { UnknownRecord } from '@mdk/core'
 import { getAlertsString } from '../../../../../utils/alerts-utils'
 import { MinerStatuses } from '../../../../../utils/device-utils'
 import type { Alert } from '../../types'
@@ -18,7 +18,7 @@ const MinerStatusIcon = ({ status = '' }): JSX.Element => {
   switch (status) {
     case MinerStatuses.ALERT:
       return (
-        <div className="mining-sdk-mining-status-indicator--alert">
+        <div className="mdk-mining-status-indicator--alert">
           <AlertTriangleIcon />
         </div>
       )
@@ -85,7 +85,7 @@ export const MinerStatusIndicator = ({
   const status = alertsTyped?.length ? MinerStatuses.ALERT : String(stats?.status || '')
 
   const iconContent = (
-    <div className="mining-sdk-mining-status-indicator">
+    <div className="mdk-mining-status-indicator">
       <MinerStatusIcon status={status} />
     </div>
   )

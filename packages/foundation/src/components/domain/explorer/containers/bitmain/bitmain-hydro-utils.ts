@@ -1,4 +1,4 @@
-import type { UnknownRecord } from '@mining-sdk/core'
+import type { UnknownRecord } from '@mdk/core'
 import { CONTAINER_MODEL } from '../../../../../constants/container-constants'
 import type { ContainerSnap, Device } from '../../../../../types/device'
 import {

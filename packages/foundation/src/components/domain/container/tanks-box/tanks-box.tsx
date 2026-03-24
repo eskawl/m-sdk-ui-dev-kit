@@ -1,5 +1,5 @@
 import _map from 'lodash/map'
-import { UNITS } from '@mining-sdk/core'
+import { UNITS } from '@mdk/core'
 import { TankRow } from './tank-row'
 import './tanks-box.scss'
 

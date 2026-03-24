@@ -1,4 +1,4 @@
-# Mining SDK
+# MDK
 
 > A developer-first toolkit providing pre-built components and seamless backend integration for building mining operations applications in days instead of weeks.
 
@@ -19,7 +19,7 @@
 
 ## Overview
 
-The **Mining SDK** is a comprehensive toolkit providing:
+The **MDK** is a comprehensive toolkit providing:
 
 - **150-200+ production-tested components** (foundation + domain-specific)
 - **87+ API integration hooks** (RTK Query-based)
@@ -42,7 +42,7 @@ The **Mining SDK** is a comprehensive toolkit providing:
 
 This monorepo contains 2 main packages in a simplified architecture:
 
-### `@mining-sdk/core`
+### `@mdk/core`
 
 Core UI components, utilities, types, and theme system. This package includes:
 
@@ -52,7 +52,7 @@ Core UI components, utilities, types, and theme system. This package includes:
 - Theme system with design tokens
 - SCSS-based styling
 
-### `@mining-sdk/foundation`
+### `@mdk/foundation`
 
 Complete foundation with features, state management, and utilities. This package includes:
 
@@ -68,7 +68,7 @@ Complete foundation with features, state management, and utilities. This package
 Interactive demo showcasing all components.
 
 - **Location**: `apps/demo`
-- **Run**: `pnpm --filter @mining-sdk/demo dev`
+- **Run**: `pnpm --filter @mdk/demo dev`
 
 📖 **See [docs/STRUCTURE.md](docs/STRUCTURE.md) for complete package details and dependency graph.**
 
@@ -122,7 +122,7 @@ pnpm dev:demo
 pnpm build
 
 # Build specific package
-pnpm --filter @mining-sdk/core build
+pnpm --filter @mdk/core build
 
 # Type check all packages
 pnpm typecheck
@@ -134,14 +134,14 @@ pnpm lint
 pnpm lint:fix
 ```
 
-### Using @mining-sdk/core in Your App
+### Using @mdk/core in Your App
 
 1. Add the dependency to your app's `package.json`:
 
 ```json
 {
   "dependencies": {
-    "@mining-sdk/core": "workspace:*"
+    "@mdk/core": "workspace:*"
   }
 }
 ```
@@ -149,8 +149,8 @@ pnpm lint:fix
 2. Import and use components:
 
 ```tsx
-import { Button, Dialog, Switch } from '@mining-sdk/core'
-import '@mining-sdk/core/styles.css'
+import { Button, Dialog, Switch } from '@mdk/core'
+import '@mdk/core/styles.css'
 
 const App = () => {
   return <Button variant="secondary">Click me</Button>
@@ -241,8 +241,8 @@ For detailed information, see:
 
 ### Package Documentation
 
-- **[@mining-sdk/core](packages/core/README.md)** - Core components, utilities, and theme ([Usage Guide](packages/core/USAGE.md))
-- **[@mining-sdk/foundation](packages/foundation/README.md)** - Complete foundation with features, state, API, and utilities
+- **[@mdk/core](packages/core/README.md)** - Core components, utilities, and theme ([Usage Guide](packages/core/USAGE.md))
+- **[@mdk/foundation](packages/foundation/README.md)** - Complete foundation with features, state, API, and utilities
 
 ### Demo App
 

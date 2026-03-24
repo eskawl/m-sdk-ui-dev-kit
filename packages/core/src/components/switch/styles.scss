@@ -1,13 +1,14 @@
+@use '../../styles/mixins' as *;
 /* Base Switch (Track/Background) */
 
-.mining-sdk-switch {
+.mdk-switch {
   @include inline_flex_align;
 
   all: unset;
   position: relative;
   cursor: pointer;
   transition: background-color 200ms ease;
-  box-shadow: var(--mining-sdk-shadow-inset);
+  box-shadow: var(--mdk-shadow-inset);
 
   &:disabled {
     opacity: 0.5;
@@ -21,10 +22,10 @@
 }
 
 /* Thumb (Sliding Circle) */
-.mining-sdk-switch__thumb {
+.mdk-switch__thumb {
   display: block;
-  background-color: var(--mining-sdk-color-white);
-  box-shadow: 0 2px 4px var(--mining-sdk-switch-thumb-shadow);
+  background-color: var(--mdk-color-white);
+  box-shadow: 0 2px 4px var(--mdk-switch-thumb-shadow);
   transition: transform 200ms ease;
   will-change: transform;
 }
@@ -34,49 +35,49 @@
    ======================================== */
 
 /* Small */
-.mining-sdk-switch--sm {
+.mdk-switch--sm {
   width: 32px;
   height: 18px;
 
-  .mining-sdk-switch__thumb {
+  .mdk-switch__thumb {
     width: 14px;
     height: 14px;
     transform: translateX(2px);
   }
 
-  &[data-state='checked'] .mining-sdk-switch__thumb {
+  &[data-state='checked'] .mdk-switch__thumb {
     transform: translateX(16px);
   }
 }
 
 /* Medium (Default) */
-.mining-sdk-switch--md {
+.mdk-switch--md {
   width: 42px;
   height: 24px;
 
-  .mining-sdk-switch__thumb {
+  .mdk-switch__thumb {
     width: 20px;
     height: 20px;
     transform: translateX(2px);
   }
 
-  &[data-state='checked'] .mining-sdk-switch__thumb {
+  &[data-state='checked'] .mdk-switch__thumb {
     transform: translateX(20px);
   }
 }
 
 /* Large */
-.mining-sdk-switch--lg {
+.mdk-switch--lg {
   width: 52px;
   height: 30px;
 
-  .mining-sdk-switch__thumb {
+  .mdk-switch__thumb {
     width: 26px;
     height: 26px;
     transform: translateX(2px);
   }
 
-  &[data-state='checked'] .mining-sdk-switch__thumb {
+  &[data-state='checked'] .mdk-switch__thumb {
     transform: translateX(24px);
   }
 }
@@ -86,46 +87,46 @@
    ======================================== */
 
 /* None (Square corners) */
-.mining-sdk-switch--radius-none {
+.mdk-switch--radius-none {
   border-radius: 0;
 
-  .mining-sdk-switch__thumb {
+  .mdk-switch__thumb {
     border-radius: 0;
   }
 }
 
 /* Small (Slightly rounded) */
-.mining-sdk-switch--radius-small {
+.mdk-switch--radius-small {
   border-radius: 4px;
 
-  .mining-sdk-switch__thumb {
+  .mdk-switch__thumb {
     border-radius: 2px;
   }
 }
 
 /* Medium (Moderately rounded) */
-.mining-sdk-switch--radius-medium {
+.mdk-switch--radius-medium {
   border-radius: 8px;
 
-  .mining-sdk-switch__thumb {
+  .mdk-switch__thumb {
     border-radius: 6px;
   }
 }
 
 /* Large (Very rounded) */
-.mining-sdk-switch--radius-large {
+.mdk-switch--radius-large {
   border-radius: 12px;
 
-  .mining-sdk-switch__thumb {
+  .mdk-switch__thumb {
     border-radius: 10px;
   }
 }
 
 /* Full (Pill-shaped, fully rounded) */
-.mining-sdk-switch--radius-full {
+.mdk-switch--radius-full {
   border-radius: 9999px;
 
-  .mining-sdk-switch__thumb {
+  .mdk-switch__thumb {
     border-radius: 9999px;
   }
 }
@@ -135,77 +136,77 @@
    ======================================== */
 
 /* Default (Gray/Neutral) */
-.mining-sdk-switch--default {
-  background-color: var(--mining-sdk-switch-unchecked-bg);
+.mdk-switch--default {
+  background-color: var(--mdk-switch-unchecked-bg);
 
   &[data-state='checked'] {
-    background-color: var(--mining-sdk-color-gray-400);
+    background-color: var(--mdk-color-gray-400);
   }
 
   &:focus-visible {
-    outline-color: var(--mining-sdk-color-gray-400);
+    outline-color: var(--mdk-color-gray-400);
   }
 }
 
 /* Primary (Orange) */
-.mining-sdk-switch--primary {
-  background-color: var(--mining-sdk-switch-unchecked-bg);
+.mdk-switch--primary {
+  background-color: var(--mdk-switch-unchecked-bg);
 
   &[data-state='checked'] {
-    background-color: var(--mining-sdk-color-primary);
+    background-color: var(--mdk-color-primary);
   }
 
   &:focus-visible {
-    outline-color: var(--mining-sdk-color-primary);
+    outline-color: var(--mdk-color-primary);
   }
 }
 
 /* Success (Green) */
-.mining-sdk-switch--success {
-  background-color: var(--mining-sdk-switch-unchecked-bg);
+.mdk-switch--success {
+  background-color: var(--mdk-switch-unchecked-bg);
 
   &[data-state='checked'] {
-    background-color: rgb(var(--mining-sdk-color-success));
+    background-color: rgb(var(--mdk-color-success));
   }
 
   &:focus-visible {
-    outline-color: rgb(var(--mining-sdk-color-success));
+    outline-color: rgb(var(--mdk-color-success));
   }
 }
 
 /* Warning (Yellow) */
-.mining-sdk-switch--warning {
-  background-color: var(--mining-sdk-switch-unchecked-bg);
+.mdk-switch--warning {
+  background-color: var(--mdk-switch-unchecked-bg);
 
   &[data-state='checked'] {
-    background-color: var(--mining-sdk-color-warning);
+    background-color: var(--mdk-color-warning);
   }
 
   &:focus-visible {
-    outline-color: var(--mining-sdk-color-warning);
+    outline-color: var(--mdk-color-warning);
   }
 }
 
 /* Error/Danger (Red) */
-.mining-sdk-switch--error,
-.mining-sdk-switch--danger {
-  background-color: var(--mining-sdk-switch-unchecked-bg);
+.mdk-switch--error,
+.mdk-switch--danger {
+  background-color: var(--mdk-switch-unchecked-bg);
 
   &[data-state='checked'] {
-    background-color: rgb(var(--mining-sdk-color-error));
+    background-color: rgb(var(--mdk-color-error));
   }
 
   &:focus-visible {
-    outline-color: rgb(var(--mining-sdk-color-error));
+    outline-color: rgb(var(--mdk-color-error));
   }
 }
 
 /* Hover effect */
-.mining-sdk-switch:not(:disabled):hover {
+.mdk-switch:not(:disabled):hover {
   opacity: 0.9;
 }
 
 /* Enhanced thumb shadow when checked */
-.mining-sdk-switch[data-state='checked'] .mining-sdk-switch__thumb {
-  box-shadow: 0 3px 6px var(--mining-sdk-switch-thumb-shadow-checked);
+.mdk-switch[data-state='checked'] .mdk-switch__thumb {
+  box-shadow: 0 3px 6px var(--mdk-switch-thumb-shadow-checked);
 }

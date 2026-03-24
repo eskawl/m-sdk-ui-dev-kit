@@ -1,5 +1,5 @@
 /* eslint-disable ts/ban-ts-comment */
-import { UNITS } from '@mining-sdk/core'
+import { UNITS } from '@mdk/core'
 import { describe, expect, it } from 'vitest'
 import type { Device } from '../../types/device'
 import {

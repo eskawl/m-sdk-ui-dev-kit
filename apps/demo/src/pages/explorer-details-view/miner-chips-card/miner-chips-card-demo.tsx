@@ -1,5 +1,5 @@
-import type { ContainerStats } from '@mining-sdk/foundation'
-import { MinerChipsCard } from '@mining-sdk/foundation'
+import type { ContainerStats } from '@mdk/foundation'
+import { MinerChipsCard } from '@mdk/foundation'
 import type { ReactElement } from 'react'
 import './miner-chips-card-demo.scss'
 

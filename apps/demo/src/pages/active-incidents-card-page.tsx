@@ -1,5 +1,5 @@
-import { ActiveIncidentsCard } from '@mining-sdk/foundation'
-import type { TIncidentRowProps } from '@mining-sdk/foundation'
+import { ActiveIncidentsCard } from '@mdk/foundation'
+import type { TIncidentRowProps } from '@mdk/foundation'
 
 const mockIncidents: TIncidentRowProps[] = [
   {

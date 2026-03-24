@@ -8,14 +8,14 @@ import {
   getChartDataAvailability,
   LineChart,
   withErrorBoundary,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 import type {
   DetailLegendItem,
   IChartApi,
   LegendItem,
   LineChartData,
   RangeSelectorOption,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 
 import { ChartWrapper } from '../chart-wrapper'
 

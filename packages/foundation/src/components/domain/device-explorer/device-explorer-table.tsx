@@ -1,5 +1,5 @@
-import { DataTable } from '@mining-sdk/core'
-import type { DataTableRowSelectionState, DataTableSortingState } from '@mining-sdk/core'
+import { DataTable } from '@mdk/core'
+import type { DataTableRowSelectionState, DataTableSortingState } from '@mdk/core'
 import type { DeviceExplorerDeviceData, DeviceExplorerDeviceType } from './types'
 import { getColumnConfig } from './columns/device-explorer.columns'
 
@@ -36,7 +36,7 @@ export const DeviceExplorerTable = ({
       enableRowSelection
       selections={selections}
       onSelectionsChange={onSelectionsChange}
-      wrapperClassName="mining-sdk-device-explorer__table"
+      wrapperClassName="mdk-device-explorer__table"
       sorting={sorting}
       onSortingChange={onSortingChange}
     />

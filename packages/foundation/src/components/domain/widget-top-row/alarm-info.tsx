@@ -5,7 +5,7 @@ import _isEmpty from 'lodash/isEmpty'
 import _map from 'lodash/map'
 import _split from 'lodash/split'
 
-import { SimpleTooltip } from '@mining-sdk/core'
+import { SimpleTooltip } from '@mdk/core'
 
 import type { Alert } from '../../../types/alerts'
 import { useTimezone } from '../../../hooks/use-timezone'

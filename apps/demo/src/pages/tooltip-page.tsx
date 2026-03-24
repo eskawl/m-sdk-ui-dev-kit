@@ -5,7 +5,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 
 export const TooltipPage = (): JSX.Element => {
   return (

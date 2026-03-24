@@ -1,4 +1,4 @@
-# @mining-sdk/core - Usage Guide
+# @mdk/core - Usage Guide
 
 ## Quick Start
 
@@ -9,7 +9,7 @@ In your app's `package.json`, add the dependency:
 ```json
 {
   "dependencies": {
-    "@mining-sdk/core": "workspace:*",
+    "@mdk/core": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   }
@@ -27,7 +27,7 @@ pnpm install
 In your app's entry point (e.g., `main.tsx` or `App.tsx`), import the base styles:
 
 ```tsx
-import '@mining-sdk/core/styles.css'
+import '@mdk/core/styles.css'
 ```
 
 ### 3. Use Components
@@ -40,13 +40,13 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 
 const MyComponent = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="secondary">Open</Button>
+        <Button variant="outline">Open</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -63,60 +63,27 @@ const MyComponent = () => {
 ### Button
 
 ```tsx
-import { Button } from '@mining-sdk/core'
-import { PlusIcon } from '@radix-ui/react-icons'
+import { Button } from '@mdk/core'
 
-// Variants (default: secondary)
+// Variants
 <Button variant="primary">Primary</Button>
-<Button variant="secondary">Secondary</Button>
 <Button variant="danger">Danger</Button>
-<Button variant="tertiary">Tertiary</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="ghost">Ghost</Button>
 <Button variant="link">Link</Button>
-<Button variant="icon" icon={<PlusIcon />} />
 
-// With icon
-<Button variant="primary" icon={<PlusIcon />} iconPosition="left">
-  Add Item
-</Button>
-<Button variant="secondary" icon={<PlusIcon />} iconPosition="right">
-  Add Item
-</Button>
-
-// Loading state
-<Button variant="primary" loading>
-  Submit
-</Button>
-
-// Full width
-<Button variant="primary" fullWidth>
-  Full Width Button
-</Button>
-
-// Customization (className on root, contentClassName on inner content)
-<Button className="my-button" contentClassName="my-content">
-  Custom Styled
-</Button>
+// Sizes
+<Button size="sm">Small</Button>
+<Button size="md">Default</Button>
+<Button size="lg">Large</Button>
+<Button size="icon">🔥</Button>
 ```
-
-**Button props:**
-
-| Prop | Type | Description |
-|------|------|-------------|
-| `variant` | `'primary' \| 'secondary' \| 'danger' \| 'tertiary' \| 'link' \| 'icon'` | Visual style (default: `secondary`) |
-| `icon` | `ReactNode` | Icon element |
-| `iconPosition` | `'left' \| 'right'` | Icon placement (default: `left`) |
-| `loading` | `boolean` | Shows spinner, disables button |
-| `fullWidth` | `boolean` | Stretches to container width |
-| `className` | `string` | Root button element |
-| `contentClassName` | `string` | Inner content wrapper |
-| `disabled` | `boolean` | Disabled state |
-
-Also accepts standard `<button>` HTML attributes. **No `size` prop.**
 
 ### Checkbox
 
 ```tsx
-import { Checkbox, Label } from '@mining-sdk/core'
+import { Checkbox, Label } from '@mdk/core'
 import { useState } from 'react'
 
 const CheckboxDemo = () => {
@@ -134,7 +101,7 @@ const CheckboxDemo = () => {
 ### Switch
 
 ```tsx
-import { Label, Switch } from '@mining-sdk/core'
+import { Label, Switch } from '@mdk/core'
 import { useState } from 'react'
 
 const SwitchDemo = () => {
@@ -152,7 +119,7 @@ const SwitchDemo = () => {
 ### Accordion
 
 ```tsx
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@mining-sdk/core'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@mdk/core'
 
 const AccordionDemo = () => {
   return (
@@ -175,7 +142,7 @@ const AccordionDemo = () => {
 ### Avatar
 
 ```tsx
-import { Avatar, AvatarFallback, AvatarImage } from '@mining-sdk/core'
+import { Avatar, AvatarFallback, AvatarImage } from '@mdk/core'
 
 const AvatarDemo = () => {
   return (
@@ -201,7 +168,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
   Button,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 
 const AlertDialogDemo = () => {
   return (
@@ -231,7 +198,7 @@ const AlertDialogDemo = () => {
 For components that are re-exported as Radix primitives, use the namespace:
 
 ```tsx
-import { DropdownMenu, Popover, Select, Tabs, Toast, Tooltip } from '@mining-sdk/core'
+import { DropdownMenu, Popover, Select, Tabs, Toast, Tooltip } from '@mdk/core'
 
 // Dropdown Menu
 <DropdownMenu.Root>
@@ -277,22 +244,10 @@ The components use CSS variables for theming. Customize them in your global CSS:
 
 ### Custom Classes
 
-All components accept a `className` prop. Button also supports `contentClassName` for the inner content wrapper:
+All components accept a `className` prop:
 
 ```tsx
 <Button className="my-custom-class">Custom Button</Button>
-<Button contentClassName="my-content-class">Custom Content</Button>
-```
-
-### Button CSS Variables
-
-Override typography per button via CSS variables:
-
-```css
-.my-button {
-  --button-font-size: 12px;
-  --button-font-weight: 700;
-}
 ```
 
 ## TypeScript
@@ -300,7 +255,7 @@ Override typography per button via CSS variables:
 All components are fully typed. Import types as needed:
 
 ```tsx
-import type { ButtonProps } from '@mining-sdk/core'
+import type { ButtonProps } from '@mdk/core'
 
 const MyButton: React.FC<ButtonProps> = (props) => {
   return <Button {...props} />
@@ -314,7 +269,7 @@ const MyButton: React.FC<ButtonProps> = (props) => {
 The `cn()` utility merges class names:
 
 ```tsx
-import { cn } from '@mining-sdk/core'
+import { cn } from '@mdk/core'
 
 const className = cn('base-class', condition && 'conditional-class', { 'object-class': true })
 ```
@@ -334,7 +289,7 @@ const className = cn('base-class', condition && 'conditional-class', { 'object-c
 Make sure you've imported the styles:
 
 ```tsx
-import '@mining-sdk/core/styles.css'
+import '@mdk/core/styles.css'
 ```
 
 ### Type errors
@@ -350,5 +305,5 @@ pnpm add react@^18.0.0 react-dom@^18.0.0
 Run type checking to identify issues:
 
 ```bash
-pnpm --filter @mining-sdk/core typecheck
+pnpm --filter @mdk/core typecheck
 ```

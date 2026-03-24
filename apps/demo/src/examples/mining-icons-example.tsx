@@ -82,7 +82,7 @@ import {
   UserManagementNavIcon,
   VolumeOffIcon,
   VolumeOnIcon,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 
 type IconEntry = {
   name: string

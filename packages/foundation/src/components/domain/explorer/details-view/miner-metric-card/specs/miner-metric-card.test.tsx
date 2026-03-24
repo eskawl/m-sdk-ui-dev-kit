@@ -1,11 +1,11 @@
-import { formatNumber, UNITS } from '@mining-sdk/core'
+import { formatNumber, UNITS } from '@mdk/core'
 import { render, screen } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { StatItem } from '../miner-metric-card'
 import { MinerMetricCard } from '../miner-metric-card'
 
-vi.mock('@mining-sdk/core', async () => {
-  const actual = await vi.importActual('@mining-sdk/core')
+vi.mock('@mdk/core', async () => {
+  const actual = await vi.importActual('@mdk/core')
   return {
     ...actual,
     formatNumber: vi.fn((value, options) => {

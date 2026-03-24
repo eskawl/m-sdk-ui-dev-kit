@@ -1,4 +1,4 @@
-import { Indicator } from '@mining-sdk/core'
+import { Indicator } from '@mdk/core'
 import type { ReactElement } from 'react'
 import './fire-status-box.scss'
 

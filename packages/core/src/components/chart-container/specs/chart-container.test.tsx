@@ -22,15 +22,6 @@ vi.mock('../../loader', () => ({
   Loader: vi.fn(() => <div data-testid="loader" />),
 }))
 
-vi.mock('../../radio', () => ({
-  RadioGroup: vi.fn(({ children }) => <div data-testid="radio-group">{children}</div>),
-  RadioCard: vi.fn(({ label, onClick, value }) => (
-    <button data-testid="radio-card" data-value={value} onClick={onClick}>
-      {label}
-    </button>
-  )),
-}))
-
 const defaultProps = {
   children: <div data-testid="chart-content">Chart</div>,
 }
@@ -54,7 +45,7 @@ describe('ChartContainer', () => {
     it('renders the wrapper with correct class', () => {
       const { container } = render(<ChartContainer {...defaultProps} />)
 
-      expect(container.querySelector('.mining-sdk-chart-container')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-chart-container')).toBeInTheDocument()
     })
 
     it('renders children', () => {
@@ -85,7 +76,7 @@ describe('ChartContainer', () => {
     it('applies grid class when legendData is provided', () => {
       const { container } = render(<ChartContainer {...defaultProps} legendData={legendData} />)
 
-      expect(container.querySelector('.mining-sdk-chart-container--grid')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-chart-container--grid')).toBeInTheDocument()
     })
 
     it('applies grid class when highlightedValue is provided', () => {
@@ -93,7 +84,7 @@ describe('ChartContainer', () => {
         <ChartContainer {...defaultProps} highlightedValue={{ value: '3.59', unit: 'PH/s' }} />,
       )
 
-      expect(container.querySelector('.mining-sdk-chart-container--grid')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-chart-container--grid')).toBeInTheDocument()
     })
 
     it('applies grid class when rangeSelector is provided', () => {
@@ -101,13 +92,13 @@ describe('ChartContainer', () => {
         <ChartContainer {...defaultProps} rangeSelector={rangeSelector} />,
       )
 
-      expect(container.querySelector('.mining-sdk-chart-container--grid')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-chart-container--grid')).toBeInTheDocument()
     })
 
     it('does not apply grid class without grid-triggering props', () => {
       const { container } = render(<ChartContainer {...defaultProps} title="My Chart" />)
 
-      expect(container.querySelector('.mining-sdk-chart-container--grid')).not.toBeInTheDocument()
+      expect(container.querySelector('.mdk-chart-container--grid')).not.toBeInTheDocument()
     })
   })
 
@@ -134,7 +125,7 @@ describe('ChartContainer', () => {
     it('renders header-row in simple layout', () => {
       const { container } = render(<ChartContainer {...defaultProps} title="Revenue" />)
 
-      expect(container.querySelector('.mining-sdk-chart-container__header-row')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-chart-container__header-row')).toBeInTheDocument()
     })
 
     it('renders title-area in grid layout', () => {
@@ -142,36 +133,46 @@ describe('ChartContainer', () => {
         <ChartContainer {...defaultProps} title="Revenue" rangeSelector={rangeSelector} />,
       )
 
-      expect(container.querySelector('.mining-sdk-chart-container__title-area')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-chart-container__title-area')).toBeInTheDocument()
     })
   })
 
   describe('range selector', () => {
-    it('renders radio group when options provided', () => {
-      render(<ChartContainer {...defaultProps} rangeSelector={rangeSelector} />)
+    it('renders range selector group when options provided', () => {
+      const { container } = render(
+        <ChartContainer {...defaultProps} rangeSelector={rangeSelector} />,
+      )
 
-      expect(screen.getByTestId('radio-group')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-chart-container__range-selector')).toBeInTheDocument()
     })
 
-    it('renders one radio card per option', () => {
-      render(<ChartContainer {...defaultProps} rangeSelector={rangeSelector} />)
+    it('renders one range button per option', () => {
+      const { container } = render(
+        <ChartContainer {...defaultProps} rangeSelector={rangeSelector} />,
+      )
 
-      expect(screen.getAllByTestId('radio-card')).toHaveLength(rangeSelector.options.length)
+      expect(container.querySelectorAll('.mdk-chart-container__range-btn')).toHaveLength(
+        rangeSelector.options.length,
+      )
     })
 
-    it('calls onChange when a radio card is clicked', () => {
+    it('calls onChange when a range button is clicked', () => {
       const onChange = vi.fn()
       render(<ChartContainer {...defaultProps} rangeSelector={{ ...rangeSelector, onChange }} />)
 
-      fireEvent.click(screen.getAllByTestId('radio-card')[1])
+      fireEvent.click(screen.getByText('1 H'))
 
       expect(onChange).toHaveBeenCalledWith('1h')
     })
 
-    it('does not render radio group when options is empty', () => {
-      render(<ChartContainer {...defaultProps} rangeSelector={{ ...rangeSelector, options: [] }} />)
+    it('does not render range selector when options is empty', () => {
+      const { container } = render(
+        <ChartContainer {...defaultProps} rangeSelector={{ ...rangeSelector, options: [] }} />,
+      )
 
-      expect(screen.queryByTestId('radio-group')).not.toBeInTheDocument()
+      expect(
+        container.querySelector('.mdk-chart-container__range-selector'),
+      ).not.toBeInTheDocument()
     })
   })
 
@@ -271,7 +272,7 @@ describe('ChartContainer', () => {
         />,
       )
 
-      const el = container.querySelector('.mining-sdk-chart-container__highlighted-value')
+      const el = container.querySelector('.mdk-chart-container__highlighted-value')
       expect(el).toHaveStyle({ color: 'rgb(255, 0, 0)' })
     })
   })

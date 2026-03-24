@@ -1,4 +1,4 @@
-import { CHART_COLORS, convertMpaToBar, UNITS } from '@mining-sdk/core'
+import { CHART_COLORS, convertMpaToBar, UNITS } from '@mdk/core'
 import type { ReactElement } from 'react'
 import { useMemo } from 'react'
 import type {

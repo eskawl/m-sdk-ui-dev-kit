@@ -1,4 +1,5 @@
-$_prefix: mining-sdk-table;
+@use '../../styles/mixins' as *;
+$_prefix: mdk-table;
 
 .#{$_prefix} {
   margin: 10px 0;
@@ -8,7 +9,7 @@ $_prefix: mining-sdk-table;
 
     .#{$_prefix}__empty-body-wrapper {
       @include flex_center;
-      border: 1px solid var(--mining-sdk-table-border);
+      border: 1px solid var(--mdk-table-border);
       border-top: none;
 
       .#{$_prefix}__empty-body {
@@ -16,7 +17,7 @@ $_prefix: mining-sdk-table;
 
         gap: 10px;
         padding: 30px;
-        color: var(--mining-sdk-table-text-secondary);
+        color: var(--mdk-table-text-secondary);
 
         &--hidden {
           min-height: 200px;
@@ -27,7 +28,7 @@ $_prefix: mining-sdk-table;
 
   &__content-section {
     overflow-x: scroll;
-    border: 1px solid var(--mining-sdk-table-border);
+    border: 1px solid var(--mdk-table-border);
 
     &::-webkit-scrollbar {
       width: 4px;
@@ -43,12 +44,12 @@ $_prefix: mining-sdk-table;
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: var(--mining-sdk-color-white-7);
+      background-color: var(--mdk-color-white-7);
       border-radius: 0;
     }
 
     &::-webkit-scrollbar-thumb:hover {
-      background-color: var(--mining-sdk-color-primary-hover);
+      background-color: var(--mdk-color-primary-hover);
     }
 
     &--empty {
@@ -64,7 +65,7 @@ $_prefix: mining-sdk-table;
     }
 
     &--bordered {
-      border: 1px solid var(--mining-sdk-table-border);
+      border: 1px solid var(--mdk-table-border);
     }
 
     .#{$_prefix}__loader-overlay {
@@ -94,7 +95,8 @@ $_prefix: mining-sdk-table;
 
         thead tr {
           th {
-            border-inline: 1px solid var(--mining-sdk-table-border);
+            border-right: 1px solid var(--mdk-table-border);
+            border-bottom: 1px solid var(--mdk-table-border);
 
             &:last-child {
               border-right: none;
@@ -105,7 +107,7 @@ $_prefix: mining-sdk-table;
         tbody {
           .#{$_prefix}__body-row {
             td {
-              border-right: 1px solid var(--mining-sdk-table-border);
+              border-right: 1px solid var(--mdk-table-border);
 
               &:last-child {
                 border-right: none;
@@ -116,12 +118,12 @@ $_prefix: mining-sdk-table;
       }
 
       thead tr {
-        border-bottom: 1px solid var(--mining-sdk-table-border);
+        border-bottom: 1px solid var(--mdk-table-border);
 
         th {
           padding: 10px 16px;
-          color: var(--mining-sdk-table-text-primary);
-          background-color: var(--mining-sdk-table-header-bg);
+          color: var(--mdk-table-text-primary);
+          background-color: var(--mdk-table-header-bg);
           border-spacing: 0;
           font-size: 12px;
 
@@ -129,7 +131,7 @@ $_prefix: mining-sdk-table;
           top: 0;
 
           &:hover {
-            background-color: var(--mining-sdk-table-header-hover-bg);
+            background-color: var(--mdk-table-header-hover-bg);
           }
 
           &.sortable {
@@ -139,8 +141,8 @@ $_prefix: mining-sdk-table;
 
           &.sorted {
             background-color: var(
-              --mining-sdk-table-header-sorted-bg,
-              var(--mining-sdk-color-white-transparent)
+              --mdk-table-header-sorted-bg,
+              var(--mdk-color-white-transparent)
             );
           }
 
@@ -159,24 +161,24 @@ $_prefix: mining-sdk-table;
       tbody {
         .#{$_prefix}__body-row {
           &:hover {
-            background-color: var(--mining-sdk-table-body-hover-bg);
+            background-color: var(--mdk-table-body-hover-bg);
           }
 
           &--selected {
-            background-color: var(--mining-sdk-table-selected-row-bg);
+            background-color: var(--mdk-table-selected-row-bg);
 
             &:hover {
-              background-color: var(--mining-sdk-table-selected-row-hover-bg);
+              background-color: var(--mdk-table-selected-row-hover-bg);
             }
           }
 
           td {
             padding: 16px;
             margin: 0;
-            color: var(--mining-sdk-color-white);
+            color: var(--mdk-color-white);
             border-spacing: 0;
             font-size: 12px;
-            border-bottom: 1px solid var(--mining-sdk-table-row-border);
+            border-bottom: 1px solid var(--mdk-table-row-border);
           }
         }
       }

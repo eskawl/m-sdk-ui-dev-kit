@@ -1,5 +1,5 @@
-import type { UnknownRecord } from '@mining-sdk/core'
-import { Input, Label } from '@mining-sdk/core'
+import type { UnknownRecord } from '@mdk/core'
+import { Input, Label } from '@mdk/core'
 import type { ChangeEvent, ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 
@@ -64,13 +64,13 @@ export const ContainerParamsSettings = ({
   const paramEntries = Object.entries(params)
 
   return (
-    <div className="mining-sdk-container-params">
-      <h2 className="mining-sdk-container-params__title">{title}</h2>
+    <div className="mdk-container-params">
+      <h2 className="mdk-container-params__title">{title}</h2>
 
-      <div className="mining-sdk-container-params__grid">
+      <div className="mdk-container-params__grid">
         {paramEntries.map(([key, item]) => (
-          <div key={key} className="mining-sdk-container-params__field">
-            <Label className="mining-sdk-container-params__label" htmlFor={`${key}-input`}>
+          <div key={key} className="mdk-container-params__field">
+            <Label className="mdk-container-params__label" htmlFor={`${key}-input`}>
               {item?.name}
             </Label>
             <Input
@@ -80,7 +80,7 @@ export const ContainerParamsSettings = ({
               disabled
               value={Number(item?.value ?? 0) || 0}
               onChange={getParamChangeHandler(key)}
-              className="mining-sdk-container-params__input"
+              className="mdk-container-params__input"
             />
           </div>
         ))}

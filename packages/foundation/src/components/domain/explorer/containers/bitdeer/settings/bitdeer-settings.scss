@@ -1,6 +1,6 @@
-@use '@mining-sdk/core/styles' as *;
+@use '@mdk/core/styles' as *;
 
-.mining-sdk-bitdeer-settings {
+.mdk-bitdeer-settings {
   @include flex_column;
 
   gap: 2rem;

@@ -102,14 +102,14 @@ export const MenuItemInternal = ({
   }, [dismissOverlay])
 
   const baseItemClass = cn(
-    'mining-sdk-sidebar__item',
-    (isActive || isGroupActive) && 'mining-sdk-sidebar__item--active',
-    item.disabled && 'mining-sdk-sidebar__item--disabled',
-    depth > 0 && 'mining-sdk-sidebar__item--sub',
+    'mdk-sidebar__item',
+    (isActive || isGroupActive) && 'mdk-sidebar__item--active',
+    item.disabled && 'mdk-sidebar__item--disabled',
+    depth > 0 && 'mdk-sidebar__item--sub',
   )
 
   const renderLabel = (isExpanded || depth > 0) && (
-    <span className="mining-sdk-sidebar__item-label">{item.label}</span>
+    <span className="mdk-sidebar__item-label">{item.label}</span>
   )
 
   if (!hasChildren) {
@@ -122,7 +122,7 @@ export const MenuItemInternal = ({
         title={!isExpanded && depth === 0 ? item.label : undefined}
         aria-label={!isExpanded && depth === 0 ? item.label : undefined}
       >
-        {item.icon && <span className="mining-sdk-sidebar__item-icon">{item.icon}</span>}
+        {item.icon && <span className="mdk-sidebar__item-icon">{item.icon}</span>}
         {renderLabel}
       </button>
     )
@@ -132,7 +132,7 @@ export const MenuItemInternal = ({
     <>
       <div
         ref={containerRef}
-        className="mining-sdk-sidebar__group"
+        className="mdk-sidebar__group"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -144,13 +144,13 @@ export const MenuItemInternal = ({
           title={!isExpanded && depth === 0 ? item.label : undefined}
           aria-label={!isExpanded && depth === 0 ? item.label : undefined}
         >
-          {item.icon && <span className="mining-sdk-sidebar__item-icon">{item.icon}</span>}
+          {item.icon && <span className="mdk-sidebar__item-icon">{item.icon}</span>}
 
           {renderLabel}
 
           {isExpanded && !item.disabled && (
             <span
-              className="mining-sdk-sidebar__group-toggle"
+              className="mdk-sidebar__group-toggle"
               role="button"
               tabIndex={0}
               onClick={handleGroupToggle}
@@ -168,7 +168,7 @@ export const MenuItemInternal = ({
         </button>
 
         {groupOpen && isExpanded && item.items?.length && (
-          <div className="mining-sdk-sidebar__group-items">
+          <div className="mdk-sidebar__group-items">
             {item.items.map((child) => (
               <MenuItemInternal
                 key={child.id}
@@ -186,7 +186,7 @@ export const MenuItemInternal = ({
 
         {isOverlayOpen && !isExpanded && inOverlay && item.items?.length && (
           <div
-            className="mining-sdk-sidebar__overlay mining-sdk-sidebar__overlay--nested"
+            className="mdk-sidebar__overlay mdk-sidebar__overlay--nested"
             onMouseEnter={overlayMouseEnter}
             onMouseLeave={overlayMouseLeave}
           >
@@ -208,7 +208,7 @@ export const MenuItemInternal = ({
         item.items?.length &&
         createPortal(
           <div
-            className="mining-sdk-sidebar__overlay"
+            className="mdk-sidebar__overlay"
             style={overlayPos}
             onMouseEnter={overlayMouseEnter}
             onMouseLeave={overlayMouseLeave}

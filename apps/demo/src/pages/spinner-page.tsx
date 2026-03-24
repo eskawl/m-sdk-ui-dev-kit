@@ -1,4 +1,4 @@
-import { Spinner } from '@mining-sdk/core'
+import { Spinner } from '@mdk/core'
 
 export const SpinnerPage = (): JSX.Element => {
   return (

@@ -1,4 +1,4 @@
-import type { DataTableColumnDef } from '@mining-sdk/core'
+import type { DataTableColumnDef } from '@mdk/core'
 import type {
   DeviceExplorerDeviceData,
   DeviceExplorerDeviceType,

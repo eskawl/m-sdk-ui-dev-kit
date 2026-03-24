@@ -1,6 +1,6 @@
-@use '@mining-sdk/core/styles' as *;
+@use '@mdk/core/styles' as *;
 
-.mining-sdk-bitmain-hydro-settings {
+.mdk-bitmain-hydro-settings {
   @include flex_column;
 
   gap: 2rem;

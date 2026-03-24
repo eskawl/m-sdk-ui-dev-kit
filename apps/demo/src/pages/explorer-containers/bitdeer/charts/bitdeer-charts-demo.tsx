@@ -1,9 +1,9 @@
-import type { UnknownRecord } from '@mining-sdk/core'
-import { Button } from '@mining-sdk/core'
+import type { UnknownRecord } from '@mdk/core'
+import { Button } from '@mdk/core'
 import type { ReactElement } from 'react'
 import { useState } from 'react'
 
-import { BitdeerTankPressureCharts, BitdeerTankTempCharts } from '@mining-sdk/foundation'
+import { BitdeerTankPressureCharts, BitdeerTankTempCharts } from '@mdk/foundation'
 import './bitdeer-charts-demo.scss'
 
 const CHART_HEIGHT = 300

@@ -1,6 +1,6 @@
 # Build Scripts & Watch Mode
 
-Complete guide to building and developing with the Mining SDK monorepo.
+Complete guide to building and developing with the MDK monorepo.
 
 ## Table of Contents
 
@@ -126,7 +126,7 @@ pnpm watch:scss
 
 Each package has its own build and watch scripts.
 
-### Core Package (`@mining-sdk/core`)
+### Core Package (`@mdk/core`)
 
 ```bash
 cd packages/core
@@ -147,9 +147,9 @@ pnpm watch:ts           # Same as dev:ts
 pnpm watch:scss         # Same as dev:scss
 ```
 
-### Foundation Package (`@mining-sdk/foundation`)
+### Foundation Package (`@mdk/foundation`)
 
-Same scripts as `@mining-sdk/core`:
+Same scripts as `@mdk/core`:
 
 ```bash
 cd packages/foundation
@@ -160,7 +160,7 @@ pnpm dev:ts             # Watch TypeScript
 pnpm dev:scss           # Watch SCSS
 ```
 
-### Fonts Package (`@mining-sdk/fonts`)
+### Fonts Package (`@mdk/fonts`)
 
 ```bash
 cd packages/fonts
@@ -169,7 +169,7 @@ pnpm build              # Build font CSS
 pnpm dev                # Watch mode for fonts
 ```
 
-### Demo App (`@mining-sdk/demo`)
+### Demo App (`@mdk/demo`)
 
 ```bash
 cd apps/demo
@@ -211,15 +211,15 @@ All tasks are defined in `turbo.json`:
 ### Execution Order
 
 ```
-@mining-sdk/core ───┐
-                    ├──→ @mining-sdk/foundation ──→ @mining-sdk/demo
-@mining-sdk/fonts ──┘
+@mdk/core ───┐
+                    ├──→ @mdk/foundation ──→ @mdk/demo
+@mdk/fonts ──┘
 ```
 
 Turborepo automatically:
-1. Builds `@mining-sdk/core` and `@mining-sdk/fonts` in parallel (independent)
-2. Builds `@mining-sdk/foundation` after `@mining-sdk/core` completes
-3. Builds `@mining-sdk/demo` after all dependencies complete
+1. Builds `@mdk/core` and `@mdk/fonts` in parallel (independent)
+2. Builds `@mdk/foundation` after `@mdk/core` completes
+3. Builds `@mdk/demo` after all dependencies complete
 4. Caches results for faster rebuilds
 
 ## Best Practices
@@ -269,13 +269,13 @@ Build specific packages using Turbo filters:
 
 ```bash
 # Build only core package
-turbo build --filter=@mining-sdk/core
+turbo build --filter=@mdk/core
 
 # Build core and its dependents
-turbo build --filter=@mining-sdk/core...
+turbo build --filter=@mdk/core...
 
 # Build everything except demo
-turbo build --filter=!@mining-sdk/demo
+turbo build --filter=!@mdk/demo
 ```
 
 ### 5. Parallel Development
@@ -464,7 +464,7 @@ ls packages/*/src/styles.css
 turbo build --verbosity=2
 
 # 2. Build specific package
-turbo build --filter=@mining-sdk/core
+turbo build --filter=@mdk/core
 
 # 3. Check logs
 cat .turbo/turbo-*.log

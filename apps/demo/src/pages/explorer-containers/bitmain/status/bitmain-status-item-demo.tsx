@@ -1,4 +1,4 @@
-import { StatusItem } from '@mining-sdk/foundation'
+import { StatusItem } from '@mdk/foundation'
 import type { ReactElement } from 'react'
 import './bitmain-status-item-demo.scss'
 

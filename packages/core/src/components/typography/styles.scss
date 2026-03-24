@@ -1,8 +1,10 @@
+@use '../../styles/mixins' as *;
+
 /* ========================================
    Typography Component Styles
    ======================================== */
 
-.mining-sdk-typography {
+.mdk-typography {
   margin: 0;
   padding: 0;
   font-family: var(--font-mono);
@@ -13,7 +15,7 @@
    ======================================== */
 
 /* Heading 1 */
-.mining-sdk-typography--heading1 {
+.mdk-typography--heading1 {
   font-size: 2.5rem; // 40px
   line-height: 1.2;
   font-weight: 700;
@@ -21,7 +23,7 @@
 }
 
 /* Heading 2 */
-.mining-sdk-typography--heading2 {
+.mdk-typography--heading2 {
   font-size: 2rem; // 32px
   line-height: 1.3;
   font-weight: 600;
@@ -29,7 +31,7 @@
 }
 
 /* Heading 3 */
-.mining-sdk-typography--heading3 {
+.mdk-typography--heading3 {
   font-size: 1.5rem; // 24px
   line-height: 1.4;
   font-weight: 600;
@@ -37,21 +39,21 @@
 }
 
 /* Body Text */
-.mining-sdk-typography--body {
+.mdk-typography--body {
   font-size: 1rem; // 16px
   line-height: 1.6;
   font-weight: 400;
 }
 
 /* Secondary Text */
-.mining-sdk-typography--secondary {
+.mdk-typography--secondary {
   font-size: 0.875rem; // 14px
   line-height: 1.5;
   font-weight: 400;
 }
 
 /* Caption Text */
-.mining-sdk-typography--caption {
+.mdk-typography--caption {
   font-size: 0.75rem; // 12px
   line-height: 1.4;
   font-weight: 400;
@@ -62,35 +64,35 @@
    SIZE OVERRIDES
    ======================================== */
 
-.mining-sdk-typography--size-xs {
+.mdk-typography--size-xs {
   font-size: 0.75rem; // 12px
 }
 
-.mining-sdk-typography--size-sm {
+.mdk-typography--size-sm {
   font-size: 0.875rem; // 14px
 }
 
-.mining-sdk-typography--size-md {
+.mdk-typography--size-md {
   font-size: 1rem; // 16px
 }
 
-.mining-sdk-typography--size-lg {
+.mdk-typography--size-lg {
   font-size: 1.125rem; // 18px
 }
 
-.mining-sdk-typography--size-xl {
+.mdk-typography--size-xl {
   font-size: 1.25rem; // 20px
 }
 
-.mining-sdk-typography--size-2xl {
+.mdk-typography--size-2xl {
   font-size: 1.5rem; // 24px
 }
 
-.mining-sdk-typography--size-3xl {
+.mdk-typography--size-3xl {
   font-size: 2rem; // 32px
 }
 
-.mining-sdk-typography--size-4xl {
+.mdk-typography--size-4xl {
   font-size: 2.5rem; // 40px
 }
 
@@ -98,23 +100,23 @@
    WEIGHT OVERRIDES
    ======================================== */
 
-.mining-sdk-typography--weight-light {
+.mdk-typography--weight-light {
   font-weight: 300;
 }
 
-.mining-sdk-typography--weight-normal {
+.mdk-typography--weight-normal {
   font-weight: 400;
 }
 
-.mining-sdk-typography--weight-medium {
+.mdk-typography--weight-medium {
   font-weight: 500;
 }
 
-.mining-sdk-typography--weight-semibold {
+.mdk-typography--weight-semibold {
   font-weight: 600;
 }
 
-.mining-sdk-typography--weight-bold {
+.mdk-typography--weight-bold {
   font-weight: 700;
 }
 
@@ -122,19 +124,19 @@
    ALIGNMENT
    ======================================== */
 
-.mining-sdk-typography--align-left {
+.mdk-typography--align-left {
   text-align: left;
 }
 
-.mining-sdk-typography--align-center {
+.mdk-typography--align-center {
   text-align: center;
 }
 
-.mining-sdk-typography--align-right {
+.mdk-typography--align-right {
   text-align: right;
 }
 
-.mining-sdk-typography--align-justify {
+.mdk-typography--align-justify {
   text-align: justify;
 }
 
@@ -142,31 +144,31 @@
    COLOR VARIANTS
    ======================================== */
 
-.mining-sdk-typography--color-default {
+.mdk-typography--color-default {
   color: inherit;
 }
 
-.mining-sdk-typography--color-primary {
-  color: var(--mining-sdk-color-primary);
+.mdk-typography--color-primary {
+  color: var(--mdk-color-primary);
 }
 
-.mining-sdk-typography--color-success {
-  color: rgb(var(--mining-sdk-color-success));
+.mdk-typography--color-success {
+  color: rgb(var(--mdk-color-success));
 }
 
-.mining-sdk-typography--color-warning {
-  color: var(--mining-sdk-color-warning);
+.mdk-typography--color-warning {
+  color: var(--mdk-color-warning);
 }
 
-.mining-sdk-typography--color-error {
-  color: rgb(var(--mining-sdk-color-error));
+.mdk-typography--color-error {
+  color: rgb(var(--mdk-color-error));
 }
 
-.mining-sdk-typography--color-muted {
-  color: var(--mining-sdk-color-grey-idle);
+.mdk-typography--color-muted {
+  color: var(--mdk-color-grey-idle);
   opacity: 0.8;
 }
 
-.mining-sdk-typography--truncate {
+.mdk-typography--truncate {
   @include text_ellipsis;
 }

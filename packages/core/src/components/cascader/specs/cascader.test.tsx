@@ -46,7 +46,7 @@ describe('cascader', () => {
 
     it('applies custom className', () => {
       const { container } = render(<Cascader options={mockOptions} className="custom-class" />)
-      expect(container.firstChild).toHaveClass('mining-sdk-cascader')
+      expect(container.firstChild).toHaveClass('mdk-cascader')
       expect(container.firstChild).toHaveClass('custom-class')
     })
 
@@ -63,7 +63,7 @@ describe('cascader', () => {
       const { container } = render(<Cascader options={mockOptions} value={value} />)
 
       // Single select mode doesn't render tags, just verify component renders
-      expect(container.querySelector('.mining-sdk-cascader')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-cascader')).toBeInTheDocument()
     })
 
     it('updates when value prop changes', () => {
@@ -141,7 +141,7 @@ describe('cascader', () => {
   describe('empty states', () => {
     it('handles empty options array', () => {
       const { container } = render(<Cascader options={[]} />)
-      expect(container.querySelector('.mining-sdk-cascader')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-cascader')).toBeInTheDocument()
     })
   })
 
@@ -163,7 +163,7 @@ describe('cascader', () => {
 
     it('handles onChange being undefined', () => {
       const { container } = render(<Cascader options={mockOptions} />)
-      expect(container.querySelector('.mining-sdk-cascader')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-cascader')).toBeInTheDocument()
     })
   })
 
@@ -172,7 +172,7 @@ describe('cascader', () => {
       const { container } = render(
         <Cascader options={mockOptions} dropdownClassName="custom-dropdown" />,
       )
-      expect(container.querySelector('.mining-sdk-cascader')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-cascader')).toBeInTheDocument()
     })
   })
 
@@ -181,7 +181,7 @@ describe('cascader', () => {
       const value: CascaderValue = ['electronics', 'phones']
       const { container } = render(<Cascader options={mockOptions} value={value} />)
 
-      expect(container.querySelector('.mining-sdk-cascader')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-cascader')).toBeInTheDocument()
     })
 
     it('handles array of values in multiple mode', () => {
@@ -249,7 +249,7 @@ describe('cascader', () => {
   describe('component structure', () => {
     it('renders TagInput wrapper', () => {
       const { container } = render(<Cascader options={mockOptions} />)
-      expect(container.querySelector('.mining-sdk-tag-input__container')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-tag-input__container')).toBeInTheDocument()
     })
 
     it('renders with correct ARIA attributes', () => {

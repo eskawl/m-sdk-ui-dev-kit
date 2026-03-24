@@ -22,221 +22,214 @@
     --ring: 0 0% 83.9%;
 
     /* Brand Colors */
-    --mining-sdk-color-primary: #f7931a;
-    --mining-sdk-color-success: 114, 245, 158; /* #1db954 in Hex */
-    --mining-sdk-color-error: 239, 68, 68; /* #ef4444 in Hex */
-    --mining-sdk-color-warning: #ffc107;
+    --mdk-color-primary: #f7931a;
+    --mdk-color-success: 114, 245, 158; /* #1db954 in Hex */
+    --mdk-color-error: 239, 68, 68; /* #ef4444 in Hex */
+    --mdk-color-warning: #ffc107;
 
-    --mining-sdk-color-primary-hover: #f7931acc;
-    --mining-sdk-color-primary-button-hover: #f8a348;
-    --mining-sdk-color-primary-hover-light: #e8a140;
+    --mdk-color-primary-hover: #f7931acc;
+    --mdk-color-primary-hover-light: #e8a140;
 
     /* Loader/Spinner Colors */
     --ming-sdk-color-soft-apricot: 255, 236, 186; /* #ffecba in Hex */
-    --mining-sdk-color-soft-red: 254, 202, 202; /* #fecaca in Hex */
-    --mining-sdk-color-soft-gray: 229, 231, 235; /* #e5e7eb in Hex */
-    --mining-sdk-color-soft-blue: 219, 234, 254; /* #dbeafe in Hex */
-    --mining-sdk-color-soft-yellow: 254, 243, 199; /* #fef3c7 in Hex */
-    --mining-sdk-color-soft-green: 209, 250, 229; /* #d1fae5 in Hex */
-    --mining-sdk-color-soft-purple: 243, 232, 255; /* #f3e8ff in Hex */
-    --mining-sdk-color-soft-amber: 254, 243, 199; /* #fef3c7 in Hex */
+    --mdk-color-soft-red: 254, 202, 202; /* #fecaca in Hex */
+    --mdk-color-soft-gray: 229, 231, 235; /* #e5e7eb in Hex */
+    --mdk-color-soft-blue: 219, 234, 254; /* #dbeafe in Hex */
+    --mdk-color-soft-yellow: 254, 243, 199; /* #fef3c7 in Hex */
+    --mdk-color-soft-green: 209, 250, 229; /* #d1fae5 in Hex */
+    --mdk-color-soft-purple: 243, 232, 255; /* #f3e8ff in Hex */
+    --mdk-color-soft-amber: 254, 243, 199; /* #fef3c7 in Hex */
 
     /* Backgrounds */
-    --mining-sdk-color-surface: #0f0f0f;
-    --mining-sdk-color-background-dark: #17130f;
-    --mining-sdk-color-background-light: #e5e7eb;
+    --mdk-color-surface: #0f0f0f;
+    --mdk-color-background-dark: #17130f;
+    --mdk-color-background-light: #e5e7eb;
 
     /* Common Component Colors */
-    --mining-sdk-color-white: #ffffff;
-    --mining-sdk-color-white-alpha-026: #ffffff26;
-    --mining-sdk-color-white-alpha-04d: #ffffff4d;
-    --mining-sdk-color-white-alpha-024: #ffffff24;
-    --mining-sdk-color-white-transparent: #ffffff1a;
-    --mining-sdk-color-text-secondary: #ffffffd9;
-    --mining-sdk-color-text-disabled: #ffffff80;
-    --mining-sdk-color-dark-black: #10100f;
-    --mining-sdk-border-default-color: #424242;
-    --mining-sdk-color-brick-red: #ff3b30;
-    --mining-sdk-color-brick-green: #34c759;
-    --mining-sdk-color-brick-green-rgb: 52, 199, 89; /*  #34c759 in Hex  */
-    --mining-sdk-color-dark-green: #18251c;
-    --mining-sdk-color-strong-green: #03c04a;
-    --mining-sdk-color-mint-green: #6ee7b7;
-    --mining-sdk-color-obsidian: #161514;
-    --mining-sdk-color-medium-blue: #4289c1;
-    --mining-sdk-color-black: 0, 0, 0; /* #000000 in Hex */
-    --mining-sdk-color-grey-idle: 107, 114, 128; /* #6b7280 in Hex */
-    --mining-sdk-color-white-rgb: 255, 255, 255; /* #ffffff in Hex */
-    --mining-sdk-color-orange-warning: 245, 158, 11; /* #f59e0b in Hex */
-    --mining-sdk-color-low-yellow: 246, 238, 92; /* #f6ee5c in Hex */
-    --mining-sdk-color-gold: 255, 215, 0; /* #ffd700 in Hex */
-    --mining-sdk-color-sleep-blue: 59, 130, 246; /* #3b82f6 in Hex */
-    --mining-sdk-color-dark-grey: 159, 166, 172; /* #9fa6ac in Hex */
-    --mining-sdk-color-purple-high: 139, 92, 246; /* #8b5cf6 in Hex */
-    --mining-sdk-color-primary-rgb: 247, 147, 26; /* #f7931a in RGB */
-    --mining-sdk-color-light-blue: #22afff;
-    --mining-sdk-color-blue: #357af6;
-    --mining-sdk-color-blue-rgb: 53, 122, 246; /* #357AF6 in RGB */
+    --mdk-color-white: #ffffff;
+    --mdk-color-white-transparent: #ffffff1a;
+    --mdk-color-text-secondary: #ffffffd9;
+    --mdk-color-text-disabled: #ffffff80;
+    --mdk-color-dark-black: #10100f;
+    --mdk-border-default-color: #424242;
+    --mdk-color-brick-red: #ff3b30;
+    --mdk-color-brick-green: #34c759;
+    --mdk-color-brick-green-rgb: 52, 199, 89; /*  #34c759 in Hex  */
+    --mdk-color-dark-green: #18251c;
+    --mdk-color-strong-green: #03c04a;
+    --mdk-color-mint-green: #6ee7b7;
+    --mdk-color-obsidian: #161514;
+    --mdk-color-medium-blue: #4289c1;
+    --mdk-color-black: 0, 0, 0; /* #000000 in Hex */
+    --mdk-color-grey-idle: 107, 114, 128; /* #6b7280 in Hex */
+    --mdk-color-white-rgb: 255, 255, 255; /* #ffffff in Hex */
+    --mdk-color-orange-warning: 245, 158, 11; /* #f59e0b in Hex */
+    --mdk-color-low-yellow: 246, 238, 92; /* #f6ee5c in Hex */
+    --mdk-color-gold: 255, 215, 0; /* #ffd700 in Hex */
+    --mdk-color-sleep-blue: 59, 130, 246; /* #3b82f6 in Hex */
+    --mdk-color-dark-grey: 159, 166, 172; /* #9fa6ac in Hex */
+    --mdk-color-purple-high: 139, 92, 246; /* #8b5cf6 in Hex */
+    --mdk-color-primary-rgb: 247, 147, 26; /* #f7931a in RGB */
+    --mdk-color-light-blue: #22afff;
+    --mdk-color-blue: #357af6;
+    --mdk-color-blue-rgb: 53, 122, 246; /* #357AF6 in RGB */
 
     /* Neutral / Gray scale */
-    --mining-sdk-color-gray-900: #1f1f1f;
-    --mining-sdk-color-gray-500: #777777;
-    --mining-sdk-color-gray-450: #87888c;
-    --mining-sdk-color-gray-400: #8e8e8e;
-    --mining-sdk-color-gray-300: #e1e0e0;
-    --mining-sdk-color-gray-stone: #898887;
-    --mining-sdk-color-black-bg: #000000;
-    --mining-sdk-color-dark-bg: #1a1a1a;
-    --mining-sdk-color-brown-selected: #6b5a3d;
-    --mining-sdk-color-light-grey: #d9d9d9;
-    --mining-sdk-color-darker-grey: #404040;
-    --mining-sdk-color-onyx: #141414;
-    --mining-sdk-color-dark: #0e0e0e;
+    --mdk-color-gray-900: #1f1f1f;
+    --mdk-color-gray-500: #777777;
+    --mdk-color-gray-450: #87888c;
+    --mdk-color-gray-400: #8e8e8e;
+    --mdk-color-gray-300: #e1e0e0;
+    --mdk-color-gray-stone: #898887;
+    --mdk-color-black-bg: #000000;
+    --mdk-color-dark-bg: #1a1a1a;
+    --mdk-color-brown-selected: #6b5a3d;
+    --mdk-color-light-grey: #d9d9d9;
+    --mdk-color-darker-grey: #404040;
+    --mdk-color-onyx: #141414;
+    --mdk-color-dark: #0e0e0e;
 
     /* Overlays */
-    --mining-sdk-overlay-bg: rgba(0, 0, 0, 0.45);
-    --mining-sdk-color-white-60: rgba(255, 255, 255, 0.6);
-    --mining-sdk-color-white-12: #ffffff1f;
-    --mining-sdk-color-white-8: #ffffff14;
-    --mining-sdk-color-white-7: #ffffffb3;
-    --mining-sdk-color-white-5: #ffffff80;
-    --mining-sdk-color-white-2: #ffffff33;
-    --mining-sdk-color-white-4: #ffffff0d;
-    --mining-sdk-color-white-05: #ffffff05;
+    --mdk-overlay-bg: rgba(0, 0, 0, 0.45);
+    --mdk-color-white-60: rgba(255, 255, 255, 0.6);
+    --mdk-color-white-12: #ffffff1f;
+    --mdk-color-white-8: #ffffff14;
+    --mdk-color-white-7: #ffffffb3;
+    --mdk-color-white-5: #ffffff80;
+    --mdk-color-white-2: #ffffff33;
+    --mdk-color-white-4: #ffffff0d;
+    --mdk-color-white-05: #ffffff05;
 
     /* Shadows */
-    --mining-sdk-shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.15);
-    --mining-sdk-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.25);
-    --mining-sdk-shadow-lg:
+    --mdk-shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --mdk-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.25);
+    --mdk-shadow-lg:
       0 6px 16px 0 rgba(0, 0, 0, 0.3), 0 3px 6px -4px rgba(0, 0, 0, 0.2),
       0 9px 28px 8px rgba(0, 0, 0, 0.15);
-    --mining-sdk-shadow-inset: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    --mdk-shadow-inset: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 
     /* Breadcrumbs specific colors */
-    --mining-sdk-breadcrumbs-separator-color: var(--mining-sdk-color-primary);
-    --mining-sdk-breadcrumbs-link-color: var(--mining-sdk-color-grey-idle);
-    --mining-sdk-breadcrumbs-link-hover-color: var(--mining-sdkcolor-primary);
-    --mining-sdk-breadcrumbs-link-current-color: var(--mining-sdk-color-grey-idle);
-    --mining-sdk-breadcrumbs-back-button-color: var(--mining-sdk-color-primary);
+    --mdk-breadcrumbs-separator-color: var(--mdk-color-primary);
+    --mdk-breadcrumbs-link-color: var(--mdk-color-grey-idle);
+    --mdk-breadcrumbs-link-hover-color: var(--mdk-color-primary);
+    --mdk-breadcrumbs-link-current-color: var(--mdk-color-grey-idle);
+    --mdk-breadcrumbs-back-button-color: var(--mdk-color-primary);
 
     /* Switch specific colors */
-    --mining-sdk-switch-unchecked-bg: #343434;
-    --mining-sdk-switch-thumb-shadow: rgba(0, 0, 0, 0.2);
-    --mining-sdk-switch-thumb-shadow-checked: rgba(0, 0, 0, 0.3);
+    --mdk-switch-unchecked-bg: #343434;
+    --mdk-switch-thumb-shadow: rgba(0, 0, 0, 0.2);
+    --mdk-switch-thumb-shadow-checked: rgba(0, 0, 0, 0.3);
 
     /* Dialog specific colors */
-    --mining-sdk-dialog-box-shadow-color: rgb(0 0 0 / 0.1);
-    --mining-sdk-dialog-border-color: rgba(255, 255, 255, 0.1);
+    --mdk-dialog-box-shadow-color: rgb(0 0 0 / 0.1);
+    --mdk-dialog-border-color: rgba(255, 255, 255, 0.1);
 
     /* Popover specific colors */
-    --mining-sdk-popover-bg: #000000;
-    --mining-sdk-popover-text: #ffffff;
-    --mining-sdk-popover-border: #ffffff1a;
+    --mdk-popover-bg: #000000;
+    --mdk-popover-text: #ffffff;
+    --mdk-popover-border: #ffffff1a;
 
     /* Input specific colors */
-    --mining-sdk-input-bg: #363636;
-    --mining-sdk-input-placeholder-color: #999999;
-    --mining-sdk-input-border-hover: var(--mining-sdk-color-gray-500);
+    --mdk-input-bg: #363636;
+    --mdk-input-placeholder-color: #999999;
+    --mdk-input-border-hover: var(--mdk-color-gray-500);
 
     /* TagInput specific colors */
-    --mining-sdk-tag-input-bg: transparent;
-    --mining-sdk-tag-input-border: var(--mining-sdk-color-white-transparent);
-    --mining-sdk-tag-input-border-hover: var(--mining-sdk-color-white-transparent);
-    --mining-sdk-tag-input-text: var(--mining-sdk-color-text-secondary);
-    --mining-sdk-tag-input-placeholder: var(--mining-sdk-color-text-disabled);
-    --mining-sdk-tag-input-icon: var(--mining-sdk-color-text-disabled);
-    --mining-sdk-tag-input-icon-focus: var(--mining-sdk-color-white-60);
-    --mining-sdk-tag-input-tag-bg: var(--mining-sdk-color-white-transparent);
-    --mining-sdk-tag-input-dropdown-bg: #313131;
-    --mining-sdk-tag-input-dropdown-border: var(--mining-sdk-color-white-transparent);
-    --mining-sdk-tag-input-option-hover-bg: var(--mining-sdk-color-white-transparent);
-    --mining-sdk-tag-input-option-selected-bg: var(--mining-sdk-color-brown-selected);
+    --mdk-tag-input-bg: transparent;
+    --mdk-tag-input-border: var(--mdk-color-white-transparent);
+    --mdk-tag-input-border-hover: var(--mdk-color-white-transparent);
+    --mdk-tag-input-text: var(--mdk-color-text-secondary);
+    --mdk-tag-input-placeholder: var(--mdk-color-text-disabled);
+    --mdk-tag-input-icon: var(--mdk-color-text-disabled);
+    --mdk-tag-input-icon-focus: var(--mdk-color-white-60);
+    --mdk-tag-input-tag-bg: var(--mdk-color-white-transparent);
+    --mdk-tag-input-dropdown-bg: #313131;
+    --mdk-tag-input-dropdown-border: var(--mdk-color-white-transparent);
+    --mdk-tag-input-option-hover-bg: var(--mdk-color-white-transparent);
+    --mdk-tag-input-option-selected-bg: var(--mdk-color-brown-selected);
 
     /* Select specific colors */
-    --mining-sdk-select-content-bg: #1a1a1a;
-    --mining-sdk-select-item-text: #e1e0e0;
-    --mining-sdk-select-item-highlighted-text: #1a1a1a;
+    --mdk-select-content-bg: #1a1a1a;
+    --mdk-select-item-text: #e1e0e0;
+    --mdk-select-item-highlighted-text: #1a1a1a;
 
     /* Dropdown Menu specific colors */
-    --mining-sdk-dropdown-menu-content-bg: #1a1a1a;
-    --mining-sdk-dropdown-menu-item-text: #e1e0e0;
-    --mining-sdk-dropdown-menu-item-highlighted-text: #1a1a1a;
+    --mdk-dropdown-menu-content-bg: #1a1a1a;
+    --mdk-dropdown-menu-item-text: #e1e0e0;
+    --mdk-dropdown-menu-item-highlighted-text: #1a1a1a;
 
     /* Data Table specific colors */
-    --mining-sdk-table-border: #ffffff1a;
-    --mining-sdk-table-row-border: #303030;
+    --mdk-table-border: #ffffff1a;
+    --mdk-table-row-border: #303030;
 
-    --mining-sdk-table-loader-overlay-bg: #00000033;
-    --mining-sdk-table-header-bg: #17130f;
-    --mining-sdk-table-header-hover-bg: #303030;
-    --mining-sdk-table-body-hover-bg: #1d1d1d;
-    --mining-sdk-table-selected-row-bg: #583a16;
-    --mining-sdk-table-selected-row-hover-bg: #7a4d17;
-    --mining-sdk-table-header-sorted-bg: #2e2e2e;
+    --mdk-table-loader-overlay-bg: #00000033;
+    --mdk-table-header-bg: #17130f;
+    --mdk-table-header-hover-bg: #303030;
+    --mdk-table-body-hover-bg: #1d1d1d;
+    --mdk-table-selected-row-bg: #583a16;
+    --mdk-table-selected-row-hover-bg: #7a4d17;
 
-    --mining-sdk-table-text-primary: #ffffff80;
-    --mining-sdk-table-text-secondary: #ffffffb3;
+    --mdk-table-text-primary: #ffffff80;
+    --mdk-table-text-secondary: #ffffffb3;
 
-    /* mining-sdk button tokens (mining-os baseline) */
-    --mining-sdk-radius: 0px;
-    --mining-sdk-font-size: 14px;
-    --mining-sdk-line-height: 22px;
-    --mining-sdk-font-weight: 600;
-    --mining-sdk-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
-    --mining-sdk-shadow-light: 0 2px 0 0 rgba(255, 255, 255, 0.04);
+    /* mdk button tokens (mining-os baseline) */
+    --mdk-radius: 0px;
+    --mdk-font-size: 14px;
+    --mdk-line-height: 22px;
+    --mdk-font-weight: 600;
+    --mdk-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+    --mdk-shadow-light: 0 2px 0 0 rgba(255, 255, 255, 0.04);
 
-    --mining-sdk-button-primary-bg: #f7931a;
-    --mining-sdk-button-primary-bg-hover: #c4730f;
-    --mining-sdk-button-primary-text: #000000;
-    --mining-sdk-button-primary-text-hover: #ffffff;
-    --mining-sdk-button-primary-bg-hover-overlay: rgba(255, 255, 255, 0.15);
-    --mining-sdk-color-primary-10: #f7931a1a;
+    --mdk-button-primary-bg: #f7931a;
+    --mdk-button-primary-bg-hover: #c4730f;
+    --mdk-button-primary-text: #000000;
+    --mdk-button-primary-text-hover: #ffffff;
+    --mdk-button-primary-bg-hover-overlay: rgba(255, 255, 255, 0.15);
 
-    --mining-sdk-button-secondary-text: #ffffffcc;
-    --mining-sdk-button-secondary-border: #ffffff33;
-    --mining-sdk-button-secondary-border-visible: rgba(255, 255, 255, 0.65);
-    --mining-sdk-button-secondary-border-hover: #f7931a80;
-    --mining-sdk-button-secondary-bg: #17130f;
+    --mdk-button-secondary-text: #ffffffcc;
+    --mdk-button-secondary-border: #ffffff33;
+    --mdk-button-secondary-border-visible: rgba(255, 255, 255, 0.65);
+    --mdk-button-secondary-border-hover: #f7931a80;
+    --mdk-button-secondary-bg: #17130f;
 
-    --mining-sdk-button-danger-bg: #ef4444;
-    --mining-sdk-button-danger-bg-hover: #f36060;
-    --mining-sdk-button-danger-text: #ffffff;
-    --mining-sdk-button-danger-border: #ef4444;
+    --mdk-button-danger-bg: #ef4444;
+    --mdk-button-danger-text: #ffffff;
+    --mdk-button-danger-border: #ef4444;
 
-    --mining-sdk-orange-dimmer: #1d1914;
+    --mdk-orange-dimmer: #1d1914;
 
     /* Accordion specific colors */
-    --mining-sdk-accordion-item-bg: #0e0e0e80;
+    --mdk-accordion-item-bg: #0e0e0e80;
 
     /* Chart Container specific colors */
-    --mining-sdk-chart-container-bg: rgba(0, 0, 0, 0.5);
-    --mining-sdk-chart-container-legend-label: rgba(255, 255, 255, 0.7);
-    --mining-sdk-chart-container-title: rgba(255, 255, 255, 0.5);
+    --mdk-chart-container-bg: rgba(0, 0, 0, 0.5);
+    --mdk-chart-container-legend-label: rgba(255, 255, 255, 0.7);
+    --mdk-chart-container-title: rgba(255, 255, 255, 0.5);
 
     /* Cascader specific colors */
-    --mining-sdk-cascader-active-bg: #583a16;
-    --mining-sdk-cascader-checkbox-bg: #141414;
-    --mining-sdk-cascader-box-shadow-color: rgba(254, 151, 27, 0.29);
-    --mining-sdk-cascader-color-highlight: #dc4446;
+    --mdk-cascader-active-bg: #583a16;
+    --mdk-cascader-checkbox-bg: #141414;
+    --mdk-cascader-box-shadow-color: rgba(254, 151, 27, 0.29);
+    --mdk-cascader-color-highlight: #dc4446;
 
     /* Status colors */
-    --mining-sdk-color-severity-critical: #ff0000;
-    --mining-sdk-color-severity-high: #ffa500;
-    --mining-sdk-color-severity-medium: #ffff00;
+    --mdk-color-severity-critical: #ff0000;
+    --mdk-color-severity-high: #ffa500;
+    --mdk-color-severity-medium: #ffff00;
 
     /* Text muted variants */
-    --mining-sdk-color-text-muted: #9f9e9e;
-    --mining-sdk-color-text-muted-warm: #deb7b7;
+    --mdk-color-text-muted: #9f9e9e;
+    --mdk-color-text-muted-warm: #deb7b7;
 
     /* Sidebar specific colors */
-    --mining-sdk-sidebar-bg: var(--mining-sdk-color-surface);
-    --mining-sdk-sidebar-item-hover-bg: rgba(255, 255, 255, 0.05);
-    --mining-sdk-sidebar-overlay-bg: var(--mining-sdk-color-surface);
-    --mining-sdk-sidebar-border-color: var(--mining-sdk-color-primary);
-    --mining-sdk-sidebar-item-color: var(--mining-sdk-color-gray-stone);
-    --mining-sdk-sidebar-overlay-border: var(--mining-sdk-color-primary);
-    --mining-sdk-sidebar-item-active-color: var(--mining-sdk-color-primary);
-    --mining-sdk-sidebar-toggle-bg: var(--mining-sdk-color-background-dark);
+    --mdk-sidebar-bg: var(--mdk-color-surface);
+    --mdk-sidebar-item-hover-bg: rgba(255, 255, 255, 0.05);
+    --mdk-sidebar-overlay-bg: var(--mdk-color-surface);
+    --mdk-sidebar-border-color: var(--mdk-color-primary);
+    --mdk-sidebar-item-color: var(--mdk-color-gray-stone);
+    --mdk-sidebar-overlay-border: var(--mdk-color-primary);
+    --mdk-sidebar-item-active-color: var(--mdk-color-primary);
+    --mdk-sidebar-toggle-bg: var(--mdk-color-background-dark);
 
     /* Demo App specific colors */
     --color-primary: #f7931a;

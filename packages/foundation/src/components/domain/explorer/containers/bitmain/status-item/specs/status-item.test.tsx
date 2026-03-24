@@ -2,10 +2,10 @@ import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import { StatusItem } from '../status-item'
 
-import { Indicator } from '@mining-sdk/core'
+import { Indicator } from '@mdk/core'
 
 // Mock the Indicator component
-vi.mock('@mining-sdk/core', () => ({
+vi.mock('@mdk/core', () => ({
   Indicator: vi.fn(({ color, size, children }) => (
     <div data-testid="indicator" data-color={color} data-size={size}>
       {children}
@@ -141,14 +141,14 @@ describe('statusItem', () => {
     it('should render with both label and status undefined', () => {
       const { container } = render(<StatusItem />)
 
-      expect(container.querySelector('.mining-sdk-status-item')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-status-item')).toBeInTheDocument()
       expect(screen.getByText('Unavailable')).toBeInTheDocument()
     })
 
     it('should not render label element when label is undefined', () => {
       const { container } = render(<StatusItem status="normal" />)
 
-      const label = container.querySelector('.mining-sdk-status-item__label')
+      const label = container.querySelector('.mdk-status-item__label')
       expect(label).toBeEmptyDOMElement()
     })
   })
@@ -157,9 +157,9 @@ describe('statusItem', () => {
     it('should have correct class structure', () => {
       const { container } = render(<StatusItem label="Test" status="normal" />)
 
-      expect(container.querySelector('.mining-sdk-status-item')).toBeInTheDocument()
-      expect(container.querySelector('.mining-sdk-status-item__content')).toBeInTheDocument()
-      expect(container.querySelector('.mining-sdk-status-item__label')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-status-item')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-status-item__content')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-status-item__label')).toBeInTheDocument()
     })
 
     it('should render label text correctly', () => {

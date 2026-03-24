@@ -1,5 +1,5 @@
-import type { IndicatorColor } from '@mining-sdk/core'
-import { COLOR, getDataTableColumnHelper } from '@mining-sdk/core'
+import type { IndicatorColor } from '@mdk/core'
+import { COLOR, getDataTableColumnHelper } from '@mdk/core'
 import type { ReactNode } from 'react'
 
 export type ThresholdTableRow = {

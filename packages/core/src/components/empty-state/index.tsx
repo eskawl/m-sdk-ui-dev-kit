@@ -63,11 +63,11 @@ const EmptyState = React.forwardRef<HTMLDivElement, EmptyStateProps>(
     return (
       <div
         ref={ref}
-        className={cn('mining-sdk-empty-state', `mining-sdk-empty-state--${size}`, className)}
+        className={cn('mdk-empty-state', `mdk-empty-state--${size}`, className)}
         {...props}
       >
-        <div className="mining-sdk-empty-state__image">{renderImage()}</div>
-        <div className="mining-sdk-empty-state__description">{description}</div>
+        <div className="mdk-empty-state__image">{renderImage()}</div>
+        <div className="mdk-empty-state__description">{description}</div>
       </div>
     )
   },

@@ -1,4 +1,4 @@
-import { UNITS } from '@mining-sdk/core'
+import { UNITS } from '@mdk/core'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { Device } from '../../../../../types'
 import { isBitdeer, isMicroBT } from '../../../../../utils/container-utils'

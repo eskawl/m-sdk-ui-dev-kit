@@ -1,4 +1,4 @@
-import type { UnknownRecord } from '@mining-sdk/core'
+import type { UnknownRecord } from '@mdk/core'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { getBitdeerParameterSettingsData } from '../../components/domain'
 import type { ParameterSetting } from '../container-settings-utils'

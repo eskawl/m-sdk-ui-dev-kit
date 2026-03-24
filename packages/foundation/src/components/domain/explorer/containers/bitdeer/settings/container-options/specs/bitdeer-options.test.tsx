@@ -66,7 +66,7 @@ describe('bitdeerOptions', () => {
   describe('rendering', () => {
     it('renders without crashing', () => {
       render(<BitdeerOptions />)
-      expect(document.querySelector('.mining-sdk-bitdeer-options')).toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-options')).toBeInTheDocument()
     })
 
     it('renders BitdeerPumps component', () => {
@@ -182,13 +182,13 @@ describe('bitdeerOptions', () => {
     it('has correct wrapper class', () => {
       const { container } = render(<BitdeerOptions data={mockDeviceWithDryCooler} />)
 
-      expect(container.querySelector('.mining-sdk-bitdeer-options')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-bitdeer-options')).toBeInTheDocument()
     })
 
     it('renders DryCooler before BitdeerPumps when present', () => {
       const { container } = render(<BitdeerOptions data={mockDeviceWithDryCooler} />)
 
-      const wrapper = container.querySelector('.mining-sdk-bitdeer-options')
+      const wrapper = container.querySelector('.mdk-bitdeer-options')
       const children = wrapper?.children
 
       expect(children?.[0]).toHaveAttribute('data-testid', 'dry-cooler')
@@ -200,7 +200,7 @@ describe('bitdeerOptions', () => {
     it('handles null data gracefully', () => {
       render(<BitdeerOptions data={null as any} />)
 
-      expect(document.querySelector('.mining-sdk-bitdeer-options')).toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-options')).toBeInTheDocument()
       expect(screen.getByTestId('bitdeer-pumps')).toBeInTheDocument()
     })
 
@@ -217,7 +217,7 @@ describe('bitdeerOptions', () => {
 
       render(<BitdeerOptions data={deviceNoSpecific} />)
 
-      expect(document.querySelector('.mining-sdk-bitdeer-options')).toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-options')).toBeInTheDocument()
       expect(screen.getByTestId('bitdeer-pumps')).toBeInTheDocument()
     })
 
@@ -234,7 +234,7 @@ describe('bitdeerOptions', () => {
 
       render(<BitdeerOptions data={deviceNoStats as any} />)
 
-      expect(document.querySelector('.mining-sdk-bitdeer-options')).toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-options')).toBeInTheDocument()
     })
   })
 

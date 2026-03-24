@@ -1,4 +1,4 @@
-import { Badge, Button } from '@mining-sdk/core'
+import { Badge, Button } from '@mdk/core'
 
 export const BadgeExample = (): JSX.Element => {
   return (

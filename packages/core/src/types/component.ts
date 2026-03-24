@@ -5,7 +5,15 @@
 /**
  * Button variant options
  */
-export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'tertiary' | 'link' | 'icon'
+export type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'danger'
+  | 'tertiary'
+  | 'link'
+  | 'icon'
+  | 'outline'
+  | 'ghost'
 
 /**
  * Button icon position

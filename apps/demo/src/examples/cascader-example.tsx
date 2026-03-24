@@ -1,5 +1,5 @@
-import type { CascaderOption, CascaderValue } from '@mining-sdk/core'
-import { Card, Cascader } from '@mining-sdk/core'
+import type { CascaderOption, CascaderValue } from '@mdk/core'
+import { Card, Cascader } from '@mdk/core'
 import * as React from 'react'
 
 export const CascaderExample = (): JSX.Element => {

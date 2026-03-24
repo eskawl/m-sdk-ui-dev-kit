@@ -157,12 +157,12 @@ const ListViewFilter = React.forwardRef<HTMLDivElement, ListViewFilterProps>(
     const filtersCount = cascaderValues.length
 
     return (
-      <div ref={ref} className={cn('mining-sdk-list-view-filter', className)}>
+      <div ref={ref} className={cn('mdk-list-view-filter', className)}>
         <Popover open={open} onOpenChange={handleOpenChange}>
           <PopoverTrigger asChild>
-            <div className="mining-sdk-list-view-filter__trigger">
+            <div className="mdk-list-view-filter__trigger">
               <Badge color="primary" count={filtersCount} size="sm">
-                <Button variant="secondary" icon={<FilterIcon />}>
+                <Button variant="secondary" size="sm" icon={<FilterIcon />}>
                   Filter
                 </Button>
               </Badge>
@@ -172,14 +172,14 @@ const ListViewFilter = React.forwardRef<HTMLDivElement, ListViewFilterProps>(
           <PopoverContent
             align="start"
             side="bottom"
-            className="mining-sdk-list-view-filter__dropdown"
+            className="mdk-list-view-filter__dropdown"
             sideOffset={8}
           >
-            <div className="mining-sdk-list-view-filter__header">
+            <div className="mdk-list-view-filter__header">
               <Typography size="sm" variant="caption">
                 Filters
               </Typography>
-              <div className="mining-sdk-list-view-filter__content">
+              <div className="mdk-list-view-filter__content">
                 <Cascader
                   key={filterKey}
                   options={options}
@@ -187,7 +187,7 @@ const ListViewFilter = React.forwardRef<HTMLDivElement, ListViewFilterProps>(
                   onChange={handleFiltersChange}
                   multiple
                   placeholder=""
-                  dropdownClassName="mining-sdk-list-view-filter__cascader-dropdown"
+                  dropdownClassName="mdk-list-view-filter__cascader-dropdown"
                 />
               </div>
             </div>

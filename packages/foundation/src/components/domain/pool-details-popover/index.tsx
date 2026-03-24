@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import { Button, cn, Dialog, DialogContent, DialogTrigger } from '@mining-sdk/core'
-import type { ButtonVariant } from '@mining-sdk/core'
+import { Button, cn, Dialog, DialogContent, DialogTrigger } from '@mdk/core'
+import type { ButtonVariant } from '@mdk/core'
 import { PoolDetailsCard } from '../pool-details-card'
 import type { PoolDetailItem } from '../pool-details-card'
 
@@ -22,7 +22,7 @@ type PoolDetailsPopoverProps = PoolDetailsPopoverPartialProps & {
 const PoolDetailsPopover = React.forwardRef<HTMLDivElement, PoolDetailsPopoverProps>(
   ({ details, title, description, triggerLabel, disabled = false, className, ...props }, ref) => {
     return (
-      <div ref={ref} className={cn('mining-sdk-pool-details-popover', className)} {...props}>
+      <div ref={ref} className={cn('mdk-pool-details-popover', className)} {...props}>
         <Dialog>
           <DialogTrigger asChild>
             <Button variant={TRIGGER_BUTTON_VARIANT} disabled={disabled}>
@@ -30,7 +30,7 @@ const PoolDetailsPopover = React.forwardRef<HTMLDivElement, PoolDetailsPopoverPr
             </Button>
           </DialogTrigger>
           <DialogContent title={title} description={description} closable bare>
-            <div className="mining-sdk-pool-details-popover__body">
+            <div className="mdk-pool-details-popover__body">
               <PoolDetailsCard details={details} />
             </div>
           </DialogContent>

@@ -41,7 +41,7 @@ const Loader = React.forwardRef<HTMLDivElement, LoaderProps>(
     return (
       <div
         ref={ref}
-        className={cn('mining-sdk-loader', className)}
+        className={cn('mdk-loader', className)}
         role="status"
         aria-live="polite"
         aria-label="Loading"
@@ -50,7 +50,7 @@ const Loader = React.forwardRef<HTMLDivElement, LoaderProps>(
         {dots.map((index) => (
           <span
             key={index}
-            className={cn('mining-sdk-loader__dot', `mining-sdk-loader__dot--${color}`)}
+            className={cn('mdk-loader__dot', `mdk-loader__dot--${color}`)}
             style={{
               width: `${size}px`,
               height: `${size}px`,

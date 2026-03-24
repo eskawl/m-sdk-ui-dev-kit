@@ -1,9 +1,9 @@
-@use '@mining-sdk/core/styles' as *;
+@use '@mdk/core/styles' as *;
 
-.mining-sdk-mining-status-indicator {
+.mdk-mining-status-indicator {
   @include flex_center;
 
   &--alert {
-    color: var(--mining-sdk-color-severity-medium);
+    color: var(--mdk-color-severity-medium);
   }
 }

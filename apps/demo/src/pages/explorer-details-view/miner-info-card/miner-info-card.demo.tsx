@@ -1,4 +1,4 @@
-import { MinerInfoCard } from '@mining-sdk/foundation'
+import { MinerInfoCard } from '@mdk/foundation'
 import type { ReactElement } from 'react'
 import './miner-info-card.demo.scss'
 

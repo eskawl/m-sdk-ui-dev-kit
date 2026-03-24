@@ -42,92 +42,92 @@ describe('typography', () => {
   it('defaults to body variant', () => {
     const { container } = render(<Typography>Default</Typography>)
     expect(container.querySelector('p')).toHaveTextContent('Default')
-    expect(container.querySelector('.mining-sdk-typography--body')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-typography--body')).toBeInTheDocument()
   })
 
   it('applies variant classes correctly', () => {
     const { container } = render(<Typography variant="heading1">Heading</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--heading1')
+    expect(container.firstChild).toHaveClass('mdk-typography--heading1')
   })
 
   it('applies size classes when provided', () => {
     const { container, rerender } = render(<Typography size="xs">Extra Small</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--size-xs')
+    expect(container.firstChild).toHaveClass('mdk-typography--size-xs')
 
     rerender(<Typography size="sm">Small</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--size-sm')
+    expect(container.firstChild).toHaveClass('mdk-typography--size-sm')
 
     rerender(<Typography size="md">Medium</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--size-md')
+    expect(container.firstChild).toHaveClass('mdk-typography--size-md')
 
     rerender(<Typography size="lg">Large</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--size-lg')
+    expect(container.firstChild).toHaveClass('mdk-typography--size-lg')
 
     rerender(<Typography size="xl">Extra Large</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--size-xl')
+    expect(container.firstChild).toHaveClass('mdk-typography--size-xl')
 
     rerender(<Typography size="2xl">2XL</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--size-2xl')
+    expect(container.firstChild).toHaveClass('mdk-typography--size-2xl')
 
     rerender(<Typography size="3xl">3XL</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--size-3xl')
+    expect(container.firstChild).toHaveClass('mdk-typography--size-3xl')
 
     rerender(<Typography size="4xl">4XL</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--size-4xl')
+    expect(container.firstChild).toHaveClass('mdk-typography--size-4xl')
   })
 
   it('applies weight classes when provided', () => {
     const { container, rerender } = render(<Typography weight="light">Light</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--weight-light')
+    expect(container.firstChild).toHaveClass('mdk-typography--weight-light')
 
     rerender(<Typography weight="normal">Normal</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--weight-normal')
+    expect(container.firstChild).toHaveClass('mdk-typography--weight-normal')
 
     rerender(<Typography weight="medium">Medium</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--weight-medium')
+    expect(container.firstChild).toHaveClass('mdk-typography--weight-medium')
 
     rerender(<Typography weight="semibold">Semibold</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--weight-semibold')
+    expect(container.firstChild).toHaveClass('mdk-typography--weight-semibold')
 
     rerender(<Typography weight="bold">Bold</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--weight-bold')
+    expect(container.firstChild).toHaveClass('mdk-typography--weight-bold')
   })
 
   it('applies align classes when provided', () => {
     const { container, rerender } = render(<Typography align="left">Left</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--align-left')
+    expect(container.firstChild).toHaveClass('mdk-typography--align-left')
 
     rerender(<Typography align="center">Center</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--align-center')
+    expect(container.firstChild).toHaveClass('mdk-typography--align-center')
 
     rerender(<Typography align="right">Right</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--align-right')
+    expect(container.firstChild).toHaveClass('mdk-typography--align-right')
   })
 
   it('applies color classes correctly', () => {
     const { container } = render(<Typography color="primary">Primary</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--color-primary')
+    expect(container.firstChild).toHaveClass('mdk-typography--color-primary')
   })
 
   it('defaults to default color', () => {
     const { container } = render(<Typography>Text</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--color-default')
+    expect(container.firstChild).toHaveClass('mdk-typography--color-default')
   })
 
   it('applies truncate class when truncate is true', () => {
     const { container } = render(<Typography truncate>Truncated text</Typography>)
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--truncate')
+    expect(container.firstChild).toHaveClass('mdk-typography--truncate')
   })
 
   it('does not apply truncate class by default', () => {
     const { container } = render(<Typography>Not truncated</Typography>)
-    expect(container.firstChild).not.toHaveClass('mining-sdk-typography--truncate')
+    expect(container.firstChild).not.toHaveClass('mdk-typography--truncate')
   })
 
   it('applies custom className', () => {
     const { container } = render(<Typography className="custom-text">Custom</Typography>)
     expect(container.firstChild).toHaveClass('custom-text')
-    expect(container.firstChild).toHaveClass('mining-sdk-typography')
+    expect(container.firstChild).toHaveClass('mdk-typography')
   })
 
   it('forwards ref correctly', () => {
@@ -154,12 +154,12 @@ describe('typography', () => {
         Combined
       </Typography>,
     )
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--heading1')
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--size-xl')
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--weight-bold')
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--align-center')
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--color-primary')
-    expect(container.firstChild).toHaveClass('mining-sdk-typography--truncate')
+    expect(container.firstChild).toHaveClass('mdk-typography--heading1')
+    expect(container.firstChild).toHaveClass('mdk-typography--size-xl')
+    expect(container.firstChild).toHaveClass('mdk-typography--weight-bold')
+    expect(container.firstChild).toHaveClass('mdk-typography--align-center')
+    expect(container.firstChild).toHaveClass('mdk-typography--color-primary')
+    expect(container.firstChild).toHaveClass('mdk-typography--truncate')
   })
 
   it('renders nested elements correctly', () => {

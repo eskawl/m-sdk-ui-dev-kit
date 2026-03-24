@@ -8,8 +8,8 @@
 
     margin-bottom: 2rem;
     padding: 1.5rem;
-    background-color: var(--mining-sdk-color-obsidian);
-    border: 1px solid var(--mining-sdk-border-default-color);
+    background-color: var(--mdk-color-obsidian);
+    border: 1px solid var(--mdk-border-default-color);
     border-radius: 0.5rem;
     gap: 1rem;
     flex-wrap: wrap;
@@ -36,8 +36,8 @@
 
     gap: 1rem;
     padding: 1rem 1.5rem;
-    background-color: rgba(var(--mining-sdk-color-primary-rgb), 0.1);
-    border: 1px solid rgba(var(--mining-sdk-color-primary-rgb), 0.3);
+    background-color: rgba(var(--mdk-color-primary-rgb), 0.1);
+    border: 1px solid rgba(var(--mdk-color-primary-rgb), 0.3);
     border-radius: 0.5rem;
     margin-bottom: 2rem;
 

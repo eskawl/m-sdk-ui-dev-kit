@@ -33,12 +33,12 @@ export const BitMainHydroSettings = ({ data }: BitMainHydroSettingsProps): React
   const deviceStatus = data?.status as string | undefined
 
   return (
-    <div className="mining-sdk-bitmain-hydro-settings">
-      <section className="mining-sdk-bitmain-hydro-settings__params">
+    <div className="mdk-bitmain-hydro-settings">
+      <section className="mdk-bitmain-hydro-settings__params">
         <BitMainBasicSettings data={data} />
       </section>
 
-      <section className="mining-sdk-bitmain-hydro-settings__thresholds">
+      <section className="mdk-bitmain-hydro-settings__thresholds">
         <HydroEditableThresholdForm
           data={data}
           waterTempColorFunc={(value: number) =>

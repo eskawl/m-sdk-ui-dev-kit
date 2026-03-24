@@ -15,19 +15,19 @@ MDK (Mining Development Kit) is a reusable UI toolkit for building mining dashbo
 The entire library is split into two packages:
 
 ```
-@mining-sdk/core
+@mdk/core
     ↓ (workspace:*)
-@mining-sdk/foundation
+@mdk/foundation
 ```
 
-**`@mining-sdk/core`** — generic, domain-agnostic UI layer.
+**`@mdk/core`** — generic, domain-agnostic UI layer.
 - ~50 components built on Radix UI primitives, styled with SCSS
 - Chart components (Chart.js, lightweight-charts)
 - Data table (TanStack Table)
 - Form system (React Hook Form + Zod)
 - Design tokens, shared utilities, and constants
 
-**`@mining-sdk/foundation`** — mining domain layer, depends on `core`.
+**`@mdk/foundation`** — mining domain layer, depends on `core`.
 - Domain-specific React components (DeviceExplorer, ActiveIncidentsCard, etc.)
 - Custom hooks (permissions, notifications, pagination, chart checks)
 - Redux Toolkit state — two slices: `auth` and `notification`
@@ -35,7 +35,7 @@ The entire library is split into two packages:
 - API barrel export (endpoint definitions live in consuming apps)
 - Test utilities co-located (not a separate package)
 
-A third package, **`@mining-sdk/fonts`**, ships JetBrains Mono font assets independently.
+A third package, **`@mdk/fonts`**, ships JetBrains Mono font assets independently.
 
 ---
 
@@ -44,9 +44,9 @@ A third package, **`@mining-sdk/fonts`**, ships JetBrains Mono font assets indep
 ```
 m-sdk-ui-dev-kit/
 ├── packages/
-│   ├── core/         # @mining-sdk/core
-│   ├── foundation/   # @mining-sdk/foundation
-│   └── fonts/        # @mining-sdk/fonts
+│   ├── core/         # @mdk/core
+│   ├── foundation/   # @mdk/foundation
+│   └── fonts/        # @mdk/fonts
 ├── apps/
 │   └── demo/         # Interactive component showcase (not published)
 └── docs/
@@ -62,11 +62,11 @@ m-sdk-ui-dev-kit/
 
 ## Build Strategy
 
-`@mining-sdk/core` is **fully built** before use — tsc emits JS + declarations, Vite compiles SCSS to CSS, Terser minifies.
+`@mdk/core` is **fully built** before use — tsc emits JS + declarations, Vite compiles SCSS to CSS, Terser minifies.
 
-`@mining-sdk/foundation` exports **TypeScript source directly** — consuming packages (including the demo) compile it themselves. Vite only builds its CSS. This gives instant feedback in development without a build step.
+`@mdk/foundation` exports **TypeScript source directly** — consuming packages (including the demo) compile it themselves. Vite only builds its CSS. This gives instant feedback in development without a build step.
 
-`@mining-sdk/fonts` is a single Vite build producing a CSS file with font-face declarations.
+`@mdk/fonts` is a single Vite build producing a CSS file with font-face declarations.
 
 ---
 

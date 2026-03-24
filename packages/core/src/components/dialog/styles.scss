@@ -1,13 +1,14 @@
+@use '../../styles/mixins' as *;
 /**
  * Dialog Component Styles
  */
 
-.mining-sdk-dialog {
+.mdk-dialog {
   &__overlay {
     position: fixed;
     inset: 0;
     z-index: 50;
-    background: var(--mining-sdk-overlay-bg);
+    background: var(--mdk-overlay-bg);
 
     &[data-state='open'] {
       animation: fadeIn 200ms ease-out;
@@ -30,9 +31,9 @@
     max-width: 32rem;
     translate: -50% -50%;
     animation-duration: 200ms;
-    background: var(--mining-sdk-color-surface);
-    border: 1px solid var(--mining-sdk-dialog-border-color);
-    box-shadow: 0 10px 15px -3px var(--mining-sdk-dialog-box-shadow-color);
+    background: var(--mdk-color-surface);
+    border: 1px solid var(--mdk-dialog-border-color);
+    box-shadow: 0 10px 15px -3px var(--mdk-dialog-box-shadow-color);
 
     &[data-state='open'] {
       animation: dialogIn 200ms ease-out;
@@ -48,7 +49,7 @@
     position: relative;
 
     padding-bottom: 28px;
-    border-bottom: 1px solid var(--mining-sdk-dialog-border-color);
+    border-bottom: 1px solid var(--mdk-dialog-border-color);
 
     &--bare {
       padding-bottom: 0;
@@ -68,10 +69,8 @@
       border: 0;
       width: 32px;
       height: 32px;
-      min-width: unset;
-      min-height: unset;
       background: transparent;
-      color: var(--mining-sdk-color-white-60);
+      color: var(--mdk-color-white-60);
       transition:
         background 0.2s ease-in-out,
         color 0.2s ease-in-out;
@@ -82,8 +81,8 @@
       }
 
       &:hover {
-        color: var(--mining-sdk-color-white) !important;
-        background: var(--mining-sdk-color-white-12) !important;
+        color: var(--mdk-color-white);
+        background: var(--mdk-color-white-12);
       }
     }
 
@@ -96,7 +95,7 @@
     display: flex;
     flex-direction: column-reverse;
     padding-top: 24px;
-    border-top: 1px solid var(--mining-sdk-dialog-border-color);
+    border-top: 1px solid var(--mdk-dialog-border-color);
 
     @media (min-width: 640px) {
       flex-direction: row;

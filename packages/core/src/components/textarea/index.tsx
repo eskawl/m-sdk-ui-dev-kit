@@ -40,9 +40,9 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     const textarea = (
       <div
         className={cn(
-          'mining-sdk-textarea__wrapper',
-          disabled && 'mining-sdk-textarea__wrapper--disabled',
-          hasError && 'mining-sdk-textarea__wrapper--error',
+          'mdk-textarea__wrapper',
+          disabled && 'mdk-textarea__wrapper--disabled',
+          hasError && 'mdk-textarea__wrapper--error',
           !label && wrapperClassName,
         )}
       >
@@ -50,7 +50,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
           ref={ref}
           id={textareaId}
           disabled={disabled}
-          className={cn('mining-sdk-textarea', className)}
+          className={cn('mdk-textarea', className)}
           aria-invalid={hasError || props['aria-invalid']}
           aria-describedby={hasError ? errorId : props['aria-describedby']}
           {...props}
@@ -62,7 +62,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       <>
         {textarea}
         {hasError && (
-          <span id={errorId} className="mining-sdk-textarea__error" role="alert">
+          <span id={errorId} className="mdk-textarea__error" role="alert">
             {error}
           </span>
         )}
@@ -71,8 +71,8 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
     if (label) {
       return (
-        <div className={cn('mining-sdk-textarea-root', wrapperClassName)}>
-          <Label htmlFor={textareaId} className="mining-sdk-textarea__label">
+        <div className={cn('mdk-textarea-root', wrapperClassName)}>
+          <Label htmlFor={textareaId} className="mdk-textarea__label">
             {label}
           </Label>
           {content}

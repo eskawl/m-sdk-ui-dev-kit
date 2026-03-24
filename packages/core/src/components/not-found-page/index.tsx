@@ -46,15 +46,15 @@ const NotFoundPage = React.forwardRef<HTMLDivElement, NotFoundPageProps>(
     ref,
   ) => {
     return (
-      <div ref={ref} className={cn('mining-sdk-not-found-page', className)} {...props}>
-        <div className="mining-sdk-not-found-page__title">{title}</div>
-        <div className="mining-sdk-not-found-page__message">{message}</div>
+      <div ref={ref} className={cn('mdk-not-found-page', className)} {...props}>
+        <div className="mdk-not-found-page__title">{title}</div>
+        <div className="mdk-not-found-page__message">{message}</div>
         {onGoHome && (
           <Button
             variant="primary"
             icon={<HomeIcon />}
             onClick={onGoHome}
-            className="mining-sdk-not-found-page__button"
+            className="mdk-not-found-page__button"
           >
             Go Home
           </Button>

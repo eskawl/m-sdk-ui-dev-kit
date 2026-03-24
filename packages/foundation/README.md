@@ -1,22 +1,22 @@
-# @mining-sdk/foundation
+# @mdk/foundation
 
 Complete foundation package with features, state management, API client, hooks, and utilities.
 
 ## Installation
 
 ```bash
-pnpm add @mining-sdk/foundation
+pnpm add @mdk/foundation
 ```
 
 ## Usage
 
 ```tsx
-import { /* your imports */ } from '@mining-sdk/foundation'
+import { /* your imports */ } from '@mdk/foundation'
 
 // Or import from specific sub-modules
-import { /* hooks */ } from '@mining-sdk/foundation/hooks'
-import { /* API client */ } from '@mining-sdk/foundation/api'
-import { /* state */ } from '@mining-sdk/foundation/state'
+import { /* hooks */ } from '@mdk/foundation/hooks'
+import { /* API client */ } from '@mdk/foundation/api'
+import { /* state */ } from '@mdk/foundation/state'
 ```
 
 ## Structure
@@ -30,4 +30,4 @@ import { /* state */ } from '@mining-sdk/foundation/state'
 
 ## Dependencies
 
-This package depends on `@mining-sdk/core` for base components and utilities.
+This package depends on `@mdk/core` for base components and utilities.

@@ -1,14 +1,15 @@
+@use '../../styles/mixins' as *;
 /* ========================================
    Radio Component Styles
    ======================================== */
 
 /* Base Radio */
-.mining-sdk-radio {
+.mdk-radio {
   @include inline_flex_align;
 
   all: unset;
   justify-content: center;
-  border: 2px solid var(--mining-sdk-color-background-light);
+  border: 2px solid var(--mdk-color-background-light);
   background-color: transparent;
   cursor: pointer;
   transition: all 200ms ease;
@@ -36,7 +37,7 @@
 }
 
 /* Indicator (Inner dot) */
-.mining-sdk-radio__indicator {
+.mdk-radio__indicator {
   @include flex_center;
 
   width: 100%;
@@ -56,33 +57,33 @@
    ======================================== */
 
 /* Small */
-.mining-sdk-radio--sm {
+.mdk-radio--sm {
   width: 16px;
   height: 16px;
 
-  .mining-sdk-radio__indicator::after {
+  .mdk-radio__indicator::after {
     width: 8px;
     height: 8px;
   }
 }
 
 /* Medium (Default) */
-.mining-sdk-radio--md {
+.mdk-radio--md {
   width: 20px;
   height: 20px;
 
-  .mining-sdk-radio__indicator::after {
+  .mdk-radio__indicator::after {
     width: 10px;
     height: 10px;
   }
 }
 
 /* Large */
-.mining-sdk-radio--lg {
+.mdk-radio--lg {
   width: 24px;
   height: 24px;
 
-  .mining-sdk-radio__indicator::after {
+  .mdk-radio__indicator::after {
     width: 12px;
     height: 12px;
   }
@@ -93,27 +94,27 @@
    ======================================== */
 
 /* None (Square corners) */
-.mining-sdk-radio--radius-none {
+.mdk-radio--radius-none {
   border-radius: 0;
 }
 
 /* Small (Slightly rounded) */
-.mining-sdk-radio--radius-small {
+.mdk-radio--radius-small {
   border-radius: 4px;
 }
 
 /* Medium (Moderately rounded) */
-.mining-sdk-radio--radius-medium {
+.mdk-radio--radius-medium {
   border-radius: 6px;
 }
 
 /* Large (Very rounded) */
-.mining-sdk-radio--radius-large {
+.mdk-radio--radius-large {
   border-radius: 8px;
 }
 
 /* Full (Circular - default for radio) */
-.mining-sdk-radio--radius-full {
+.mdk-radio--radius-full {
   border-radius: 9999px;
 }
 
@@ -122,13 +123,13 @@
    ======================================== */
 
 /* Default */
-.mining-sdk-radio--default {
-  color: var(--mining-sdk-color-gray-400);
+.mdk-radio--default {
+  color: var(--mdk-color-gray-400);
 }
 
 /* Primary  */
-.mining-sdk-radio--primary {
-  color: var(--mining-sdk-color-primary);
+.mdk-radio--primary {
+  color: var(--mdk-color-primary);
 
   &[data-state='checked'] {
     background-color: transparent;
@@ -136,8 +137,8 @@
 }
 
 /* Success */
-.mining-sdk-radio--success {
-  color: rgb(var(--mining-sdk-color-success));
+.mdk-radio--success {
+  color: rgb(var(--mdk-color-success));
 
   &[data-state='checked'] {
     background-color: transparent;
@@ -145,8 +146,8 @@
 }
 
 /* Warning  */
-.mining-sdk-radio--warning {
-  color: var(--mining-sdk-color-warning);
+.mdk-radio--warning {
+  color: var(--mdk-color-warning);
 
   &[data-state='checked'] {
     background-color: transparent;
@@ -154,8 +155,8 @@
 }
 
 /* Error/Danger  */
-.mining-sdk-radio--error {
-  color: rgb(var(--mining-sdk-color-error));
+.mdk-radio--error {
+  color: rgb(var(--mdk-color-error));
 
   &[data-state='checked'] {
     background-color: transparent;
@@ -166,27 +167,27 @@
    RadioGroup Styles
    ======================================== */
 
-.mining-sdk-radio-group {
+.mdk-radio-group {
   display: flex;
   gap: 0.75rem;
 }
 
-.mining-sdk-radio-group--horizontal {
+.mdk-radio-group--horizontal {
   flex-direction: row;
   align-items: center;
 }
 
-.mining-sdk-radio-group--vertical {
+.mdk-radio-group--vertical {
   flex-direction: column;
   align-items: flex-start;
 }
 
-.mining-sdk-radio-group--no-gap {
+.mdk-radio-group--no-gap {
   gap: 0;
 
   :hover {
     opacity: 1;
-    border-color: var(--mining-sdk-border-default-color);
+    border-color: var(--mdk-border-default-color);
   }
   button:not(:first-child) {
     border-left: 0;
@@ -198,7 +199,7 @@
    ======================================== */
 
 /* Base RadioCard */
-.mining-sdk-radio-card {
+.mdk-radio-card {
   @include inline_flex_align;
 
   all: unset;
@@ -208,9 +209,9 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 200ms ease;
-  border: 2px solid var(--mining-sdk-border-default-color);
+  border: 2px solid var(--mdk-border-default-color);
   background-color: transparent;
-  color: var(--mining-sdk-color-text-secondary);
+  color: var(--mdk-color-text-secondary);
   white-space: nowrap;
   user-select: none;
 
@@ -225,14 +226,14 @@
    ======================================== */
 
 /* Small */
-.mining-sdk-radio-card--sm {
+.mdk-radio-card--sm {
   padding-inline: 0.5rem;
   font-size: 12px;
   height: 24px;
 }
 
 /* Medium (Default) */
-.mining-sdk-radio-card--md {
+.mdk-radio-card--md {
   padding: 0.375rem 1rem;
   font-size: 14px;
   line-height: 1.5;
@@ -241,7 +242,7 @@
 }
 
 /* Large */
-.mining-sdk-radio-card--lg {
+.mdk-radio-card--lg {
   padding: 0.5rem 1.25rem;
   font-size: 16px;
   line-height: 1.5;
@@ -254,27 +255,27 @@
    ======================================== */
 
 /* None (Square corners) */
-.mining-sdk-radio-card--radius-none {
+.mdk-radio-card--radius-none {
   border-radius: 0;
 }
 
 /* Small (Slightly rounded) */
-.mining-sdk-radio-card--radius-small {
+.mdk-radio-card--radius-small {
   border-radius: 4px;
 }
 
 /* Medium (Moderately rounded) */
-.mining-sdk-radio-card--radius-medium {
+.mdk-radio-card--radius-medium {
   border-radius: 6px;
 }
 
 /* Large (Very rounded) */
-.mining-sdk-radio-card--radius-large {
+.mdk-radio-card--radius-large {
   border-radius: 8px;
 }
 
 /* Full (Pill-shaped) */
-.mining-sdk-radio-card--radius-full {
+.mdk-radio-card--radius-full {
   border-radius: 9999px;
 }
 
@@ -283,72 +284,72 @@
    ======================================== */
 
 /* Default (Gray/Neutral) */
-.mining-sdk-radio-card--default {
-  color: var(--mining-sdk-color-text-disabled);
+.mdk-radio-card--default {
+  color: var(--mdk-color-text-disabled);
   background: transparent;
 
   &[data-state='checked'] {
-    border-color: var(--mining-sdk-border-default-color);
-    color: var(--mining-sdk-color-white);
+    border-color: var(--mdk-border-default-color);
+    color: var(--mdk-color-white);
   }
 }
 
 /* Primary (Orange) */
-.mining-sdk-radio-card--primary {
-  color: var(--mining-sdk-color-text-secondary);
+.mdk-radio-card--primary {
+  color: var(--mdk-color-text-secondary);
 
   &[data-state='checked'] {
-    background-color: var(--mining-sdk-color-primary);
-    border-color: var(--mining-sdk-color-primary);
-    color: var(--mining-sdk-button-primary-text);
+    background-color: var(--mdk-color-primary);
+    border-color: var(--mdk-color-primary);
+    color: var(--mdk-button-primary-text);
   }
 
   &:hover {
-    border-color: var(--mining-sdk-color-primary);
+    border-color: var(--mdk-color-primary);
   }
 }
 
 /* Success (Green) */
-.mining-sdk-radio-card--success {
-  color: var(--mining-sdk-color-text-secondary);
+.mdk-radio-card--success {
+  color: var(--mdk-color-text-secondary);
 
   &[data-state='checked'] {
-    background-color: rgb(var(--mining-sdk-color-success));
-    border-color: rgb(var(--mining-sdk-color-success));
-    color: var(--mining-sdk-button-primary-text);
+    background-color: rgb(var(--mdk-color-success));
+    border-color: rgb(var(--mdk-color-success));
+    color: var(--mdk-button-primary-text);
   }
 
   &:hover {
-    border-color: rgb(var(--mining-sdk-color-success));
+    border-color: rgb(var(--mdk-color-success));
   }
 }
 
 /* Warning (Yellow) */
-.mining-sdk-radio-card--warning {
-  color: var(--mining-sdk-color-text-secondary);
+.mdk-radio-card--warning {
+  color: var(--mdk-color-text-secondary);
 
   &[data-state='checked'] {
-    background-color: var(--mining-sdk-color-warning);
-    border-color: var(--mining-sdk-color-warning);
-    color: var(--mining-sdk-button-primary-text);
+    background-color: var(--mdk-color-warning);
+    border-color: var(--mdk-color-warning);
+    color: var(--mdk-button-primary-text);
   }
 
   &:hover {
-    border-color: var(--mining-sdk-color-warning);
+    border-color: var(--mdk-color-warning);
   }
 }
 
 /* Error/Danger (Red) */
-.mining-sdk-radio-card--error {
-  color: var(--mining-sdk-color-text-secondary);
+.mdk-radio-card--error {
+  color: var(--mdk-color-text-secondary);
 
   &[data-state='checked'] {
-    background-color: rgb(var(--mining-sdk-color-error));
-    border-color: rgb(var(--mining-sdk-color-error));
-    color: var(--mining-sdk-color-white);
+    background-color: rgb(var(--mdk-color-error));
+    border-color: rgb(var(--mdk-color-error));
+    color: var(--mdk-color-white);
   }
 
   &:hover {
-    border-color: rgb(var(--mining-sdk-color-error));
+    border-color: rgb(var(--mdk-color-error));
   }
 }

@@ -13,14 +13,14 @@ describe('deviceCardColText', () => {
     const { container } = render(
       <DeviceCardColText style={customStyle}>Styled Text</DeviceCardColText>,
     )
-    const element = container.querySelector('.mining-sdk-device-card-col-text')
+    const element = container.querySelector('.mdk-device-card-col-text')
     expect(element).toHaveStyle('color: rgb(255, 0, 0)')
     expect(element).toHaveStyle('font-size: 14px')
   })
 
   it('should render without styles', () => {
     const { container } = render(<DeviceCardColText>No Style</DeviceCardColText>)
-    const element = container.querySelector('.mining-sdk-device-card-col-text')
+    const element = container.querySelector('.mdk-device-card-col-text')
     expect(element).toBeInTheDocument()
   })
 

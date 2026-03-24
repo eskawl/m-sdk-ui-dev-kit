@@ -3,7 +3,7 @@
 ## Stack
 
 - **Monorepo Tool**: Turborepo 2.8.2
-- **Package Manager**: pnpm 10.5.0
+- **Package Manager**: pnpm 10.32.0
 - **Build Tools**:
   - TypeScript Compiler (tsc) for `.ts/.tsx` files
   - Vite 6.4.1 for SCSS compilation
@@ -50,7 +50,7 @@
 ┌──────────────────────────┐    ┌──────────────────────────┐
 │ TypeScript Build (tsc)   │    │ SCSS Build (Vite)        │
 │ - Compiles .ts/.tsx      │    │ - Compiles .scss         │
-│ - Generates .d.ts        │    │ - Resolves @mining-sdk/*        │
+│ - Generates .d.ts        │    │ - Resolves @mdk/*        │
 │ - Type checking          │    │ - Minifies CSS           │
 │ - Output: dist/          │    │ - Output: src/styles.css │
 └──────────────────────────┘    └──────────────────────────┘
@@ -119,23 +119,23 @@ export default defineConfig({
 pnpm build
 
 # Turborepo will:
-# 1. Build @mining-sdk/core first (no dependencies, exports built JS)
-# 2. Build @mining-sdk/fonts in parallel (independent)
-# 3. Build @mining-sdk/foundation (depends on core, exports TS source)
-# 4. Build @mining-sdk/demo app (depends on all packages)
+# 1. Build @mdk/core first (no dependencies, exports built JS)
+# 2. Build @mdk/fonts in parallel (independent)
+# 3. Build @mdk/foundation (depends on core, exports TS source)
+# 4. Build @mdk/demo app (depends on all packages)
 ```
 
 ### Selective Build
 
 ```bash
 # Build specific package
-pnpm --filter @mining-sdk/core build
+pnpm --filter @mdk/core build
 
 # Build package with dependencies
-pnpm --filter @mining-sdk/foundation... build
+pnpm --filter @mdk/foundation... build
 
 # Build package with dependents
-pnpm --filter ...@mining-sdk/core build
+pnpm --filter ...@mdk/core build
 ```
 
 ### Incremental Build
@@ -149,9 +149,9 @@ pnpm build
 pnpm build
 # → Takes ~0.1s (everything cached!)
 
-# Change one file in @mining-sdk/core
+# Change one file in @mdk/core
 pnpm build
-# → Only rebuilds @mining-sdk/core + packages that depend on it
+# → Only rebuilds @mdk/core + packages that depend on it
 ```
 
 ## Caching
@@ -199,10 +199,10 @@ Turborepo automatically parallelizes independent tasks:
 ```
 Time →
 
-@mining-sdk/core         ████████
-@mining-sdk/fonts        ████████ (parallel with core)
-@mining-sdk/foundation                ████████
-@mining-sdk/demo                           ████████
+@mdk/core         ████████
+@mdk/fonts        ████████ (parallel with core)
+@mdk/foundation                ████████
+@mdk/demo                           ████████
 
 Total: ~3-4s (vs ~10s sequential)
 ```
@@ -210,12 +210,12 @@ Total: ~3-4s (vs ~10s sequential)
 ## Dependency Graph
 
 ```
-@mining-sdk/core (built JS + CSS)
-└── @mining-sdk/foundation (TS source + CSS)
-    └── @mining-sdk/demo (app)
+@mdk/core (built JS + CSS)
+└── @mdk/foundation (TS source + CSS)
+    └── @mdk/demo (app)
 
-@mining-sdk/fonts (independent, CSS only)
-└── @mining-sdk/demo (app)
+@mdk/fonts (independent, CSS only)
+└── @mdk/demo (app)
 ```
 
 **Simplified Architecture:**
@@ -226,9 +226,9 @@ Total: ~3-4s (vs ~10s sequential)
 - **Core exports built JavaScript** (requires build step)
 
 Turborepo ensures:
-- `@mining-sdk/core` builds before `@mining-sdk/foundation`
-- `@mining-sdk/fonts` can build in parallel
-- `@mining-sdk/foundation` and `@mining-sdk/fonts` build before `@mining-sdk/demo`
+- `@mdk/core` builds before `@mdk/foundation`
+- `@mdk/fonts` can build in parallel
+- `@mdk/foundation` and `@mdk/fonts` build before `@mdk/demo`
 
 ## Performance
 
@@ -260,7 +260,7 @@ pnpm build
 pnpm build --verbose
 
 # Build specific package to debug
-pnpm --filter @mining-sdk/core build
+pnpm --filter @mdk/core build
 ```
 
 ### Cache Issues
@@ -293,8 +293,8 @@ pnpm list --depth=1
 pnpm build
 
 # ❌ Bad - Manual package-by-package
-pnpm --filter @mining-sdk/core build
-pnpm --filter @mining-sdk/theme build
+pnpm --filter @mdk/core build
+pnpm --filter @mdk/theme build
 # ...
 ```
 

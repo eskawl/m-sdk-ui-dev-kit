@@ -1,8 +1,8 @@
-@use '@mining-sdk/core/styles' as *;
+@use '@mdk/core/styles' as *;
 
-.mining-sdk-bitmain-cooling-system {
-  background: var(--mining-sdk-color-surface);
-  border: 1px solid var(--mining-sdk-dialog-border-color);
+.mdk-bitmain-cooling-system {
+  background: var(--mdk-color-surface);
+  border: 1px solid var(--mdk-dialog-border-color);
   padding: 1.5rem;
 
   &__wrapper {
@@ -32,6 +32,6 @@
   &__label {
     font-size: 14px;
     font-weight: 600;
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
   }
 }

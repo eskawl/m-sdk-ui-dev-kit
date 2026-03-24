@@ -14,8 +14,8 @@ vi.mock('@/constants/devices', () => ({
   },
 }))
 
-vi.mock('@mining-sdk/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@mining-sdk/core')>()
+vi.mock('@mdk/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@mdk/core')>()
   return {
     ...actual,
     Indicator: vi.fn(({ children, color }) => (

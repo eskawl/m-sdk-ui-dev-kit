@@ -1,4 +1,4 @@
-import { cn, formatValueUnit, SimpleTooltip } from '@mining-sdk/core'
+import { cn, formatValueUnit, SimpleTooltip } from '@mdk/core'
 import type { ReactNode } from 'react'
 import './single-stat-card.scss'
 

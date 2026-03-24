@@ -1,6 +1,6 @@
-import type { ChartDataset, UnknownRecord } from '@mining-sdk/core'
+import type { ChartDataset, UnknownRecord } from '@mdk/core'
 
-import { getChartDataAvailability, hasDataValues, isNil } from '@mining-sdk/core'
+import { getChartDataAvailability, hasDataValues, isNil } from '@mdk/core'
 
 /**
  * Chart data with multiple datasets (e.g., LineChart)

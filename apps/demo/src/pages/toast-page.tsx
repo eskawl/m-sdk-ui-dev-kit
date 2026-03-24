@@ -1,6 +1,6 @@
-import type { ToastPosition, ToastVariant } from '@mining-sdk/core'
-import { Button, Toast, TOAST_POSITIONS, Toaster } from '@mining-sdk/core'
-import { useNotification } from '@mining-sdk/foundation'
+import type { ToastPosition, ToastVariant } from '@mdk/core'
+import { Button, Toast, TOAST_POSITIONS, Toaster } from '@mdk/core'
+import { useNotification } from '@mdk/foundation'
 import { useState } from 'react'
 
 type ToastItem = {

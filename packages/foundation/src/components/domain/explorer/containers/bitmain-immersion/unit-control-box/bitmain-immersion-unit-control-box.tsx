@@ -1,4 +1,4 @@
-import { Indicator, Tag, UNITS } from '@mining-sdk/core'
+import { Indicator, Tag, UNITS } from '@mdk/core'
 import type { ReactElement } from 'react'
 import { DEVICE_STATUS } from '../../../../../../constants/devices'
 import { BitMainImmersionControlBox } from '../control-box/bitmain-immersion-control-box'

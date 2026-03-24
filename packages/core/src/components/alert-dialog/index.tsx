@@ -12,7 +12,7 @@ const AlertDialogOverlay = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Overlay
-    className={cn('mining-sdk-dialog__overlay', className)}
+    className={cn('mdk-dialog__overlay', className)}
     {...props}
     ref={ref}
   />
@@ -27,7 +27,7 @@ const AlertDialogContent = React.forwardRef<
     <AlertDialogOverlay />
     <AlertDialogPrimitive.Content
       ref={ref}
-      className={cn('mining-sdk-dialog__content', className)}
+      className={cn('mdk-dialog__content', className)}
       {...props}
     />
   </AlertDialogPortal>
@@ -40,8 +40,8 @@ const AlertDialogHeader = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element => {
   return (
-    <div className={cn('mining-sdk-dialog__header', className)} {...props}>
-      <div className="mining-sdk-dialog__header__container">{children}</div>
+    <div className={cn('mdk-dialog__header', className)} {...props}>
+      <div className="mdk-dialog__header__container">{children}</div>
     </div>
   )
 }
@@ -51,7 +51,7 @@ const AlertDialogFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element => {
-  return <div className={cn('mining-sdk-dialog__footer', className)} {...props} />
+  return <div className={cn('mdk-dialog__footer', className)} {...props} />
 }
 AlertDialogFooter.displayName = 'AlertDialogFooter'
 
@@ -59,11 +59,7 @@ const AlertDialogTitle = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>
 >(({ className, ...props }, ref) => (
-  <AlertDialogPrimitive.Title
-    ref={ref}
-    className={cn('mining-sdk-dialog__title', className)}
-    {...props}
-  />
+  <AlertDialogPrimitive.Title ref={ref} className={cn('mdk-dialog__title', className)} {...props} />
 ))
 AlertDialogTitle.displayName = AlertDialogPrimitive.Title.displayName
 
@@ -73,7 +69,7 @@ const AlertDialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Description
     ref={ref}
-    className={cn('mining-sdk-dialog__description', className)}
+    className={cn('mdk-dialog__description', className)}
     {...props}
   />
 ))
@@ -85,10 +81,7 @@ const AlertDialogAction = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Action
     ref={ref}
-    className={cn(
-      'mining-sdk-button mining-sdk-button--variant-primary mining-sdk-button--size-md',
-      className,
-    )}
+    className={cn('mdk-button mdk-button--variant-primary mdk-button--size-md', className)}
     {...props}
   />
 ))
@@ -100,10 +93,7 @@ const AlertDialogCancel = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Cancel
     ref={ref}
-    className={cn(
-      'mining-sdk-button mining-sdk-button--variant-outline mining-sdk-button--size-md',
-      className,
-    )}
+    className={cn('mdk-button mdk-button--variant-outline mdk-button--size-md', className)}
     {...props}
   />
 ))

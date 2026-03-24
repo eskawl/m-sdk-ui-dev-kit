@@ -1,16 +1,17 @@
-.mining-sdk-empty-state {
+@use '../../styles/mixins' as *;
+.mdk-empty-state {
   @include flex_column_center;
   
   text-align: center;
 
-  --mining-sdk-empty-state-description-color: var(--mining-sdk-color-gray-400);
+  --mdk-empty-state-description-color: var(--mdk-color-gray-400);
 
   // Size variants
   &--sm {
     padding: 8px 0;
     gap: 4px;
 
-    .mining-sdk-empty-state__description {
+    .mdk-empty-state__description {
       font-size: 12px;
     }
   }
@@ -19,7 +20,7 @@
     padding: 24px 0;
     gap: 8px;
 
-    .mining-sdk-empty-state__description {
+    .mdk-empty-state__description {
       font-size: 14px;
     }
   }
@@ -28,7 +29,7 @@
     padding: 48px 0;
     gap: 12px;
 
-    .mining-sdk-empty-state__description {
+    .mdk-empty-state__description {
       font-size: 16px;
     }
   }
@@ -37,12 +38,12 @@
     @include flex_center;
     
     line-height: 1;
-    color: var(--mining-sdk-color-gray-400);
+    color: var(--mdk-color-gray-400);
   }
 
   &__description {
     font-family: var(--font-mono);
-    color: var(--mining-sdk-empty-state-description-color);
+    color: var(--mdk-empty-state-description-color);
     line-height: 1.5;
   }
 }

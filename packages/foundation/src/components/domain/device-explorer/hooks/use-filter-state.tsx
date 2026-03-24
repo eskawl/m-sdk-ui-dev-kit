@@ -1,4 +1,4 @@
-import type { LocalFilters } from '@mining-sdk/core'
+import type { LocalFilters } from '@mdk/core'
 import { useControllableState } from '@radix-ui/react-use-controllable-state'
 
 export type useFilterStateParams = {

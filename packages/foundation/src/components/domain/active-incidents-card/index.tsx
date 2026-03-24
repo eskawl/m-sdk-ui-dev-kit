@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { cn, SkeletonBlock } from '@mining-sdk/core'
+import { cn, SkeletonBlock } from '@mdk/core'
 import { IncidentRow } from './incident-row'
 import type { TIncidentRowProps } from './incident-row'
 
@@ -29,23 +29,23 @@ const ActiveIncidentsCard = React.forwardRef<HTMLDivElement, ActiveIncidentsCard
     ref,
   ) => {
     return (
-      <div ref={ref} className={cn('mining-sdk-active-incidents-card', className)} {...props}>
+      <div ref={ref} className={cn('mdk-active-incidents-card', className)} {...props}>
         {label && (
-          <div className="mining-sdk-active-incidents-card__header">
-            <span className="mining-sdk-active-incidents-card__label">{label}</span>
+          <div className="mdk-active-incidents-card__header">
+            <span className="mdk-active-incidents-card__label">{label}</span>
           </div>
         )}
 
         {isLoading ? (
-          <div className="mining-sdk-active-incidents-card__skeleton-container">
+          <div className="mdk-active-incidents-card__skeleton-container">
             {Array.from({ length: skeletonRows }).map((_, index) => (
               <SkeletonBlock key={index} />
             ))}
           </div>
         ) : items.length === 0 ? (
-          <div className="mining-sdk-active-incidents-card__empty">{emptyMessage}</div>
+          <div className="mdk-active-incidents-card__empty">{emptyMessage}</div>
         ) : (
-          <div className="mining-sdk-active-incidents-card__list">
+          <div className="mdk-active-incidents-card__list">
             {items.map((item) => (
               <IncidentRow key={item.id} {...item} onClick={onItemClick} />
             ))}

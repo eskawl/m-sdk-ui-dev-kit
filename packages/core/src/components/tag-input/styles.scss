@@ -1,3 +1,4 @@
+@use '../../styles/mixins' as *;
 /**
  * TagInput Component Styles (mining-os theme)
  *
@@ -6,7 +7,7 @@
  * - Search variant: magnifying glass icon
  */
 
-.mining-sdk-tag-input-root {
+.mdk-tag-input-root {
   @include flex_column;
 
   gap: 0.5rem;
@@ -14,60 +15,56 @@
   min-width: 0;
 }
 
-.mining-sdk-tag-input__label {
-  color: var(--mining-sdk-color-white);
-  font-size: var(--mining-sdk-font-size, 14px);
-  line-height: var(--mining-sdk-line-height, 22px);
+.mdk-tag-input__label {
+  color: var(--mdk-color-white);
+  font-size: var(--mdk-font-size, 14px);
+  line-height: var(--mdk-line-height, 22px);
 }
 
-.mining-sdk-tag-input__container {
+.mdk-tag-input__container {
   position: relative;
   width: 100%;
 }
 
-.mining-sdk-tag-input__wrapper {
+.mdk-tag-input__wrapper {
   @include flex_align;
 
   position: relative;
-  gap: 0;
   width: 100%;
   min-width: 220px;
+  gap: 0;
+  padding: 6px 2.5rem 6px 8px;
   min-height: 34px;
   overflow-x: hidden;
   overflow-y: visible;
+  font-size: var(--mdk-font-size, 14px);
+  line-height: var(--mdk-line-height, 22px);
   font-family: inherit;
-  padding: 8px 9px 8px 15px;
-  font-size: var(--mining-sdk-font-size, 14px);
-  line-height: var(--mining-sdk-line-height, 22px);
-  background: var(--mining-sdk-tag-input-bg, transparent);
-  border: 1px solid rgba(var(--mining-sdk-color-primary-rgb), 0.5);
-  color: var(--mining-sdk-tag-input-text, var(--mining-sdk-color-text-secondary));
+  color: var(--mdk-tag-input-text, var(--mdk-color-text-secondary));
+  background: var(--mdk-tag-input-bg, transparent);
+  border: 1px solid rgba(var(--mdk-color-primary-rgb), 0.5);
   border-radius: 0;
   outline: none;
   transition:
     border-color 0.2s,
     background-color 0.2s;
 
-  &:hover:not(.mining-sdk-tag-input__wrapper--disabled):not(:focus-within) {
-    border-color: var(--mining-sdk-color-primary);
+  &:hover:not(.mdk-tag-input__wrapper--disabled):not(:focus-within) {
+    border-color: var(--mdk-color-primary);
   }
 
   &:focus-within {
-    border-color: var(--mining-sdk-color-primary);
-    background: var(--mining-sdk-tag-input-bg, transparent);
+    border-color: var(--mdk-color-primary);
+    background: var(--mdk-tag-input-bg, transparent);
   }
 
   &--disabled {
     cursor: not-allowed;
     opacity: 0.7;
   }
-
-  &--search {
-    padding-right: 40px;
-  }
 }
 
-.mining-sdk-tag-input__inner {
+.mdk-tag-input__inner {
   @include flex_align;
 
   flex: 1;
@@ -76,31 +73,32 @@
   min-width: 0;
 }
 
-.mining-sdk-tag-input__tag {
+.mdk-tag-input__tag {
   @include inline_flex_align;
 }
 
-.mining-sdk-tag-input__tag-chip {
+.mdk-tag-input__tag-chip {
   @include inline_flex_align;
 
-  gap: 8px;
-  padding: 0 8px;
+  gap: 0.25rem;
+  padding: 1px 8px;
+  height: 22px;
   font-size: 14px;
   line-height: 20px;
+  background-color: rgba(var(--mdk-color-primary-rgb), 0.2);
+  color: var(--mdk-color-primary);
+  border: 1px solid rgba(var(--mdk-color-primary-rgb), 0.3);
   border-radius: 0;
   flex-shrink: 0;
-  color: var(--mining-sdk-color-primary);
-  background-color: rgba(var(--mining-sdk-color-primary-rgb), 0.2);
-  border: 1px solid rgba(var(--mining-sdk-color-primary-rgb), 0.3);
 }
 
-.mining-sdk-tag-input__tag-remove {
+.mdk-tag-input__tag-remove {
   @include flex_center;
 
   padding: 0;
   margin: 0;
-  margin-top: 2px;
-  color: var(--mining-sdk-color-primary);
+  margin-left: 0.25rem;
+  color: var(--mdk-color-primary);
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -109,13 +107,13 @@
   z-index: 1;
 
   svg {
-    width: 9px;
-    height: 9px;
+    width: 14px;
+    height: 14px;
     pointer-events: none;
   }
 }
 
-.mining-sdk-tag-input__input {
+.mdk-tag-input__input {
   flex: 1 1 auto;
   min-width: 60px;
   padding: 0;
@@ -123,20 +121,20 @@
   font-size: inherit;
   line-height: 22px;
   font-family: inherit;
-  color: var(--mining-sdk-tag-input-text, var(--mining-sdk-color-text-secondary));
+  color: var(--mdk-tag-input-text, var(--mdk-color-text-secondary));
   background: transparent;
   border: none;
   outline: none;
 
   &::placeholder {
-    color: var(--mining-sdk-tag-input-placeholder, var(--mining-sdk-color-text-disabled));
+    color: var(--mdk-tag-input-placeholder, var(--mdk-color-text-disabled));
   }
 
   &:disabled {
     cursor: not-allowed;
   }
 
-  .mining-sdk-tag-input__wrapper[data-has-tags='true'] &[data-open='false'] {
+  .mdk-tag-input__wrapper[data-has-tags='true'] &[data-open='false'] {
     width: 0;
     min-width: 0;
     padding: 0;
@@ -145,20 +143,15 @@
   }
 }
 
-.mining-sdk-tag-input__icon {
+.mdk-tag-input__icon {
   @include flex_center;
 
   position: absolute;
   right: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--mining-sdk-color-white-7);
+  color: var(--mdk-tag-input-icon, var(--mdk-color-text-disabled));
   pointer-events: none;
-
-  &--glass {
-    width: 16px;
-    height: 16px;
-  }
 
   &--cross {
     display: none;
@@ -169,24 +162,24 @@
     cursor: pointer;
 
     &:hover {
-      .mining-sdk-tag-input__icon--glass {
+      .mdk-tag-input__icon--glass {
         display: none;
       }
-      .mining-sdk-tag-input__icon--cross {
+      .mdk-tag-input__icon--cross {
         display: block;
       }
     }
   }
 }
 
-.mining-sdk-tag-input__arrow {
+.mdk-tag-input__arrow {
   @include flex_center;
 
   position: absolute;
   right: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--mining-sdk-tag-input-icon, var(--mining-sdk-color-text-disabled));
+  color: var(--mdk-tag-input-icon, var(--mdk-color-text-disabled));
   pointer-events: none;
   transition: color 0.2s;
   user-select: none;
@@ -197,82 +190,77 @@
   }
 }
 
-.mining-sdk-tag-input__wrapper:focus-within .mining-sdk-tag-input__arrow {
-  color: var(--mining-sdk-tag-input-icon-focus, var(--mining-sdk-color-white-60));
+.mdk-tag-input__wrapper:focus-within .mdk-tag-input__arrow {
+  color: var(--mdk-tag-input-icon-focus, var(--mdk-color-white-60));
 }
 
-.mining-sdk-tag-input__dropdown {
-  padding: 0;
+.mdk-tag-input__dropdown {
+  min-width: var(--radix-popover-trigger-width);
+  min-height: var(--mdk-tag-input-dropdown-min-height, auto);
+  max-height: var(--mdk-tag-input-dropdown-max-height, 12rem);
   overflow-y: auto;
   overflow-x: hidden;
-  border-radius: 0 !important;
-  box-shadow: var(--mining-sdk-shadow-lg);
-  min-width: var(--radix-popover-trigger-width);
-  min-height: var(--mining-sdk-tag-input-dropdown-min-height, auto);
-  max-height: var(--mining-sdk-tag-input-dropdown-max-height, 12rem);
-  background-color: var(--mining-sdk-color-background-dark) !important;
-  border: 1px solid var(--mining-sdk-color-white-2) !important;
+  padding: 4px;
+  background-color: var(--mdk-tag-input-dropdown-bg, var(--mdk-color-gray-900));
+  border: 1px solid
+    var(--mdk-tag-input-dropdown-border, var(--mdk-color-white-transparent));
+  border-radius: 0;
+  box-shadow: var(--mdk-shadow-lg);
 }
 
-.mining-sdk-tag-input__list {
+.mdk-tag-input__list {
   padding: 0;
 }
 
-.mining-sdk-tag-input__option {
-  @include flex_align_between;
-
-  gap: 12px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 400;
-  border-radius: 0;
-  line-height: 17px;
+.mdk-tag-input__option {
   padding: 8px 16px;
-  letter-spacing: -0.5px;
-  font-family: var(--font-mono);
-  transition:
-    background-color 0.2s,
-    color 0.2s;
-  color: var(--mining-sdk-color-white-7);
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 0;
+  color: var(--mdk-tag-input-text, var(--mdk-color-text-secondary));
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 
-  &--highlighted,
-  &:hover {
-    background-color: var(--mining-sdk-color-white-4);
+  &--highlighted {
+    background-color: var(
+      --mdk-tag-input-option-hover-bg,
+      var(--mdk-color-white-transparent)
+    );
   }
 
   &--selected {
-    color: var(--mining-sdk-color-primary);
-    background-color: var(--mining-sdk-color-primary-10);
-
-    &:hover {
-      background-color: var(--mining-sdk-color-primary-10);
-    }
+    background-color: var(--mdk-tag-input-option-selected-bg);
   }
 
-  &--disabled {
-    opacity: 0.5;
-    pointer-events: none;
+  &:hover {
+    background-color: var(
+      --mdk-tag-input-option-hover-bg,
+      var(--mdk-color-white-transparent)
+    );
   }
 }
 
-.mining-sdk-tag-input__option-label {
+.mdk-tag-input__option-label {
   flex: 1;
   min-width: 0;
 }
 
-.mining-sdk-tag-input__option-check {
+.mdk-tag-input__option-check {
   flex-shrink: 0;
-  color: var(--mining-sdk-color-primary);
+  color: var(--mdk-color-primary);
 }
 
-.mining-sdk-tag-input__empty {
+.mdk-tag-input__empty {
   padding: 0.5rem 0.75rem;
   font-size: 14px;
-  color: var(--mining-sdk-color-text-secondary);
+  color: var(--mdk-color-text-secondary);
 }
 
 /* Custom scrollbar styling */
-.mining-sdk-tag-input__list {
+.mdk-tag-input__list {
   &::-webkit-scrollbar {
     width: 6px;
     height: 4px;
@@ -283,11 +271,11 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--mining-sdk-color-white-transparent);
+    background-color: var(--mdk-color-white-transparent);
     border-radius: 0;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background-color: var(--mining-sdk-color-white-transparent);
+    background-color: var(--mdk-color-white-transparent);
   }
 }

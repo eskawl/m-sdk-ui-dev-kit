@@ -1,5 +1,5 @@
-import { AreaChart, ChartContainer } from '@mining-sdk/core'
-import type { ChartTooltipConfig } from '@mining-sdk/core'
+import { AreaChart, ChartContainer } from '@mdk/core'
+import type { ChartTooltipConfig } from '@mdk/core'
 import React from 'react'
 import {
   AREA_CHART_HASHRATE_TREND,

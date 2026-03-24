@@ -1,4 +1,4 @@
-import { Indicator } from '@mining-sdk/core'
+import { Indicator } from '@mdk/core'
 import type { ReactElement } from 'react'
 import type { ContainerSnap, Device } from '../../../../../../types/device'
 import { getDeviceData } from '../../../../../../utils/device-utils'

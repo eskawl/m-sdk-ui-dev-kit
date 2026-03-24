@@ -93,7 +93,7 @@ export const HomePage = (): JSX.Element => {
           <div className="home-page__branding">
             <div className="home-page__logo">⛏️</div>
             <div className="home-page__brand-text">
-              <h1 className="home-page__brand-name">Mining SDK</h1>
+              <h1 className="home-page__brand-name">MDK</h1>
               <span className="home-page__brand-tagline">UI Development Kit</span>
             </div>
           </div>

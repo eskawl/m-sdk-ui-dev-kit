@@ -46,15 +46,13 @@ export const Toast = React.forwardRef<HTMLLIElement, ToastProps>(
     const iconContent = icon ?? TOAST_ICON_MAP[variant]
 
     return (
-      <ToastPrimitives.Root ref={ref} className={cn('mining_sdk_toast', className)} {...props}>
-        <div className="mining_sdk_toast__header">
-          <div className="mining_sdk_toast__variant">{iconContent}</div>
-          <div className="mining_sdk_toast__header-content">
-            <ToastPrimitives.Title className="mining_sdk_toast__title">
-              {title}
-            </ToastPrimitives.Title>
+      <ToastPrimitives.Root ref={ref} className={cn('mdk_toast', className)} {...props}>
+        <div className="mdk_toast__header">
+          <div className="mdk_toast__variant">{iconContent}</div>
+          <div className="mdk_toast__header-content">
+            <ToastPrimitives.Title className="mdk_toast__title">{title}</ToastPrimitives.Title>
             {/* // TODO Update this to use the correct icon */}
-            <ToastPrimitives.Close className="mining_sdk_toast__close">
+            <ToastPrimitives.Close className="mdk_toast__close">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -74,8 +72,8 @@ export const Toast = React.forwardRef<HTMLLIElement, ToastProps>(
         </div>
 
         {description && (
-          <div className="mining_sdk_toast__body">
-            <ToastPrimitives.Description className="mining_sdk_toast__description">
+          <div className="mdk_toast__body">
+            <ToastPrimitives.Description className="mdk_toast__description">
               {description}
             </ToastPrimitives.Description>
           </div>
@@ -114,11 +112,7 @@ export const ToastViewport = ({
   ...props
 }: ToastViewportPropsExtended): React.JSX.Element => (
   <ToastPrimitives.Viewport
-    className={cn(
-      'mining_sdk_toast__viewport',
-      `mining_sdk_toast__viewport--${position}`,
-      className,
-    )}
+    className={cn('mdk_toast__viewport', `mdk_toast__viewport--${position}`, className)}
     {...props}
   />
 )
@@ -148,7 +142,7 @@ export const Toaster = ({
   <ToastPrimitives.Provider {...props}>
     {children}
     <ToastPrimitives.Viewport
-      className={cn('mining_sdk_toast__viewport', `mining_sdk_toast__viewport--${position}`)}
+      className={cn('mdk_toast__viewport', `mdk_toast__viewport--${position}`)}
     />
   </ToastPrimitives.Provider>
 )

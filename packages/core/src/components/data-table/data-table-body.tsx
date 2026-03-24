@@ -18,8 +18,8 @@ export function TableBody<I = unknown>({
       {table.getRowModel().rows.map((row) => (
         <React.Fragment key={row.id}>
           <tr
-            className={cn('mining-sdk-table__body-row', {
-              'mining-sdk-table__body-row--selected': row.getIsSelected(),
+            className={cn('mdk-table__body-row', {
+              'mdk-table__body-row--selected': row.getIsSelected(),
             })}
           >
             {row.getVisibleCells().map((cell) => (
@@ -53,12 +53,12 @@ export const EmptyTableBody = ({
 }): JSX.Element => {
   return (
     <div
-      className={cn('mining-sdk-table__empty-body-wrapper', {
-        'mining-sdk-table__empty-body--hidden': hideContent,
+      className={cn('mdk-table__empty-body-wrapper', {
+        'mdk-table__empty-body--hidden': hideContent,
       })}
     >
       {!hideContent && (
-        <div className="mining-sdk-table__empty-body">
+        <div className="mdk-table__empty-body">
           <ArchiveIcon width="128px" height="128px" />
           <p>{description}</p>
         </div>

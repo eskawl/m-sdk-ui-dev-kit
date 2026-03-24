@@ -1,4 +1,4 @@
-import type { SidebarMenuItem } from '@mining-sdk/core'
+import type { SidebarMenuItem } from '@mdk/core'
 import {
   BarChartIcon,
   ChatBubbleIcon,

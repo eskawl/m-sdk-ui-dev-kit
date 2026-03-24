@@ -1,6 +1,6 @@
-@use '@mining-sdk/core/styles' as *;
+@use '@mdk/core/styles' as *;
 
-.mining-sdk-status-indicator {
+.mdk-status-indicator {
   @include flex_center;
 
   width: 24px;
@@ -19,12 +19,12 @@
   }
 
   &--inactive {
-    .mining-sdk-status-indicator__icon {
-      color: var(--mining-sdk-color-white);
+    .mdk-status-indicator__icon {
+      color: var(--mdk-color-white);
 
       &--flash,
       &--sound {
-        color: var(--mining-sdk-color-white);
+        color: var(--mdk-color-white);
         opacity: 0.6;
       }
     }

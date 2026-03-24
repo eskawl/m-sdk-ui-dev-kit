@@ -1,5 +1,5 @@
 /**
- * @mining-sdk/foundation - API Client
+ * @mdk/foundation - API Client
  *
  * API integration with RTK Query for type-safe API calls.
  */

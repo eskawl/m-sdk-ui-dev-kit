@@ -1,14 +1,15 @@
+@use '../../styles/mixins' as *;
 /**
  * Form Component Styles (mining-os theme)
  */
 
-.mining-sdk-form {
+.mdk-form {
   @include flex_column;
 
   gap: 1.5rem;
 }
 
-.mining-sdk-form-item {
+.mdk-form-item {
   @include flex_column;
 
   gap: 0.5rem;
@@ -17,29 +18,29 @@
   min-height: fit-content;
 }
 
-.mining-sdk-form-label {
+.mdk-form-label {
   &--error {
-    color: rgb(var(--mining-sdk-color-error));
+    color: rgb(var(--mdk-color-error, #ef4444));
   }
 }
 
-.mining-sdk-form-description {
+.mdk-form-description {
   margin: 0;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   line-height: 1.25rem;
-  color: var(--mining-sdk-input-placeholder-color);
+  color: var(--mdk-input-placeholder-color, #999999);
   word-wrap: break-word;
   overflow-wrap: break-word;
   max-width: 100%;
 }
 
-.mining-sdk-form-message {
+.mdk-form-message {
   margin: 0;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   line-height: 1.25rem;
-  color: rgb(var(--mining-sdk-color-error));
+  color: rgb(var(--mdk-color-error, #ef4444));
   word-wrap: break-word;
   word-break: break-word;
   overflow-wrap: break-word;

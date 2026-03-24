@@ -1,4 +1,4 @@
-import { TextArea } from '@mining-sdk/core'
+import { TextArea } from '@mdk/core'
 
 export const TextAreaExample = (): React.ReactElement => {
   return (

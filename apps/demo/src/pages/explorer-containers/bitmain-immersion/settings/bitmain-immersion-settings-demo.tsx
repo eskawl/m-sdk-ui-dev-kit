@@ -1,4 +1,4 @@
-import { BitMainImmersionSettings } from '@mining-sdk/foundation'
+import { BitMainImmersionSettings } from '@mdk/foundation'
 import type { ReactElement } from 'react'
 import './bitmain-immersion-settings-demo.scss'
 

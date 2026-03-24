@@ -1,4 +1,4 @@
-import { StatsExport } from '@mining-sdk/foundation'
+import { StatsExport } from '@mdk/foundation'
 
 export const StateExportsPage = (): JSX.Element => {
   return (

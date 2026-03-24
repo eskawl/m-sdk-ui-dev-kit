@@ -1,9 +1,5 @@
-import { Button, DataTable, getDataTableColumnHelper } from '@mining-sdk/core'
-import type {
-  DataTableExpandedState,
-  DataTableRow,
-  DataTableRowSelectionState,
-} from '@mining-sdk/core'
+import { Button, DataTable, getDataTableColumnHelper } from '@mdk/core'
+import type { DataTableExpandedState, DataTableRow, DataTableRowSelectionState } from '@mdk/core'
 import React, { useState } from 'react'
 
 const miners = Array.from({ length: 105 })

@@ -1,5 +1,5 @@
-import type { IChartApi, UnknownRecord } from '@mining-sdk/core'
-import { ChartContainer, formatUnit, LineChart, secondsToMs } from '@mining-sdk/core'
+import type { IChartApi, UnknownRecord } from '@mdk/core'
+import { ChartContainer, formatUnit, LineChart, secondsToMs } from '@mdk/core'
 import _last from 'lodash/last'
 import _map from 'lodash/map'
 import _round from 'lodash/round'

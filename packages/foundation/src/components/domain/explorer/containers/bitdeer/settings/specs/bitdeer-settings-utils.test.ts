@@ -1,4 +1,4 @@
-import { COLOR } from '@mining-sdk/core'
+import { COLOR } from '@mdk/core'
 import { describe, expect, it, vi } from 'vitest'
 import type { Container } from '../../../../../../../types/device'
 import { CONTAINER_STATUS } from '../../../../../../../utils/status-utils'

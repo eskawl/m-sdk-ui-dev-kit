@@ -1,5 +1,5 @@
-import { ListViewFilter, Tabs, TabsList, TabsTrigger, TagInput } from '@mining-sdk/core'
-import type { CascaderValue, LocalFilters } from '@mining-sdk/core'
+import { ListViewFilter, Tabs, TabsList, TabsTrigger, TagInput } from '@mdk/core'
+import type { CascaderValue, LocalFilters } from '@mdk/core'
 import type {
   DeviceExplorerDeviceType,
   DeviceExplorerFilterOption,
@@ -45,13 +45,13 @@ export const DeviceExplorerToolbar = ({
   const showFilter = filterOptions.length > 0
 
   return (
-    <div className="mining-sdk-device-explorer__toolbar">
+    <div className="mdk-device-explorer__toolbar">
       {showFilter && (
         <ListViewFilter
           localFilters={filters}
           options={filterOptions}
           onChange={onFiltersChange}
-          className="mining-sdk-device-explorer__toolbar__filter"
+          className="mdk-device-explorer__toolbar__filter"
         />
       )}
       <TagInput
@@ -61,20 +61,20 @@ export const DeviceExplorerToolbar = ({
         onTagsChange={onSearchTagsChange}
         value={searchTags}
         variant="search"
-        className="mining-sdk-device-explorer__toolbar__search"
+        className="mdk-device-explorer__toolbar__search"
       />
       <Tabs
         value={deviceType}
         onValueChange={(value) => onDeviceTypeChange(value as DeviceExplorerDeviceType)}
-        className="mining-sdk-device-explorer__toolbar__tabs"
+        className="mdk-device-explorer__toolbar__tabs"
       >
-        <TabsList variant="side" className="mining-sdk-device-explorer__toolbar__tabs-list">
+        <TabsList variant="side" className="mdk-device-explorer__toolbar__tabs-list">
           {deviceTypeTabs.map(({ label, value }) => (
             <TabsTrigger
               key={value}
               value={value}
               variant="side"
-              className="mining-sdk-device-explorer__toolbar__tab-trigger"
+              className="mdk-device-explorer__toolbar__tab-trigger"
             >
               {label}
             </TabsTrigger>

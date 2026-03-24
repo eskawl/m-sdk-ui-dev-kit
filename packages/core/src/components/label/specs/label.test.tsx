@@ -23,7 +23,7 @@ describe('label', () => {
     const { container } = render(<Label className="custom-label">Custom</Label>)
     const label = container.querySelector('label')
     expect(label).toHaveClass('custom-label')
-    expect(label).toHaveClass('mining-sdk-label')
+    expect(label).toHaveClass('mdk-label')
   })
 
   it('forwards ref correctly', () => {

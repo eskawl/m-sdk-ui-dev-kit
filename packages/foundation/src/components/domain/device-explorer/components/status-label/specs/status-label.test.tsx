@@ -10,28 +10,28 @@ describe('statusLabel', () => {
 
   it('should apply error status class', () => {
     const { container } = render(<StatusLabel status="error">Error</StatusLabel>)
-    const element = container.querySelector('.mining-sdk-device-explorer__status-label')
-    expect(element).toHaveClass('mining-sdk-device-explorer__status-label--error')
+    const element = container.querySelector('.mdk-device-explorer__status-label')
+    expect(element).toHaveClass('mdk-device-explorer__status-label--error')
   })
 
   it('should apply offline status class', () => {
     const { container } = render(<StatusLabel status="offline">Offline</StatusLabel>)
-    const element = container.querySelector('.mining-sdk-device-explorer__status-label')
-    expect(element).toHaveClass('mining-sdk-device-explorer__status-label--offline')
+    const element = container.querySelector('.mdk-device-explorer__status-label')
+    expect(element).toHaveClass('mdk-device-explorer__status-label--offline')
   })
 
   it('should apply sleep status class', () => {
     const { container } = render(<StatusLabel status="sleep">Sleep</StatusLabel>)
-    const element = container.querySelector('.mining-sdk-device-explorer__status-label')
-    expect(element).toHaveClass('mining-sdk-device-explorer__status-label--sleep')
+    const element = container.querySelector('.mdk-device-explorer__status-label')
+    expect(element).toHaveClass('mdk-device-explorer__status-label--sleep')
   })
 
   it('should render without status prop', () => {
     const { container } = render(<StatusLabel>No Status</StatusLabel>)
-    const element = container.querySelector('.mining-sdk-device-explorer__status-label')
+    const element = container.querySelector('.mdk-device-explorer__status-label')
     expect(element).toBeInTheDocument()
-    expect(element).not.toHaveClass('mining-sdk-device-explorer__status-label--error')
-    expect(element).not.toHaveClass('mining-sdk-device-explorer__status-label--offline')
-    expect(element).not.toHaveClass('mining-sdk-device-explorer__status-label--sleep')
+    expect(element).not.toHaveClass('mdk-device-explorer__status-label--error')
+    expect(element).not.toHaveClass('mdk-device-explorer__status-label--offline')
+    expect(element).not.toHaveClass('mdk-device-explorer__status-label--sleep')
   })
 })

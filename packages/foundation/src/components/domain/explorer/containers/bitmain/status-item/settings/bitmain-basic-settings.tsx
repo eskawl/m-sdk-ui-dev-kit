@@ -23,14 +23,14 @@ type BitMainBasicSettingsProps = {
  * ```
  */
 export const BitMainBasicSettings = ({ data }: BitMainBasicSettingsProps): ReactElement => (
-  <div className="mining-sdk-bitmain-basic-settings">
-    <section className="mining-sdk-bitmain-basic-settings__section">
+  <div className="mdk-bitmain-basic-settings">
+    <section className="mdk-bitmain-basic-settings__section">
       <BitMainCoolingSystem data={data} />
     </section>
 
-    <h2 className="mining-sdk-bitmain-basic-settings__title">Power & Positioning</h2>
+    <h2 className="mdk-bitmain-basic-settings__title">Power & Positioning</h2>
 
-    <section className="mining-sdk-bitmain-basic-settings__section">
+    <section className="mdk-bitmain-basic-settings__section">
       <BitMainPowerAndPositioning data={data} />
     </section>
   </div>

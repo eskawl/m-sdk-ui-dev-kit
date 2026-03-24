@@ -1,21 +1,21 @@
-$_prefix: 'mining-sdk-pool-details-popover';
+$_prefix: 'mdk-pool-details-popover';
 
 .#{$_prefix} {
   display: inline-block;
 
-  .mining-sdk-dialog__content {
+  .mdk-dialog__content {
     gap: 16px;
     border: none;
     padding: 16px;
-    background-color: rgb(var(--mining-sdk-color-black));
+    background-color: rgb(var(--mdk-color-black));
   }
 
-  .mining-sdk-dialog__header {
+  .mdk-dialog__header {
     padding-bottom: 0;
     border-bottom: none;
   }
 
-  .mining-sdk-dialog__title {
+  .mdk-dialog__title {
     font-size: 16px;
     font-weight: 400;
     text-transform: capitalize;
@@ -24,9 +24,9 @@ $_prefix: 'mining-sdk-pool-details-popover';
   &__body {
     padding: 0;
 
-    .mining-sdk-pool-details-card {
-      background-color: var(--mining-sdk-color-surface);
-      border: 1px solid var(--mining-sdk-dialog-border-color);
+    .mdk-pool-details-card {
+      background-color: var(--mdk-color-surface);
+      border: 1px solid var(--mdk-dialog-border-color);
     }
   }
 }

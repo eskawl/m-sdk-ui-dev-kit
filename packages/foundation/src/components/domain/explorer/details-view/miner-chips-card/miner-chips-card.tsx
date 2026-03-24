@@ -1,4 +1,4 @@
-import type { ContainerStats } from '@mining-sdk/foundation'
+import type { ContainerStats } from '@mdk/foundation'
 import type { ReactElement } from 'react'
 import { MinerChip } from './miner-chip/miner-chip'
 import './miner-chips-card.scss'

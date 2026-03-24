@@ -60,11 +60,11 @@ describe('containerFansCard', () => {
     const fansData = [{ enabled: true, index: 0 }]
     const { container } = render(<ContainerFansCard fansData={fansData} />)
 
-    expect(container.querySelector('.mining-sdk-container-fans-card')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-container-fans-card')).toBeInTheDocument()
   })
 
   it('handles empty array', () => {
     const { container } = render(<ContainerFansCard fansData={[]} />)
-    expect(container.querySelector('.mining-sdk-container-fans-card')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-container-fans-card')).toBeInTheDocument()
   })
 })

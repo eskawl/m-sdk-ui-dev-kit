@@ -1,4 +1,4 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@mining-sdk/core'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@mdk/core'
 import type { ReactElement } from 'react'
 import '../styles/_contaienrs-page-common.scss'
 import { GaugeChartComponentDemo } from './chart/gauge-chart-component-demo'

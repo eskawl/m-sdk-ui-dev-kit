@@ -74,11 +74,11 @@ const Indicator = React.forwardRef<HTMLDivElement, IndicatorProps>(
       <div
         ref={ref}
         className={cn(
-          'mining-sdk-indicator',
-          `mining-sdk-indicator--${color}`,
-          `mining-sdk-indicator--${size}`,
-          onClick && 'mining-sdk-indicator--clickable',
-          vertical && 'mining-sdk-indicator--vertical',
+          'mdk-indicator',
+          `mdk-indicator--${color}`,
+          `mdk-indicator--${size}`,
+          onClick && 'mdk-indicator--clickable',
+          vertical && 'mdk-indicator--vertical',
           className,
         )}
         onClick={onClick}

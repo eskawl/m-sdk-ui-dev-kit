@@ -1,4 +1,5 @@
-.mining-sdk-indicator {
+@use '../../styles/mixins' as *;
+.mdk-indicator {
   @include inline_flex_align;
 
   justify-content: center;
@@ -66,43 +67,43 @@
 
   /* Color Variants */
   &--red {
-    background-color: rgba(var(--mining-sdk-color-error), 0.1);
-    color: rgb(var(--mining-sdk-color-error));
+    background-color: rgba(var(--mdk-color-error), 0.1);
+    color: rgb(var(--mdk-color-error));
   }
 
   &--gray {
-    background-color: rgba(var(--mining-sdk-color-dark-grey), 0.1);
-    color: rgb(var(--mining-sdk-color-dark-grey));
+    background-color: rgba(var(--mdk-color-dark-grey), 0.1);
+    color: rgb(var(--mdk-color-dark-grey));
   }
 
   &--blue {
-    background-color: rgba(var(--mining-sdk-color-sleep-blue), 0.1);
-    color: rgb(var(--mining-sdk-color-sleep-blue));
+    background-color: rgba(var(--mdk-color-sleep-blue), 0.1);
+    color: rgb(var(--mdk-color-sleep-blue));
   }
 
   &--yellow {
-    background-color: rgba(var(--mining-sdk-color-low-yellow), 0.1);
-    color: rgb(var(--mining-sdk-color-low-yellow));
+    background-color: rgba(var(--mdk-color-low-yellow), 0.1);
+    color: rgb(var(--mdk-color-low-yellow));
   }
 
   &--green {
-    background-color: rgba(var(--mining-sdk-color-success), 0.1);
-    color: rgb(var(--mining-sdk-color-success));
+    background-color: rgba(var(--mdk-color-success), 0.1);
+    color: rgb(var(--mdk-color-success));
   }
 
   &--purple {
-    background-color: rgba(var(--mining-sdk-color-purple-high), 0.1);
-    color: rgb(var(--mining-sdk-color-purple-high));
+    background-color: rgba(var(--mdk-color-purple-high), 0.1);
+    color: rgb(var(--mdk-color-purple-high));
   }
 
   &--amber {
-    background-color: rgba(var(--mining-sdk-color-orange-warning), 0.1);
-    color: rgb(var(--mining-sdk-color-orange-warning));
+    background-color: rgba(var(--mdk-color-orange-warning), 0.1);
+    color: rgb(var(--mdk-color-orange-warning));
   }
 
   &--slate {
-    background-color: rgba(var(--mining-sdk-color-grey-idle), 0.1);
-    color: rgb(var(--mining-sdk-color-grey-idle));
+    background-color: rgba(var(--mdk-color-grey-idle), 0.1);
+    color: rgb(var(--mdk-color-grey-idle));
   }
 
   /* Clickable State */

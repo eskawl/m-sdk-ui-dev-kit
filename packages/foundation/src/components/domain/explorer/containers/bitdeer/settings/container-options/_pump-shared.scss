@@ -1,11 +1,11 @@
-@use '@mining-sdk/core/styles' as *;
+@use '@mdk/core/styles' as *;
 
 @mixin pump-container {
   padding: 15px;
   min-width: 100px;
   flex: 1;
-  background-color: var(--mining-sdk-color-surface);
-  border: 1px solid var(--mining-sdk-dialog-border-color);
+  background-color: var(--mdk-color-surface);
+  border: 1px solid var(--mdk-dialog-border-color);
 }
 
 @mixin pump-status {
@@ -15,7 +15,7 @@
 }
 
 @mixin pump-title {
-  color: var(--mining-sdk-color-white);
+  color: var(--mdk-color-white);
   font-size: 18px;
   font-weight: 500;
   line-height: normal;

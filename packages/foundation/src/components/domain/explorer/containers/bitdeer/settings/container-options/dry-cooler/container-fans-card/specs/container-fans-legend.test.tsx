@@ -3,8 +3,8 @@ import { describe, expect, it, vi } from 'vitest'
 
 import { ContainerFanLegend } from '../container-fans-legend'
 
-vi.mock('@mining-sdk/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@mining-sdk/core')>()
+vi.mock('@mdk/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@mdk/core')>()
   return {
     ...actual,
     FanIcon: () => <svg data-testid="fan-icon">Fan</svg>,
@@ -14,7 +14,7 @@ vi.mock('@mining-sdk/core', async (importOriginal) => {
 describe('containerFanLegend', () => {
   it('renders with index and enabled', () => {
     const { container } = render(<ContainerFanLegend index={1} enabled={true} />)
-    expect(container.querySelector('.mining-sdk-container-fan-legend')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-container-fan-legend')).toBeInTheDocument()
   })
 
   it('displays fan index', () => {
@@ -24,30 +24,30 @@ describe('containerFanLegend', () => {
 
   it('displays nothing when index is null', () => {
     const { container } = render(<ContainerFanLegend index={null} enabled={true} />)
-    const number = container.querySelector('.mining-sdk-container-fan-legend__number')
+    const number = container.querySelector('.mdk-container-fan-legend__number')
     expect(number?.textContent).toBe('')
   })
 
   it('applies on class when enabled', () => {
     const { container } = render(<ContainerFanLegend index={1} enabled={true} />)
-    expect(container.firstChild).toHaveClass('mining-sdk-container-fan-legend--on')
+    expect(container.firstChild).toHaveClass('mdk-container-fan-legend--on')
   })
 
   it('applies off class when disabled', () => {
     const { container } = render(<ContainerFanLegend index={1} enabled={false} />)
-    expect(container.firstChild).toHaveClass('mining-sdk-container-fan-legend--off')
+    expect(container.firstChild).toHaveClass('mdk-container-fan-legend--off')
   })
 
   it('applies on class to icon when enabled', () => {
     const { container } = render(<ContainerFanLegend index={1} enabled={true} />)
-    const icon = container.querySelector('.mining-sdk-container-fan-legend__icon')
-    expect(icon).toHaveClass('mining-sdk-container-fan-legend__icon--on')
+    const icon = container.querySelector('.mdk-container-fan-legend__icon')
+    expect(icon).toHaveClass('mdk-container-fan-legend__icon--on')
   })
 
   it('applies off class to icon when disabled', () => {
     const { container } = render(<ContainerFanLegend index={1} enabled={false} />)
-    const icon = container.querySelector('.mining-sdk-container-fan-legend__icon')
-    expect(icon).toHaveClass('mining-sdk-container-fan-legend__icon--off')
+    const icon = container.querySelector('.mdk-container-fan-legend__icon')
+    expect(icon).toHaveClass('mdk-container-fan-legend__icon--off')
   })
 
   it('renders FanIcon', () => {
@@ -62,6 +62,6 @@ describe('containerFanLegend', () => {
 
   it('defaults enabled to false', () => {
     const { container } = render(<ContainerFanLegend index={1} />)
-    expect(container.firstChild).toHaveClass('mining-sdk-container-fan-legend--off')
+    expect(container.firstChild).toHaveClass('mdk-container-fan-legend--off')
   })
 })

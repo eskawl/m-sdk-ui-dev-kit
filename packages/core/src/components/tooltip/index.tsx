@@ -50,7 +50,7 @@ const TooltipArrow = React.forwardRef<
     width={14}
     height={7}
     {...props}
-    className={cn('mining-sdk-tooltip__arrow', className)}
+    className={cn('mdk-tooltip__arrow', className)}
   >
     <span />
   </TooltipPrimitive.Arrow>
@@ -82,7 +82,7 @@ const TooltipContent = React.forwardRef<
       ref={ref}
       align={align}
       sideOffset={sideOffset}
-      className={cn('mining-sdk-tooltip__content', className)}
+      className={cn('mdk-tooltip__content', className)}
       {...props}
     >
       <div className="mining-sdk-tooltip__content-main">{children}</div>

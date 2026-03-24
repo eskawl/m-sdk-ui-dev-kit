@@ -58,29 +58,23 @@ const SpinnerCircle = React.forwardRef<HTMLDivElement, SpinnerProps>(
     return (
       <div
         ref={ref}
-        className={cn(
-          'mining-sdk-spinner',
-          fullScreen && 'mining-sdk-spinner--fullscreen',
-          className,
-        )}
+        className={cn('mdk-spinner', fullScreen && 'mdk-spinner--fullscreen', className)}
         {...props}
       >
-        <div className="mining-sdk-spinner__content">
+        <div className="mdk-spinner__content">
           <div
             className={cn(
-              'mining-sdk-spinner__circle',
-              `mining-sdk-spinner__circle--${size}`,
-              `mining-sdk-spinner__circle--${color}`,
-              `mining-sdk-spinner__circle--${speed}`,
+              'mdk-spinner__circle',
+              `mdk-spinner__circle--${size}`,
+              `mdk-spinner__circle--${color}`,
+              `mdk-spinner__circle--${speed}`,
             )}
             role="status"
             aria-live="polite"
             aria-label={label || 'Loading'}
           />
           {label && (
-            <span className={cn('mining-sdk-spinner__label', `mining-sdk-spinner__label--${size}`)}>
-              {label}
-            </span>
+            <span className={cn('mdk-spinner__label', `mdk-spinner__label--${size}`)}>{label}</span>
           )}
         </div>
       </div>
@@ -104,55 +98,31 @@ const SpinnerSquare = React.forwardRef<HTMLDivElement, SpinnerProps>(
     return (
       <div
         ref={ref}
-        className={cn(
-          'mining-sdk-spinner',
-          fullScreen && 'mining-sdk-spinner--fullscreen',
-          className,
-        )}
+        className={cn('mdk-spinner', fullScreen && 'mdk-spinner--fullscreen', className)}
         {...props}
       >
-        <div className="mining-sdk-spinner__content">
+        <div className="mdk-spinner__content">
           <div
             className={cn(
-              'mining-sdk-spinner__dot',
-              `mining-sdk-spinner__dot--${size}`,
-              `mining-sdk-spinner__dot--${speed}`,
+              'mdk-spinner__dot',
+              `mdk-spinner__dot--${size}`,
+              `mdk-spinner__dot--${speed}`,
             )}
             role="status"
             aria-live="polite"
             aria-label={label || 'Loading'}
           >
-            <span
-              className={cn(
-                'mining-sdk-spinner__dot-item',
-                `mining-sdk-spinner__dot-item--${color}`,
-              )}
-            />
-            <span
-              className={cn(
-                'mining-sdk-spinner__dot-item',
-                `mining-sdk-spinner__dot-item--${color}`,
-              )}
-            />
-            <span
-              className={cn(
-                'mining-sdk-spinner__dot-item',
-                `mining-sdk-spinner__dot-item--${color}`,
-              )}
-            />
-            <span
-              className={cn(
-                'mining-sdk-spinner__dot-item',
-                `mining-sdk-spinner__dot-item--${color}`,
-              )}
-            />
+            <span className={cn('mdk-spinner__dot-item', `mdk-spinner__dot-item--${color}`)} />
+            <span className={cn('mdk-spinner__dot-item', `mdk-spinner__dot-item--${color}`)} />
+            <span className={cn('mdk-spinner__dot-item', `mdk-spinner__dot-item--${color}`)} />
+            <span className={cn('mdk-spinner__dot-item', `mdk-spinner__dot-item--${color}`)} />
           </div>
           {label && (
             <span
               className={cn(
-                'mining-sdk-spinner__label',
-                `mining-sdk-spinner__label--${size}`,
-                `mining-sdk-spinner__label--${color}`,
+                'mdk-spinner__label',
+                `mdk-spinner__label--${size}`,
+                `mdk-spinner__label--${color}`,
               )}
             >
               {label}

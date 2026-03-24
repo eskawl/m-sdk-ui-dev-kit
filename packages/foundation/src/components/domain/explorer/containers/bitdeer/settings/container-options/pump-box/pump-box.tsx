@@ -1,4 +1,4 @@
-import { Indicator } from '@mining-sdk/core'
+import { Indicator } from '@mdk/core'
 import type { ReactElement } from 'react'
 import { DEVICE_STATUS } from '../../../../../../../../constants/devices'
 import './pump-box.scss'
@@ -22,9 +22,9 @@ export const PumpBox = ({ pumpItem, pumpTitle }: PumpsProps): ReactElement | nul
   const pumpNumber = pumpItem.index + 1
 
   return (
-    <div className="mining-sdk-pump-box">
-      <div className="mining-sdk-pump-box__status">
-        <span className="mining-sdk-pump-box__title">
+    <div className="mdk-pump-box">
+      <div className="mdk-pump-box__status">
+        <span className="mdk-pump-box__title">
           {pumpTitle} Pump {pumpNumber}
         </span>
         <Indicator color={isRunning ? 'green' : 'gray'} size="md">

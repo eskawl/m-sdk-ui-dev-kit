@@ -1,4 +1,4 @@
-import { Indicator, UNITS } from '@mining-sdk/core'
+import { Indicator, UNITS } from '@mdk/core'
 import type { ReactElement } from 'react'
 import type { Device } from '../../../../types/device'
 import { DEVICE_STATUS } from '../../../../constants/devices'

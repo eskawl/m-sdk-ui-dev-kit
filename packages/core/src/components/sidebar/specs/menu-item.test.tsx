@@ -46,7 +46,7 @@ describe('menuItemInternal', () => {
       />,
     )
 
-    expect(container.querySelector('.mining-sdk-sidebar__item--active')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-sidebar__item--active')).toBeInTheDocument()
   })
 
   it('calls onItemClick when leaf item is clicked', () => {
@@ -166,7 +166,7 @@ describe('menuItemInternal', () => {
       />,
     )
 
-    expect(container.querySelector('.mining-sdk-sidebar__item-icon')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-sidebar__item-icon')).toBeInTheDocument()
     expect(screen.getByTestId('icon')).toBeInTheDocument()
   })
 })
@@ -198,6 +198,6 @@ describe('overlayContent', () => {
       />,
     )
 
-    expect(container.querySelector('.mining-sdk-sidebar__item--active')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-sidebar__item--active')).toBeInTheDocument()
   })
 })

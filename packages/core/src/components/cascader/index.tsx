@@ -261,7 +261,7 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
 
     const isCategorySelected = React.useCallback(
       (categoryValue: string | number | boolean) => {
-        const category = options.find(({ value }) => value === categoryValue)
+        const category = options.find((opt) => opt.value === categoryValue)
         if (!category?.children) return false
 
         return category.children
@@ -273,7 +273,7 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
 
     const isCategoryIndeterminate = React.useCallback(
       (categoryValue: string | number | boolean) => {
-        const category = options.find(({ value }) => value === categoryValue)
+        const category = options.find((opt) => opt.value === categoryValue)
         if (!category?.children) return false
 
         const selectedChildren = category.children.filter((child) =>
@@ -319,7 +319,7 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
 
     const handleCategoryToggle = React.useCallback(
       (categoryValue: string | number | boolean, checked: boolean) => {
-        const category = options.find(({ value }) => value === categoryValue)
+        const category = options.find((opt) => opt.value === categoryValue)
         if (!category?.children) return
 
         let newValue: CascaderValue[]
@@ -340,7 +340,7 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
 
     const activeOptions = React.useMemo(() => {
       if (!activeCategory) return []
-      const category = options.find(({ value }) => String(value) === activeCategory)
+      const category = options.find((opt) => String(opt.value) === activeCategory)
       return category?.children || []
     }, [activeCategory, options])
 
@@ -384,7 +384,7 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
         <>
           {parts.map((part, index) =>
             regex.test(part) ? (
-              <span key={index} className="mining-sdk-cascader__highlight">
+              <span key={index} className="mdk-cascader__highlight">
                 {part}
               </span>
             ) : (
@@ -403,10 +403,10 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
 
       const search = searchValue.toLowerCase()
       return flattenedOptions.filter(
-        ({ categoryLabel, optionLabel, label }) =>
-          categoryLabel.toLowerCase().includes(search) ||
-          optionLabel.toLowerCase().includes(search) ||
-          label.toLowerCase().includes(search),
+        (opt) =>
+          opt.categoryLabel.toLowerCase().includes(search) ||
+          opt.optionLabel.toLowerCase().includes(search) ||
+          opt.label.toLowerCase().includes(search),
       )
     }, [flattenedOptions, searchValue])
 
@@ -487,7 +487,7 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
     const showSearchResults = searchValue.trim().length > 0
 
     return (
-      <div ref={ref} className={cn('mining-sdk-cascader', className)}>
+      <div ref={ref} className={cn('mdk-cascader', className)}>
         <TagInput
           ref={tagInputRef}
           value={selectedTags.map((tag) => tag.label)}
@@ -507,16 +507,16 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
           allowCustomTags={false}
           className={className}
           renderDropdown={({ inputValue }) => (
-            <div className={cn('mining-sdk-cascader__panels', dropdownClassName)}>
+            <div className={cn('mdk-cascader__panels', dropdownClassName)}>
               {/* Search Results View - Flat list */}
               {showSearchResults ? (
                 <div
                   className={cn(
-                    'mining-sdk-cascader__panel mining-sdk-cascader__panel--search',
-                    !filteredOptions.length && 'mining-sdk-cascader__panel--empty',
+                    'mdk-cascader__panel mdk-cascader__panel--search',
+                    !filteredOptions.length && 'mdk-cascader__panel--empty',
                   )}
                 >
-                  <div className="mining-sdk-cascader__options-list">
+                  <div className="mdk-cascader__options-list">
                     {multiple ? (
                       // Multiple select mode with checkboxes
                       <>
@@ -527,9 +527,9 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                             <label
                               key={JSON.stringify(option.selection)}
                               className={cn(
-                                'mining-sdk-cascader__option',
-                                'mining-sdk-cascader__option--search',
-                                option.disabled && 'mining-sdk-cascader__option--disabled',
+                                'mdk-cascader__option',
+                                'mdk-cascader__option--search',
+                                option.disabled && 'mdk-cascader__option--disabled',
                               )}
                             >
                               <Checkbox
@@ -539,17 +539,17 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                                   setSearchValue('')
                                   handleSelect(option.selection, checked as boolean)
                                 }}
-                                className="mining-sdk-cascader__category-checkbox"
+                                className="mdk-cascader__category-checkbox"
                                 disabled={option.disabled}
                                 size="sm"
                                 color="primary"
                               />
-                              <span className="mining-sdk-cascader__option-label">
-                                <span className="mining-sdk-cascader__option-category">
+                              <span className="mdk-cascader__option-label">
+                                <span className="mdk-cascader__option-category">
                                   {highlightText(option.categoryLabel, searchValue)}
                                 </span>
-                                <span className="mining-sdk-cascader__option-separator"> / </span>
-                                <span className="mining-sdk-cascader__option-name">
+                                <span className="mdk-cascader__option-separator"> / </span>
+                                <span className="mdk-cascader__option-name">
                                   {highlightText(option.optionLabel, searchValue)}
                                 </span>
                               </span>
@@ -562,7 +562,7 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                       <RadioGroup
                         value={currentRadioValue}
                         onValueChange={handleRadioChange}
-                        className="mining-sdk-cascader__radio-group"
+                        className="mdk-cascader__radio-group"
                       >
                         {filteredOptions.map((option) => {
                           const selectionString = JSON.stringify(option.selection)
@@ -571,9 +571,9 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                             <label
                               key={selectionString}
                               className={cn(
-                                'mining-sdk-cascader__option',
-                                'mining-sdk-cascader__option--search',
-                                option.disabled && 'mining-sdk-cascader__option--disabled',
+                                'mdk-cascader__option',
+                                'mdk-cascader__option--search',
+                                option.disabled && 'mdk-cascader__option--disabled',
                               )}
                             >
                               <Radio
@@ -582,12 +582,12 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                                 size="sm"
                                 color="primary"
                               />
-                              <span className="mining-sdk-cascader__option-label">
-                                <span className="mining-sdk-cascader__option-category">
+                              <span className="mdk-cascader__option-label">
+                                <span className="mdk-cascader__option-category">
                                   {option.categoryLabel}
                                 </span>
-                                <span className="mining-sdk-cascader__option-separator"> / </span>
-                                <span className="mining-sdk-cascader__option-name">
+                                <span className="mdk-cascader__option-separator"> / </span>
+                                <span className="mdk-cascader__option-name">
                                   {option.optionLabel}
                                 </span>
                               </span>
@@ -606,19 +606,19 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                 <>
                   {/* Left Panel - Categories */}
                   {showLeftPanel && (
-                    <div className="mining-sdk-cascader__panel mining-sdk-cascader__panel--categories">
-                      {options.map(({ value, label, disabled }) => {
-                        const isActive = String(value) === activeCategory
-                        const categorySelected = isCategorySelected(value)
-                        const categoryIndeterminate = isCategoryIndeterminate(value)
+                    <div className="mdk-cascader__panel mdk-cascader__panel--categories">
+                      {options.map((option) => {
+                        const isActive = String(option.value) === activeCategory
+                        const categorySelected = isCategorySelected(option.value)
+                        const categoryIndeterminate = isCategoryIndeterminate(option.value)
 
                         return (
                           <div
-                            key={String(value)}
+                            key={String(option.value)}
                             className={cn(
-                              'mining-sdk-cascader__category',
-                              isActive && 'mining-sdk-cascader__category--active',
-                              disabled && 'mining-sdk-cascader__category--disabled',
+                              'mdk-cascader__category',
+                              isActive && 'mdk-cascader__category--active',
+                              option.disabled && 'mdk-cascader__category--disabled',
                             )}
                           >
                             {multiple && (
@@ -631,25 +631,25 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                                       : false
                                 }
                                 onCheckedChange={(checked) =>
-                                  handleCategoryToggle(value, checked as boolean)
+                                  handleCategoryToggle(option.value, checked as boolean)
                                 }
-                                disabled={disabled}
+                                disabled={option.disabled}
                                 size="sm"
                                 color="primary"
-                                className="mining-sdk-cascader__category-checkbox"
+                                className="mdk-cascader__category-checkbox"
                               />
                             )}
                             <button
                               type="button"
-                              className="mining-sdk-cascader__category-button"
+                              className="mdk-cascader__category-button"
                               onMouseDown={(e) => {
                                 e.preventDefault()
-                                if (!disabled) setActiveCategory(String(value))
+                                if (!option.disabled) setActiveCategory(String(option.value))
                               }}
-                              disabled={disabled}
+                              disabled={option.disabled}
                             >
-                              <span className="mining-sdk-cascader__category-label">{label}</span>
-                              <ChevronRightIcon className="mining-sdk-cascader__category-arrow" />
+                              <span className="mdk-cascader__category-label">{option.label}</span>
+                              <ChevronRightIcon className="mdk-cascader__category-arrow" />
                             </button>
                           </div>
                         )
@@ -659,14 +659,14 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
 
                   {/* Right Panel - Options for active category */}
                   {activeCategory && (
-                    <div className="mining-sdk-cascader__panel mining-sdk-cascader__panel--options">
-                      <div className="mining-sdk-cascader__options-list">
+                    <div className="mdk-cascader__panel mdk-cascader__panel--options">
+                      <div className="mdk-cascader__options-list">
                         {multiple ? (
                           <>
                             {activeOptions
-                              .filter(({ label }) => {
+                              .filter((opt) => {
                                 if (!inputValue.trim()) return true
-                                return label.toLowerCase().includes(inputValue.toLowerCase())
+                                return opt.label.toLowerCase().includes(inputValue.toLowerCase())
                               })
                               .map((option) => {
                                 const selection = [
@@ -679,8 +679,8 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                                   <label
                                     key={String(option.value)}
                                     className={cn(
-                                      'mining-sdk-cascader__option',
-                                      option.disabled && 'mining-sdk-cascader__option--disabled',
+                                      'mdk-cascader__option',
+                                      option.disabled && 'mdk-cascader__option--disabled',
                                     )}
                                   >
                                     <Checkbox
@@ -688,13 +688,13 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                                       onCheckedChange={(checked) =>
                                         handleSelect(selection, checked as boolean)
                                       }
-                                      className="mining-sdk-cascader__category-checkbox"
+                                      className="mdk-cascader__category-checkbox"
                                       disabled={option.disabled}
                                       size="sm"
                                       color="primary"
                                     />
                                     <span
-                                      className="mining-sdk-cascader__option-label"
+                                      className="mdk-cascader__option-label"
                                       title={option.label}
                                     >
                                       {option.label}
@@ -707,12 +707,12 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                           <RadioGroup
                             value={currentRadioValue}
                             onValueChange={handleRadioChange}
-                            className="mining-sdk-cascader__radio-group"
+                            className="mdk-cascader__radio-group"
                           >
                             {activeOptions
-                              .filter(({ label }) => {
+                              .filter((opt) => {
                                 if (!inputValue.trim()) return true
-                                return label.toLowerCase().includes(inputValue.toLowerCase())
+                                return opt.label.toLowerCase().includes(inputValue.toLowerCase())
                               })
                               .map((option) => {
                                 const selection = [
@@ -725,8 +725,8 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                                   <label
                                     key={String(option.value)}
                                     className={cn(
-                                      'mining-sdk-cascader__option',
-                                      option.disabled && 'mining-sdk-cascader__option--disabled',
+                                      'mdk-cascader__option',
+                                      option.disabled && 'mdk-cascader__option--disabled',
                                     )}
                                   >
                                     <Radio
@@ -735,7 +735,7 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                                       size="sm"
                                       color="primary"
                                     />
-                                    <span className="mining-sdk-cascader__option-label">
+                                    <span className="mdk-cascader__option-label">
                                       {option.label}
                                     </span>
                                   </label>
@@ -744,9 +744,9 @@ const Cascader = React.forwardRef<HTMLDivElement, CascaderProps>(
                           </RadioGroup>
                         )}
 
-                        {activeOptions.filter(({ label }) => {
+                        {activeOptions.filter((opt) => {
                           if (!inputValue.trim()) return true
-                          return label.toLowerCase().includes(inputValue.toLowerCase())
+                          return opt.label.toLowerCase().includes(inputValue.toLowerCase())
                         }).length === 0 && (
                           <EmptyState description={inputValue ? 'No data' : 'No options'} />
                         )}

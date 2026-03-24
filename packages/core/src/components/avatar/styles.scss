@@ -1,8 +1,9 @@
+@use '../../styles/mixins' as *;
 /**
  * Avatar Component Styles
  */
 
-.mining-sdk-avatar {
+.mdk-avatar {
   position: relative;
   display: flex;
   height: 2.5rem;

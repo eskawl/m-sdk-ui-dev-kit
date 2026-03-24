@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as *;
+
 .mining-sdk-logs-card {
   &__container {
     @include flex-row;

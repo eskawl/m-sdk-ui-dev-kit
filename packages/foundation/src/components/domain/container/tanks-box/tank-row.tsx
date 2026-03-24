@@ -1,4 +1,4 @@
-import { Indicator, SimpleTooltip, UNITS } from '@mining-sdk/core'
+import { Indicator, SimpleTooltip, UNITS } from '@mdk/core'
 import { DEVICE_STATUS } from '../../../../constants/devices'
 import _isNil from 'lodash/isNil'
 

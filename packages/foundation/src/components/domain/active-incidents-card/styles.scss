@@ -1,6 +1,6 @@
-@use '@mining-sdk/core/styles' as *;
+@use '@mdk/core/styles' as *;
 
-$_prefix: 'mining-sdk-active-incidents-card';
+$_prefix: 'mdk-active-incidents-card';
 
 .#{$_prefix} {
   @include flex_column;
@@ -9,13 +9,13 @@ $_prefix: 'mining-sdk-active-incidents-card';
   border-radius: 0;
   padding: 10px 5px;
   box-sizing: border-box;
-  background-color: var(--mining-sdk-color-surface);
-  border: 1px solid var(--mining-sdk-dialog-border-color);
+  background-color: var(--mdk-color-surface);
+  border: 1px solid var(--mdk-dialog-border-color);
 
   &__header {
     padding: 5px;
     padding-left: 10px;
-    border-bottom: 1px solid var(--mining-sdk-dialog-border-color);
+    border-bottom: 1px solid var(--mdk-dialog-border-color);
   }
 
   &__label {
@@ -24,7 +24,7 @@ $_prefix: 'mining-sdk-active-incidents-card';
     line-height: 22px;
     font-style: normal;
     text-transform: uppercase;
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
   }
 
   &__list {
@@ -43,15 +43,15 @@ $_prefix: 'mining-sdk-active-incidents-card';
     }
 
     &::-webkit-scrollbar-track {
-      background-color: var(--mining-sdk-color-background-dark);
+      background-color: var(--mdk-color-background-dark);
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: var(--mining-sdk-color-primary);
+      background-color: var(--mdk-color-primary);
       border-radius: 3px;
 
       &:hover {
-        background-color: var(--mining-sdk-color-primary-hover);
+        background-color: var(--mdk-color-primary-hover);
       }
     }
   }
@@ -81,7 +81,7 @@ $_prefix: 'mining-sdk-active-incidents-card';
   &__row-title {
     font-size: 12px;
     font-weight: 500;
-    color: var(--mining-sdk-color-soft-gray);
+    color: var(--mdk-color-soft-gray);
     font-family: 'JetBrains Mono', monospace, sans-serif;
   }
 
@@ -89,12 +89,12 @@ $_prefix: 'mining-sdk-active-incidents-card';
     font-size: 12px;
     padding: 4px 0;
     max-width: 100%;
-    color: var(--mining-sdk-color-text-muted);
+    color: var(--mdk-color-text-muted);
   }
 
   &__row-body {
     font-size: 12px;
-    color: var(--mining-sdk-color-text-muted-warm);
+    color: var(--mdk-color-text-muted-warm);
   }
 
   &__dot {
@@ -106,15 +106,15 @@ $_prefix: 'mining-sdk-active-incidents-card';
     margin-right: 12px;
 
     &--critical {
-      background-color: var(--mining-sdk-color-severity-critical);
+      background-color: var(--mdk-color-severity-critical);
     }
 
     &--high {
-      background-color: var(--mining-sdk-color-severity-high);
+      background-color: var(--mdk-color-severity-high);
     }
 
     &--medium {
-      background-color: var(--mining-sdk-color-severity-medium);
+      background-color: var(--mdk-color-severity-medium);
     }
   }
 
@@ -123,7 +123,7 @@ $_prefix: 'mining-sdk-active-incidents-card';
 
     font-size: 28px;
     padding-left: 16px;
-    color: var(--mining-sdk-button-secondary-text);
+    color: var(--mdk-button-secondary-text);
   }
 
   &__empty {
@@ -132,7 +132,7 @@ $_prefix: 'mining-sdk-active-incidents-card';
     padding: 20px;
     font-size: 12px;
     min-height: 190px;
-    color: var(--mining-sdk-color-text-disabled);
+    color: var(--mdk-color-text-disabled);
   }
 
   &__skeleton-container {

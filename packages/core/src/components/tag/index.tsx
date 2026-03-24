@@ -30,11 +30,7 @@ export type TagProps = {
 const Tag = React.forwardRef<HTMLSpanElement, TagProps>(
   ({ className, color = 'dark', children, ...props }, ref) => {
     return (
-      <span
-        ref={ref}
-        className={cn('mining-sdk-tag', `mining-sdk-tag--${color}`, className)}
-        {...props}
-      >
+      <span ref={ref} className={cn('mdk-tag', `mdk-tag--${color}`, className)} {...props}>
         {children}
       </span>
     )

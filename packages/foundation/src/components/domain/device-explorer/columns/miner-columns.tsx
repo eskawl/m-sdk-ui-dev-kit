@@ -6,8 +6,8 @@ import {
   PowerIcon,
   SimpleTooltip,
   UNITS,
-} from '@mining-sdk/core'
-import type { DataTableColumnDef, UnknownRecord } from '@mining-sdk/core'
+} from '@mdk/core'
+import type { DataTableColumnDef, UnknownRecord } from '@mdk/core'
 import type { Alert, DeviceExplorerDeviceData, GetColumnConfigParams } from '../types'
 import { DeviceCardColText } from '../components/device-card-col-text/device-card-col-text'
 import type { PowerModeColors } from '../../../../utils/device-utils'
@@ -60,7 +60,7 @@ export const getMinerColumns = ({
           {containerName === MAINTENANCE_CONTAINER ? (
             <DeviceCardColText
               style={{
-                color: 'var(--mining-sdk-color-warning)',
+                color: 'var(--mdk-color-warning)',
               }}
             >
               Maintenance
@@ -69,7 +69,7 @@ export const getMinerColumns = ({
             <DeviceCardColText>{containerName}</DeviceCardColText>
           )}
           {Boolean(error || err) && (
-            <DeviceCardColText style={{ color: 'var(--mining-sdk-button-danger-bg)' }}>
+            <DeviceCardColText style={{ color: 'var(--mdk-button-danger-bg)' }}>
               {
                 (err
                   ? ERROR_MESSAGES[err as keyof typeof ERROR_MESSAGES] || err
@@ -156,13 +156,13 @@ export const getMinerColumns = ({
       const statsForIndicator = stats as UnknownRecord | undefined
 
       return (
-        <div className="mining-sdk-device-explorer__table__cell--type-status">
+        <div className="mdk-device-explorer__table__cell--type-status">
           <MinerStatusIndicator
             stats={statsForIndicator}
             alerts={alertsArray}
             getFormattedDate={getFormattedDate}
           />
-          <div className="mining-sdk-device-explorer__table__cell--type-status__value">
+          <div className="mdk-device-explorer__table__cell--type-status__value">
             {String(stats?.status || '')}
           </div>
         </div>
@@ -188,16 +188,16 @@ export const getMinerColumns = ({
       return showNil ? (
         <DeviceCardColText>-</DeviceCardColText>
       ) : (
-        <div className="mining-sdk-device-explorer__table__cell--type-power-mode">
+        <div className="mdk-device-explorer__table__cell--type-power-mode">
           <div
-            className="mining-sdk-device-explorer__table__cell--type-power-mode__icon"
+            className="mdk-device-explorer__table__cell--type-power-mode__icon"
             style={{
               color: getPowerModeColor(power_mode as keyof typeof PowerModeColors) ?? 'inherit',
             }}
           >
             <PowerIcon />
           </div>
-          <div className="mining-sdk-device-explorer__table__cell--type-power-mode__value">
+          <div className="mdk-device-explorer__table__cell--type-power-mode__value">
             {power_mode}
           </div>
         </div>
@@ -280,7 +280,7 @@ export const getMinerColumns = ({
         <DeviceCardColText>-</DeviceCardColText>
       ) : (
         <DeviceCardColText>
-          <div className="mining-sdk-device-explorer__table__cell--type-hash-rate">
+          <div className="mdk-device-explorer__table__cell--type-hash-rate">
             {stats?.hashrate_mhs ? formattedHashRate : '-'}
           </div>
         </DeviceCardColText>
@@ -302,9 +302,9 @@ export const getMinerColumns = ({
       const hashRate = stats?.hashrate_mhs?.t_5m
 
       return error || err || (device && isMinerOffline(device)) ? (
-        <div className="mining-sdk-device-explorer__table__cell--type-efficiency">-</div>
+        <div className="mdk-device-explorer__table__cell--type-efficiency">-</div>
       ) : (
-        <div className="mining-sdk-device-explorer__table__cell--type-efficiency">
+        <div className="mdk-device-explorer__table__cell--type-efficiency">
           {!stats?.power_w || !hashRate || hashRate <= 0
             ? '-'
             : formatValueUnit(stats?.power_w / megaToTera(hashRate), UNITS.EFFICIENCY_W_PER_TH_S)}
@@ -341,14 +341,12 @@ export const getMinerColumns = ({
       const content = isEmpty ? (
         '-'
       ) : (
-        <div className="mining-sdk-device-explorer__table__cell--type-hash-rate">
+        <div className="mdk-device-explorer__table__cell--type-hash-rate">
           <SimpleTooltip content="Pool Hashrate">{stats?.poolHashrate}</SimpleTooltip>
         </div>
       )
 
-      return (
-        <div className="mining-sdk-device-explorer__table__cell--type-hash-rate">{content}</div>
-      )
+      return <div className="mdk-device-explorer__table__cell--type-hash-rate">{content}</div>
     },
     sortingFn: (rowA, rowB) => {
       const a = rowA.original as MinerRecord
@@ -393,8 +391,8 @@ export const getMinerColumns = ({
       ) : (
         <DeviceCardColText>
           <div
-            className={cn('mining-sdk-device-explorer__table__cell--type-led', {
-              'mining-sdk-device-explorer__table__cell--type-led--value-on': config?.led_status,
+            className={cn('mdk-device-explorer__table__cell--type-led', {
+              'mdk-device-explorer__table__cell--type-led--value-on': config?.led_status,
             })}
           >
             {getOnOffText(config?.led_status)}

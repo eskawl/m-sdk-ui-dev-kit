@@ -1,9 +1,10 @@
+@use '../../styles/mixins' as *;
 $border-width: 0.5px;
 $transition-duration: 0.3s;
 $sidebar-collapsed-width: 65px;
 $sidebar-expanded-width: 220px;
 
-.mining-sdk-sidebar {
+.mdk-sidebar {
   @include flex_column;
 
   position: relative;
@@ -15,9 +16,9 @@ $sidebar-expanded-width: 220px;
   box-sizing: border-box;
   -ms-overflow-style: none;
   width: $sidebar-collapsed-width;
-  background: var(--mining-sdk-sidebar-bg, var(--mining-sdk-color-surface));
+  background: var(--mdk-sidebar-bg, var(--mdk-color-surface));
   border-right: $border-width solid
-    var(--mining-sdk-sidebar-border-color, var(--mining-sdk-color-primary));
+    var(--mdk-sidebar-border-color, var(--mdk-color-primary));
   transition:
     width $transition-duration ease-in-out,
     transform $transition-duration ease-in-out;
@@ -36,10 +37,10 @@ $sidebar-expanded-width: 220px;
     height: 20px;
     position: absolute;
     transform: rotate(45deg);
-    background: var(--mining-sdk-sidebar-bg, var(--mining-sdk-color-surface));
+    background: var(--mdk-sidebar-bg, var(--mdk-color-surface));
     clip-path: polygon(0 0, 100% 0, 100% 100%);
     border-right: $border-width solid
-      var(--mining-sdk-sidebar-border-color, var(--mining-sdk-color-primary));
+      var(--mdk-sidebar-border-color, var(--mdk-color-primary));
     display: none;
 
     @media (min-width: 768px) {
@@ -73,18 +74,18 @@ $sidebar-expanded-width: 220px;
   }
 }
 
-.mining-sdk-sidebar--expanded {
+.mdk-sidebar--expanded {
   width: $sidebar-expanded-width;
 }
 
-.mining-sdk-sidebar--hidden {
+.mdk-sidebar--hidden {
   pointer-events: none;
   transform: translateX(-100%);
 }
 
 /* ─── Overlay Mode (mobile) ─────────────────────────────────────────────── */
 
-.mining-sdk-sidebar--overlay {
+.mdk-sidebar--overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -94,31 +95,31 @@ $sidebar-expanded-width: 220px;
   pointer-events: none;
   transform: translateX(-100%);
 
-  .mining-sdk-sidebar__toggle {
+  .mdk-sidebar__toggle {
     display: none;
   }
 }
 
-.mining-sdk-sidebar--overlay-visible {
+.mdk-sidebar--overlay-visible {
   overflow: visible;
   pointer-events: auto;
   transform: translateX(0);
 
-  .mining-sdk-sidebar__toggle {
+  .mdk-sidebar__toggle {
     display: flex;
   }
 }
 
-.mining-sdk-sidebar__backdrop {
+.mdk-sidebar__backdrop {
   position: fixed;
   inset: 0;
   z-index: 49;
-  background: var(--mining-sdk-sidebar-backdrop-bg, rgba(0, 0, 0, 0.5));
+  background: var(--mdk-sidebar-backdrop-bg, rgba(0, 0, 0, 0.5));
 }
 
 /* ─── Toggle Button ─────────────────────────────────────────────────────── */
 
-.mining-sdk-sidebar__toggle {
+.mdk-sidebar__toggle {
   @include flex_center;
 
   position: absolute;
@@ -130,9 +131,9 @@ $sidebar-expanded-width: 220px;
   right: -13px;
   cursor: pointer;
   border-radius: 50%;
-  background: var(--mining-sdk-sidebar-toggle-bg);
-  color: var(--mining-sdk-sidebar-border-color, var(--mining-sdk-color-primary));
-  border: 1px solid var(--mining-sdk-sidebar-border-color, var(--mining-sdk-color-primary));
+  background: var(--mdk-sidebar-toggle-bg);
+  color: var(--mdk-sidebar-border-color, var(--mdk-color-primary));
+  border: 1px solid var(--mdk-sidebar-border-color, var(--mdk-color-primary));
 
   svg {
     width: 14px;
@@ -142,7 +143,7 @@ $sidebar-expanded-width: 220px;
 
 /* ─── Menu ──────────────────────────────────────────────────────────────── */
 
-.mining-sdk-sidebar__menu {
+.mdk-sidebar__menu {
   @include flex_column_align_center;
 
   gap: 2px;
@@ -154,7 +155,7 @@ $sidebar-expanded-width: 220px;
   scrollbar-width: none;
   box-sizing: border-box;
   -ms-overflow-style: none;
-  animation: mining-sdk-sidebar-fade-in 0.3s ease-in;
+  animation: mdk-sidebar-fade-in 0.3s ease-in;
 
   &::-webkit-scrollbar {
     display: none;
@@ -163,7 +164,7 @@ $sidebar-expanded-width: 220px;
 
 /* ─── Menu Item ─────────────────────────────────────────────────────────── */
 
-.mining-sdk-sidebar__item {
+.mdk-sidebar__item {
   @include flex_center;
 
   padding: 0;
@@ -179,46 +180,46 @@ $sidebar-expanded-width: 220px;
   font-family: inherit;
   box-sizing: border-box;
   background: transparent;
-  color: var(--mining-sdk-sidebar-item-color, var(--mining-sdk-color-gray-400));
+  color: var(--mdk-sidebar-item-color, var(--mdk-color-gray-400));
 }
 
 /* Expanded sidebar: items get left-aligned with padding */
-.mining-sdk-sidebar--expanded .mining-sdk-sidebar__item {
+.mdk-sidebar--expanded .mdk-sidebar__item {
   padding: 5px 10px;
   min-width: 190px;
   justify-content: flex-start;
 }
 
-.mining-sdk-sidebar__item--active {
-  color: var(--mining-sdk-sidebar-item-active-color, var(--mining-sdk-color-primary));
+.mdk-sidebar__item--active {
+  color: var(--mdk-sidebar-item-active-color, var(--mdk-color-primary));
 }
 
-.mining-sdk-sidebar__item--disabled {
+.mdk-sidebar__item--disabled {
   opacity: 0.5;
   cursor: default;
   pointer-events: none;
 }
 
 /* Sub-item styles (source-order wins over expanded at same specificity) */
-.mining-sdk-sidebar__item.mining-sdk-sidebar__item--sub {
+.mdk-sidebar__item.mdk-sidebar__item--sub {
   height: 32px;
   min-width: 0;
   padding: 8px 12px;
   justify-content: flex-start;
 
   &:hover {
-    color: var(--mining-sdk-color-primary);
-    background: var(--mining-sdk-orange-dimmer);
+    color: var(--mdk-color-primary);
+    background: var(--mdk-orange-dimmer);
   }
 }
 
-.mining-sdk-sidebar__item--sub.mining-sdk-sidebar__item--active {
-  color: var(--mining-sdk-sidebar-item-active-color, var(--mining-sdk-color-primary));
+.mdk-sidebar__item--sub.mdk-sidebar__item--active {
+  color: var(--mdk-sidebar-item-active-color, var(--mdk-color-primary));
 }
 
 /* ─── Item Parts ────────────────────────────────────────────────────────── */
 
-.mining-sdk-sidebar__item-icon {
+.mdk-sidebar__item-icon {
   @include flex_center;
 
   flex-shrink: 0;
@@ -229,9 +230,9 @@ $sidebar-expanded-width: 220px;
   }
 }
 
-.mining-sdk-sidebar__item-label {
+.mdk-sidebar__item-label {
   @include text_ellipsis;
-  
+
   flex: 1;
   font-family: inherit;
   text-align: left;
@@ -239,14 +240,14 @@ $sidebar-expanded-width: 220px;
 
 /* ─── Group ─────────────────────────────────────────────────────────────── */
 
-.mining-sdk-sidebar__group {
+.mdk-sidebar__group {
   @include flex_column_align_start;
 
   width: 100%;
   position: relative;
 }
 
-.mining-sdk-sidebar__group-toggle {
+.mdk-sidebar__group-toggle {
   @include flex_center;
 
   cursor: pointer;
@@ -261,7 +262,7 @@ $sidebar-expanded-width: 220px;
   }
 }
 
-.mining-sdk-sidebar__group-items {
+.mdk-sidebar__group-items {
   @include flex_column;
 
   padding: 5px;
@@ -270,7 +271,7 @@ $sidebar-expanded-width: 220px;
   margin-left: 12px;
   width: calc(100% - 12px);
 
-  .mining-sdk-sidebar__group-items {
+  .mdk-sidebar__group-items {
     margin-left: 8px;
     width: calc(100% - 8px);
   }
@@ -278,16 +279,16 @@ $sidebar-expanded-width: 220px;
 
 /* ─── Overlay Flyout ────────────────────────────────────────────────────── */
 
-.mining-sdk-sidebar__overlay {
+.mdk-sidebar__overlay {
   @include flex_column;
 
   z-index: 100;
   position: fixed;
   min-width: 180px;
   box-sizing: border-box;
-  background: var(--mining-sdk-sidebar-toggle-bg);
-  animation: mining-sdk-sidebar-fade-in 0.15s ease-in;
-  border: 1px solid var(--mining-sdk-dialog-border-color);
+  background: var(--mdk-sidebar-toggle-bg);
+  animation: mdk-sidebar-fade-in 0.15s ease-in;
+  border: 1px solid var(--mdk-dialog-border-color);
 
   @media (max-height: 590px) {
     transform: translateY(-90%);
@@ -295,14 +296,14 @@ $sidebar-expanded-width: 220px;
 }
 
 /* Nested flyout: positioned relative to parent group */
-.mining-sdk-sidebar__overlay--nested {
+.mdk-sidebar__overlay--nested {
   position: absolute;
   top: 0;
   left: 100%;
 }
 
 /* Overlay items always show labels */
-.mining-sdk-sidebar__overlay .mining-sdk-sidebar__item {
+.mdk-sidebar__overlay .mdk-sidebar__item {
   height: 32px;
   padding: 4px 12px;
   justify-content: flex-start;

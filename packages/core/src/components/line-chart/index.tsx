@@ -489,13 +489,13 @@ const LightWeightLineChart = ({
 
   return (
     <div
-      className={cn('mining-sdk-lw-line-chart-wrapper', 'mining-sdk-lw-line-chart-wrapper-outer')}
+      className={cn('mdk-lw-line-chart-wrapper', 'mdk-lw-line-chart-wrapper-outer')}
       ref={outerWrapperRef}
     >
-      <div className={cn('mining-sdk-lw-line-chart-wrapper')} ref={chartContainerRef} />
+      <div className={cn('mdk-lw-line-chart-wrapper')} ref={chartContainerRef} />
       <div
-        className={cn('mining-sdk-lw-line-chart-tooltip', {
-          'mining-sdk-lw-line-chart-tooltip--no-min-width': skipMinWidth,
+        className={cn('mdk-lw-line-chart-tooltip', {
+          'mdk-lw-line-chart-tooltip--no-min-width': skipMinWidth,
         })}
         ref={toolTipRef}
         style={{

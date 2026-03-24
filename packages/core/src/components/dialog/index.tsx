@@ -27,11 +27,7 @@ const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
-  <DialogPrimitive.Overlay
-    ref={ref}
-    className={cn('mining-sdk-dialog__overlay', className)}
-    {...props}
-  />
+  <DialogPrimitive.Overlay ref={ref} className={cn('mdk-dialog__overlay', className)} {...props} />
 ))
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
@@ -48,22 +44,15 @@ const DialogHeader = ({
 }: DialogHeaderProps & React.HTMLAttributes<HTMLDivElement>): React.JSX.Element => {
   return (
     <div
-      className={cn(
-        'mining-sdk-dialog__header',
-        { 'mining-sdk-dialog__header--bare': bare },
-        className,
-      )}
+      className={cn('mdk-dialog__header', { 'mdk-dialog__header--bare': bare }, className)}
       {...props}
     >
-      <div className="mining-sdk-dialog__header__container">{children}</div>
+      <div className="mdk-dialog__header__container">{children}</div>
       {closable && (
         <DialogClose asChild>
-          <Button
-            icon={<Cross2Icon />}
-            onClick={onClose}
-            variant="secondary"
-            className="mining-sdk-dialog__header__close"
-          />
+          <Button size="sm" variant="ghost" onClick={onClose} className="mdk-dialog__header__close">
+            <Cross2Icon />
+          </Button>
         </DialogClose>
       )}
     </div>
@@ -78,11 +67,7 @@ const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
 >(({ className, ...props }, ref) => (
-  <DialogPrimitive.Title
-    ref={ref}
-    className={cn('mining-sdk-dialog__title', className)}
-    {...props}
-  />
+  <DialogPrimitive.Title ref={ref} className={cn('mdk-dialog__title', className)} {...props} />
 ))
 DialogTitle.displayName = DialogPrimitive.Title.displayName
 
@@ -95,7 +80,7 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn('mining-sdk-dialog__description', className)}
+    className={cn('mdk-dialog__description', className)}
     {...props}
   />
 ))
@@ -152,7 +137,7 @@ const DialogContent = React.forwardRef<
         <DialogOverlay />
         <DialogPrimitive.Content
           ref={ref}
-          className={cn('mining-sdk-dialog__content', className)}
+          className={cn('mdk-dialog__content', className)}
           onInteractOutside={handleInteractOutside}
           onEscapeKeyDown={handleEscapeKeyDown}
           {...contentProps}
@@ -180,7 +165,7 @@ const DialogFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element => {
-  return <div className={cn('mining-sdk-dialog__footer', className)} {...props} />
+  return <div className={cn('mdk-dialog__footer', className)} {...props} />
 }
 DialogFooter.displayName = 'DialogFooter'
 

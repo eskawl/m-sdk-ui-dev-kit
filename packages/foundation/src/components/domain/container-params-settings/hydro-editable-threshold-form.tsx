@@ -1,4 +1,4 @@
-import { UNITS } from '@mining-sdk/core'
+import { UNITS } from '@mdk/core'
 import type { ReactElement } from 'react'
 import type { Device } from '../../../types/device'
 import { BaseThresholdForm } from './base-threshold-form'
@@ -65,7 +65,7 @@ export const HydroEditableThresholdForm = ({
   ]
 
   return (
-    <div className="mining-sdk-hydro-threshold-form">
+    <div className="mdk-hydro-threshold-form">
       <BaseThresholdForm data={data} thresholdConfigs={thresholdConfigs} />
     </div>
   )

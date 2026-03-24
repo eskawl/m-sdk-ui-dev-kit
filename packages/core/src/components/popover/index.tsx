@@ -43,11 +43,7 @@ const PopoverArrow = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Arrow>,
   React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Arrow>
 >(({ className, ...props }, ref) => (
-  <PopoverPrimitive.Arrow
-    ref={ref}
-    className={cn('mining-sdk-popover__arrow', className)}
-    {...props}
-  />
+  <PopoverPrimitive.Arrow ref={ref} className={cn('mdk-popover__arrow', className)} {...props} />
 ))
 PopoverArrow.displayName = 'PopoverArrow'
 
@@ -93,11 +89,11 @@ const PopoverContent = React.forwardRef<
         ref={ref}
         align={align}
         sideOffset={sideOffset}
-        className={cn('mining-sdk-popover__content', className)}
+        className={cn('mdk-popover__content', className)}
         {...props}
       >
         {showClose && (
-          <PopoverClose className="mining-sdk-popover__close" aria-label="Close">
+          <PopoverClose className="mdk-popover__close" aria-label="Close">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"

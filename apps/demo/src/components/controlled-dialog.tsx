@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogContent, DialogFooter, DialogTrigger } from '@mining-sdk/core'
+import { Button, Dialog, DialogContent, DialogFooter, DialogTrigger } from '@mdk/core'
 import { useState } from 'react'
 
 export const ControlledDialog = (): JSX.Element => {

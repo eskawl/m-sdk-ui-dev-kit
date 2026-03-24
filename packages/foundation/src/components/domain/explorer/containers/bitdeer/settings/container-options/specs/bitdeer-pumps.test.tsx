@@ -1,4 +1,4 @@
-import { Indicator } from '@mining-sdk/core'
+import { Indicator } from '@mdk/core'
 import { render, screen } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { DEVICE_STATUS } from '../../../../../../../../constants/devices'
@@ -7,7 +7,7 @@ import { getBitdeerCoolingSystemData } from '../../bitdeer-settings-utils'
 import { BitdeerPumps } from '../bitdeer-pumps'
 
 // Mock Indicator component
-vi.mock('@mining-sdk/core', () => ({
+vi.mock('@mdk/core', () => ({
   Indicator: vi.fn(({ color, children }) => (
     <div data-testid="indicator" data-color={color}>
       {children}
@@ -76,17 +76,17 @@ describe('bitdeerPumps', () => {
   describe('rendering', () => {
     it('renders when exhaust fan is enabled', () => {
       render(<BitdeerPumps data={mockDeviceWithFanEnabled} />)
-      expect(document.querySelector('.mining-sdk-bitdeer-pumps')).toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-pumps')).toBeInTheDocument()
     })
 
     it('renders when exhaust fan is disabled', () => {
       render(<BitdeerPumps data={mockDeviceWithFanDisabled} />)
-      expect(document.querySelector('.mining-sdk-bitdeer-pumps')).toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-pumps')).toBeInTheDocument()
     })
 
     it('does not render when exhaustFanEnabled is undefined', () => {
       render(<BitdeerPumps data={mockDeviceWithNoFanData} />)
-      expect(document.querySelector('.mining-sdk-bitdeer-pumps')).not.toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-pumps')).not.toBeInTheDocument()
     })
 
     it('does not render when exhaustFanEnabled is null', () => {
@@ -95,12 +95,12 @@ describe('bitdeerPumps', () => {
       })
 
       render(<BitdeerPumps data={mockDeviceWithFanEnabled} />)
-      expect(document.querySelector('.mining-sdk-bitdeer-pumps')).not.toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-pumps')).not.toBeInTheDocument()
     })
 
     it('does not render when no data provided', () => {
       render(<BitdeerPumps />)
-      expect(document.querySelector('.mining-sdk-bitdeer-pumps')).not.toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-pumps')).not.toBeInTheDocument()
     })
 
     it('returns null when exhaustFanEnabled is not a boolean', () => {
@@ -213,24 +213,24 @@ describe('bitdeerPumps', () => {
   describe('structure', () => {
     it('has correct wrapper class', () => {
       const { container } = render(<BitdeerPumps data={mockDeviceWithFanEnabled} />)
-      expect(container.querySelector('.mining-sdk-bitdeer-pumps')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-bitdeer-pumps')).toBeInTheDocument()
     })
 
     it('has status container class', () => {
       const { container } = render(<BitdeerPumps data={mockDeviceWithFanEnabled} />)
-      expect(container.querySelector('.mining-sdk-bitdeer-pumps__status')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-bitdeer-pumps__status')).toBeInTheDocument()
     })
 
     it('has title element with correct class', () => {
       const { container } = render(<BitdeerPumps data={mockDeviceWithFanEnabled} />)
-      const title = container.querySelector('.mining-sdk-bitdeer-pumps__title')
+      const title = container.querySelector('.mdk-bitdeer-pumps__title')
       expect(title).toBeInTheDocument()
       expect(title).toHaveTextContent('Exhaust Fan')
     })
 
     it('renders title and indicator in status container', () => {
       const { container } = render(<BitdeerPumps data={mockDeviceWithFanEnabled} />)
-      const status = container.querySelector('.mining-sdk-bitdeer-pumps__status')
+      const status = container.querySelector('.mdk-bitdeer-pumps__status')
       expect(status?.children).toHaveLength(2)
     })
   })
@@ -238,7 +238,7 @@ describe('bitdeerPumps', () => {
   describe('edge cases', () => {
     it('handles null data gracefully', () => {
       render(<BitdeerPumps data={null as any} />)
-      expect(document.querySelector('.mining-sdk-bitdeer-pumps')).not.toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-pumps')).not.toBeInTheDocument()
     })
 
     it('handles missing container_specific', () => {
@@ -253,7 +253,7 @@ describe('bitdeerPumps', () => {
       }
 
       render(<BitdeerPumps data={deviceNoSpecific} />)
-      expect(document.querySelector('.mining-sdk-bitdeer-pumps')).not.toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-pumps')).not.toBeInTheDocument()
     })
 
     it('handles missing stats', () => {
@@ -268,7 +268,7 @@ describe('bitdeerPumps', () => {
       }
 
       render(<BitdeerPumps data={deviceNoStats as any} />)
-      expect(document.querySelector('.mining-sdk-bitdeer-pumps')).not.toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-pumps')).not.toBeInTheDocument()
     })
 
     it('handles boolean false correctly', () => {
@@ -277,7 +277,7 @@ describe('bitdeerPumps', () => {
       })
 
       render(<BitdeerPumps data={mockDeviceWithFanEnabled} />)
-      expect(document.querySelector('.mining-sdk-bitdeer-pumps')).toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-pumps')).toBeInTheDocument()
       expect(screen.getByText(DEVICE_STATUS.OFF)).toBeInTheDocument()
     })
 
@@ -287,7 +287,7 @@ describe('bitdeerPumps', () => {
       })
 
       render(<BitdeerPumps data={mockDeviceWithFanEnabled} />)
-      expect(document.querySelector('.mining-sdk-bitdeer-pumps')).toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-pumps')).toBeInTheDocument()
       expect(screen.getByText(DEVICE_STATUS.RUNNING)).toBeInTheDocument()
     })
   })
@@ -311,18 +311,18 @@ describe('bitdeerPumps', () => {
 
     it('unmounts when exhaustFanEnabled becomes undefined', () => {
       const { rerender } = render(<BitdeerPumps data={mockDeviceWithFanEnabled} />)
-      expect(document.querySelector('.mining-sdk-bitdeer-pumps')).toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-pumps')).toBeInTheDocument()
 
       rerender(<BitdeerPumps data={mockDeviceWithNoFanData} />)
-      expect(document.querySelector('.mining-sdk-bitdeer-pumps')).not.toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-pumps')).not.toBeInTheDocument()
     })
 
     it('mounts when exhaustFanEnabled becomes defined', () => {
       const { rerender } = render(<BitdeerPumps data={mockDeviceWithNoFanData} />)
-      expect(document.querySelector('.mining-sdk-bitdeer-pumps')).not.toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-pumps')).not.toBeInTheDocument()
 
       rerender(<BitdeerPumps data={mockDeviceWithFanEnabled} />)
-      expect(document.querySelector('.mining-sdk-bitdeer-pumps')).toBeInTheDocument()
+      expect(document.querySelector('.mdk-bitdeer-pumps')).toBeInTheDocument()
     })
   })
 
@@ -347,9 +347,9 @@ describe('bitdeerPumps', () => {
         const { container } = render(<BitdeerPumps data={mockDeviceWithFanEnabled} />)
 
         if (shouldRender) {
-          expect(container.querySelector('.mining-sdk-bitdeer-pumps')).toBeInTheDocument()
+          expect(container.querySelector('.mdk-bitdeer-pumps')).toBeInTheDocument()
         } else {
-          expect(container.querySelector('.mining-sdk-bitdeer-pumps')).not.toBeInTheDocument()
+          expect(container.querySelector('.mdk-bitdeer-pumps')).not.toBeInTheDocument()
         }
 
         vi.clearAllMocks()

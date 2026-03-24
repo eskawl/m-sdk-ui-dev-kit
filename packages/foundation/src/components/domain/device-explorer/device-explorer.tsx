@@ -1,9 +1,5 @@
-import { cn } from '@mining-sdk/core'
-import type {
-  DataTableRowSelectionState,
-  DataTableSortingState,
-  LocalFilters,
-} from '@mining-sdk/core'
+import { cn } from '@mdk/core'
+import type { DataTableRowSelectionState, DataTableSortingState, LocalFilters } from '@mdk/core'
 import { DeviceExplorerTable } from './device-explorer-table'
 import type { DeviceExplorerTableProps } from './device-explorer-table'
 import { DeviceExplorerToolbar } from './device-explorer-toolbar'
@@ -73,7 +69,7 @@ export const DeviceExplorer = ({
   }
 
   return (
-    <div className={cn('mining-sdk-device-explorer', className)}>
+    <div className={cn('mdk-device-explorer', className)}>
       <DeviceExplorerToolbar
         filters={filters}
         filterOptions={filterOptions}

@@ -1,4 +1,4 @@
-import { Label, Radio, RadioCard, RadioGroup } from '@mining-sdk/core'
+import { Label, Radio, RadioCard, RadioGroup } from '@mdk/core'
 
 export const RadioExample = (): React.ReactElement => {
   return (

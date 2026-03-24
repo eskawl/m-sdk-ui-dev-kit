@@ -181,7 +181,7 @@ describe('hydroEditableThresholdForm', () => {
   it('has correct wrapper class', () => {
     const { container } = render(<HydroEditableThresholdForm data={mockData} />)
 
-    expect(container.querySelector('.mining-sdk-hydro-threshold-form')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-hydro-threshold-form')).toBeInTheDocument()
   })
 
   it('passes all water temperature props correctly', () => {

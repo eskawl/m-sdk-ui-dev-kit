@@ -8,7 +8,7 @@ import {
   FormSwitch,
   FormTagInput,
   validators,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'

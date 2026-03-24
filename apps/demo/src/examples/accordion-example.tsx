@@ -1,4 +1,4 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@mining-sdk/core'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@mdk/core'
 import React from 'react'
 
 export const AccordionExample: React.FC = () => {

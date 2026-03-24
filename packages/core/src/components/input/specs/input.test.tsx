@@ -30,19 +30,19 @@ describe('input', () => {
 
   it('renders search variant with icon', () => {
     const { container } = render(<Input variant="search" placeholder="Search..." />)
-    expect(container.querySelector('.mining-sdk-input__wrapper--search')).toBeInTheDocument()
-    expect(container.querySelector('.mining-sdk-input__icon')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-input__wrapper--search')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-input__icon')).toBeInTheDocument()
   })
 
   it('renders default variant without icon', () => {
     const { container } = render(<Input variant="default" />)
-    expect(container.querySelector('.mining-sdk-input__wrapper--search')).not.toBeInTheDocument()
-    expect(container.querySelector('.mining-sdk-input__icon')).not.toBeInTheDocument()
+    expect(container.querySelector('.mdk-input__wrapper--search')).not.toBeInTheDocument()
+    expect(container.querySelector('.mdk-input__icon')).not.toBeInTheDocument()
   })
 
   it('applies disabled styling to wrapper', () => {
     const { container } = render(<Input disabled />)
-    expect(container.querySelector('.mining-sdk-input__wrapper--disabled')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-input__wrapper--disabled')).toBeInTheDocument()
   })
 
   it('disables input when disabled prop is true', () => {
@@ -57,7 +57,7 @@ describe('input', () => {
 
   it('applies error styling to wrapper when error is present', () => {
     const { container } = render(<Input error="Error message" />)
-    expect(container.querySelector('.mining-sdk-input__wrapper--error')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-input__wrapper--error')).toBeInTheDocument()
   })
 
   it('sets aria-invalid when error is present', () => {
@@ -77,7 +77,7 @@ describe('input', () => {
     const { container } = render(<Input className="custom-input" />)
     const input = container.querySelector('input')
     expect(input).toHaveClass('custom-input')
-    expect(input).toHaveClass('mining-sdk-input')
+    expect(input).toHaveClass('mdk-input')
   })
 
   it('applies wrapperClassName when no label', () => {
@@ -90,7 +90,7 @@ describe('input', () => {
       <Input label="Email" wrapperClassName="custom-wrapper" id="email" />,
     )
     expect(container.querySelector('.custom-wrapper')).toBeInTheDocument()
-    expect(container.querySelector('.mining-sdk-input-root')).toHaveClass('custom-wrapper')
+    expect(container.querySelector('.mdk-input-root')).toHaveClass('custom-wrapper')
   })
 
   it('forwards ref correctly', () => {
@@ -133,7 +133,7 @@ describe('input', () => {
   it('renders search variant with label', () => {
     const { container } = render(<Input variant="search" label="Search" id="search" />)
     expect(screen.getByLabelText('Search')).toBeInTheDocument()
-    expect(container.querySelector('.mining-sdk-input__icon')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-input__icon')).toBeInTheDocument()
   })
 
   it('prioritizes explicit aria-invalid over error state', () => {

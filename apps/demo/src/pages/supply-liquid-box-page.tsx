@@ -1,4 +1,4 @@
-import { SupplyLiquidBox } from '@mining-sdk/foundation'
+import { SupplyLiquidBox } from '@mdk/foundation'
 import type { ComponentProps, ReactNode } from 'react'
 import './supply-liquid-box-page.scss'
 

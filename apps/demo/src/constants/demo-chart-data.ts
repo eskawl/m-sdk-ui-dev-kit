@@ -3,7 +3,7 @@
  * Used by LineChart, BarChart, and AreaChart demos in App.tsx.
  */
 
-import { COLOR } from '@mining-sdk/core'
+import { COLOR } from '@mdk/core'
 
 export const LINE_CHART_REVENUE_BASIC = {
   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],

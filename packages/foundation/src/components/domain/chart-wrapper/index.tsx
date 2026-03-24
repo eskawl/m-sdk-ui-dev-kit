@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import type { SpinnerProps } from '@mining-sdk/core'
-import { cn, EmptyState, Spinner } from '@mining-sdk/core'
+import type { SpinnerProps } from '@mdk/core'
+import { cn, EmptyState, Spinner } from '@mdk/core'
 import { CHART_EMPTY_DESCRIPTION } from '../../../constants/charts'
 import { useChartDataCheck } from '../../../hooks'
 
@@ -134,12 +134,12 @@ const ChartWrapper: React.FC<ChartWrapperProps> = ({
   }, [customNoDataMessage])
 
   return (
-    <div className={cn('mining-sdk-chart-wrapper', className)}>
+    <div className={cn('mdk-chart-wrapper', className)}>
       {/* Chart Content */}
       <div
         className={cn(
-          'mining-sdk-chart-wrapper__content',
-          !isContentVisible && 'mining-sdk-chart-wrapper__content--hidden',
+          'mdk-chart-wrapper__content',
+          !isContentVisible && 'mdk-chart-wrapper__content--hidden',
         )}
       >
         {children}
@@ -148,7 +148,7 @@ const ChartWrapper: React.FC<ChartWrapperProps> = ({
       {/* Empty State */}
       {isPlaceholderVisible && (
         <div
-          className="mining-sdk-chart-wrapper__empty"
+          className="mdk-chart-wrapper__empty"
           style={minHeight ? { minHeight: `${minHeight}px` } : undefined}
         >
           {typeof customNoDataMessage === 'string' || !customNoDataMessage ? (
@@ -162,7 +162,7 @@ const ChartWrapper: React.FC<ChartWrapperProps> = ({
       {/* Loading State */}
       {isLoading && (
         <div
-          className="mining-sdk-chart-wrapper__loading"
+          className="mdk-chart-wrapper__loading"
           style={{ minHeight: `${loadingMinHeight || minHeight || 400}px` }}
         >
           {customLoader || <Spinner type="circle" color={SPINNER_COLOR} />}

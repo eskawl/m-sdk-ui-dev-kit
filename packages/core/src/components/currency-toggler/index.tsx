@@ -42,7 +42,7 @@ type CurrencyTogglerProps = {
  */
 const CurrencyToggler = React.forwardRef<HTMLDivElement, CurrencyTogglerProps>(
   ({ currencies, value, onChange, className }, ref) => (
-    <div ref={ref} className={cn('mining_sdk_currency_toggler', className)}>
+    <div ref={ref} className={cn('mdk_currency_toggler', className)}>
       {currencies.map((currency) => {
         const item = typeof currency === 'string' ? { value: currency, label: currency } : currency
         const label = item.label ?? item.value
@@ -54,8 +54,8 @@ const CurrencyToggler = React.forwardRef<HTMLDivElement, CurrencyTogglerProps>(
             disabled={item.disabled}
             aria-label={`Select ${label} currency`}
             className={cn(
-              'mining_sdk_currency_toggler__button',
-              value === item.value && 'mining_sdk_currency_toggler__button--active',
+              'mdk_currency_toggler__button',
+              value === item.value && 'mdk_currency_toggler__button--active',
             )}
             onClick={() => !item.disabled && onChange(item.value)}
           >

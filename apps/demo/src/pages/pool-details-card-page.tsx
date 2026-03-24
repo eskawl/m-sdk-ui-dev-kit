@@ -1,5 +1,5 @@
-import { PoolDetailsCard } from '@mining-sdk/foundation'
-import type { PoolDetailItem } from '@mining-sdk/foundation'
+import { PoolDetailsCard } from '@mdk/foundation'
+import type { PoolDetailItem } from '@mdk/foundation'
 
 const mockPoolDetails: PoolDetailItem[] = [
   { title: 'Pool Name', value: 'Slush Pool' },

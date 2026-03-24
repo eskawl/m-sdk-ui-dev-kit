@@ -31,7 +31,7 @@ export const ContainerFansCard = ({ fansData }: ContainerFansCardProps): ReactEl
   }
 
   return (
-    <div className="mining-sdk-container-fans-card">
+    <div className="mdk-container-fans-card">
       {fansData.map((fan, index) => (
         <ContainerFanLegend key={index} enabled={fan.enabled} index={fan.index + 1} />
       ))}

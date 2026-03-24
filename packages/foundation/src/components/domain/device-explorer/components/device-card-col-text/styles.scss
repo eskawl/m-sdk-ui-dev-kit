@@ -1,6 +1,6 @@
-@use '@mining-sdk/core/styles' as *;
+@use '@mdk/core/styles' as *;
 
-.mining-sdk-device-card-col-text {
+.mdk-device-card-col-text {
   @include text_ellipsis;
   @include flex_column_center;
 

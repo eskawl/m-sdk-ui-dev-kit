@@ -1,6 +1,6 @@
-@use '@mining-sdk/core/styles' as *;
+@use '@mdk/core/styles' as *;
 
-.mining-sdk-bitmain-basic-settings {
+.mdk-bitmain-basic-settings {
   @include flex_column;
 
   gap: 1.5rem;
@@ -10,7 +10,7 @@
   }
 
   &__title {
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
     font-size: 18px;
     font-style: normal;
     font-weight: 600;

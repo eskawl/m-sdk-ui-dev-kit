@@ -1,4 +1,4 @@
-import { Badge, Card, Indicator, Mosaic, Typography } from '@mining-sdk/core'
+import { Badge, Card, Indicator, Mosaic, Typography } from '@mdk/core'
 import './mosaic-page.scss'
 
 export const MosaicPageDemo = (): JSX.Element => {

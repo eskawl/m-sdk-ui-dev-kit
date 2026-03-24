@@ -111,23 +111,19 @@ describe('BitMainHydroSettings', () => {
     it('has correct wrapper class', () => {
       const { container } = render(<BitMainHydroSettings data={mockDevice} />)
 
-      expect(container.querySelector('.mining-sdk-bitmain-hydro-settings')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-bitmain-hydro-settings')).toBeInTheDocument()
     })
 
     it('has params section', () => {
       const { container } = render(<BitMainHydroSettings data={mockDevice} />)
 
-      expect(
-        container.querySelector('.mining-sdk-bitmain-hydro-settings__params'),
-      ).toBeInTheDocument()
+      expect(container.querySelector('.mdk-bitmain-hydro-settings__params')).toBeInTheDocument()
     })
 
     it('has thresholds section', () => {
       const { container } = render(<BitMainHydroSettings data={mockDevice} />)
 
-      expect(
-        container.querySelector('.mining-sdk-bitmain-hydro-settings__thresholds'),
-      ).toBeInTheDocument()
+      expect(container.querySelector('.mdk-bitmain-hydro-settings__thresholds')).toBeInTheDocument()
     })
 
     it('renders two sections', () => {
@@ -368,10 +364,8 @@ describe('BitMainHydroSettings', () => {
     it('maintains correct section structure', () => {
       const { container } = render(<BitMainHydroSettings data={mockDevice} />)
 
-      const paramsSection = container.querySelector('.mining-sdk-bitmain-hydro-settings__params')
-      const thresholdsSection = container.querySelector(
-        '.mining-sdk-bitmain-hydro-settings__thresholds',
-      )
+      const paramsSection = container.querySelector('.mdk-bitmain-hydro-settings__params')
+      const thresholdsSection = container.querySelector('.mdk-bitmain-hydro-settings__thresholds')
 
       expect(paramsSection?.querySelector('[data-testid="basic-settings"]')).toBeInTheDocument()
       expect(thresholdsSection?.querySelector('[data-testid="threshold-form"]')).toBeInTheDocument()

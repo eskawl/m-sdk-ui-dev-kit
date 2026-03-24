@@ -9,8 +9,8 @@ import {
   shouldImmersionTemperatureFlash,
 } from '../../../explorer/containers/bitmain-immersion/bitmain-immersion-utils'
 
-vi.mock('@mining-sdk/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@mining-sdk/core')>()
+vi.mock('@mdk/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@mdk/core')>()
 
   return {
     ...actual,

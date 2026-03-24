@@ -1,4 +1,4 @@
-import { Breadcrumbs } from '@mining-sdk/core'
+import { Breadcrumbs } from '@mdk/core'
 
 export const BreadcrumbsPage = (): JSX.Element => {
   return (

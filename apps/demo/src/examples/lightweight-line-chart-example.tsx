@@ -1,5 +1,5 @@
-import type { IChartApi } from '@mining-sdk/core'
-import { ChartContainer, LineChart } from '@mining-sdk/core'
+import type { IChartApi } from '@mdk/core'
+import { ChartContainer, LineChart } from '@mdk/core'
 import { useRef, useState } from 'react'
 
 const RANGE_OPTIONS = [

@@ -4,7 +4,7 @@ import { getContainerParametersSettings } from '../../../../utils/container-sett
 import { ContainerParamsSettings } from '../container-params-settings'
 
 // Mock the Input component
-vi.mock('@mining-sdk/core', () => ({
+vi.mock('@mdk/core', () => ({
   Label: vi.fn(({ children, className }) => (
     <label data-testid="param-label" className={className}>
       {children}
@@ -96,7 +96,7 @@ describe('containerParamsSettings', () => {
     it('renders in grid layout', () => {
       const { container } = render(<ContainerParamsSettings data={mockBitdeerData} />)
 
-      const grid = container.querySelector('.mining-sdk-container-params__grid')
+      const grid = container.querySelector('.mdk-container-params__grid')
       expect(grid).toBeInTheDocument()
       expect(grid?.children).toHaveLength(3)
     })
@@ -154,7 +154,7 @@ describe('containerParamsSettings', () => {
 
       const inputs = screen.getAllByTestId('param-input')
       inputs.forEach((input) => {
-        expect(input).toHaveClass('mining-sdk-container-params__input')
+        expect(input).toHaveClass('mdk-container-params__input')
       })
     })
   })
@@ -238,24 +238,24 @@ describe('containerParamsSettings', () => {
     it('renders with correct CSS classes', () => {
       const { container } = render(<ContainerParamsSettings data={mockBitdeerData} />)
 
-      expect(container.querySelector('.mining-sdk-container-params')).toBeInTheDocument()
-      expect(container.querySelector('.mining-sdk-container-params__title')).toBeInTheDocument()
-      expect(container.querySelector('.mining-sdk-container-params__grid')).toBeInTheDocument()
-      expect(container.querySelector('.mining-sdk-container-params__field')).toBeInTheDocument()
-      expect(container.querySelector('.mining-sdk-container-params__label')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-container-params')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-container-params__title')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-container-params__grid')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-container-params__field')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-container-params__label')).toBeInTheDocument()
     })
 
     it('renders each parameter in a separate field div', () => {
       const { container } = render(<ContainerParamsSettings data={mockBitdeerData} />)
 
-      const fields = container.querySelectorAll('.mining-sdk-container-params__field')
+      const fields = container.querySelectorAll('.mdk-container-params__field')
       expect(fields).toHaveLength(3)
     })
 
     it('associates labels with inputs correctly', () => {
       const { container } = render(<ContainerParamsSettings data={mockBitdeerData} />)
 
-      const labels = container.querySelectorAll('.mining-sdk-container-params__label')
+      const labels = container.querySelectorAll('.mdk-container-params__label')
       expect(labels).toHaveLength(3)
       expect(labels[0]).toHaveTextContent('Cool Oil Alarm Temp')
     })

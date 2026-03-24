@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import type { SidebarMenuItem } from '@mining-sdk/core'
-import { Button, Sidebar } from '@mining-sdk/core'
+import type { SidebarMenuItem } from '@mdk/core'
+import { Button, Sidebar } from '@mdk/core'
 import { BarChartIcon, BellIcon, GearIcon, HomeIcon, PersonIcon } from '@radix-ui/react-icons'
 
 const SIDEBAR_EXAMPLE_ITEMS: SidebarMenuItem[] = [

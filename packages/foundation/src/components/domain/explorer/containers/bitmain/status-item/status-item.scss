@@ -1,6 +1,6 @@
-@use '@mining-sdk/core/styles' as *;
+@use '@mdk/core/styles' as *;
 
-.mining-sdk-status-item {
+.mdk-status-item {
   flex-basis: 100%;
 
   @media (min-width: 768px) {
@@ -20,6 +20,6 @@
   &__label {
     font-size: 15px;
     font-weight: 600;
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
   }
 }

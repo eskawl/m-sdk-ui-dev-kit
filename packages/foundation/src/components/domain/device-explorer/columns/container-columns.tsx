@@ -6,8 +6,8 @@ import {
   SimpleTooltip,
   UNITS,
   unitToKilo,
-} from '@mining-sdk/core'
-import type { DataTableColumnDef } from '@mining-sdk/core'
+} from '@mdk/core'
+import type { DataTableColumnDef } from '@mdk/core'
 import type { DeviceExplorerDeviceData, GetColumnConfigParams } from '../types'
 import { getAlarms } from '../device-explorer.utils'
 import { StatusLabel } from '../components/status-label/status-label'
@@ -48,7 +48,7 @@ export const getContainerColumns = ({
         const alarm = getAlarms(record as DeviceExplorerDeviceData, undefined, getFormattedDate)
         return (
           <SimpleTooltip content={String(JSON.stringify(alarm) || '')}>
-            <div className="mining-sdk-device-explorer__table__alarms__status-container">
+            <div className="mdk-device-explorer__table__alarms__status-container">
               <AlertTriangleIcon />
             </div>
           </SimpleTooltip>
@@ -74,7 +74,7 @@ export const getContainerColumns = ({
       const { snap } = record?.last || {}
 
       return (
-        <div className="mining-sdk-device-explorer__table__cell-wrapper">
+        <div className="mdk-device-explorer__table__cell-wrapper">
           {isContainerOffline(snap || {}) && (
             <StatusLabel status="offline">
               <OfflineStatusIcon width={14} height={14} />
@@ -82,9 +82,7 @@ export const getContainerColumns = ({
           )}
           <DeviceCardColText
             style={{
-              color: isContainerOffline(snap || {})
-                ? 'var(--mining-sdk-button-danger-bg)'
-                : 'inherit',
+              color: isContainerOffline(snap || {}) ? 'var(--mdk-button-danger-bg)' : 'inherit',
             }}
           >
             {(snap as ContainerSnap)?.stats?.status as string}

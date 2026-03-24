@@ -1,4 +1,4 @@
-import { TanksBox } from '@mining-sdk/foundation'
+import { TanksBox } from '@mdk/foundation'
 
 export const TanksBoxPage = (): JSX.Element => (
   <section className="demo-section">

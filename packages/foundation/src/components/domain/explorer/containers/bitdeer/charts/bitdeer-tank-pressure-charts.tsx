@@ -1,4 +1,4 @@
-import { CHART_COLORS, UNITS } from '@mining-sdk/core'
+import { CHART_COLORS, UNITS } from '@mdk/core'
 
 /**
  * Tank Pressure Charts for Bitdeer containers

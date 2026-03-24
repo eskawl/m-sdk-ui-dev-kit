@@ -1,5 +1,5 @@
 {
-  "name": "@mining-sdk/demo",
+  "name": "@mdk/demo",
   "type": "module",
   "version": "0.0.0",
   "private": true,
@@ -14,9 +14,9 @@
   },
   "dependencies": {
     "@hookform/resolvers": "catalog:",
-    "@mining-sdk/core": "workspace:*",
-    "@mining-sdk/fonts": "workspace:*",
-    "@mining-sdk/foundation": "workspace:*",
+    "@mdk/core": "workspace:*",
+    "@mdk/fonts": "workspace:*",
+    "@mdk/foundation": "workspace:*",
     "@radix-ui/react-icons": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",

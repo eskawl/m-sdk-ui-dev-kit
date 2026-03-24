@@ -1,4 +1,4 @@
-import type { UnknownRecord } from '@mining-sdk/core'
+import type { UnknownRecord } from '@mdk/core'
 import { getBitdeerParameterSettingsData } from '../components/domain'
 import { isAntspaceHydro, isAntspaceImmersion, isBitdeer, isMicroBT } from './container-utils'
 

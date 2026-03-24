@@ -8,7 +8,7 @@
     @include flex_align_between;
 
     padding: 1.5rem;
-    border-bottom: 2px solid var(--mining-sdk-color-primary);
+    border-bottom: 2px solid var(--mdk-color-primary);
     border-radius: 8px;
     flex-wrap: wrap;
 
@@ -23,7 +23,7 @@
 
       padding: 1.5rem;
       border-radius: 8px;
-      border: 1px solid var(--mining-sdk-button-secondary-border);
+      border: 1px solid var(--mdk-button-secondary-border);
 
       &--scrollable {
         min-height: 30vh;
@@ -35,7 +35,7 @@
       font-size: 2.5rem;
       font-weight: 700;
       margin: 0.5rem 0;
-      color: var(--mining-sdk-color-primary);
+      color: var(--mdk-color-primary);
       line-height: 1;
     }
 
@@ -54,7 +54,7 @@
 
     &-header {
       display: flex;
-      border-bottom: 1px solid var(--mining-sdk-button-secondary-border);
+      border-bottom: 1px solid var(--mdk-button-secondary-border);
       padding: 0.5rem 0;
       font-weight: 600;
       font-size: 0.875rem;
@@ -63,7 +63,7 @@
     &-row {
       @include flex_align;
 
-      border-top: 1px solid var(--mining-sdk-button-secondary-border);
+      border-top: 1px solid var(--mdk-button-secondary-border);
       padding: 0.5rem 0;
       font-size: 0.875rem;
     }

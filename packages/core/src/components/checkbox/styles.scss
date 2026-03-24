@@ -1,14 +1,15 @@
+@use '../../styles/mixins' as *;
 /* ========================================
    Checkbox Component Styles
    ======================================== */
 
 /* Base Checkbox */
-.mining-sdk-checkbox {
+.mdk-checkbox {
   @include inline_flex_align;
 
   all: unset;
   justify-content: center;
-  border: 1px solid var(--mining-sdk-button-secondary-border);
+  border: 1px solid var(--mdk-button-secondary-border);
   background-color: transparent;
   cursor: pointer;
   transition: all 200ms ease;
@@ -37,16 +38,16 @@
 }
 
 /* Indicator (Checkmark container) */
-.mining-sdk-checkbox__indicator {
+.mdk-checkbox__indicator {
   @include flex_center;
 
   width: 100%;
   height: 100%;
-  color: var(--mining-sdk-color-white);
+  color: var(--mdk-color-white);
 }
 
 /* Icon (Checkmark SVG) */
-.mining-sdk-checkbox__icon {
+.mdk-checkbox__icon {
   width: 100%;
   height: 100%;
 }
@@ -56,44 +57,44 @@
    ======================================== */
 
 /* Extra Small */
-.mining-sdk-checkbox--xs {
+.mdk-checkbox--xs {
   width: 13px;
   height: 13px;
 
-  .mining-sdk-checkbox__icon {
+  .mdk-checkbox__icon {
     width: 9px;
     height: 9px;
   }
 }
 
 /* Small */
-.mining-sdk-checkbox--sm {
+.mdk-checkbox--sm {
   width: 16px;
   height: 16px;
 
-  .mining-sdk-checkbox__icon {
+  .mdk-checkbox__icon {
     width: 10px;
     height: 10px;
   }
 }
 
 /* Medium (Default) */
-.mining-sdk-checkbox--md {
+.mdk-checkbox--md {
   width: 20px;
   height: 20px;
 
-  .mining-sdk-checkbox__icon {
+  .mdk-checkbox__icon {
     width: 12px;
     height: 12px;
   }
 }
 
 /* Large */
-.mining-sdk-checkbox--lg {
+.mdk-checkbox--lg {
   width: 24px;
   height: 24px;
 
-  .mining-sdk-checkbox__icon {
+  .mdk-checkbox__icon {
     width: 16px;
     height: 16px;
   }
@@ -104,27 +105,27 @@
    ======================================== */
 
 /* None (Square corners) */
-.mining-sdk-checkbox--radius-none {
+.mdk-checkbox--radius-none {
   border-radius: 0;
 }
 
 /* Small (Slightly rounded) */
-.mining-sdk-checkbox--radius-small {
+.mdk-checkbox--radius-small {
   border-radius: 4px;
 }
 
 /* Medium (Moderately rounded) */
-.mining-sdk-checkbox--radius-medium {
+.mdk-checkbox--radius-medium {
   border-radius: 6px;
 }
 
 /* Large (Very rounded) */
-.mining-sdk-checkbox--radius-large {
+.mdk-checkbox--radius-large {
   border-radius: 8px;
 }
 
 /* Full (Circular) */
-.mining-sdk-checkbox--radius-full {
+.mdk-checkbox--radius-full {
   border-radius: 9999px;
 }
 
@@ -133,47 +134,47 @@
    ======================================== */
 
 /* Default  */
-.mining-sdk-checkbox--default {
-  color: var(--mining-sdk-color-gray-400);
+.mdk-checkbox--default {
+  color: var(--mdk-color-gray-400);
 
   &[data-state='checked'] {
-    background-color: var(--mining-sdk-color-gray-400);
+    background-color: var(--mdk-color-gray-400);
   }
 }
 
 /* Primary  */
-.mining-sdk-checkbox--primary {
-  color: var(--mining-sdk-color-primary);
+.mdk-checkbox--primary {
+  color: var(--mdk-color-primary);
 
   &[data-state='checked'] {
-    background-color: var(--mining-sdk-color-primary);
+    background-color: var(--mdk-color-primary);
   }
 }
 
 /* Success  */
-.mining-sdk-checkbox--success {
-  color: rgb(var(--mining-sdk-color-success));
+.mdk-checkbox--success {
+  color: rgb(var(--mdk-color-success));
 
   &[data-state='checked'] {
-    background-color: rgb(var(--mining-sdk-color-success));
+    background-color: rgb(var(--mdk-color-success));
   }
 }
 
 /* Warning  */
-.mining-sdk-checkbox--warning {
-  color: var(--mining-sdk-color-warning);
+.mdk-checkbox--warning {
+  color: var(--mdk-color-warning);
 
   &[data-state='checked'] {
-    background-color: var(--mining-sdk-color-warning);
+    background-color: var(--mdk-color-warning);
   }
 }
 
 /* Error/Danger  */
-.mining-sdk-checkbox--error {
-  color: rgb(var(--mining-sdk-color-error));
+.mdk-checkbox--error {
+  color: rgb(var(--mdk-color-error));
 
   &[data-state='checked'] {
-    background-color: rgb(var(--mining-sdk-color-error));
+    background-color: rgb(var(--mdk-color-error));
   }
 }
 
@@ -181,45 +182,45 @@
    INDETERMINATE STATE
    ======================================== */
 
-.mining-sdk-checkbox[data-state='indeterminate'] {
+.mdk-checkbox[data-state='indeterminate'] {
   background-color: transparent;
 
-  .mining-sdk-checkbox__indicator svg {
+  .mdk-checkbox__indicator svg {
     display: none;
   }
 
-  .mining-sdk-checkbox__indicator::after {
+  .mdk-checkbox__indicator::after {
     content: '';
     display: block;
-    background-color: var(--mining-sdk-color-primary);
+    background-color: var(--mdk-color-primary);
     border-radius: 1px;
   }
 }
 
 /* Indeterminate sizes */
-.mining-sdk-checkbox--xs[data-state='indeterminate'] {
-  .mining-sdk-checkbox__indicator::after {
+.mdk-checkbox--xs[data-state='indeterminate'] {
+  .mdk-checkbox__indicator::after {
     width: 7px;
     height: 7px;
   }
 }
 
-.mining-sdk-checkbox--sm[data-state='indeterminate'] {
-  .mining-sdk-checkbox__indicator::after {
+.mdk-checkbox--sm[data-state='indeterminate'] {
+  .mdk-checkbox__indicator::after {
     width: 8px;
     height: 8px;
   }
 }
 
-.mining-sdk-checkbox--md[data-state='indeterminate'] {
-  .mining-sdk-checkbox__indicator::after {
+.mdk-checkbox--md[data-state='indeterminate'] {
+  .mdk-checkbox__indicator::after {
     width: 10px;
     height: 10px;
   }
 }
 
-.mining-sdk-checkbox--lg[data-state='indeterminate'] {
-  .mining-sdk-checkbox__indicator::after {
+.mdk-checkbox--lg[data-state='indeterminate'] {
+  .mdk-checkbox__indicator::after {
     width: 12px;
     height: 12px;
   }

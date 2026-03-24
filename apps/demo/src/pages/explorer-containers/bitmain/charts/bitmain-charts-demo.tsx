@@ -1,12 +1,12 @@
-import type { UnknownRecord } from '@mining-sdk/core'
-import { Button } from '@mining-sdk/core'
+import type { UnknownRecord } from '@mdk/core'
+import { Button } from '@mdk/core'
 import {
   BitMainHydroLiquidTemperatureCharts,
   BitMainLiquidPressureCharts,
   BitMainLiquidTempCharts,
   BitMainPowerCharts,
   BitMainSupplyLiquidFlowCharts,
-} from '@mining-sdk/foundation'
+} from '@mdk/foundation'
 import type { ReactElement } from 'react'
 import { useState } from 'react'
 import './bitmain-charts-demo.scss'

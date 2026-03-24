@@ -1,4 +1,4 @@
-import type { UnknownRecord } from '@mining-sdk/core'
+import type { UnknownRecord } from '@mdk/core'
 import {
   convertUnits,
   FALLBACK,
@@ -6,7 +6,7 @@ import {
   HASHRATE_LABEL_DIVISOR,
   UNIT_LABELS,
   UNITS,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 import _capitalize from 'lodash/capitalize'
 import _find from 'lodash/find'
 import _get from 'lodash/get'
@@ -140,10 +140,10 @@ export const PowerModeColors: Record<
   (typeof MINER_POWER_MODE)[keyof typeof MINER_POWER_MODE],
   string
 > = {
-  [MINER_POWER_MODE.SLEEP]: 'var(--mining-sdk-power-mode-sleep-color)',
-  [MINER_POWER_MODE.LOW]: 'var(--mining-sdk-power-mode-low-color)',
-  [MINER_POWER_MODE.NORMAL]: 'var(--mining-sdk-power-mode-normal-color)',
-  [MINER_POWER_MODE.HIGH]: 'var(--mining-sdk-power-mode-high-color)',
+  [MINER_POWER_MODE.SLEEP]: 'var(--mdk-power-mode-sleep-color)',
+  [MINER_POWER_MODE.LOW]: 'var(--mdk-power-mode-low-color)',
+  [MINER_POWER_MODE.NORMAL]: 'var(--mdk-power-mode-normal-color)',
+  [MINER_POWER_MODE.HIGH]: 'var(--mdk-power-mode-high-color)',
 } as const
 
 export const getPowerModeColor = (powerMode: keyof typeof PowerModeColors): string =>

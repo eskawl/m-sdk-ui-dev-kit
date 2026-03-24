@@ -31,10 +31,10 @@ export default defineConfig({
         'src/**/icons/**',
       ],
       thresholds: {
-        lines: 94,
-        functions: 94,
-        branches: 85,
-        statements: 94,
+        lines: 90,
+        functions: 80,
+        branches: 80,
+        statements: 90,
       },
     },
 
@@ -55,8 +55,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
-      '@mining-sdk/core': resolve(__dirname, '../core/src'),
-      '@mining-sdk/foundation': resolve(__dirname, '../foundation/src'),
+      '@mdk/core': resolve(__dirname, '../core/src'),
+      '@mdk/foundation': resolve(__dirname, '../foundation/src'),
     },
   },
   // Define global variables

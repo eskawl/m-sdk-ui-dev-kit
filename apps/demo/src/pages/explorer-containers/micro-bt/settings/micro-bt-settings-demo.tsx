@@ -1,4 +1,4 @@
-import { MicroBTSettings } from '@mining-sdk/foundation'
+import { MicroBTSettings } from '@mdk/foundation'
 import type { ReactElement } from 'react'
 import './micro-bt-settings-demo.scss'
 

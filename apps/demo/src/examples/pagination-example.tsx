@@ -1,6 +1,6 @@
-import type { IndicatorProps } from '@mining-sdk/core'
-import { Indicator, Pagination, Typography } from '@mining-sdk/core'
-import { usePagination } from '@mining-sdk/foundation'
+import type { IndicatorProps } from '@mdk/core'
+import { Indicator, Pagination, Typography } from '@mdk/core'
+import { usePagination } from '@mdk/foundation'
 import { useMemo } from 'react'
 
 type MockStatus = 'active' | 'pending' | 'completed' | 'error'

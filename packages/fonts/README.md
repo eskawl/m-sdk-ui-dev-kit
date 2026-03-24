@@ -1,11 +1,11 @@
-# @mining-sdk/fonts
+# @mdk/fonts
 
-Font assets for Mining SDK UI Kit.
+Font assets for MDK UI Kit.
 
 ## Installation
 
 ```bash
-pnpm add @mining-sdk/fonts
+pnpm add @mdk/fonts
 ```
 
 ## Usage
@@ -13,7 +13,7 @@ pnpm add @mining-sdk/fonts
 Import the font CSS in your application entry point:
 
 ```typescript
-import '@mining-sdk/fonts/jetbrains-mono.css'
+import '@mdk/fonts/jetbrains-mono.css'
 ```
 
 This will:
@@ -33,7 +33,7 @@ This will:
 
 ## Optional
 
-This package is **optional**. If you don't import it, `@mining-sdk/core` will fall back to system monospace fonts.
+This package is **optional**. If you don't import it, `@mdk/core` will fall back to system monospace fonts.
 
 ## For Demo Apps
 

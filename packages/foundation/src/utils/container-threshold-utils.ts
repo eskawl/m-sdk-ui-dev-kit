@@ -1,5 +1,5 @@
-import type { UnknownRecord } from '@mining-sdk/core'
-import { COLOR } from '@mining-sdk/core'
+import type { UnknownRecord } from '@mdk/core'
+import { COLOR } from '@mdk/core'
 import { CONTAINER_MODEL } from '../constants/container-constants'
 import { getDefaultThresholdStructure } from './container-settings-utils'
 import { getContainerSettingsModel } from './container-utils'

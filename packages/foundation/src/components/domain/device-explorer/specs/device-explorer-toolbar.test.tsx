@@ -3,8 +3,8 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { DeviceExplorerToolbar } from '../device-explorer-toolbar'
 import type { DeviceExplorerDeviceType } from '../types'
 
-vi.mock('@mining-sdk/core', async () => {
-  const actual = await vi.importActual('@mining-sdk/core')
+vi.mock('@mdk/core', async () => {
+  const actual = await vi.importActual('@mdk/core')
   return {
     ...actual,
     ListViewFilter: vi.fn(({ onChange, className }) => (
@@ -66,7 +66,7 @@ describe('DeviceExplorerToolbar', () => {
   describe('rendering', () => {
     it('renders toolbar container', () => {
       const { container } = render(<DeviceExplorerToolbar {...mockProps} />)
-      expect(container.querySelector('.mining-sdk-device-explorer__toolbar')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-device-explorer__toolbar')).toBeInTheDocument()
     })
 
     it('renders all device type tabs', () => {
@@ -103,7 +103,7 @@ describe('DeviceExplorerToolbar', () => {
     it('does not render filter when filterOptions is empty', () => {
       const { container } = render(<DeviceExplorerToolbar {...mockProps} />)
       expect(
-        container.querySelector('.mining-sdk-device-explorer__toolbar__filter'),
+        container.querySelector('.mdk-device-explorer__toolbar__filter'),
       ).not.toBeInTheDocument()
     })
 
@@ -113,9 +113,7 @@ describe('DeviceExplorerToolbar', () => {
         filterOptions: [{ label: 'Status', value: 'status', children: [] }],
       }
       const { container } = render(<DeviceExplorerToolbar {...propsWithFilters} />)
-      expect(
-        container.querySelector('.mining-sdk-device-explorer__toolbar__filter'),
-      ).toBeInTheDocument()
+      expect(container.querySelector('.mdk-device-explorer__toolbar__filter')).toBeInTheDocument()
     })
 
     it('renders filter with multiple options', () => {
@@ -181,9 +179,7 @@ describe('DeviceExplorerToolbar', () => {
 
     it('has correct CSS class', () => {
       const { container } = render(<DeviceExplorerToolbar {...mockProps} />)
-      expect(
-        container.querySelector('.mining-sdk-device-explorer__toolbar__search'),
-      ).toBeInTheDocument()
+      expect(container.querySelector('.mdk-device-explorer__toolbar__search')).toBeInTheDocument()
     })
   })
 
@@ -224,14 +220,12 @@ describe('DeviceExplorerToolbar', () => {
 
     it('has correct CSS classes', () => {
       const { container } = render(<DeviceExplorerToolbar {...mockProps} />)
+      expect(container.querySelector('.mdk-device-explorer__toolbar__tabs')).toBeInTheDocument()
       expect(
-        container.querySelector('.mining-sdk-device-explorer__toolbar__tabs'),
+        container.querySelector('.mdk-device-explorer__toolbar__tabs-list'),
       ).toBeInTheDocument()
       expect(
-        container.querySelector('.mining-sdk-device-explorer__toolbar__tabs-list'),
-      ).toBeInTheDocument()
-      expect(
-        container.querySelector('.mining-sdk-device-explorer__toolbar__tab-trigger'),
+        container.querySelector('.mdk-device-explorer__toolbar__tab-trigger'),
       ).toBeInTheDocument()
     })
   })
@@ -315,9 +309,7 @@ describe('DeviceExplorerToolbar', () => {
         <DeviceExplorerToolbar {...mockProps} filters={{}} filterOptions={filterOptions} />,
       )
 
-      expect(
-        container.querySelector('.mining-sdk-device-explorer__toolbar__filter'),
-      ).toBeInTheDocument()
+      expect(container.querySelector('.mdk-device-explorer__toolbar__filter')).toBeInTheDocument()
     })
 
     it('handles single filter option', () => {
@@ -345,9 +337,9 @@ describe('DeviceExplorerToolbar', () => {
     it('renders correctly when all arrays are empty', () => {
       const { container } = render(<DeviceExplorerToolbar {...mockProps} />)
 
-      expect(container.querySelector('.mining-sdk-device-explorer__toolbar')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-device-explorer__toolbar')).toBeInTheDocument()
       expect(
-        container.querySelector('.mining-sdk-device-explorer__toolbar__filter'),
+        container.querySelector('.mdk-device-explorer__toolbar__filter'),
       ).not.toBeInTheDocument()
     })
   })

@@ -1,6 +1,6 @@
-@use '@mining-sdk/core/styles' as *;
+@use '@mdk/core/styles' as *;
 
-.mining-sdk-bitmain-power-positioning {
+.mdk-bitmain-power-positioning {
   @include flex_column;
 
   gap: 1.5rem;
@@ -11,7 +11,7 @@
 
   &__panel {
     flex: 1;
-    border: 1px solid var(--mining-sdk-dialog-border-color);
+    border: 1px solid var(--mdk-dialog-border-color);
     min-width: 0;
   }
 
@@ -30,14 +30,14 @@
   &__subtitle {
     font-size: 14px;
     font-weight: 600;
-    color: var(--mining-sdk-color-text-secondary);
+    color: var(--mdk-color-text-secondary);
     margin-bottom: 0.5rem;
   }
 
   &__value {
     font-size: 16px;
     font-weight: 700;
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
     margin: 0;
   }
 
@@ -62,7 +62,7 @@
 
     p {
       font-size: 14px;
-      color: var(--mining-sdk-color-white);
+      color: var(--mdk-color-white);
       margin: 0;
     }
   }

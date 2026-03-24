@@ -30,7 +30,7 @@ type TabsContentProps = React.ComponentPropsWithoutRef<typeof TabsPrimitives.Con
  * ```
  */
 const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(({ className, ...props }, ref) => (
-  <TabsPrimitives.Root ref={ref} className={cn('mining_sdk_tabs', className)} {...props} />
+  <TabsPrimitives.Root ref={ref} className={cn('mdk_tabs', className)} {...props} />
 ))
 
 Tabs.displayName = 'Tabs'
@@ -39,11 +39,7 @@ const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
   ({ className, variant, ...props }, ref) => (
     <TabsPrimitives.List
       ref={ref}
-      className={cn(
-        'mining_sdk_tabs__list',
-        variant === 'side' && 'mining_sdk_tabs__list--side',
-        className,
-      )}
+      className={cn('mdk_tabs__list', variant === 'side' && 'mdk_tabs__list--side', className)}
       {...props}
     />
   ),
@@ -56,8 +52,8 @@ const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
     <TabsPrimitives.Trigger
       ref={ref}
       className={cn(
-        'mining_sdk_tabs__trigger',
-        variant === 'side' && 'mining_sdk_tabs__trigger--side',
+        'mdk_tabs__trigger',
+        variant === 'side' && 'mdk_tabs__trigger--side',
         className,
       )}
       {...props}
@@ -69,11 +65,7 @@ TabsTrigger.displayName = 'TabsTrigger'
 
 const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
   ({ className, ...props }, ref) => (
-    <TabsPrimitives.Content
-      ref={ref}
-      className={cn('mining_sdk_tabs__content', className)}
-      {...props}
-    />
+    <TabsPrimitives.Content ref={ref} className={cn('mdk_tabs__content', className)} {...props} />
   ),
 )
 

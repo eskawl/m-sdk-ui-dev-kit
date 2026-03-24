@@ -23,8 +23,8 @@ type ContentBoxProps = {
  * ```
  */
 export const ContentBox = ({ children, title, className }: ContentBoxProps): ReactElement => (
-  <div className={`mining-sdk-content-box ${className || ''}`.trim()}>
-    {title && <h3 className="mining-sdk-content-box__title">{title}</h3>}
-    <div className="mining-sdk-content-box__content">{children}</div>
+  <div className={`mdk-content-box ${className || ''}`.trim()}>
+    {title && <h3 className="mdk-content-box__title">{title}</h3>}
+    <div className="mdk-content-box__content">{children}</div>
   </div>
 )

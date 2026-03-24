@@ -1,6 +1,6 @@
-@use '@mining-sdk/core/styles' as *;
+@use '@mdk/core/styles' as *;
 
-.mining-sdk-dry-cooler {
+.mdk-dry-cooler {
   @include flex_column;
 
   width: 100%;
@@ -22,8 +22,8 @@
 
     gap: 16px;
     padding: 16px;
-    background-color: var(--mining-sdk-color-surface);
-    border: 1px solid var(--mining-sdk-dialog-border-color);
+    background-color: var(--mdk-color-surface);
+    border: 1px solid var(--mdk-dialog-border-color);
   }
 
   &__status {
@@ -33,7 +33,7 @@
   }
 
   &__title {
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
     font-size: 18px;
     font-weight: 600;
     white-space: nowrap;

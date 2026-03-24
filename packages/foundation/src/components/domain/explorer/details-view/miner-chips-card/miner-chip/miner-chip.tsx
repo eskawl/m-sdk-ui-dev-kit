@@ -1,4 +1,4 @@
-import { formatNumber, UNITS } from '@mining-sdk/core'
+import { formatNumber, UNITS } from '@mdk/core'
 import './miner-chip.scss'
 
 type MinerChipProps = {

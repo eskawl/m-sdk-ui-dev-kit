@@ -1,9 +1,9 @@
-import { GaugeChart } from '@mining-sdk/core'
+import { GaugeChart } from '@mdk/core'
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import { GaugeChartComponent } from '../gauge-chart/gauge-chart-component'
 
-vi.mock('@mining-sdk/core', () => ({
+vi.mock('@mdk/core', () => ({
   GaugeChart: vi.fn(({ percent }) => <div data-testid="gauge" data-percent={percent} />),
   COLOR: { EMERALD: '#00FF00', SOFT_TEAL: '#00FFFF' },
 }))

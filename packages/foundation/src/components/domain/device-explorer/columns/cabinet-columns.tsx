@@ -4,8 +4,8 @@ import {
   TemperatureIndicatorIcon,
   UNITS,
   unitToKilo,
-} from '@mining-sdk/core'
-import type { DataTableColumnDef } from '@mining-sdk/core'
+} from '@mdk/core'
+import type { DataTableColumnDef } from '@mdk/core'
 import type { DeviceExplorerDeviceData, GetColumnConfigParams } from '../types'
 import { isContainerOffline } from '../../../../utils/container-utils'
 import {
@@ -45,7 +45,7 @@ export const getCabinetColumns = ({
       const temperatureValue = getRootTempSensorTempValue(record) as number | undefined
       return (
         <SimpleTooltip content="Temperature">
-          <div className="mining-sdk-device-explorer__table__cell--type-temp">
+          <div className="mdk-device-explorer__table__cell--type-temp">
             <TemperatureIndicatorIcon />
             <div style={{ color: getLvCabinetTempSensorColor(temperatureValue ?? 0) }}>
               {!_isNil(temperatureValue) ? `${temperatureValue} ${UNITS.TEMPERATURE_C}` : '-'}{' '}

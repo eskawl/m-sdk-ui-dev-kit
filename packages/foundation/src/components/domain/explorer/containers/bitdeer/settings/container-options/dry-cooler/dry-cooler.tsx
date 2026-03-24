@@ -1,5 +1,5 @@
-import type { UnknownRecord } from '@mining-sdk/core'
-import { Indicator } from '@mining-sdk/core'
+import type { UnknownRecord } from '@mdk/core'
+import { Indicator } from '@mdk/core'
 import type { PumpItem } from '../pump-box/pump-box'
 import { PumpBox } from '../pump-box/pump-box'
 import { ContainerFansCard } from './container-fans-card/container-fans-card'
@@ -103,19 +103,17 @@ export const DryCooler = ({ data }: DryCoolerProps): ReactElement => {
   const currentCoolerData = getCurrentCoolerData()
 
   return (
-    <div className="mining-sdk-dry-cooler">
+    <div className="mdk-dry-cooler">
       {currentCoolerData.map((dryCoolerItem, index) => {
         const isEnabled = dryCoolerItem.enabled
         const hasEnabledValue = typeof isEnabled === 'boolean'
         const isRunning = isEnabled === true
 
         return (
-          <div key={`${dryCoolerItem.index}-${index}`} className="mining-sdk-dry-cooler__segment">
-            <div className="mining-sdk-dry-cooler__card">
-              <div className="mining-sdk-dry-cooler__status">
-                <span className="mining-sdk-dry-cooler__title">
-                  Dry Cooler {dryCoolerItem.index + 1}
-                </span>
+          <div key={`${dryCoolerItem.index}-${index}`} className="mdk-dry-cooler__segment">
+            <div className="mdk-dry-cooler__card">
+              <div className="mdk-dry-cooler__status">
+                <span className="mdk-dry-cooler__title">Dry Cooler {dryCoolerItem.index + 1}</span>
                 {hasEnabledValue ? (
                   <Indicator color={isRunning ? 'green' : 'gray'} size="md">
                     {isRunning ? DEVICE_STATUS.RUNNING : DEVICE_STATUS.OFF}
@@ -129,7 +127,7 @@ export const DryCooler = ({ data }: DryCoolerProps): ReactElement => {
               <ContainerFansCard fansData={dryCoolerItem.fans} />
             </div>
 
-            <div className="mining-sdk-dry-cooler__pumps">
+            <div className="mdk-dry-cooler__pumps">
               <PumpBox pumpItem={oilPump[index]} pumpTitle="Oil" />
               <PumpBox pumpItem={waterPump[index]} pumpTitle="Water" />
             </div>

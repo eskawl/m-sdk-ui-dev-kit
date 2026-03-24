@@ -27,7 +27,7 @@ export default defineConfig({
       ],
       thresholds: {
         lines: 80,
-        functions: 79,
+        functions: 80,
         branches: 75,
         statements: 80,
       },
@@ -45,7 +45,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
-      '@mining-sdk/core': resolve(__dirname, './src'),
+      '@mdk/core': resolve(__dirname, './src'),
     },
   },
   define: {

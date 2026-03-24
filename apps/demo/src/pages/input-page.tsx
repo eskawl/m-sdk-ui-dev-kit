@@ -1,4 +1,4 @@
-import { Input, TagInput } from '@mining-sdk/core'
+import { Input, TagInput } from '@mdk/core'
 import { useState } from 'react'
 
 type InputRowProps = {

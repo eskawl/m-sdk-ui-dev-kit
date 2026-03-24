@@ -1,8 +1,8 @@
-import { Button, Checkbox, Input } from '@mining-sdk/core'
+import { Button, Checkbox, Input } from '@mdk/core'
 import {
   BitMainImmersionPumpStationControlBox,
   BitMainImmersionSystemStatus,
-} from '@mining-sdk/foundation'
+} from '@mdk/foundation'
 import type { ReactElement } from 'react'
 import { useState } from 'react'
 import './bitmain-immersion-system-demo.scss'

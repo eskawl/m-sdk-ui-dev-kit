@@ -1,11 +1,11 @@
-@use '@mining-sdk/core/styles' as *;
+@use '@mdk/core/styles' as *;
 
-.mining-sdk-base-threshold-form {
+.mdk-base-threshold-form {
   &__section-title {
     margin: 0 0 16px 0;
     font-size: 16px;
     font-weight: 500;
-    color: var(--mining-sdk-color-background-light);
+    color: var(--mdk-color-background-light);
   }
 
   &__threshold-inputs {
@@ -21,7 +21,7 @@
     margin-bottom: 6px;
     font-size: 12px;
     font-weight: 500;
-    color: var(--mining-sdk-color-background-light);
+    color: var(--mdk-color-background-light);
     display: block;
     min-width: 0;
     line-height: 1.2;
@@ -68,7 +68,7 @@
     gap: 12px;
     margin-top: 24px;
     padding-top: 16px;
-    border-top: 1px solid var(--mining-sdk-color-darker-grey);
+    border-top: 1px solid var(--mdk-color-darker-grey);
   }
 
   &__table-container {
@@ -83,7 +83,7 @@
 
   &__no-flash-icon,
   &__no-sound-icon {
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
     font-size: 16px;
   }
 }

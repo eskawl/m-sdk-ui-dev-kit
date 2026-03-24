@@ -1,11 +1,4 @@
-import {
-  Button,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  SimplePopover,
-  Switch,
-} from '@mining-sdk/core'
+import { Button, Popover, PopoverContent, PopoverTrigger, SimplePopover, Switch } from '@mdk/core'
 
 export const PopoverPage = (): JSX.Element => {
   return (

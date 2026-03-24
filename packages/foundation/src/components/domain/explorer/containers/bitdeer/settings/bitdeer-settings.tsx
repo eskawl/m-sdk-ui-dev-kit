@@ -1,4 +1,4 @@
-import type { UnknownRecord } from '@mining-sdk/core'
+import type { UnknownRecord } from '@mdk/core'
 import type { ReactElement } from 'react'
 import {
   getBitdeerOilTemperatureColor,
@@ -37,12 +37,12 @@ type BitdeerSettingsProps = {
  * ```
  */
 export const BitdeerSettings = ({ data = {} }: BitdeerSettingsProps): ReactElement => (
-  <div className="mining-sdk-bitdeer-settings">
-    <section className="mining-sdk-bitdeer-settings__params">
+  <div className="mdk-bitdeer-settings">
+    <section className="mdk-bitdeer-settings__params">
       <ContainerParamsSettings data={data} />
     </section>
 
-    <section className="mining-sdk-bitdeer-settings__thresholds">
+    <section className="mdk-bitdeer-settings__thresholds">
       <EditableThresholdForm
         data={data}
         oilTempColorFunc={(value: number) => getBitdeerOilTemperatureColor(true, value, data)}

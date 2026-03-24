@@ -1,4 +1,4 @@
-import { Tag } from '@mining-sdk/core'
+import { Tag } from '@mdk/core'
 import type { ReactElement } from 'react'
 import './bitmain-immersion-pump-station-control-box.scss'
 

@@ -39,7 +39,7 @@ describe('listViewFilter', () => {
         <ListViewFilter options={mockOptions} onChange={onChange} className="custom-class" />,
       )
 
-      expect(container.firstChild).toHaveClass('mining-sdk-list-view-filter')
+      expect(container.firstChild).toHaveClass('mdk-list-view-filter')
       expect(container.firstChild).toHaveClass('custom-class')
     })
 
@@ -47,7 +47,7 @@ describe('listViewFilter', () => {
       const onChange = vi.fn()
       const { container } = render(<ListViewFilter options={mockOptions} onChange={onChange} />)
 
-      expect(container.querySelector('.mining-sdk-list-view-filter')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-list-view-filter')).toBeInTheDocument()
     })
 
     it('renders with custom filterKey', () => {
@@ -56,7 +56,7 @@ describe('listViewFilter', () => {
         <ListViewFilter options={mockOptions} onChange={onChange} filterKey="custom-key" />,
       )
 
-      expect(container.querySelector('.mining-sdk-list-view-filter')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-list-view-filter')).toBeInTheDocument()
     })
   })
 
@@ -66,7 +66,7 @@ describe('listViewFilter', () => {
       const { container } = render(<ListViewFilter options={mockOptions} onChange={onChange} />)
 
       // Badge with count 0 is hidden by default
-      expect(container.querySelector('.mining-sdk-badge')).not.toBeInTheDocument()
+      expect(container.querySelector('.mdk-badge')).not.toBeInTheDocument()
     })
 
     it('shows badge count for single filter', () => {
@@ -112,8 +112,8 @@ describe('listViewFilter', () => {
         <ListViewFilter options={mockOptions} localFilters={localFilters} onChange={onChange} />,
       )
 
-      const badge = container.querySelector('.mining-sdk-badge')
-      expect(badge).toHaveClass('mining-sdk-badge--sm')
+      const badge = container.querySelector('.mdk-badge')
+      expect(badge).toHaveClass('mdk-badge--sm')
     })
   })
 
@@ -147,7 +147,7 @@ describe('listViewFilter', () => {
         <ListViewFilter options={mockOptions} localFilters={{}} onChange={onChange} />,
       )
 
-      expect(container.querySelector('.mining-sdk-list-view-filter')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-list-view-filter')).toBeInTheDocument()
     })
 
     it('handles undefined localFilters', () => {
@@ -156,7 +156,7 @@ describe('listViewFilter', () => {
         <ListViewFilter options={mockOptions} localFilters={undefined} onChange={onChange} />,
       )
 
-      expect(container.querySelector('.mining-sdk-list-view-filter')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-list-view-filter')).toBeInTheDocument()
     })
 
     it('converts single value filter correctly', () => {
@@ -241,7 +241,7 @@ describe('listViewFilter', () => {
       const onChange = vi.fn()
       const { container } = render(<ListViewFilter options={mockOptions} onChange={onChange} />)
 
-      expect(container.querySelector('.mining-sdk-list-view-filter')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-list-view-filter')).toBeInTheDocument()
     })
 
     it('accepts onChange prop', () => {
@@ -338,12 +338,13 @@ describe('listViewFilter', () => {
       expect(svg).toBeInTheDocument()
     })
 
-    it('renders Button with secondary variant', () => {
+    it('renders Button with secondary variant and sm size', () => {
       const onChange = vi.fn()
       const { container } = render(<ListViewFilter options={mockOptions} onChange={onChange} />)
 
-      const button = container.querySelector('.mining-sdk-button')
-      expect(button).toHaveClass('mining-sdk-button--variant-secondary')
+      const button = container.querySelector('.mdk-button')
+      expect(button).toHaveClass('mdk-button--variant-secondary')
+      expect(button).toHaveClass('mdk-button--size-sm')
     })
 
     it('renders Typography with correct props', () => {

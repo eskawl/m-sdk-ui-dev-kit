@@ -24,7 +24,7 @@ describe('contentBox', () => {
   it('should apply custom className', () => {
     const { container } = render(<ContentBox className="custom-class">Content</ContentBox>)
 
-    const contentBox = container.querySelector('.mining-sdk-content-box')
+    const contentBox = container.querySelector('.mdk-content-box')
     expect(contentBox).toHaveClass('custom-class')
   })
 
@@ -38,7 +38,7 @@ describe('contentBox', () => {
     expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent('Power')
     expect(screen.getByText('100 kW')).toBeInTheDocument()
 
-    const contentBox = container.querySelector('.mining-sdk-content-box')
+    const contentBox = container.querySelector('.mdk-content-box')
     expect(contentBox).toHaveClass('power-box')
   })
 
@@ -47,7 +47,7 @@ describe('contentBox', () => {
 
     expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent('Empty')
 
-    const content = container.querySelector('.mining-sdk-content-box__content')
+    const content = container.querySelector('.mdk-content-box__content')
     expect(content).toBeEmptyDOMElement()
   })
 

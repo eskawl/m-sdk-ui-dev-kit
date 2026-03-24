@@ -18,17 +18,17 @@ describe('deviceExplorer', () => {
 
   it('should render device explorer root', () => {
     const { container } = render(<DeviceExplorer {...defaultProps} />)
-    expect(container.querySelector('.mining-sdk-device-explorer')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-device-explorer')).toBeInTheDocument()
   })
 
   it('should render toolbar', () => {
     const { container } = render(<DeviceExplorer {...defaultProps} />)
-    expect(container.querySelector('.mining-sdk-device-explorer__toolbar')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-device-explorer__toolbar')).toBeInTheDocument()
   })
 
   it('should render table', () => {
     const { container } = render(<DeviceExplorer {...defaultProps} />)
-    expect(container.querySelector('.mining-sdk-device-explorer__table')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-device-explorer__table')).toBeInTheDocument()
   })
 
   it('should render device type tabs', () => {
@@ -40,7 +40,7 @@ describe('deviceExplorer', () => {
 
   it('should apply custom className', () => {
     const { container } = render(<DeviceExplorer {...defaultProps} className="custom-class" />)
-    const root = container.querySelector('.mining-sdk-device-explorer')
+    const root = container.querySelector('.mdk-device-explorer')
     expect(root).toHaveClass('custom-class')
   })
 
@@ -60,7 +60,7 @@ describe('deviceExplorer', () => {
         filterOptions={[{ label: 'Status', value: 'status', children: [] }]}
       />,
     )
-    expect(container.querySelector('.mining-sdk-device-explorer')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-device-explorer')).toBeInTheDocument()
   })
 
   it('should work with selectedDevices and onSelectedDevicesChange', () => {
@@ -72,6 +72,6 @@ describe('deviceExplorer', () => {
         onSelectedDevicesChange={onSelectedDevicesChange}
       />,
     )
-    expect(container.querySelector('.mining-sdk-device-explorer')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-device-explorer')).toBeInTheDocument()
   })
 })

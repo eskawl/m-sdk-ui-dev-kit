@@ -1,12 +1,12 @@
-import { Indicator } from '@mining-sdk/core'
+import type { UnknownRecord } from '@mdk/core'
+import { Indicator } from '@mdk/core'
 import type { ReactElement } from 'react'
 import { DEVICE_STATUS } from '../../../../../../../constants/devices'
-import type { Device } from '../../../../../../../types/device'
 import { getBitdeerCoolingSystemData } from '../bitdeer-settings-utils'
 import './bitdeer-pumps.scss'
 
 type BitdeerPumpsProps = {
-  data?: Device
+  data?: UnknownRecord
 }
 
 /**
@@ -29,9 +29,9 @@ export const BitdeerPumps = ({ data }: BitdeerPumpsProps): ReactElement | null =
   const isRunning = exhaustFanEnabled
 
   return (
-    <div className="mining-sdk-bitdeer-pumps">
-      <div className="mining-sdk-bitdeer-pumps__status">
-        <span className="mining-sdk-bitdeer-pumps__title">Exhaust Fan</span>
+    <div className="mdk-bitdeer-pumps">
+      <div className="mdk-bitdeer-pumps__status">
+        <span className="mdk-bitdeer-pumps__title">Exhaust Fan</span>
         <Indicator color={isRunning ? 'green' : 'gray'} size="md">
           {isRunning ? DEVICE_STATUS.RUNNING : DEVICE_STATUS.OFF}
         </Indicator>

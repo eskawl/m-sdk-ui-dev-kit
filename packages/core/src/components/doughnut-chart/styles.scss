@@ -1,4 +1,5 @@
-.mining-sdk-doughnut-chart {
+@use '../../styles/mixins' as *;
+.mdk-doughnut-chart {
   @include flex_column;
 
   gap: 24px;

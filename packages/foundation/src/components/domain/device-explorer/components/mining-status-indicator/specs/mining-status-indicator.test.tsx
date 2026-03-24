@@ -13,7 +13,7 @@ describe('minerStatusIndicator', () => {
         getFormattedDate={mockGetFormattedDate}
       />,
     )
-    expect(container.querySelector('.mining-sdk-mining-status-indicator')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-mining-status-indicator')).toBeInTheDocument()
   })
 
   it('should render with offline status', () => {
@@ -23,7 +23,7 @@ describe('minerStatusIndicator', () => {
         getFormattedDate={mockGetFormattedDate}
       />,
     )
-    expect(container.querySelector('.mining-sdk-mining-status-indicator')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-mining-status-indicator')).toBeInTheDocument()
   })
 
   it('should render with sleeping status', () => {
@@ -33,7 +33,7 @@ describe('minerStatusIndicator', () => {
         getFormattedDate={mockGetFormattedDate}
       />,
     )
-    expect(container.querySelector('.mining-sdk-mining-status-indicator')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-mining-status-indicator')).toBeInTheDocument()
   })
 
   it('should render with error status', () => {
@@ -43,7 +43,7 @@ describe('minerStatusIndicator', () => {
         getFormattedDate={mockGetFormattedDate}
       />,
     )
-    expect(container.querySelector('.mining-sdk-mining-status-indicator')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-mining-status-indicator')).toBeInTheDocument()
   })
 
   it('should render alert icon when alerts present', () => {
@@ -62,9 +62,7 @@ describe('minerStatusIndicator', () => {
         getFormattedDate={mockGetFormattedDate}
       />,
     )
-    expect(
-      container.querySelector('.mining-sdk-mining-status-indicator--alert'),
-    ).toBeInTheDocument()
+    expect(container.querySelector('.mdk-mining-status-indicator--alert')).toBeInTheDocument()
   })
 
   it('should filter invalid alerts', () => {
@@ -85,7 +83,7 @@ describe('minerStatusIndicator', () => {
         getFormattedDate={mockGetFormattedDate}
       />,
     )
-    expect(container.querySelector('.mining-sdk-mining-status-indicator')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-mining-status-indicator')).toBeInTheDocument()
   })
 
   it('should render without tooltip when hideTooltip is true', () => {
@@ -96,21 +94,21 @@ describe('minerStatusIndicator', () => {
         getFormattedDate={mockGetFormattedDate}
       />,
     )
-    expect(container.querySelector('.mining-sdk-mining-status-indicator')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-mining-status-indicator')).toBeInTheDocument()
   })
 
   it('should handle empty stats', () => {
     const { container } = render(
       <MinerStatusIndicator stats={{}} getFormattedDate={mockGetFormattedDate} />,
     )
-    expect(container.querySelector('.mining-sdk-mining-status-indicator')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-mining-status-indicator')).toBeInTheDocument()
   })
 
   it('should handle undefined stats', () => {
     const { container } = render(
       <MinerStatusIndicator stats={undefined} getFormattedDate={mockGetFormattedDate} />,
     )
-    expect(container.querySelector('.mining-sdk-mining-status-indicator')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-mining-status-indicator')).toBeInTheDocument()
   })
 
   it('should handle empty alerts array', () => {
@@ -121,6 +119,6 @@ describe('minerStatusIndicator', () => {
         getFormattedDate={mockGetFormattedDate}
       />,
     )
-    expect(container.querySelector('.mining-sdk-mining-status-indicator')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-mining-status-indicator')).toBeInTheDocument()
   })
 })

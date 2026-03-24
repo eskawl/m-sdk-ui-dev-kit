@@ -1,4 +1,4 @@
-import { formatNumber, UNITS } from '@mining-sdk/core'
+import { formatNumber, UNITS } from '@mdk/core'
 import type { ReactElement } from 'react'
 import './miner-metric-card.scss'
 
@@ -83,7 +83,7 @@ export const MinerMetricCard = ({
     typeof efficiencyValue.value === 'number'
 
   return (
-    <div className="mining-sdk-miner-metric-card">
+    <div className="mining-sdk-miner-metric-card" data-testid="card">
       <div className="mining-sdk-miner-metric-card__title">Miner Metrics</div>
       <div className="mining-sdk-miner-metric-card__body">
         {showEfficiency && (

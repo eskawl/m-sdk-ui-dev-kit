@@ -154,7 +154,7 @@ export const DoughnutChart = React.forwardRef<HTMLDivElement, DoughnutChartProps
     }, [])
 
     const legendEl = (
-      <div className="mining-sdk-doughnut-chart__legend">
+      <div className="mdk-doughnut-chart__legend">
         {data.map((item, i) => {
           const isHidden = !!hiddenItems[i]
           const pct = formatPct(item.value, total)
@@ -163,22 +163,22 @@ export const DoughnutChart = React.forwardRef<HTMLDivElement, DoughnutChartProps
               key={`${item.label}-${i}`}
               type="button"
               className={cn(
-                'mining-sdk-doughnut-chart__legend-item',
-                isHidden && 'mining-sdk-doughnut-chart__legend-item--hidden',
+                'mdk-doughnut-chart__legend-item',
+                isHidden && 'mdk-doughnut-chart__legend-item--hidden',
               )}
               onClick={() => onToggleItem(i)}
             >
               <span
-                className="mining-sdk-doughnut-chart__legend-color"
+                className="mdk-doughnut-chart__legend-color"
                 style={{
                   borderColor: colors[i],
                   backgroundColor: colorWithAlpha(colors[i] ?? '#888', 0.2),
                 }}
               />
-              <span className="mining-sdk-doughnut-chart__legend-label">{item.label}</span>
-              <span className="mining-sdk-doughnut-chart__legend-stats">
-                <span className="mining-sdk-doughnut-chart__legend-pct">({pct}%)</span>
-                <span className="mining-sdk-doughnut-chart__legend-count">
+              <span className="mdk-doughnut-chart__legend-label">{item.label}</span>
+              <span className="mdk-doughnut-chart__legend-stats">
+                <span className="mdk-doughnut-chart__legend-pct">({pct}%)</span>
+                <span className="mdk-doughnut-chart__legend-count">
                   {item.value}
                   {unit ? ` ${unit}` : ''}
                 </span>
@@ -190,7 +190,7 @@ export const DoughnutChart = React.forwardRef<HTMLDivElement, DoughnutChartProps
     )
 
     const chartEl = (
-      <div className="mining-sdk-doughnut-chart__chart" style={{ height, maxWidth: height }}>
+      <div className="mdk-doughnut-chart__chart" style={{ height, maxWidth: height }}>
         <Doughnut ref={chartRef} data={chartData} options={mergedOptions} />
       </div>
     )
@@ -201,8 +201,8 @@ export const DoughnutChart = React.forwardRef<HTMLDivElement, DoughnutChartProps
       <div
         ref={ref}
         className={cn(
-          'mining-sdk-doughnut-chart',
-          `mining-sdk-doughnut-chart--legend-${legendPosition}`,
+          'mdk-doughnut-chart',
+          `mdk-doughnut-chart--legend-${legendPosition}`,
           className,
         )}
       >

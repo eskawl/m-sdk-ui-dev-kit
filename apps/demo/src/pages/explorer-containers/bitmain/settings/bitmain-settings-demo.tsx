@@ -1,65 +1,229 @@
-import { Checkbox, Input } from '@mining-sdk/core'
-import { BitMainHydroSettings } from '@mining-sdk/foundation'
+import { Button, Checkbox, Input } from '@mdk/core'
+import { BitMainHydroSettings } from '@mdk/foundation'
 import type { ReactElement } from 'react'
 import { useState } from 'react'
+import type { Device } from '../../../../../../../packages/foundation/src/types/device'
 import './bitmain-settings-demo.scss'
 
 /**
- * Demo data preset with complete threshold data
+ * Demo data presets with complete threshold data
  */
-const DEMO_PRESET = {
-  id: 'demo-normal',
-  type: 'bitmain-hydro',
-  status: 'active',
-  thresholds: {
-    waterTemperature: {
-      criticalLow: 21,
-      alarmLow: 21,
-      alert: 25,
-      normal: 30,
-      alarmHigh: 37,
-      criticalHigh: 40,
+const DEMO_PRESETS = {
+  normal: {
+    id: 'demo-normal',
+    type: 'bitmain-hydro',
+    status: 'active',
+    thresholds: {
+      waterTemperature: {
+        criticalLow: 21,
+        alarmLow: 21,
+        alert: 25,
+        normal: 30,
+        alarmHigh: 37,
+        criticalHigh: 40,
+      },
+      supplyLiquidPressure: {
+        criticalLow: 2,
+        alarmLow: 2,
+        normal: 2.3,
+        alarmHigh: 3.5,
+        criticalHigh: 4,
+      },
     },
-    supplyLiquidPressure: {
-      criticalLow: 2,
-      alarmLow: 2,
-      normal: 2.3,
-      alarmHigh: 3.5,
-      criticalHigh: 4,
+    last: {
+      snap: {
+        stats: {
+          distribution_box1_power_w: 50000,
+          distribution_box2_power_w: 48000,
+          water_temperature: 35,
+          supply_liquid_pressure: 2.5,
+          container_specific: {
+            latitude: '37.7749',
+            latitude_direction: 'N',
+            longitude: '122.4194',
+            longitude_direction: 'W',
+            circulating_pump: true,
+            circulating_pump_fault: false,
+            fluid_infusion_pump: true,
+            fluid_infusion_pump_fault: false,
+            fan1: true,
+            fan1_fault: false,
+            fan2: true,
+            fan2_fault: false,
+            cooling_tower_fan1: true,
+            cooling_tower_fan1_fault: false,
+            cooling_tower_fan2: true,
+            cooling_tower_fan2_fault: false,
+            cooling_tower_fan3: true,
+            cooling_tower_fan3_fault: false,
+          },
+        },
+        config: {},
+      },
     },
   },
-  last: {
-    snap: {
-      stats: {
-        distribution_box1_power_w: 50000,
-        distribution_box2_power_w: 48000,
-        water_temperature: 35,
-        supply_liquid_pressure: 2.5,
-        container_specific: {
-          latitude: '37.7749',
-          latitude_direction: 'N',
-          longitude: '122.4194',
-          longitude_direction: 'W',
-          circulating_pump: true,
-          circulating_pump_fault: false,
-          fluid_infusion_pump: true,
-          fluid_infusion_pump_fault: false,
-          fan1: true,
-          fan1_fault: false,
-          fan2: true,
-          fan2_fault: false,
-          cooling_tower_fan1: true,
-          cooling_tower_fan1_fault: false,
-          cooling_tower_fan2: true,
-          cooling_tower_fan2_fault: false,
-          cooling_tower_fan3: true,
-          cooling_tower_fan3_fault: false,
-        },
+  highTemp: {
+    id: 'demo-high-temp',
+    type: 'bitmain-hydro',
+    status: 'active',
+    thresholds: {
+      waterTemperature: {
+        criticalLow: 21,
+        alarmLow: 21,
+        alert: 25,
+        normal: 30,
+        alarmHigh: 37,
+        criticalHigh: 40,
       },
-      config: {},
+      supplyLiquidPressure: {
+        criticalLow: 2,
+        alarmLow: 2,
+        normal: 2.3,
+        alarmHigh: 3.5,
+        criticalHigh: 4,
+      },
+    },
+    last: {
+      snap: {
+        stats: {
+          distribution_box1_power_w: 95000,
+          distribution_box2_power_w: 92000,
+          water_temperature: 42,
+          supply_liquid_pressure: 3.8,
+          container_specific: {
+            latitude: '51.5074',
+            latitude_direction: 'N',
+            longitude: '0.1278',
+            longitude_direction: 'W',
+            circulating_pump: true,
+            circulating_pump_fault: false,
+            fluid_infusion_pump: true,
+            fluid_infusion_pump_fault: false,
+            fan1: true,
+            fan1_fault: false,
+            fan2: true,
+            fan2_fault: false,
+            cooling_tower_fan1: true,
+            cooling_tower_fan1_fault: false,
+            cooling_tower_fan2: true,
+            cooling_tower_fan2_fault: false,
+            cooling_tower_fan3: true,
+            cooling_tower_fan3_fault: false,
+          },
+        },
+        config: {},
+      },
+    },
+  },
+  withFaults: {
+    id: 'demo-faults',
+    type: 'bitmain-hydro',
+    status: 'active',
+    thresholds: {
+      waterTemperature: {
+        criticalLow: 21,
+        alarmLow: 21,
+        alert: 25,
+        normal: 30,
+        alarmHigh: 37,
+        criticalHigh: 40,
+      },
+      supplyLiquidPressure: {
+        criticalLow: 2,
+        alarmLow: 2,
+        normal: 2.3,
+        alarmHigh: 3.5,
+        criticalHigh: 4,
+      },
+    },
+    last: {
+      snap: {
+        stats: {
+          distribution_box1_power_w: 45000,
+          distribution_box2_power_w: 42000,
+          water_temperature: 38,
+          supply_liquid_pressure: 1.8,
+          container_specific: {
+            latitude: '35.6762',
+            latitude_direction: 'N',
+            longitude: '139.6503',
+            longitude_direction: 'E',
+            circulating_pump: true,
+            circulating_pump_fault: false,
+            fluid_infusion_pump: false,
+            fluid_infusion_pump_fault: true,
+            fan1: true,
+            fan1_fault: false,
+            fan2: false,
+            fan2_fault: true,
+            cooling_tower_fan1: true,
+            cooling_tower_fan1_fault: false,
+            cooling_tower_fan2: true,
+            cooling_tower_fan2_fault: false,
+            cooling_tower_fan3: false,
+            cooling_tower_fan3_fault: true,
+          },
+        },
+        config: {},
+      },
+    },
+  },
+  lowTemp: {
+    id: 'demo-low-temp',
+    type: 'bitmain-hydro',
+    status: 'active',
+    thresholds: {
+      waterTemperature: {
+        criticalLow: 21,
+        alarmLow: 21,
+        alert: 25,
+        normal: 30,
+        alarmHigh: 37,
+        criticalHigh: 40,
+      },
+      supplyLiquidPressure: {
+        criticalLow: 2,
+        alarmLow: 2,
+        normal: 2.3,
+        alarmHigh: 3.5,
+        criticalHigh: 4,
+      },
+    },
+    last: {
+      snap: {
+        stats: {
+          distribution_box1_power_w: 25000,
+          distribution_box2_power_w: 23000,
+          water_temperature: 18,
+          supply_liquid_pressure: 1.5,
+          container_specific: {
+            latitude: '40.7128',
+            latitude_direction: 'N',
+            longitude: '74.0060',
+            longitude_direction: 'W',
+            circulating_pump: true,
+            circulating_pump_fault: false,
+            fluid_infusion_pump: true,
+            fluid_infusion_pump_fault: false,
+            fan1: false,
+            fan1_fault: false,
+            fan2: false,
+            fan2_fault: false,
+            cooling_tower_fan1: true,
+            cooling_tower_fan1_fault: false,
+            cooling_tower_fan2: false,
+            cooling_tower_fan2_fault: false,
+            cooling_tower_fan3: false,
+            cooling_tower_fan3_fault: false,
+          },
+        },
+        config: {},
+      },
     },
   },
 } as const
+
+type PresetKey = keyof typeof DEMO_PRESETS
 
 /**
  * BitMain Hydro Demo
@@ -67,6 +231,7 @@ const DEMO_PRESET = {
  * Interactive demonstration of BitMain Hydro container settings with thresholds
  */
 export const BitMainHydroSettingsDemo = (): ReactElement => {
+  const [selectedPreset, setSelectedPreset] = useState<PresetKey>('normal')
   const [waterTemp, setWaterTemp] = useState('35')
   const [pressure, setPressure] = useState('2.5')
   const [customPower1, setCustomPower1] = useState('50000')
@@ -84,7 +249,7 @@ export const BitMainHydroSettingsDemo = (): ReactElement => {
 
   const [useCustom, setUseCustom] = useState(false)
 
-  const customDevice = {
+  const customDevice: Device = {
     id: 'demo-custom',
     type: 'bitmain-hydro',
     status: 'active',
@@ -136,13 +301,34 @@ export const BitMainHydroSettingsDemo = (): ReactElement => {
         config: {},
       },
     },
-  }
+  } as Device
 
-  const currentData = useCustom ? customDevice : DEMO_PRESET
+  const currentData = useCustom ? customDevice : DEMO_PRESETS[selectedPreset]
 
   return (
     <div className="bitmain-hydro-demo">
       <div className="bitmain-hydro-demo__controls">
+        <div className="bitmain-hydro-demo__presets">
+          <h3>Presets</h3>
+          <div className="bitmain-hydro-demo__preset-buttons">
+            {(Object.keys(DEMO_PRESETS) as PresetKey[]).map((key) => (
+              <Button
+                key={key}
+                onClick={() => {
+                  setSelectedPreset(key)
+                  setUseCustom(false)
+                }}
+                variant={selectedPreset === key && !useCustom ? 'primary' : 'outline'}
+              >
+                {key === 'normal' && 'Normal (35°C, 2.5 bar)'}
+                {key === 'highTemp' && 'High Temp (42°C, 3.8 bar)'}
+                {key === 'withFaults' && 'With Faults (38°C, 1.8 bar)'}
+                {key === 'lowTemp' && 'Low Temp (18°C, 1.5 bar)'}
+              </Button>
+            ))}
+          </div>
+        </div>
+
         <div className="bitmain-hydro-demo__custom">
           <h3>Custom Values</h3>
           <div className="bitmain-hydro-demo__custom-grid">

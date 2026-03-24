@@ -1,4 +1,4 @@
-import { ChartContainer } from '@mining-sdk/core'
+import { ChartContainer } from '@mdk/core'
 
 export const ChartContainerPage = (): JSX.Element => {
   return (

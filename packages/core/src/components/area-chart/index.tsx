@@ -85,7 +85,7 @@ export const AreaChart = React.forwardRef<HTMLDivElement, AreaChartProps>(
     }, [data])
 
     return (
-      <div ref={ref} className={cn('mining-sdk-area-chart', className)} style={{ height }}>
+      <div ref={ref} className={cn('mdk-area-chart', className)} style={{ height }}>
         <Line data={chartData} options={mergedOptions} plugins={[legendMarginPlugin]} />
       </div>
     )

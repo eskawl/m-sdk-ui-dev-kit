@@ -98,7 +98,7 @@ function Form<TFieldValues extends FieldValues = FieldValues>({
 }: FormProps<TFieldValues>): React.JSX.Element {
   return (
     <FormProvider {...form}>
-      <form className={cn('mining-sdk-form', className)} {...props}>
+      <form className={cn('mdk-form', className)} {...props}>
         {children}
       </form>
     </FormProvider>
@@ -132,7 +132,7 @@ const FormItem = React.forwardRef<HTMLDivElement, React.ComponentProps<'div'>>(
 
     return (
       <FormItemContext.Provider value={{ id }}>
-        <div ref={ref} className={cn('mining-sdk-form-item', className)} {...props} />
+        <div ref={ref} className={cn('mdk-form-item', className)} {...props} />
       </FormItemContext.Provider>
     )
   },
@@ -155,7 +155,7 @@ const FormLabel = React.forwardRef<
   return (
     <Label
       ref={ref}
-      className={cn('mining-sdk-form-label', error && 'mining-sdk-form-label--error', className)}
+      className={cn('mdk-form-label', error && 'mdk-form-label--error', className)}
       htmlFor={formItemId}
       {...props}
     />
@@ -202,7 +202,7 @@ const FormDescription = React.forwardRef<HTMLParagraphElement, React.ComponentPr
       <p
         ref={ref}
         id={formDescriptionId}
-        className={cn('mining-sdk-form-description', className)}
+        className={cn('mdk-form-description', className)}
         {...props}
       />
     )
@@ -227,11 +227,7 @@ const FormMessage = React.forwardRef<HTMLParagraphElement, React.ComponentProps<
       <p
         ref={ref}
         id={formMessageId}
-        className={cn(
-          'mining-sdk-form-message',
-          !body && 'mining-sdk-form-message--empty',
-          className,
-        )}
+        className={cn('mdk-form-message', !body && 'mdk-form-message--empty', className)}
         role={body ? 'alert' : undefined}
         aria-live={body ? 'polite' : undefined}
         {...props}

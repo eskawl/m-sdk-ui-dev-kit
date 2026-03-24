@@ -1,5 +1,5 @@
-import { ArrowIcon, cn, DropdownMenu, ExportIcon, Spinner } from '@mining-sdk/core'
-import type { ComponentSize, SpinnerProps } from '@mining-sdk/core'
+import { ArrowIcon, cn, DropdownMenu, ExportIcon, Spinner } from '@mdk/core'
+import type { ComponentSize, SpinnerProps } from '@mdk/core'
 import { useState } from 'react'
 import { EXPORT_ITEM_KEYS, EXPORT_ITEMS, EXPORT_LABEL } from './constants'
 

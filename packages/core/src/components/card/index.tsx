@@ -12,19 +12,19 @@ export type CardFooterProps = React.HTMLAttributes<HTMLDivElement>
 
 const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn('mining-sdk-card__header', className)} {...props} />
+    <div ref={ref} className={cn('mdk-card__header', className)} {...props} />
   ),
 )
 CardHeader.displayName = 'CardHeader'
 
 const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn('mining-sdk-card__body', className)} {...props} />
+  <div ref={ref} className={cn('mdk-card__body', className)} {...props} />
 ))
 CardBody.displayName = 'CardBody'
 
 const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn('mining-sdk-card__footer', className)} {...props} />
+    <div ref={ref} className={cn('mdk-card__footer', className)} {...props} />
   ),
 )
 CardFooter.displayName = 'CardFooter'
@@ -101,13 +101,12 @@ const CardRoot = React.forwardRef<HTMLDivElement, CardProps>(
         item.type != null &&
         (item.type as { displayName?: string }).displayName === 'CardBody',
     )
-    const bodyContent =
-      body && (hasCardBody ? body : <div className="mining-sdk-card__body">{body}</div>)
+    const bodyContent = body && (hasCardBody ? body : <div className="mdk-card__body">{body}</div>)
 
     return (
       <div
         ref={ref}
-        className={cn('mining-sdk-card', onClick && 'mining-sdk-card--clickable', className)}
+        className={cn('mdk-card', onClick && 'mdk-card--clickable', className)}
         onClick={onClick}
         {...props}
       >

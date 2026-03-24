@@ -1,5 +1,5 @@
 {
-  "name": "@mining-sdk/foundation",
+  "name": "@mdk/foundation",
   "type": "module",
   "version": "0.0.0",
   "private": true,
@@ -61,7 +61,7 @@
     "vitest": "^3.0.0"
   },
   "dependencies": {
-    "@mining-sdk/core": "workspace:*",
+    "@mdk/core": "workspace:*",
     "@radix-ui/react-icons": "catalog:",
     "@radix-ui/react-use-controllable-state": "catalog:",
     "date-fns": "catalog:",

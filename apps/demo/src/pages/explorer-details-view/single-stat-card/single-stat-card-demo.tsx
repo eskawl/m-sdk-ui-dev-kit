@@ -1,5 +1,5 @@
-import { COLOR } from '@mining-sdk/core'
-import { SingleStatCard } from '@mining-sdk/foundation'
+import { COLOR } from '@mdk/core'
+import { SingleStatCard } from '@mdk/foundation'
 import type { ReactElement } from 'react'
 import './single-stat-card-demo.scss'
 

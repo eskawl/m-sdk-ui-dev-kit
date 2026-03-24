@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 import { DEVICE_STATUS } from '../../../../../../constants/devices'
 import { BitMainImmersionUnitControlBox } from '../unit-control-box/bitmain-immersion-unit-control-box'
 
-vi.mock('@mining-sdk/core', () => ({
+vi.mock('@mdk/core', () => ({
   Tag: vi.fn(({ color, children }) => (
     <span data-testid="tag" data-color={color}>
       {children}

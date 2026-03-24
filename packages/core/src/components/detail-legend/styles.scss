@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as *;
+
 .mining-sdk-detail-legend {
   @include flex_wrap;
 

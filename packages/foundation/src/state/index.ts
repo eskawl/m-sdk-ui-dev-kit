@@ -1,5 +1,5 @@
 /**
- * @mining-sdk/foundation - State Management
+ * @mdk/foundation - State Management
  *
  * State management with Redux Toolkit.
  */

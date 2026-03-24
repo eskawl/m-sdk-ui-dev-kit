@@ -1,5 +1,5 @@
-import type { IndicatorColor } from '@mining-sdk/core'
-import { Indicator } from '@mining-sdk/core'
+import type { IndicatorColor } from '@mdk/core'
+import { Indicator } from '@mdk/core'
 import type { ReactElement } from 'react'
 import './status-item.scss'
 
@@ -44,9 +44,9 @@ export const StatusItem = ({ label, status }: StatusItemProps): ReactElement => 
   const statusLabel = StatusLabels[currentStatus]
 
   return (
-    <div className="mining-sdk-status-item">
-      <div className="mining-sdk-status-item__content">
-        <div className="mining-sdk-status-item__label">{label}</div>
+    <div className="mdk-status-item">
+      <div className="mdk-status-item__content">
+        <div className="mdk-status-item__label">{label}</div>
         <Indicator color={statusColor} size="md">
           {statusLabel}
         </Indicator>

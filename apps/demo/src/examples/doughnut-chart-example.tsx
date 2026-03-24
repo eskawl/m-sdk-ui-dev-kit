@@ -1,5 +1,5 @@
-import { DoughnutChart } from '@mining-sdk/core'
-import type { ChartTooltipConfig } from '@mining-sdk/core'
+import { DoughnutChart } from '@mdk/core'
+import type { ChartTooltipConfig } from '@mdk/core'
 import React from 'react'
 import {
   DOUGHNUT_CHART_MINER_STATUS,

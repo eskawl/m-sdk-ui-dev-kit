@@ -1,4 +1,4 @@
-# @mining-sdk/core
+# @mdk/core
 
 Core UI component library built on Radix UI primitives.
 
@@ -13,7 +13,7 @@ Since this is a workspace package in the monorepo, you can add it as a dependenc
 ```json
 {
   "dependencies": {
-    "@mining-sdk/core": "workspace:*"
+    "@mdk/core": "workspace:*"
   }
 }
 ```
@@ -29,7 +29,7 @@ pnpm install
 ### Importing Components
 
 ```tsx
-import { Button, Dialog, Label, Switch } from '@mining-sdk/core'
+import { Button, Dialog, Label, Switch } from '@mdk/core'
 ```
 
 ### Importing Styles
@@ -37,7 +37,7 @@ import { Button, Dialog, Label, Switch } from '@mining-sdk/core'
 Import the base styles in your application entry point:
 
 ```tsx
-import '@mining-sdk/core/styles.css'
+import '@mdk/core/styles.css'
 ```
 
 ### Example
@@ -50,7 +50,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 
 const App = () => {
   return (

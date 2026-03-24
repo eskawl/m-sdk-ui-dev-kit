@@ -1,5 +1,5 @@
 {
-  "name": "@mining-sdk/core",
+  "name": "@mdk/core",
   "type": "module",
   "version": "0.0.0",
   "private": true,

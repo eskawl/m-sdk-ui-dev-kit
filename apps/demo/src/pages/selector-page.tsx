@@ -5,7 +5,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 
 const OPTIONS = [
   { value: 'option-1', label: 'Option 1' },

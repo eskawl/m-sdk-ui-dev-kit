@@ -1,5 +1,5 @@
 /* eslint-disable no-alert */
-import { ActionButton } from '@mining-sdk/core'
+import { ActionButton } from '@mdk/core'
 
 export const ActionButtonPage = (): JSX.Element => {
   return (

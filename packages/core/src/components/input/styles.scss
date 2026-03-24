@@ -1,7 +1,15 @@
-$input-default-padding: 9px 12px;
-$input-medium-padding: 6px 12px;
+@use '../../styles/mixins' as *;
+/**
+ * Input Component Styles (mining-os theme)
+ *
+ * - Default: Dark gray bg, no border
+ * - Hover: Light gray border
+ * - Focus: Orange/amber border
+ * - Search variant: Magnifying glass icon on the right
+ * - Prefix/Suffix: Additional content before/after input
+ */
 
-.mining-sdk-input-root {
+.mdk-input-root {
   @include flex_column;
 
   gap: 0.5rem;
@@ -9,13 +17,13 @@ $input-medium-padding: 6px 12px;
   min-width: 0;
 }
 
-.mining-sdk-input__label {
-  color: var(--mining-sdk-color-white);
-  font-size: var(--mining-sdk-font-size, 14px);
-  line-height: var(--mining-sdk-line-height, 22px);
+.mdk-input__label {
+  color: var(--mdk-color-white, #ffffff);
+  font-size: var(--mdk-font-size, 14px);
+  line-height: var(--mdk-line-height, 22px);
 }
 
-.mining-sdk-input__wrapper {
+.mdk-input__wrapper {
   @include flex_align;
 
   position: relative;
@@ -23,25 +31,25 @@ $input-medium-padding: 6px 12px;
   min-width: 0;
 
   &--search {
-    .mining-sdk-input {
+    .mdk-input {
       padding-right: 2.5rem;
     }
   }
 
   &--has-prefix {
-    .mining-sdk-input {
+    .mdk-input {
       padding-left: 2.5rem;
     }
   }
 
   &--has-suffix {
-    .mining-sdk-input {
+    .mdk-input {
       padding-right: 2.5rem;
     }
   }
 
-  &--has-prefix.mining-sdk-input__wrapper--has-suffix {
-    .mining-sdk-input {
+  &--has-prefix.mdk-input__wrapper--has-suffix {
+    .mdk-input {
       padding-inline: 2.5rem;
     }
   }
@@ -52,104 +60,88 @@ $input-medium-padding: 6px 12px;
   }
 
   &--error {
-    .mining-sdk-input {
-      border-color: rgb(var(--mining-sdk-color-error));
+    .mdk-input {
+      border-color: rgb(var(--mdk-color-error, #ef4444));
     }
 
-    .mining-sdk-input:hover:not(:disabled):not(:focus),
-    .mining-sdk-input:focus {
-      border-color: rgb(var(--mining-sdk-color-error));
+    .mdk-input:hover:not(:disabled):not(:focus),
+    .mdk-input:focus {
+      border-color: rgb(var(--mdk-color-error, #ef4444));
     }
   }
 }
 
-.mining-sdk-input__error {
-  color: rgb(var(--mining-sdk-color-error));
-  font-size: var(--mining-sdk-font-size, 14px);
-  line-height: var(--mining-sdk-line-height, 22px);
+.mdk-input__error {
+  font-size: var(--mdk-font-size, 14px);
+  line-height: var(--mdk-line-height, 22px);
+  color: rgb(var(--mdk-color-error, #ef4444));
 }
 
-.mining-sdk-input__prefix,
-.mining-sdk-input__suffix,
-.mining-sdk-input__icon {
+.mdk-input__prefix,
+.mdk-input__suffix,
+.mdk-input__icon {
   @include flex_center;
 
   position: absolute;
+  color: var(--mdk-input-placeholder-color, #999999);
   pointer-events: none;
-  font-size: var(--mining-sdk-font-size, 14px);
-  line-height: var(--mining-sdk-line-height, 22px);
-  color: var(--mining-sdk-input-placeholder-color);
+  font-size: var(--mdk-font-size, 14px);
+  line-height: var(--mdk-line-height, 22px);
 }
 
-.mining-sdk-input__icon {
-  width: 16px;
-  height: 16px;
-}
-
-.mining-sdk-input__prefix {
+.mdk-input__prefix {
   left: 0.75rem;
 }
 
-.mining-sdk-input__suffix,
-.mining-sdk-input__icon {
+.mdk-input__suffix,
+.mdk-input__icon {
   right: 0.75rem;
 }
 
-.mining-sdk-input {
+.mdk-input {
   @include flex_align;
 
   width: 100%;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  font-size: var(--mdk-font-size, 14px);
+  line-height: var(--mdk-line-height, 22px);
+  font-family: inherit;
+  color: var(--mdk-color-white, #ffffff);
+  background: var(--mdk-input-bg, #363636);
+  border: 1px solid transparent;
+  border-radius: 0;
   outline: none;
-  font-size: 14px;
   transition:
     border-color 0.2s,
     background-color 0.2s;
-  border-radius: 0;
-  line-height: 20px;
-  font-family: inherit;
-  border: 1px solid transparent;
-  padding: $input-default-padding;
-  color: var(--mining-sdk-color-text-disabled);
-  background-color: var(--mining-sdk-color-white-transparent);
-
-  &--size-medium {
-    padding: $input-medium-padding;
-  }
 
   &::placeholder {
-    color: var(--mining-sdk-input-placeholder-color);
+    color: var(--mdk-input-placeholder-color, #999999);
   }
 
   &:hover:not(:disabled):not(:focus) {
-    border-color: var(--mining-sdk-color-white-alpha-04d);
-    background-color: var(--mining-sdk-color-white-alpha-026);
+    border-color: var(--mdk-input-border-hover, #777777);
   }
 
   &:focus {
-    border-color: var(--mining-sdk-color-primary);
-    background-color: var(--mining-sdk-color-white-2);
+    border-color: var(--mdk-color-primary, #f7931a);
   }
 
   &:disabled {
     cursor: not-allowed;
   }
 
-  /* Hide number input spinner arrows */
+  /* Hide number input spinner arrows - Chrome, Safari, Edge, Opera */
   &[type='number']::-webkit-outer-spin-button,
   &[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
 
+  /* Hide number input spinner arrows - Firefox */
   &[type='number'] {
     -moz-appearance: textfield;
     appearance: textfield;
-  }
-}
-
-.mining-sdk-input__wrapper--size-medium {
-  .mining-sdk-input__icon {
-    width: 14px;
-    height: 14px;
   }
 }

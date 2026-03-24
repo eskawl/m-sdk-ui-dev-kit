@@ -1,6 +1,6 @@
 # Watch Mode Guide
 
-Complete guide to using watch mode for efficient development in the Mining SDK monorepo.
+Complete guide to using watch mode for efficient development in the MDK monorepo.
 
 ## Quick Start
 
@@ -26,10 +26,10 @@ Watch mode automatically recompiles files when they change, providing instant fe
 
 | Package | TypeScript | SCSS | Output |
 |---------|-----------|------|--------|
-| `@mining-sdk/core` | ✅ | ✅ | `dist/` (built JS + types + CSS) |
-| `@mining-sdk/foundation` | ✅ | ✅ | `dist/styles.css` (TS source exported) |
-| `@mining-sdk/fonts` | ❌ | ✅ | `dist/jetbrains-mono.css` |
-| `@mining-sdk/demo` | ✅ | ✅ | HMR (no build output) |
+| `@mdk/core` | ✅ | ✅ | `dist/` (built JS + types + CSS) |
+| `@mdk/foundation` | ✅ | ✅ | `dist/styles.css` (TS source exported) |
+| `@mdk/fonts` | ❌ | ✅ | `dist/jetbrains-mono.css` |
+| `@mdk/demo` | ✅ | ✅ | HMR (no build output) |
 
 ## Development Workflows
 
@@ -182,11 +182,11 @@ Packages with both TypeScript and SCSS use `concurrently` to run both watchers s
 Watch mode respects package dependencies:
 
 ```
-@mining-sdk/core (watches TS + SCSS)
+@mdk/core (watches TS + SCSS)
     ↓
-@mining-sdk/foundation (watches TS + SCSS)
+@mdk/foundation (watches TS + SCSS)
     ↓
-@mining-sdk/demo (Vite dev server)
+@mdk/demo (Vite dev server)
 ```
 
 ### Persistent Tasks
@@ -420,13 +420,13 @@ pnpm dev
 
 ```bash
 # Watch only core
-turbo dev --filter=@mining-sdk/core
+turbo dev --filter=@mdk/core
 
 # Watch core and foundation
-turbo dev --filter=@mining-sdk/core --filter=@mining-sdk/foundation
+turbo dev --filter=@mdk/core --filter=@mdk/foundation
 
 # Watch everything except demo
-turbo dev --filter=!@mining-sdk/demo
+turbo dev --filter=!@mdk/demo
 ```
 
 ### Custom Watch Scripts
@@ -436,8 +436,8 @@ Add custom watch scripts to `package.json`:
 ```json
 {
   "scripts": {
-    "watch:components": "turbo dev --filter=@mining-sdk/components-*",
-    "watch:libs": "turbo dev --filter=!@mining-sdk/demo"
+    "watch:components": "turbo dev --filter=@mdk/components-*",
+    "watch:libs": "turbo dev --filter=!@mdk/demo"
   }
 }
 ```

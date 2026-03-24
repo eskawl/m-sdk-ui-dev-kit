@@ -314,23 +314,23 @@ export function DataTable<I = unknown>({
   const showPagination = enablePagination && hasData
 
   return (
-    <div className={cn('mining-sdk-table', wrapperClassName)}>
-      <div className="mining-sdk-table-content-wrapper">
+    <div className={cn('mdk-table', wrapperClassName)}>
+      <div className="mdk-table-content-wrapper">
         <div
           className={cn(
-            'mining-sdk-table__content-section',
+            'mdk-table__content-section',
             {
-              'mining-sdk-table__content-section--empty': !hasData,
-              'mining-sdk-table__content-section--no-overflow': !hasData || loading,
-              'mining-sdk-table__content-section--bordered': bordered,
+              'mdk-table__content-section--empty': !hasData,
+              'mdk-table__content-section--no-overflow': !hasData || loading,
+              'mdk-table__content-section--bordered': bordered,
             },
             contentClassName,
           )}
         >
           <table
-            className={cn('mining-sdk-table__element', tableClassName, {
-              'mining-sdk-table__element--width-full': fullWidth,
-              'mining-sdk-table__element--bordered': bordered,
+            className={cn('mdk-table__element', tableClassName, {
+              'mdk-table__element--width-full': fullWidth,
+              'mdk-table__element--bordered': bordered,
             })}
             style={{
               minWidth: tableBackend.getCenterTotalSize(),
@@ -342,7 +342,7 @@ export function DataTable<I = unknown>({
             )}
           </table>
           {loading && (
-            <div className="mining-sdk-table__loader-overlay">
+            <div className="mdk-table__loader-overlay">
               <Spinner />
             </div>
           )}
@@ -350,7 +350,7 @@ export function DataTable<I = unknown>({
         {!hasData && <EmptyTableBody hideContent={loading} />}
       </div>
       {showPagination && (
-        <div className="mining-sdk-table__pagination-section">
+        <div className="mdk-table__pagination-section">
           <Pagination
             total={data.length}
             current={pagination.pageIndex + 1}

@@ -1,5 +1,5 @@
-import { Checkbox, Input } from '@mining-sdk/core'
-import { BitMainControlsTab, BitMainImmersionUnitControlBox } from '@mining-sdk/foundation'
+import { Checkbox, Input } from '@mdk/core'
+import { BitMainControlsTab, BitMainImmersionUnitControlBox } from '@mdk/foundation'
 import type { ReactElement } from 'react'
 import { useState } from 'react'
 import './bitmain-immersion-controls-demo.scss'

@@ -1,4 +1,4 @@
-import { cn } from '@mining-sdk/core'
+import { cn } from '@mdk/core'
 import type { ReactElement } from 'react'
 import './secondary-stat-card.scss'
 

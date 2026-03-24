@@ -1,4 +1,4 @@
-import { cn } from '@mining-sdk/core'
+import { cn } from '@mdk/core'
 import { CheckIcon, Cross2Icon } from '@radix-ui/react-icons'
 import type { ReactElement } from 'react'
 import './base-status-indicator.scss'
@@ -38,8 +38,8 @@ export const BaseStatusIndicator = ({
 }: BaseStatusIndicatorProps): ReactElement => {
   if (isActive) {
     return (
-      <div className="mining-sdk-status-indicator mining-sdk-status-indicator--active">
-        <span className="mining-sdk-status-indicator__icon" style={{ color }}>
+      <div className="mdk-status-indicator mdk-status-indicator--active">
+        <span className="mdk-status-indicator__icon" style={{ color }}>
           <CheckIcon />
         </span>
       </div>
@@ -47,11 +47,11 @@ export const BaseStatusIndicator = ({
   }
 
   return (
-    <div className="mining-sdk-status-indicator mining-sdk-status-indicator--inactive">
+    <div className="mdk-status-indicator mdk-status-indicator--inactive">
       <span
-        className={cn('mining-sdk-status-indicator__icon', {
-          'mining-sdk-status-indicator__icon--flash': type === 'flash',
-          'mining-sdk-status-indicator__icon--sound': type === 'sound',
+        className={cn('mdk-status-indicator__icon', {
+          'mdk-status-indicator__icon--flash': type === 'flash',
+          'mdk-status-indicator__icon--sound': type === 'sound',
         })}
       >
         <Cross2Icon />

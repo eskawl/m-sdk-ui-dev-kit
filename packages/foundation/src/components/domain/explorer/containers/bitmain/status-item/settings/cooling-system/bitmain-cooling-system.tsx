@@ -1,5 +1,5 @@
-import type { IndicatorColor } from '@mining-sdk/core'
-import { Indicator } from '@mining-sdk/core'
+import type { IndicatorColor } from '@mdk/core'
+import { Indicator } from '@mdk/core'
 import type { ReactElement } from 'react'
 import type { ContainerSnap, Device } from '../../../../../../../../types/device'
 import { getDeviceData } from '../../../../../../../../utils/device-utils'
@@ -48,11 +48,11 @@ export const BitMainCoolingSystem = ({ data }: BitMainCoolingSystemProps): React
   const containerSpecific = snap?.stats?.container_specific
 
   return (
-    <div className="mining-sdk-bitmain-cooling-system">
-      <div className="mining-sdk-bitmain-cooling-system__wrapper">
-        <div className="mining-sdk-bitmain-cooling-system__row">
-          <div className="mining-sdk-bitmain-cooling-system__item">
-            <div className="mining-sdk-bitmain-cooling-system__label">Circulating pump</div>
+    <div className="mdk-bitmain-cooling-system">
+      <div className="mdk-bitmain-cooling-system__wrapper">
+        <div className="mdk-bitmain-cooling-system__row">
+          <div className="mdk-bitmain-cooling-system__item">
+            <div className="mdk-bitmain-cooling-system__label">Circulating pump</div>
             <Indicator
               color={getIndicatorColor(
                 Boolean(containerSpecific?.circulating_pump),
@@ -66,8 +66,8 @@ export const BitMainCoolingSystem = ({ data }: BitMainCoolingSystemProps): React
               )}
             </Indicator>
           </div>
-          <div className="mining-sdk-bitmain-cooling-system__item">
-            <div className="mining-sdk-bitmain-cooling-system__label">Fluid Infusion pump</div>
+          <div className="mdk-bitmain-cooling-system__item">
+            <div className="mdk-bitmain-cooling-system__label">Fluid Infusion pump</div>
             <Indicator
               color={getIndicatorColor(
                 Boolean(containerSpecific?.fluid_infusion_pump),
@@ -81,8 +81,8 @@ export const BitMainCoolingSystem = ({ data }: BitMainCoolingSystemProps): React
               )}
             </Indicator>
           </div>
-          <div className="mining-sdk-bitmain-cooling-system__item">
-            <div className="mining-sdk-bitmain-cooling-system__label">Fan #1</div>
+          <div className="mdk-bitmain-cooling-system__item">
+            <div className="mdk-bitmain-cooling-system__label">Fan #1</div>
             <Indicator
               color={getIndicatorColor(
                 Boolean(containerSpecific?.fan1),
@@ -93,8 +93,8 @@ export const BitMainCoolingSystem = ({ data }: BitMainCoolingSystemProps): React
               {getStatusLabel(Boolean(containerSpecific?.fan1), containerSpecific?.fan1_fault)}
             </Indicator>
           </div>
-          <div className="mining-sdk-bitmain-cooling-system__item">
-            <div className="mining-sdk-bitmain-cooling-system__label">Fan #2</div>
+          <div className="mdk-bitmain-cooling-system__item">
+            <div className="mdk-bitmain-cooling-system__label">Fan #2</div>
             <Indicator
               color={getIndicatorColor(
                 Boolean(containerSpecific?.fan2),
@@ -107,9 +107,9 @@ export const BitMainCoolingSystem = ({ data }: BitMainCoolingSystemProps): React
           </div>
         </div>
 
-        <div className="mining-sdk-bitmain-cooling-system__row">
-          <div className="mining-sdk-bitmain-cooling-system__item">
-            <div className="mining-sdk-bitmain-cooling-system__label">Cooling tower fan #1</div>
+        <div className="mdk-bitmain-cooling-system__row">
+          <div className="mdk-bitmain-cooling-system__item">
+            <div className="mdk-bitmain-cooling-system__label">Cooling tower fan #1</div>
             <Indicator
               color={getIndicatorColor(
                 Boolean(containerSpecific?.cooling_tower_fan1),
@@ -123,8 +123,8 @@ export const BitMainCoolingSystem = ({ data }: BitMainCoolingSystemProps): React
               )}
             </Indicator>
           </div>
-          <div className="mining-sdk-bitmain-cooling-system__item">
-            <div className="mining-sdk-bitmain-cooling-system__label">Cooling tower fan #2</div>
+          <div className="mdk-bitmain-cooling-system__item">
+            <div className="mdk-bitmain-cooling-system__label">Cooling tower fan #2</div>
             <Indicator
               color={getIndicatorColor(
                 Boolean(containerSpecific?.cooling_tower_fan2),
@@ -138,8 +138,8 @@ export const BitMainCoolingSystem = ({ data }: BitMainCoolingSystemProps): React
               )}
             </Indicator>
           </div>
-          <div className="mining-sdk-bitmain-cooling-system__item">
-            <div className="mining-sdk-bitmain-cooling-system__label">Cooling tower fan #3</div>
+          <div className="mdk-bitmain-cooling-system__item">
+            <div className="mdk-bitmain-cooling-system__label">Cooling tower fan #3</div>
             <Indicator
               color={getIndicatorColor(
                 Boolean(containerSpecific?.cooling_tower_fan3),

@@ -1,5 +1,5 @@
-import { BarChart, ChartContainer } from '@mining-sdk/core'
-import type { ChartTooltipConfig } from '@mining-sdk/core'
+import { BarChart, ChartContainer } from '@mdk/core'
+import type { ChartTooltipConfig } from '@mdk/core'
 import React from 'react'
 import {
   BAR_CHART_GROUPED_SITES,

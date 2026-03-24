@@ -1,4 +1,4 @@
-import { formatNumber, unitToKilo } from '@mining-sdk/core'
+import { formatNumber, unitToKilo } from '@mdk/core'
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import type { Device } from '../../../../../../../types/device'
@@ -6,7 +6,7 @@ import { ContentBox } from '../../../../../container/content-box/content-box'
 import { BitMainPowerAndPositioning } from '../settings/power-and-positioning/bitmain-power-and-positioning'
 
 // Mock dependencies
-vi.mock('@mining-sdk/core', () => ({
+vi.mock('@mdk/core', () => ({
   formatNumber: vi.fn((num) => num.toFixed(2)),
   unitToKilo: vi.fn((num) => num / 1000),
   safeNumber: vi.fn((number) => number ?? 0),
@@ -182,13 +182,9 @@ describe('bitMainPowerAndPositioning', () => {
     it('should have correct CSS classes', () => {
       const { container } = render(<BitMainPowerAndPositioning data={mockDevice} />)
 
-      expect(container.querySelector('.mining-sdk-bitmain-power-positioning')).toBeInTheDocument()
-      expect(
-        container.querySelectorAll('.mining-sdk-bitmain-power-positioning__panel'),
-      ).toHaveLength(2)
-      expect(
-        container.querySelectorAll('.mining-sdk-bitmain-power-positioning__section'),
-      ).toHaveLength(2)
+      expect(container.querySelector('.mdk-bitmain-power-positioning')).toBeInTheDocument()
+      expect(container.querySelectorAll('.mdk-bitmain-power-positioning__panel')).toHaveLength(2)
+      expect(container.querySelectorAll('.mdk-bitmain-power-positioning__section')).toHaveLength(2)
     })
   })
 })

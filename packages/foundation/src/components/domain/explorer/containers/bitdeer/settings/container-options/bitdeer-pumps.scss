@@ -1,10 +1,10 @@
-@use '@mining-sdk/core/styles' as *;
-@import './pump-shared';
+@use '@mdk/core/styles' as *;
+@use './pump-shared' as *;
 
-.mining-sdk-bitdeer-pumps {
+.mdk-bitdeer-pumps {
   padding: 15px;
-  background-color: var(--mining-sdk-color-surface);
-  border: 1px solid var(--mining-sdk-dialog-border-color);
+  background-color: var(--mdk-color-surface);
+  border: 1px solid var(--mdk-dialog-border-color);
 
   &__status {
     @include pump-status;

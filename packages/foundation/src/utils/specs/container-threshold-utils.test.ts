@@ -1,4 +1,4 @@
-import { COLOR } from '@mining-sdk/core'
+import { COLOR } from '@mdk/core'
 import { describe, expect, it } from 'vitest'
 import { CONTAINER_STATUS, THRESHOLD_LEVEL } from '../status-utils'
 

@@ -238,7 +238,7 @@ describe('getMinerColumns', () => {
       }
       const { container } = render(col!.cell({ row: mockRow } as any) as any)
       expect(
-        container.querySelector('.mining-sdk-device-explorer__table__cell--type-status'),
+        container.querySelector('.mdk-device-explorer__table__cell--type-status'),
       ).toBeInTheDocument()
     })
 
@@ -435,7 +435,7 @@ describe('getMinerColumns', () => {
       }
       const { container } = render(col!.cell({ row: mockRow } as any) as any)
       expect(
-        container.querySelector('.mining-sdk-device-explorer__table__cell--type-hash-rate'),
+        container.querySelector('.mdk-device-explorer__table__cell--type-hash-rate'),
       ).toBeInTheDocument()
     })
 
@@ -479,7 +479,7 @@ describe('getMinerColumns', () => {
       }
       const { container } = render(col!.cell({ row: mockRow } as any) as any)
       expect(
-        container.querySelector('.mining-sdk-device-explorer__table__cell--type-efficiency'),
+        container.querySelector('.mdk-device-explorer__table__cell--type-efficiency'),
       ).toBeInTheDocument()
     })
 
@@ -539,7 +539,7 @@ describe('getMinerColumns', () => {
       }
       const { container } = render(col!.cell({ row: mockRow } as any) as any)
       expect(
-        container.querySelector('.mining-sdk-device-explorer__table__cell--type-hash-rate'),
+        container.querySelector('.mdk-device-explorer__table__cell--type-hash-rate'),
       ).toBeInTheDocument()
     })
 

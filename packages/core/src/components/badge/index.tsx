@@ -191,13 +191,13 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       <span
         ref={hasChildren ? undefined : ref}
         className={cn(
-          'mining-sdk-badge',
-          `mining-sdk-badge--${size}`,
-          `mining-sdk-badge--${color}`,
-          dot && 'mining-sdk-badge--dot',
-          square && 'mining-sdk-badge--square',
-          status && `mining-sdk-badge--status mining-sdk-badge--status-${status}`,
-          !hasChildren && 'mining-sdk-badge--standalone',
+          'mdk-badge',
+          `mdk-badge--${size}`,
+          `mdk-badge--${color}`,
+          dot && 'mdk-badge--dot',
+          square && 'mdk-badge--square',
+          status && `mdk-badge--status mdk-badge--status-${status}`,
+          !hasChildren && 'mdk-badge--standalone',
           className,
         )}
         style={{
@@ -220,7 +220,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     return (
       <span
         ref={ref}
-        className={cn('mining-sdk-badge-wrapper', wrapperClassName)}
+        className={cn('mdk-badge-wrapper', wrapperClassName)}
         data-has-offset={hasOffset}
       >
         {children}

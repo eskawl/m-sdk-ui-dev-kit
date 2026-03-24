@@ -1,3 +1,4 @@
+@use '../../styles/mixins' as *;
 /**
 * Date Picker Component Styles (mining-os theme)
 *
@@ -10,12 +11,12 @@
  * react-day-picker v9 class names
  */
 
-.mining-sdk-date-picker__modal {
+.mdk-date-picker__modal {
   border-radius: 0px !important;
 }
 
 /* ===== Trigger Button ===== */
-.mining-sdk-date-picker__trigger {
+.mdk-date-picker__trigger {
   @include inline_flex_align;
 
   justify-content: flex-start;
@@ -24,10 +25,10 @@
   width: fit-content;
   padding: 8px 12px;
   min-height: 40px;
-  background-color: var(--mining-sdk-popover-bg);
-  border: 1px solid var(--mining-sdk-button-secondary-border);
+  background-color: var(--mdk-popover-bg);
+  border: 1px solid var(--mdk-button-secondary-border);
   border-radius: 0;
-  color: var(--mining-sdk-color-white);
+  color: var(--mdk-color-white);
   font-family: var(--font-mono);
   font-size: 14px;
   font-weight: 400;
@@ -38,13 +39,13 @@
     color 0.2s;
 
   &:hover:not(:disabled) {
-    background-color: rgba(var(--mining-sdk-color-primary-rgb), 0.2);
-    border-color: var(--mining-sdk-color-primary);
-    color: var(--mining-sdk-color-primary);
+    background-color: rgba(var(--mdk-color-primary-rgb), 0.2);
+    border-color: var(--mdk-color-primary);
+    color: var(--mdk-color-primary);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--mining-sdk-color-primary);
+    outline: 2px solid var(--mdk-color-primary);
     outline-offset: 2px;
   }
 
@@ -54,40 +55,40 @@
   }
 
   &[data-state='open'] {
-    background-color: rgba(var(--mining-sdk-color-primary-rgb), 0.2);
-    border-color: var(--mining-sdk-color-primary);
-    color: var(--mining-sdk-color-primary);
+    background-color: rgba(var(--mdk-color-primary-rgb), 0.2);
+    border-color: var(--mdk-color-primary);
+    color: var(--mdk-color-primary);
   }
 }
 
-.mining-sdk-date-picker__icon {
+.mdk-date-picker__icon {
   width: 16px;
   min-width: 16px;
   height: 16px;
   flex-shrink: 0;
 }
 
-.mining-sdk-date-picker__text {
+.mdk-date-picker__text {
   @include text_ellipsis;
 }
 
 /* ===== Calendar Content (single date popover) ===== */
-.mining-sdk-popover__content.mining-sdk-date-picker__content {
+.mdk-popover__content.mdk-date-picker__content {
   width: auto !important;
   max-width: none !important;
   padding: 0;
 }
 
 /* ===== Calendar Base Styles (react-day-picker v9) ===== */
-.mining-sdk-date-picker__calendar {
+.mdk-date-picker__calendar {
   font-family: var(--font-mono);
-  color: var(--mining-sdk-color-white);
+  color: var(--mdk-color-white);
 
   /* Root */
   &.rdp-root {
     width: 100%;
-    --rdp-accent-color: var(--mining-sdk-color-primary);
-    --rdp-accent-background-color: rgba(var(--mining-sdk-color-primary-rgb), 0.2);
+    --rdp-accent-color: var(--mdk-color-primary);
+    --rdp-accent-background-color: rgba(var(--mdk-color-primary-rgb), 0.2);
   }
 
   /* Navigation bar */
@@ -108,10 +109,10 @@
     width: 28px;
     height: 28px;
     justify-content: center;
-    background-color: var(--mining-sdk-color-surface);
-    border: 1px solid var(--mining-sdk-button-secondary-border);
+    background-color: var(--mdk-color-surface);
+    border: 1px solid var(--mdk-button-secondary-border);
     border-radius: 0;
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
     cursor: pointer;
     padding: 0;
     transition:
@@ -119,8 +120,8 @@
       border-color 0.2s;
 
     &:hover:not(:disabled) {
-      background-color: var(--mining-sdk-color-obsidian);
-      border-color: var(--mining-sdk-color-primary);
+      background-color: var(--mdk-color-obsidian);
+      border-color: var(--mdk-color-primary);
     }
 
     &:disabled {
@@ -138,7 +139,7 @@
   .rdp-caption_label {
     font-size: 14px;
     font-weight: 500;
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
   }
 
   /* Months container */
@@ -156,8 +157,8 @@
 
   .rdp-month {
     flex: 1;
-    border: 1px solid var(--mining-sdk-button-secondary-border);
-    background-color: rgba(var(--mining-sdk-color-black), 0.5);
+    border: 1px solid var(--mdk-button-secondary-border);
+    background-color: rgba(var(--mdk-color-black), 0.5);
     padding: 12px;
     border-radius: 0;
     position: relative;
@@ -181,7 +182,7 @@
     text-align: center;
     font-size: 12px;
     font-weight: 400;
-    color: var(--mining-sdk-color-text-disabled);
+    color: var(--mdk-color-text-disabled);
     text-transform: uppercase;
     padding: 0;
   }
@@ -209,7 +210,7 @@
     font-family: inherit;
     font-size: 14px;
     font-weight: 400;
-    color: var(--mining-sdk-color-white);
+    color: var(--mdk-color-white);
     border-radius: 0;
     cursor: pointer;
     transition:
@@ -217,11 +218,11 @@
       color 0.15s;
 
     &:hover {
-      background-color: var(--mining-sdk-color-white-transparent);
+      background-color: var(--mdk-color-white-transparent);
     }
 
     &:focus-visible {
-      outline: 2px solid var(--mining-sdk-color-primary);
+      outline: 2px solid var(--mdk-color-primary);
       outline-offset: -1px;
       z-index: 1;
     }
@@ -229,23 +230,23 @@
 
   /* Selected day */
   .rdp-selected .rdp-day_button {
-    background-color: var(--mining-sdk-color-primary);
-    color: var(--mining-sdk-button-primary-text);
+    background-color: var(--mdk-color-primary);
+    color: var(--mdk-button-primary-text);
     font-weight: 500;
 
     &:hover {
-      background-color: var(--mining-sdk-color-primary);
+      background-color: var(--mdk-color-primary);
     }
   }
 
   /* Today */
   .rdp-today .rdp-day_button {
     font-weight: 600;
-    border: 1px solid var(--mining-sdk-color-primary);
+    border: 1px solid var(--mdk-color-primary);
   }
 
   .rdp-today.rdp-selected .rdp-day_button {
-    color: var(--mining-sdk-button-primary-text);
+    color: var(--mdk-button-primary-text);
   }
 
   /* Outside current month */
@@ -261,27 +262,27 @@
 
   /* Range selection styles */
   .rdp-range_start .rdp-day_button {
-    background-color: var(--mining-sdk-color-primary);
-    color: var(--mining-sdk-button-primary-text);
+    background-color: var(--mdk-color-primary);
+    color: var(--mdk-button-primary-text);
     font-weight: 500;
   }
 
   .rdp-range_end .rdp-day_button {
-    background-color: var(--mining-sdk-color-primary);
-    color: var(--mining-sdk-button-primary-text);
+    background-color: var(--mdk-color-primary);
+    color: var(--mdk-button-primary-text);
     font-weight: 500;
   }
 
   .rdp-range_middle .rdp-day_button {
-    background-color: rgba(var(--mining-sdk-color-primary-rgb), 0.2);
-    color: var(--mining-sdk-color-white);
+    background-color: rgba(var(--mdk-color-primary-rgb), 0.2);
+    color: var(--mdk-color-white);
   }
 
   /* Dropdown (year/month selectors if used) */
   .rdp-dropdown {
-    background-color: var(--mining-sdk-popover-bg);
-    border: 1px solid var(--mining-sdk-button-secondary-border);
-    color: var(--mining-sdk-color-white);
+    background-color: var(--mdk-popover-bg);
+    border: 1px solid var(--mdk-button-secondary-border);
+    color: var(--mdk-color-white);
     padding: 4px;
     border-radius: 0;
   }
@@ -289,36 +290,36 @@
 
 /* ===== Modal Layout (DateRangePicker) ===== */
 /* Combined selector to override Popover's max-width: 500px */
-.mining-sdk-popover__content.mining-sdk-date-picker__modal {
+.mdk-popover__content.mdk-date-picker__modal {
   width: auto !important;
   max-width: none !important;
   padding: 16px;
-  background-color: var(--mining-sdk-color-surface);
-  border: 1px solid var(--mining-sdk-button-secondary-border);
+  background-color: var(--mdk-color-surface);
+  border: 1px solid var(--mdk-button-secondary-border);
 }
 
-.mining-sdk-date-picker__modal-header {
+.mdk-date-picker__modal-header {
   padding-bottom: 16px;
-  border-bottom: 1px solid var(--mining-sdk-button-secondary-border);
+  border-bottom: 1px solid var(--mdk-button-secondary-border);
   margin-bottom: 16px;
 }
 
-.mining-sdk-date-picker__modal-title {
+.mdk-date-picker__modal-title {
   font-family: var(--font-mono);
   font-size: 18px;
   font-weight: 400;
   line-height: 18px;
-  color: var(--mining-sdk-color-white);
+  color: var(--mdk-color-white);
   margin: 0;
 }
 
-.mining-sdk-date-picker__modal-body {
+.mdk-date-picker__modal-body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
 }
 
-.mining-sdk-date-picker__calendar-container {
+.mdk-date-picker__calendar-container {
   @include flex_justify_center;
 
   /* Prevent the container from shrinking calendars */
@@ -327,14 +328,14 @@
 }
 
 /* ===== Meta Section (Summary + Presets) ===== */
-.mining-sdk-date-picker__meta {
+.mdk-date-picker__meta {
   @include flex_align;
 
   gap: 16px;
   min-width: 0;
 }
 
-.mining-sdk-date-picker__summary {
+.mdk-date-picker__summary {
   @include flex_column;
 
   flex: 1;
@@ -342,38 +343,38 @@
   overflow: hidden;
   gap: 2px;
   padding: 8px 12px;
-  background-color: var(--mining-sdk-color-obsidian);
-  border: 1px solid var(--mining-sdk-button-secondary-border);
+  background-color: var(--mdk-color-obsidian);
+  border: 1px solid var(--mdk-button-secondary-border);
   font-size: 14px;
-  color: var(--mining-sdk-color-text-disabled);
+  color: var(--mdk-color-text-disabled);
   height: 100%;
   justify-content: center;
 }
 
-.mining-sdk-date-picker__summary-title {
+.mdk-date-picker__summary-title {
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.6px;
   text-transform: uppercase;
 }
 
-.mining-sdk-date-picker__summary-dates {
+.mdk-date-picker__summary-dates {
   @include flex_align;
 
   gap: 8px;
   flex-wrap: wrap;
 }
 
-.mining-sdk-date-picker__summary-date {
-  color: var(--mining-sdk-color-primary);
+.mdk-date-picker__summary-date {
+  color: var(--mdk-color-primary);
   font-weight: 500;
 }
 
-.mining-sdk-date-picker__summary-count {
+.mdk-date-picker__summary-count {
   font-size: 14px;
 }
 
-.mining-sdk-date-picker__presets {
+.mdk-date-picker__presets {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   flex: 1;
@@ -381,8 +382,8 @@
   gap: 4px;
   padding: 12px;
   white-space: nowrap;
-  background-color: var(--mining-sdk-color-obsidian);
-  border: 1px solid var(--mining-sdk-button-secondary-border);
+  background-color: var(--mdk-color-obsidian);
+  border: 1px solid var(--mdk-button-secondary-border);
 
   button {
     padding: 2px 8px;
@@ -391,13 +392,13 @@
 }
 
 /* ===== Modal Footer ===== */
-.mining-sdk-date-picker__modal-footer {
+.mdk-date-picker__modal-footer {
   display: flex;
   flex-direction: row-reverse;
   gap: 16px;
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 1px solid var(--mining-sdk-button-secondary-border);
+  border-top: 1px solid var(--mdk-button-secondary-border);
 
   button {
     flex: 1;
@@ -411,7 +412,7 @@
 }
 
 /* ===== Panel Labels (Start/End Date for range picker) ===== */
-.mining-sdk-date-picker__calendar-container {
+.mdk-date-picker__calendar-container {
   /* Adjust nav position to account for label margin */
   .rdp-nav {
     top: 32px;
@@ -438,7 +439,7 @@
     line-height: 14px;
     letter-spacing: 1.32px;
     text-transform: uppercase;
-    color: var(--mining-sdk-color-text-disabled);
+    color: var(--mdk-color-text-disabled);
   }
 
   .rdp-month:not(:last-child)::before {

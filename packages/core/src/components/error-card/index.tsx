@@ -41,11 +41,11 @@ const ErrorCard = React.forwardRef<HTMLDivElement, ErrorCardProps>(
     return (
       <div
         ref={ref}
-        className={cn('mining-sdk-error-card', `mining-sdk-error-card--${variant}`, className)}
+        className={cn('mdk-error-card', `mdk-error-card--${variant}`, className)}
         {...props}
       >
-        <div className="mining-sdk-error-card__title">{title}</div>
-        <div className="mining-sdk-error-card__message">
+        <div className="mdk-error-card__title">{title}</div>
+        <div className="mdk-error-card__message">
           {lines.map((line, i) => (
             <React.Fragment key={i}>
               {line}

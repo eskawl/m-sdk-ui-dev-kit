@@ -4,7 +4,7 @@ import type { PumpItem } from '../pump-box'
 import { PumpBox } from '../pump-box'
 
 // Mock the Indicator component
-vi.mock('@mining-sdk/core', () => ({
+vi.mock('@mdk/core', () => ({
   Indicator: ({ color, size, children }: any) => (
     <div data-testid="indicator" data-color={color} data-size={size}>
       {children}
@@ -130,9 +130,9 @@ describe('pumpBox', () => {
         <PumpBox pumpItem={{ enabled: true, index: 0 }} pumpTitle="Oil" />,
       )
 
-      expect(container.querySelector('.mining-sdk-pump-box')).toBeInTheDocument()
-      expect(container.querySelector('.mining-sdk-pump-box__status')).toBeInTheDocument()
-      expect(container.querySelector('.mining-sdk-pump-box__title')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-pump-box')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-pump-box__status')).toBeInTheDocument()
+      expect(container.querySelector('.mdk-pump-box__title')).toBeInTheDocument()
     })
   })
 

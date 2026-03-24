@@ -1,7 +1,7 @@
-import { Button } from '@mining-sdk/core'
-import type { DataTableRowSelectionState, LocalFilters } from '@mining-sdk/core'
-import { DeviceExplorer } from '@mining-sdk/foundation'
-import type { DeviceExplorerDeviceData, DeviceExplorerDeviceType } from '@mining-sdk/foundation'
+import { Button } from '@mdk/core'
+import type { DataTableRowSelectionState, LocalFilters } from '@mdk/core'
+import { DeviceExplorer } from '@mdk/foundation'
+import type { DeviceExplorerDeviceData, DeviceExplorerDeviceType } from '@mdk/foundation'
 import { useState } from 'react'
 import { cabinetData, containerData, minersData } from './mock-data'
 

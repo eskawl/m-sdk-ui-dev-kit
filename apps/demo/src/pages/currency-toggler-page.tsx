@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CurrencyToggler } from '@mining-sdk/core'
+import { CurrencyToggler } from '@mdk/core'
 
 export const CurrencyTogglerPage = (): JSX.Element => {
   const [currency1, setCurrency1] = useState('USD')

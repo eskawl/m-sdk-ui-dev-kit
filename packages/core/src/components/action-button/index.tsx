@@ -61,37 +61,33 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild disabled={disabled}>
           <Button
+            size="sm"
             ref={ref}
             loading={loading}
             variant={variant}
             disabled={disabled}
-            className={cn('mining_sdk_action_button__trigger', className)}
+            className={cn('mdk_action_button__trigger', className)}
           >
             {label}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="mining_sdk_action_button__popover" align="start">
-          <div className="mining_sdk_action_button__header">
-            <span
-              className={cn(
-                'mining_sdk_action_button__icon',
-                `mining_sdk_action_button__icon--${variant}`,
-              )}
-            >
+        <PopoverContent className="mdk_action_button__popover" align="start">
+          <div className="mdk_action_button__header">
+            <span className={cn('mdk_action_button__icon', `mdk_action_button__icon--${variant}`)}>
               {confirmation.icon ?? <QuestionMarkCircledIcon />}
             </span>
             {confirmation.title && (
-              <span className="mining_sdk_action_button__title">{confirmation.title}</span>
+              <span className="mdk_action_button__title">{confirmation.title}</span>
             )}
           </div>
           {confirmation.description && (
-            <div className="mining_sdk_action_button__description">{confirmation.description}</div>
+            <div className="mdk_action_button__description">{confirmation.description}</div>
           )}
-          <div className="mining_sdk_action_button__actions">
-            <Button variant="secondary" onClick={handleCancel}>
+          <div className="mdk_action_button__actions">
+            <Button variant="secondary" size="sm" onClick={handleCancel}>
               {confirmation.cancelLabel ?? 'Cancel'}
             </Button>
-            <Button variant="primary" onClick={handleConfirm}>
+            <Button variant="primary" size="sm" onClick={handleConfirm}>
               {confirmation.confirmLabel ?? 'OK'}
             </Button>
           </div>

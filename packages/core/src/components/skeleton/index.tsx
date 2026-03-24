@@ -21,7 +21,7 @@ const SkeletonBlock = React.forwardRef<HTMLDivElement, SkeletonBlockProps>(
     return (
       <div
         ref={ref}
-        className={cn('mining-sdk-skeleton mining-sdk-skeleton__line', className)}
+        className={cn('mdk-skeleton mdk-skeleton__line', className)}
         style={computedStyle}
         {...props}
       />

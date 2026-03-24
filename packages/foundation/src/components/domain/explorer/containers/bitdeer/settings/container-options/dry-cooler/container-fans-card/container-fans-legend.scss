@@ -1,6 +1,6 @@
-@use '@mining-sdk/core/styles' as *;
+@use '@mdk/core/styles' as *;
 
-.mining-sdk-container-fan-legend {
+.mdk-container-fan-legend {
   @include flex_align;
 
   gap: 8px;
@@ -12,7 +12,7 @@
     font-weight: 500;
     min-width: 16px;
     text-align: center;
-    color: var(--mining-sdk-color-text-secondary);
+    color: var(--mdk-color-text-secondary);
   }
 
   &__icon {

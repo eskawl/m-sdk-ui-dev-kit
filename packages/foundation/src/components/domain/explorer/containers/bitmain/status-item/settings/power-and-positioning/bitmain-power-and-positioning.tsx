@@ -1,4 +1,4 @@
-import { formatNumber, safeNumber, safeString, unitToKilo } from '@mining-sdk/core'
+import { formatNumber, unitToKilo } from '@mdk/core'
 import type { ReactElement } from 'react'
 import type { ContainerSnap, Device } from '../../../../../../../../types/device'
 import { getDeviceData } from '../../../../../../../../utils/device-utils'
@@ -8,6 +8,26 @@ import './bitmain-power-and-positioning.scss'
 type BitMainPowerAndPositioningProps = {
   /** Container data */
   data?: Device
+}
+
+/**
+ * Safely converts unknown value to number for unitToKilo
+ * Returns 0 if value is not a number
+ */
+const safeNumber = (value: unknown): number => {
+  const num = Number(value)
+  return Number.isNaN(num) ? 0 : num
+}
+
+/**
+ * Safely converts unknown value to string for display
+ * Returns empty string if value is null or undefined
+ */
+const safeString = (value: unknown): string => {
+  if (value == null) {
+    return ''
+  }
+  return String(value)
 }
 
 /**
@@ -31,24 +51,20 @@ export const BitMainPowerAndPositioning = ({
   const containerSpecific = stats?.container_specific
 
   return (
-    <div className="mining-sdk-bitmain-power-positioning">
+    <div className="mdk-bitmain-power-positioning">
       {/* Power Section */}
-      <div className="mining-sdk-bitmain-power-positioning__panel">
+      <div className="mdk-bitmain-power-positioning__panel">
         <ContentBox title="Power">
-          <div className="mining-sdk-bitmain-power-positioning__section">
-            <div className="mining-sdk-bitmain-power-positioning__power-item">
-              <h4 className="mining-sdk-bitmain-power-positioning__subtitle">
-                #1 Power Distribution:
-              </h4>
-              <p className="mining-sdk-bitmain-power-positioning__value">
+          <div className="mdk-bitmain-power-positioning__section">
+            <div className="mdk-bitmain-power-positioning__power-item">
+              <h4 className="mdk-bitmain-power-positioning__subtitle">#1 Power Distribution:</h4>
+              <p className="mdk-bitmain-power-positioning__value">
                 Power: {formatNumber(unitToKilo(safeNumber(stats?.distribution_box1_power_w)))} kW
               </p>
             </div>
-            <div className="mining-sdk-bitmain-power-positioning__power-item">
-              <h4 className="mining-sdk-bitmain-power-positioning__subtitle">
-                #2 Power Distribution:
-              </h4>
-              <p className="mining-sdk-bitmain-power-positioning__value">
+            <div className="mdk-bitmain-power-positioning__power-item">
+              <h4 className="mdk-bitmain-power-positioning__subtitle">#2 Power Distribution:</h4>
+              <p className="mdk-bitmain-power-positioning__value">
                 Power: {formatNumber(unitToKilo(safeNumber(stats?.distribution_box2_power_w)))} kW
               </p>
             </div>
@@ -57,20 +73,20 @@ export const BitMainPowerAndPositioning = ({
       </div>
 
       {/* Location Section */}
-      <div className="mining-sdk-bitmain-power-positioning__panel">
+      <div className="mdk-bitmain-power-positioning__panel">
         <ContentBox title="Location">
-          <div className="mining-sdk-bitmain-power-positioning__section">
-            <div className="mining-sdk-bitmain-power-positioning__location-grid">
-              <div className="mining-sdk-bitmain-power-positioning__location-item">
-                <h4 className="mining-sdk-bitmain-power-positioning__subtitle">Latitude</h4>
-                <div className="mining-sdk-bitmain-power-positioning__location-details">
+          <div className="mdk-bitmain-power-positioning__section">
+            <div className="mdk-bitmain-power-positioning__location-grid">
+              <div className="mdk-bitmain-power-positioning__location-item">
+                <h4 className="mdk-bitmain-power-positioning__subtitle">Latitude</h4>
+                <div className="mdk-bitmain-power-positioning__location-details">
                   <p>Latitude: {safeString(containerSpecific?.latitude)}</p>
                   <p>Direction: {safeString(containerSpecific?.latitude_direction)}</p>
                 </div>
               </div>
-              <div className="mining-sdk-bitmain-power-positioning__location-item">
-                <h4 className="mining-sdk-bitmain-power-positioning__subtitle">Longitude</h4>
-                <div className="mining-sdk-bitmain-power-positioning__location-details">
+              <div className="mdk-bitmain-power-positioning__location-item">
+                <h4 className="mdk-bitmain-power-positioning__subtitle">Longitude</h4>
+                <div className="mdk-bitmain-power-positioning__location-details">
                   <p>Longitude: {safeString(containerSpecific?.longitude)}</p>
                   <p>Direction: {safeString(containerSpecific?.longitude_direction)}</p>
                 </div>

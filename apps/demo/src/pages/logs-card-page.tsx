@@ -6,7 +6,7 @@ import {
   LogItem,
   LogRow,
   LogsCard,
-} from '@mining-sdk/core'
+} from '@mdk/core'
 
 const sampleLogs = [
   {

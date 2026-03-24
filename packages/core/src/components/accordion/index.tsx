@@ -39,11 +39,7 @@ const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 >(({ className, ...props }, ref) => (
-  <AccordionPrimitive.Item
-    ref={ref}
-    className={cn('mining-sdk-accordion__item', className)}
-    {...props}
-  />
+  <AccordionPrimitive.Item ref={ref} className={cn('mdk-accordion__item', className)} {...props} />
 ))
 AccordionItem.displayName = 'AccordionItem'
 
@@ -78,29 +74,29 @@ const AccordionTrigger = React.forwardRef<
     },
     ref,
   ) => (
-    <AccordionPrimitive.Header className="mining-sdk-accordion__header">
+    <AccordionPrimitive.Header className="mdk-accordion__header">
       <AccordionPrimitive.Trigger
         ref={ref}
-        className={cn('mining-sdk-accordion__trigger', className)}
+        className={cn('mdk-accordion__trigger', className)}
         {...props}
       >
-        <div className="mining-sdk-accordion__trigger-left">
+        <div className="mdk-accordion__trigger-left">
           {showToggleIcon && toggleIconPosition === 'left' && (
-            <div className="mining-sdk-accordion__toggler">
-              <ChevronDownIcon className="mining-sdk-accordion__icon--minus" />
-              <ChevronRightIcon className="mining-sdk-accordion__icon--plus" />
+            <div className="mdk-accordion__toggler">
+              <ChevronDownIcon className="mdk-accordion__icon--minus" />
+              <ChevronRightIcon className="mdk-accordion__icon--plus" />
             </div>
           )}
-          <span className="mining-sdk-accordion__title">{children}</span>
+          <span className="mdk-accordion__title">{children}</span>
         </div>
-        <div className="mining-sdk-accordion__trigger-right">
+        <div className="mdk-accordion__trigger-right">
           {customLabel && toggleIconPosition !== 'right' && (
-            <div className="mining-sdk-accordion__custom-label">{customLabel}</div>
+            <div className="mdk-accordion__custom-label">{customLabel}</div>
           )}
           {showToggleIcon && toggleIconPosition === 'right' && (
-            <div className="mining-sdk-accordion__toggler">
-              <MinusIcon className="mining-sdk-accordion__icon--minus" />
-              <PlusIcon className="mining-sdk-accordion__icon--plus" />
+            <div className="mdk-accordion__toggler">
+              <MinusIcon className="mdk-accordion__icon--minus" />
+              <PlusIcon className="mdk-accordion__icon--plus" />
             </div>
           )}
         </div>
@@ -124,8 +120,8 @@ const AccordionContent = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
-  <AccordionPrimitive.Content ref={ref} className="mining-sdk-accordion__content" {...props}>
-    <div className={cn('mining-sdk-accordion__content-inner', className)}>{children}</div>
+  <AccordionPrimitive.Content ref={ref} className="mdk-accordion__content" {...props}>
+    <div className={cn('mdk-accordion__content-inner', className)}>{children}</div>
   </AccordionPrimitive.Content>
 ))
 AccordionContent.displayName = 'AccordionContent'
@@ -181,8 +177,8 @@ const Accordion = ({
       defaultValue={isOpened ? [itemValue] : []}
       onValueChange={onValueChange}
       className={cn(
-        'mining-sdk-accordion',
-        solidBackground && 'mining-sdk-accordion--solid-background',
+        'mdk-accordion',
+        solidBackground && 'mdk-accordion--solid-background',
         className,
       )}
       {...props}
@@ -192,14 +188,14 @@ const Accordion = ({
           showToggleIcon={showToggleIcon}
           customLabel={customLabel}
           toggleIconPosition={toggleIconPosition}
-          className={cn(noBorder && 'mining-sdk-accordion__trigger--no-border')}
+          className={cn(noBorder && 'mdk-accordion__trigger--no-border')}
         >
           {title}
         </AccordionTrigger>
         <AccordionContent
           className={cn(
-            unpadded && 'mining-sdk-accordion__content-inner--no-padding',
-            isRow && 'mining-sdk-accordion__content-inner--row',
+            unpadded && 'mdk-accordion__content-inner--no-padding',
+            isRow && 'mdk-accordion__content-inner--row',
           )}
         >
           {children}

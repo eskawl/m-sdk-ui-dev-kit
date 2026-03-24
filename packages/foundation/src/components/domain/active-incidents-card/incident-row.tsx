@@ -1,4 +1,4 @@
-import { cn } from '@mining-sdk/core'
+import { cn } from '@mdk/core'
 import { IncidentSeverity } from './incident-severity'
 import type { TIncidentSeverity } from './types'
 
@@ -26,18 +26,18 @@ const IncidentRow = ({
   return (
     <div
       className={cn(
-        'mining-sdk-active-incidents-card__row',
-        onClick && 'mining-sdk-active-incidents-card__row--clickable',
+        'mdk-active-incidents-card__row',
+        onClick && 'mdk-active-incidents-card__row--clickable',
       )}
     >
       <IncidentSeverity severity={severity} />
-      <div className="mining-sdk-active-incidents-card__row-content" onClick={handleClick}>
-        <div className="mining-sdk-active-incidents-card__row-data">
-          <div className="mining-sdk-active-incidents-card__row-title">{title}</div>
-          <div className="mining-sdk-active-incidents-card__row-subtitle">{subtitle}</div>
-          <div className="mining-sdk-active-incidents-card__row-body">{body}</div>
+      <div className="mdk-active-incidents-card__row-content" onClick={handleClick}>
+        <div className="mdk-active-incidents-card__row-data">
+          <div className="mdk-active-incidents-card__row-title">{title}</div>
+          <div className="mdk-active-incidents-card__row-subtitle">{subtitle}</div>
+          <div className="mdk-active-incidents-card__row-body">{body}</div>
         </div>
-        {onClick && <div className="mining-sdk-active-incidents-card__arrow">&#x2192;</div>}
+        {onClick && <div className="mdk-active-incidents-card__arrow">&#x2192;</div>}
       </div>
     </div>
   )

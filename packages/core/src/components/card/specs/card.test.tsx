@@ -16,7 +16,7 @@ describe('card', () => {
         <Card.Body>Body</Card.Body>
       </Card>,
     )
-    const header = container.querySelector('.mining-sdk-card__header')
+    const header = container.querySelector('.mdk-card__header')
     expect(header).toHaveTextContent('Header')
   })
 
@@ -26,7 +26,7 @@ describe('card', () => {
         <Card.Body>Body content</Card.Body>
       </Card>,
     )
-    const body = container.querySelector('.mining-sdk-card__body')
+    const body = container.querySelector('.mdk-card__body')
     expect(body).toHaveTextContent('Body content')
   })
 
@@ -36,7 +36,7 @@ describe('card', () => {
         <Card.Footer>Footer</Card.Footer>
       </Card>,
     )
-    const footer = container.querySelector('.mining-sdk-card__footer')
+    const footer = container.querySelector('.mdk-card__footer')
     expect(footer).toHaveTextContent('Footer')
   })
 
@@ -48,9 +48,9 @@ describe('card', () => {
         <Card.Footer>Footer</Card.Footer>
       </Card>,
     )
-    expect(container.querySelector('.mining-sdk-card__header')).toBeInTheDocument()
-    expect(container.querySelector('.mining-sdk-card__body')).toBeInTheDocument()
-    expect(container.querySelector('.mining-sdk-card__footer')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-card__header')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-card__body')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-card__footer')).toBeInTheDocument()
   })
 
   it('wraps non-section children in Card.Body', () => {
@@ -60,7 +60,7 @@ describe('card', () => {
         <p>Regular content</p>
       </Card>,
     )
-    const body = container.querySelector('.mining-sdk-card__body')
+    const body = container.querySelector('.mdk-card__body')
     expect(body).toHaveTextContent('Regular content')
   })
 
@@ -71,7 +71,7 @@ describe('card', () => {
         <p>Second</p>
       </Card>,
     )
-    const body = container.querySelector('.mining-sdk-card__body')
+    const body = container.querySelector('.mdk-card__body')
     expect(body).toHaveTextContent('FirstSecond')
   })
 
@@ -81,25 +81,25 @@ describe('card', () => {
         <Card.Body>Explicit body</Card.Body>
       </Card>,
     )
-    const bodies = container.querySelectorAll('.mining-sdk-card__body')
+    const bodies = container.querySelectorAll('.mdk-card__body')
     expect(bodies).toHaveLength(1)
   })
 
   it('applies clickable class when onClick is provided', () => {
     const { container } = render(<Card onClick={() => {}}>Clickable</Card>)
-    expect(container.querySelector('.mining-sdk-card--clickable')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-card--clickable')).toBeInTheDocument()
   })
 
   it('handles onClick event', () => {
     const handleClick = vi.fn()
     render(<Card onClick={handleClick}>Click me</Card>)
-    ;(screen.getByText('Click me').closest('.mining-sdk-card') as HTMLElement | null)?.click()
+    ;(screen.getByText('Click me').closest('.mdk-card') as HTMLElement | null)?.click()
     expect(handleClick).toHaveBeenCalledTimes(1)
   })
 
   it('applies custom className to card', () => {
     const { container } = render(<Card className="custom-card">Content</Card>)
-    expect(container.querySelector('.mining-sdk-card')).toHaveClass('custom-card')
+    expect(container.querySelector('.mdk-card')).toHaveClass('custom-card')
   })
 
   it('applies custom className to CardHeader', () => {
@@ -108,7 +108,7 @@ describe('card', () => {
         <CardHeader className="custom-header">Header</CardHeader>
       </Card>,
     )
-    expect(container.querySelector('.mining-sdk-card__header')).toHaveClass('custom-header')
+    expect(container.querySelector('.mdk-card__header')).toHaveClass('custom-header')
   })
 
   it('applies custom className to CardBody', () => {
@@ -117,7 +117,7 @@ describe('card', () => {
         <CardBody className="custom-body">Body</CardBody>
       </Card>,
     )
-    expect(container.querySelector('.mining-sdk-card__body')).toHaveClass('custom-body')
+    expect(container.querySelector('.mdk-card__body')).toHaveClass('custom-body')
   })
 
   it('applies custom className to CardFooter', () => {
@@ -126,7 +126,7 @@ describe('card', () => {
         <CardFooter className="custom-footer">Footer</CardFooter>
       </Card>,
     )
-    expect(container.querySelector('.mining-sdk-card__footer')).toHaveClass('custom-footer')
+    expect(container.querySelector('.mdk-card__footer')).toHaveClass('custom-footer')
   })
 
   it('forwards ref to card element', () => {
@@ -169,9 +169,9 @@ describe('card', () => {
         <Card.Header>Only Header</Card.Header>
       </Card>,
     )
-    expect(container.querySelector('.mining-sdk-card__header')).toBeInTheDocument()
-    expect(container.querySelector('.mining-sdk-card__body')).not.toBeInTheDocument()
-    expect(container.querySelector('.mining-sdk-card__footer')).not.toBeInTheDocument()
+    expect(container.querySelector('.mdk-card__header')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-card__body')).not.toBeInTheDocument()
+    expect(container.querySelector('.mdk-card__footer')).not.toBeInTheDocument()
   })
 
   it('renders only footer when no header or body', () => {
@@ -180,9 +180,9 @@ describe('card', () => {
         <Card.Footer>Only Footer</Card.Footer>
       </Card>,
     )
-    expect(container.querySelector('.mining-sdk-card__footer')).toBeInTheDocument()
-    expect(container.querySelector('.mining-sdk-card__header')).not.toBeInTheDocument()
-    expect(container.querySelector('.mining-sdk-card__body')).not.toBeInTheDocument()
+    expect(container.querySelector('.mdk-card__footer')).toBeInTheDocument()
+    expect(container.querySelector('.mdk-card__header')).not.toBeInTheDocument()
+    expect(container.querySelector('.mdk-card__body')).not.toBeInTheDocument()
   })
 
   it('handles mixed children correctly', () => {
@@ -195,9 +195,9 @@ describe('card', () => {
         <Card.Footer>Footer</Card.Footer>
       </Card>,
     )
-    expect(container.querySelector('.mining-sdk-card__header')).toHaveTextContent('Header')
-    expect(container.querySelector('.mining-sdk-card__footer')).toHaveTextContent('Footer')
-    const body = container.querySelector('.mining-sdk-card__body')
+    expect(container.querySelector('.mdk-card__header')).toHaveTextContent('Header')
+    expect(container.querySelector('.mdk-card__footer')).toHaveTextContent('Footer')
+    const body = container.querySelector('.mdk-card__body')
     expect(body).toBeInTheDocument()
   })
 })

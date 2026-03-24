@@ -180,7 +180,7 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
       if (!showTotal) return null
 
       return (
-        <div className="mining-sdk-pagination__total">
+        <div className="mdk-pagination__total">
           {rangeStart}-{rangeEnd} of {total}
         </div>
       )
@@ -190,25 +190,25 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
       <div
         ref={ref}
         className={cn(
-          'mining-sdk-pagination',
-          `mining-sdk-pagination--${size}`,
-          disabled && 'mining-sdk-pagination--disabled',
+          'mdk-pagination',
+          `mdk-pagination--${size}`,
+          disabled && 'mdk-pagination--disabled',
           className,
         )}
         {...props}
       >
         {renderTotal()}
 
-        <div className="mining-sdk-pagination__controls">
+        <div className="mdk-pagination__controls">
           {/* Page Numbers */}
-          <div className="mining-sdk-pagination__pages">
+          <div className="mdk-pagination__pages">
             {/* Previous Button */}
             <Button
               variant="icon"
               icon={<ChevronLeftIcon />}
               disabled={!hasPrev || disabled}
               onClick={() => handlePageChange(current - 1)}
-              className="mining-sdk-pagination__button mining-sdk-pagination__button--prev"
+              className="mdk-pagination__button mdk-pagination__button--prev"
               aria-label="Previous page"
             />
             {getPageNumbers().map((item, index) => {
@@ -216,13 +216,13 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
                 return (
                   <button
                     key={`ellipsis-${index}`}
-                    className="mining-sdk-pagination__ellipsis"
+                    className="mdk-pagination__ellipsis"
                     onClick={() => handleEllipsisClick(item.direction!)}
                     disabled={disabled}
                     aria-label={`Jump ${item.direction === 'forward' ? 'forward' : 'backward'} 5 pages`}
                   >
-                    <span className="mining-sdk-pagination__ellipsis--dot">•••</span>
-                    <span className="mining-sdk-pagination__ellipsis--arrow">
+                    <span className="mdk-pagination__ellipsis--dot">•••</span>
+                    <span className="mdk-pagination__ellipsis--arrow">
                       {item.direction === 'forward' ? (
                         <DoubleArrowRightIcon />
                       ) : (
@@ -240,8 +240,8 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
                   disabled={disabled}
                   onClick={() => handlePageChange(item.value)}
                   className={cn(
-                    'mining-sdk-pagination__button mining-sdk-pagination__button--page',
-                    item.value === current && 'mining-sdk-pagination__button--active',
+                    'mdk-pagination__button mdk-pagination__button--page',
+                    item.value === current && 'mdk-pagination__button--active',
                   )}
                   aria-label={`Page ${item.value}`}
                   aria-current={item.value === current ? 'page' : undefined}
@@ -256,7 +256,7 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
               icon={<ChevronRightIcon />}
               disabled={!hasNext || disabled}
               onClick={() => handlePageChange(current + 1)}
-              className="mining-sdk-pagination__button mining-sdk-pagination__button--next"
+              className="mdk-pagination__button mdk-pagination__button--next"
               aria-label="Next page"
             />
           </div>
@@ -270,17 +270,14 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
             disabled={disabled}
             aria-label="Items per page"
           >
-            <SelectTrigger
-              disabled={disabled}
-              className="mining-sdk-pagination__size-changer--trigger"
-            >
+            <SelectTrigger disabled={disabled} className="mdk-pagination__size-changer--trigger">
               <SelectValue placeholder="Actions" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 {pageSizeOptions.map((size) => (
                   <SelectItem
-                    className="mining-sdk-pagination__size-changer--item"
+                    className="mdk-pagination__size-changer--item"
                     key={size}
                     value={size?.toString()}
                   >
