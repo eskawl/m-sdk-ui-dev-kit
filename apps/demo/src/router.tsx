@@ -187,6 +187,10 @@ const BitMainImmersionSummaryBoxPage = lazy(() =>
   })),
 )
 
+const ContainerChartsPage = lazy(() =>
+  import('./pages/container-charts-page').then((m) => ({ default: m.ContainerChartsPage })),
+)
+
 const MicroBTWidgetBoxPage = lazy(() =>
   import('./pages/micro-bt-widget-box-page').then((m) => ({
     default: m.MicroBTWidgetBoxPage,
@@ -279,6 +283,10 @@ export const router = createBrowserRouter(
         {
           path: 'bitmain-immersion-summary-box',
           element: withSuspense(BitMainImmersionSummaryBoxPage),
+        },
+        {
+          path: 'container-charts',
+          element: withSuspense(ContainerChartsPage),
         },
         {
           path: 'micro-bt-widget-box',
