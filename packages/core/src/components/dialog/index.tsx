@@ -50,9 +50,12 @@ const DialogHeader = ({
       <div className="mdk-dialog__header__container">{children}</div>
       {closable && (
         <DialogClose asChild>
-          <Button size="sm" variant="ghost" onClick={onClose} className="mdk-dialog__header__close">
-            <Cross2Icon />
-          </Button>
+          <Button
+            icon={<Cross2Icon />}
+            onClick={onClose}
+            variant="secondary"
+            className="mdk-dialog__header__close"
+          />
         </DialogClose>
       )}
     </div>

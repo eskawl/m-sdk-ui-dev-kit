@@ -1,103 +1,79 @@
-import * as React from 'react'
-
-import type { ButtonIconPosition, ButtonSize, ButtonVariant } from '../../types'
+import React from 'react'
+import type { ButtonIconPosition, ButtonVariant } from '../../types'
+import { Spinner } from '../spinner'
 import { cn } from '../../utils'
 
-export type ButtonAntdSize = 'small' | 'middle' | 'large'
-export type ButtonProps = {
-  variant?: ButtonVariant
-  size?: ButtonSize | ButtonAntdSize
-  loading?: boolean
-  icon?: React.ReactNode
-  iconPosition?: ButtonIconPosition
-  fullWidth?: boolean
-  block?: boolean
-} & React.ButtonHTMLAttributes<HTMLButtonElement>
+export type ButtonProps = Partial<
+  {
+    loading: boolean
+    fullWidth: boolean
+    icon: React.ReactNode
+    variant: ButtonVariant
+    contentClassName: string
+    iconPosition: ButtonIconPosition
+  } & React.ButtonHTMLAttributes<HTMLButtonElement>
+>
 
-const sizeMap: Record<ButtonSize | ButtonAntdSize, ButtonSize> = {
-  sm: 'sm',
-  small: 'sm',
-  md: 'md',
-  middle: 'md',
-  lg: 'lg',
-  large: 'lg',
-  icon: 'icon',
-}
-
-const sizeToSize = (size?: ButtonSize | ButtonAntdSize): ButtonSize => {
-  return size ? sizeMap[size] : 'md'
-}
-
-/**
- * Button component with multiple variants and sizes
- *
- * @example
- * ```tsx
- * <Button variant="primary" size="lg">Click me</Button>
- * <Button variant="outline">Outlined</Button>
- * <Button variant="ghost" size="sm">Small Ghost</Button>
- * ```
- */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      className,
-      variant,
-      size = 'md',
-      loading,
       icon,
-      iconPosition = 'left',
-      fullWidth,
-      block,
       disabled,
-      type: nativeType,
       children,
+      className,
+      fullWidth,
+      type = 'button',
+      loading = false,
+      contentClassName,
+      variant = 'secondary',
+      iconPosition = 'left',
       ...props
     },
     ref,
   ) => {
-    const resolvedVariant = variant ?? 'secondary'
-    const resolvedSize = sizeToSize(size)
-    const resolvedHtmlType = nativeType ?? 'button'
-    const isIconOnly = Boolean(icon) && !children
+    const leftIcon = icon && iconPosition === 'left'
+    const rightIcon = icon && iconPosition === 'right'
 
-    const classes = cn(
+    const buttonClasses = cn(
       'mdk-button',
-      `mdk-button--variant-${resolvedVariant}`,
-      `mdk-button--size-${resolvedSize}`,
-      {
-        'mdk-button--full-width': fullWidth || block,
-        'mdk-button--loading': loading,
-        'mdk-button--icon-only': isIconOnly,
-      },
+      `mdk-button--variant-${variant}`,
+      fullWidth && 'mdk-button--full-width',
+      loading && 'mdk-button--loading',
       className,
+    )
+
+    const contentClasses = cn(
+      'mdk-button__content',
+      `mdk-button__content--${variant}`,
+      contentClassName,
     )
 
     return (
       <button
-        className={classes}
         ref={ref}
-        type={resolvedHtmlType}
-        aria-busy={loading || undefined}
+        type={type}
+        data-variant={variant}
+        className={buttonClasses}
         disabled={disabled || loading}
+        aria-busy={loading || undefined}
         {...props}
       >
-        {loading && <span className="mdk-button__spinner" aria-hidden="true" />}
-        {icon && iconPosition === 'left' && (
-          <span className="mdk-button__icon" aria-hidden="true">
-            {icon}
+        {loading ? (
+          <span className="mdk-button__loading" aria-hidden="true">
+            <Spinner size="sm" type="circle" />
           </span>
-        )}
-        {children && <span className="mdk-button__label">{children}</span>}
-        {icon && iconPosition === 'right' && (
-          <span className="mdk-button__icon" aria-hidden="true">
-            {icon}
+        ) : (
+          <span className={contentClasses}>
+            {leftIcon && <span className="mdk-button__icon">{icon}</span>}
+            {children && <span className="mdk-button__children">{children}</span>}
+            {rightIcon && <span className="mdk-button__icon">{icon}</span>}
           </span>
         )}
       </button>
     )
   },
 )
+
 Button.displayName = 'Button'
 
 export { Button }

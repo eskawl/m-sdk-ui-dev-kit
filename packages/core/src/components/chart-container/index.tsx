@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import { cn } from '../../utils'
 import { Loader } from '../loader'
+import { RadioCard, RadioGroup } from '../radio'
 
 function legendFillColor(color: string): string {
   if (color.startsWith('hsl')) {
@@ -125,28 +126,18 @@ export const ChartContainer = React.forwardRef<HTMLDivElement, ChartContainerPro
             </div>
             <div className="mdk-chart-container__range-area">
               {rangeSelector && rangeSelector.options.length > 0 && (
-                <div
-                  className={cn('mdk-chart-container__range-selector', rangeSelector.className)}
-                  style={rangeSelector.style}
-                  role="group"
-                  aria-label="Time range"
-                >
-                  {rangeSelector.options.map((opt) => (
-                    <button
-                      key={opt.value}
-                      type="button"
-                      aria-pressed={rangeSelector.value === opt.value}
-                      className={cn(
-                        'mdk-chart-container__range-btn',
-                        rangeSelector.value === opt.value &&
-                          'mdk-chart-container__range-btn--active',
-                        rangeSelector.buttonClassName,
-                      )}
-                      onClick={() => rangeSelector.onChange(opt.value)}
-                    >
-                      {opt.label}
-                    </button>
-                  ))}
+                <div role="group" aria-label="Time range">
+                  <RadioGroup defaultValue={rangeSelector.value} orientation="horizontal" noGap>
+                    {rangeSelector.options.map(({ value, label }) => (
+                      <RadioCard
+                        value={value}
+                        label={label}
+                        key={value}
+                        aria-pressed={rangeSelector.value === value}
+                        onClick={() => rangeSelector.onChange(value)}
+                      />
+                    ))}
+                  </RadioGroup>
                 </div>
               )}
             </div>

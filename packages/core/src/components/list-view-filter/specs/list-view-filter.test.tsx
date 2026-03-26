@@ -338,13 +338,12 @@ describe('listViewFilter', () => {
       expect(svg).toBeInTheDocument()
     })
 
-    it('renders Button with secondary variant and sm size', () => {
+    it('renders Button with secondary variant', () => {
       const onChange = vi.fn()
       const { container } = render(<ListViewFilter options={mockOptions} onChange={onChange} />)
 
       const button = container.querySelector('.mdk-button')
       expect(button).toHaveClass('mdk-button--variant-secondary')
-      expect(button).toHaveClass('mdk-button--size-sm')
     })
 
     it('renders Typography with correct props', () => {

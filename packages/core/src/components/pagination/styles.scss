@@ -118,6 +118,7 @@
 
   &__button {
     min-width: 32px;
+    min-height: 32px;
     height: 32px;
     font-size: 14px;
     color: var(--mdk-color-primary);
@@ -127,8 +128,16 @@
 
     &--prev,
     &--next {
+      width: 32px;
+      min-width: 32px;
+      height: 32px;
+      min-height: 32px;
       padding: 0;
       color: rgba(var(--mdk-color-white-rgb), 0.8);
+
+      .mdk-button__content {
+        padding: 0;
+      }
 
       &:hover {
         border-color: var(--mdk-button-secondary-border);
@@ -136,8 +145,20 @@
         background: var(--mdk-button-primary-bg-hover-overlay);
       }
     }
+
+    &--page {
+      height: 32px;
+      min-width: 32px;
+      min-height: 32px;
+      padding: 0 8px;
+
+      .mdk-button__content {
+        padding: 0;
+      }
+    }
+
     &--active {
-      border-color: transparent;
+      border: none;
       background: rgba(var(--mdk-color-primary-rgb), 0.2);
     }
 

@@ -29,6 +29,7 @@
     --mdk-color-warning-rgb: 255, 193, 7; /* #ffc107 in Hex */
 
     --mdk-color-primary-hover: #f7931acc;
+    --mdk-color-primary-button-hover: #f8a348;
     --mdk-color-primary-hover-light: #e8a140;
 
     /* Loader/Spinner Colors */
@@ -48,6 +49,9 @@
 
     /* Common Component Colors */
     --mdk-color-white: #ffffff;
+    --mdk-color-white-alpha-026: #ffffff26;
+    --mdk-color-white-alpha-04d: #ffffff4d;
+    --mdk-color-white-alpha-024: #ffffff24;
     --mdk-color-white-transparent: #ffffff1a;
     --mdk-color-text-secondary: #ffffffd9;
     --mdk-color-text-disabled: #ffffff80;
@@ -169,6 +173,7 @@
     --mdk-table-body-hover-bg: #1d1d1d;
     --mdk-table-selected-row-bg: #583a16;
     --mdk-table-selected-row-hover-bg: #7a4d17;
+    --mdk-table-header-sorted-bg: #2e2e2e;
 
     --mdk-table-text-primary: #ffffff80;
     --mdk-table-text-secondary: #ffffffb3;
@@ -186,6 +191,7 @@
     --mdk-button-primary-text: #000000;
     --mdk-button-primary-text-hover: #ffffff;
     --mdk-button-primary-bg-hover-overlay: rgba(255, 255, 255, 0.15);
+    --mdk-color-primary-10: #f7931a1a;
 
     --mdk-button-secondary-text: #ffffffcc;
     --mdk-button-secondary-border: #ffffff33;
@@ -194,6 +200,7 @@
     --mdk-button-secondary-bg: #17130f;
 
     --mdk-button-danger-bg: #ef4444;
+    --mdk-button-danger-bg-hover: #f36060;
     --mdk-button-danger-text: #ffffff;
     --mdk-button-danger-border: #ef4444;
 

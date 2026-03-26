@@ -69,6 +69,8 @@
       border: 0;
       width: 32px;
       height: 32px;
+      min-width: unset;
+      min-height: unset;
       background: transparent;
       color: var(--mdk-color-white-60);
       transition:
@@ -81,8 +83,8 @@
       }
 
       &:hover {
-        color: var(--mdk-color-white);
-        background: var(--mdk-color-white-12);
+        color: var(--mdk-color-white) !important;
+        background: var(--mdk-color-white-12) !important;
       }
     }
 

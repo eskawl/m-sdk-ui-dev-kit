@@ -162,7 +162,7 @@ const ListViewFilter = React.forwardRef<HTMLDivElement, ListViewFilterProps>(
           <PopoverTrigger asChild>
             <div className="mdk-list-view-filter__trigger">
               <Badge color="primary" count={filtersCount} size="sm">
-                <Button variant="secondary" size="sm" icon={<FilterIcon />}>
+                <Button variant="secondary" icon={<FilterIcon />}>
                   Filter
                 </Button>
               </Badge>

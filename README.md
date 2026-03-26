@@ -1,4 +1,4 @@
-# MDK
+# Mining SDK
 
 > A developer-first toolkit providing pre-built components and seamless backend integration for building mining operations applications in days instead of weeks.
 
@@ -19,7 +19,7 @@
 
 ## Overview
 
-The **MDK** is a comprehensive toolkit providing:
+The **Mining SDK** is a comprehensive toolkit providing:
 
 - **150-200+ production-tested components** (foundation + domain-specific)
 - **87+ API integration hooks** (RTK Query-based)

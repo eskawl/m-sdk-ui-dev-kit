@@ -1,163 +1,164 @@
 @use '../../styles/mixins' as *;
-/**
- * Button Component Styles
- */
+$animation-duration: 0.3s;
+
+$button-icon-size: 12px;
+$button-min-height-link: 18px;
+$button-min-height-common: 40px;
+$button-min-width-loading: 80px;
+$button-content-line-height: 18px;
+$button-min-height-tertiary: 30px;
 
 .mdk-button {
-  @include inline_flex_align;
-  
-  justify-content: center;
-  border-radius: var(--mdk-radius);
-  font-family: var(--font-mono);
-  font-size: var(--mdk-font-size);
-  line-height: var(--mdk-line-height);
-  font-weight: var(--mdk-font-weight);
-  gap: 0.5rem;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: colors 0.2s;
-  box-shadow: var(--mdk-shadow);
+  @include flex_center;
 
-  &:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 2px hsl(var(--ring));
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-  }
+  cursor: pointer;
+  box-shadow: none;
+  padding: 10px 21px;
+  border: 1px solid transparent;
+  font-family: var(--font-mono);
+  min-height: $button-min-height-common;
+  transition:
+    background-color $animation-duration ease,
+    border-color $animation-duration ease,
+    color $animation-duration ease;
 
   &:disabled {
-    pointer-events: none;
     opacity: 0.5;
+    cursor: not-allowed;
   }
 
-  // Variants
+  &__content {
+    @include flex_align;
+
+    gap: 8px;
+    line-height: $button-content-line-height;
+  }
+
+  &__children {
+    @include flex_center;
+
+    letter-spacing: 0;
+    font-size: var(--button-font-size, 14px);
+    font-weight: var(--button-font-weight, 500);
+  }
+
+  &__icon {
+    @include flex_center;
+
+    svg {
+      width: $button-icon-size;
+      height: $button-icon-size;
+    }
+  }
+
+  &__loading {
+    @include flex_center;
+
+    min-width: $button-min-width-loading;
+    color: inherit;
+
+    .mdk-spinner {
+      transform: scale(0.75);
+      transform-origin: center;
+    }
+
+    .mdk-spinner__circle {
+      border-color: currentColor;
+      border-top-color: transparent;
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+
   &--variant-primary {
-    background: var(--mdk-button-primary-bg);
-    color: var(--mdk-button-primary-text);
-
-    &:hover {
-      background:
-        linear-gradient(
-          0deg,
-          var(--mdk-button-primary-bg-hover-overlay) 0%,
-          var(--mdk-button-primary-bg-hover-overlay) 100%
-        ),
-        var(--mdk-button-primary-bg);
-      color: var(--mdk-button-primary-text-hover);
-    }
-  }
-
-  &--variant-danger {
-    background: var(--mdk-button-danger-bg);
-    color: var(--mdk-button-danger-text);
-    border-color: var(--mdk-button-danger-border);
-    box-shadow: none;
-
-    &:hover {
-      opacity: 0.9;
-    }
-  }
-
-  &--variant-outline {
-    border: 1px solid hsl(var(--input));
-    background: hsl(var(--background));
-    color: hsl(var(--foreground));
-    box-shadow: none;
-
-    &:hover {
-      background: hsl(var(--accent));
-      color: hsl(var(--accent-foreground));
-    }
+    color: rgb(var(--mdk-color-black));
+    background-color: var(--mdk-color-primary);
   }
 
   &--variant-secondary {
-    background: var(--mdk-button-secondary-bg);
-    color: var(--mdk-button-secondary-text);
+    color: var(--mdk-color-white-7);
+    background-color: var(--mdk-button-secondary-bg);
     border-color: var(--mdk-button-secondary-border);
-    box-shadow: none;
-
-    &:hover {
-      border-color: var(--mdk-button-secondary-border-hover);
-    }
   }
 
-  &--variant-ghost {
-    background: transparent;
-    color: hsl(var(--foreground));
-    box-shadow: none;
+  &--variant-danger {
+    color: var(--mdk-color-white);
+    background-color: var(--mdk-button-danger-bg);
+  }
 
-    &:hover {
-      background: hsl(var(--accent));
-      color: hsl(var(--accent-foreground));
-    }
+  &--variant-tertiary {
+    padding: 5px 21px;
+    line-height: normal;
+    align-self: flex-start;
+    color: var(--mdk-color-primary);
+    min-height: $button-min-height-tertiary;
+    background-color: var(--mdk-orange-dimmer);
+
+    --button-font-size: 12px;
+    --button-font-weight: 700;
   }
 
   &--variant-link {
-    background: transparent;
-    color: hsl(217 91% 60%); // Bright blue for visibility
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    box-shadow: none;
+    border: none;
+    padding: unset;
+    min-width: unset;
+    position: relative;
+    line-height: normal;
+    max-height: fit-content;
+    background-color: transparent;
+    min-height: $button-min-height-link;
+    color: var(--mdk-color-primary);
 
-    &:hover {
-      text-decoration: underline;
-      opacity: 0.8;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      opacity: 0;
+      background-color: currentColor;
+      transition: opacity $animation-duration ease;
     }
   }
 
-  // Sizes
-  &--size-sm {
-    height: 2.25rem;
-    padding: 0 0.75rem;
-    border-radius: calc(var(--radius) - 2px);
+  &--variant-icon {
+    padding: 10px 13px;
+    color: var(--mdk-color-white-7);
+    background-color: var(--mdk-button-secondary-bg);
+    border-color: var(--mdk-button-secondary-border);
   }
 
-  &--size-md {
-    height: 2.5rem;
-    padding: 0.5625rem 3.5rem;
-    min-width: 8.75rem;
-  }
+  &:not(:disabled):hover {
+    &.mdk-button--variant-primary {
+      background: var(--mdk-color-primary-button-hover);
+    }
 
-  &--size-lg {
-    height: 2.75rem;
-    padding: 0.5rem 2rem;
-  }
+    &.mdk-button--variant-secondary {
+      background: var(--mdk-color-background-dark);
+      border-color: var(--mdk-button-secondary-border-hover);
+    }
 
-  &--size-icon {
-    height: 2.5rem;
-    width: 2.5rem;
-    padding: 0;
-  }
-}
+    &.mdk-button--variant-danger {
+      background: var(--mdk-button-danger-bg-hover);
+    }
 
-.mdk-button--full-width {
-  width: 100%;
-}
+    &.mdk-button--variant-tertiary {
+      background-color: var(--mdk-color-primary);
+      color: rgb(var(--mdk-color-black));
+    }
 
-.mdk-button--icon-only {
-  padding: 0;
-  aspect-ratio: 1 / 1;
-}
+    &.mdk-button--variant-link {
+      &::after {
+        opacity: 1;
+      }
+    }
 
-.mdk-button__spinner {
-  width: 1rem;
-  height: 1rem;
-  border-radius: 9999px;
-  border: 2px solid hsl(var(--foreground) / 0.3);
-  border-top-color: hsl(var(--foreground));
-  animation: mdk-button-spin 0.7s linear infinite;
-}
-
-.mdk-button__icon {
-  @include inline_flex_align;
-}
-
-.mdk-button__label {
-  @include inline_flex_align;
-}
-
-@keyframes mdk-button-spin {
-  to {
-    transform: rotate(360deg);
+    &.mdk-button--variant-icon {
+      background: var(--mdk-color-background-dark);
+      border-color: var(--mdk-button-secondary-border-hover);
+    }
   }
 }

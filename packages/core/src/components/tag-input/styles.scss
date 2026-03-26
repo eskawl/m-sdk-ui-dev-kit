@@ -30,19 +30,19 @@
   @include flex_align;
 
   position: relative;
+  gap: 0;
   width: 100%;
   min-width: 220px;
-  gap: 0;
-  padding: 6px 2.5rem 6px 8px;
   min-height: 34px;
   overflow-x: hidden;
   overflow-y: visible;
+  font-family: inherit;
+  padding: 8px 9px 8px 15px;
   font-size: var(--mdk-font-size, 14px);
   line-height: var(--mdk-line-height, 22px);
-  font-family: inherit;
-  color: var(--mdk-tag-input-text, var(--mdk-color-text-secondary));
   background: var(--mdk-tag-input-bg, transparent);
   border: 1px solid rgba(var(--mdk-color-primary-rgb), 0.5);
+  color: var(--mdk-tag-input-text, var(--mdk-color-text-secondary));
   border-radius: 0;
   outline: none;
   transition:
@@ -62,6 +62,10 @@
     cursor: not-allowed;
     opacity: 0.7;
   }
+
+  &--search {
+    padding-right: 40px;
+  }
 }
 
 .mdk-tag-input__inner {
@@ -80,16 +84,15 @@
 .mdk-tag-input__tag-chip {
   @include inline_flex_align;
 
-  gap: 0.25rem;
-  padding: 1px 8px;
-  height: 22px;
+  gap: 8px;
+  padding: 0 8px;
   font-size: 14px;
   line-height: 20px;
-  background-color: rgba(var(--mdk-color-primary-rgb), 0.2);
-  color: var(--mdk-color-primary);
-  border: 1px solid rgba(var(--mdk-color-primary-rgb), 0.3);
   border-radius: 0;
   flex-shrink: 0;
+  color: var(--mdk-color-primary);
+  background-color: rgba(var(--mdk-color-primary-rgb), 0.2);
+  border: 1px solid rgba(var(--mdk-color-primary-rgb), 0.3);
 }
 
 .mdk-tag-input__tag-remove {
@@ -97,7 +100,7 @@
 
   padding: 0;
   margin: 0;
-  margin-left: 0.25rem;
+  margin-top: 2px;
   color: var(--mdk-color-primary);
   background-color: transparent;
   border: none;
@@ -107,8 +110,8 @@
   z-index: 1;
 
   svg {
-    width: 14px;
-    height: 14px;
+    width: 9px;
+    height: 9px;
     pointer-events: none;
   }
 }
@@ -150,8 +153,13 @@
   right: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--mdk-tag-input-icon, var(--mdk-color-text-disabled));
+  color: var(--mdk-color-white-7);
   pointer-events: none;
+
+  &--glass {
+    width: 16px;
+    height: 16px;
+  }
 
   &--cross {
     display: none;
@@ -195,17 +203,16 @@
 }
 
 .mdk-tag-input__dropdown {
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 0 !important;
+  box-shadow: var(--mdk-shadow-lg);
   min-width: var(--radix-popover-trigger-width);
   min-height: var(--mdk-tag-input-dropdown-min-height, auto);
   max-height: var(--mdk-tag-input-dropdown-max-height, 12rem);
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 4px;
-  background-color: var(--mdk-tag-input-dropdown-bg, var(--mdk-color-gray-900));
-  border: 1px solid
-    var(--mdk-tag-input-dropdown-border, var(--mdk-color-white-transparent));
-  border-radius: 0;
-  box-shadow: var(--mdk-shadow-lg);
+  background-color: var(--mdk-color-background-dark) !important;
+  border: 1px solid var(--mdk-color-white-2) !important;
 }
 
 .mdk-tag-input__list {
@@ -213,33 +220,39 @@
 }
 
 .mdk-tag-input__option {
-  padding: 8px 16px;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 0;
-  color: var(--mdk-tag-input-text, var(--mdk-color-text-secondary));
-  transition: background-color 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  @include flex_align_between;
 
-  &--highlighted {
-    background-color: var(
-      --mdk-tag-input-option-hover-bg,
-      var(--mdk-color-white-transparent)
-    );
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 0;
+  line-height: 17px;
+  padding: 8px 16px;
+  letter-spacing: -0.5px;
+  font-family: var(--font-mono);
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+  color: var(--mdk-color-white-7);
+
+  &--highlighted,
+  &:hover {
+    background-color: var(--mdk-color-white-4);
   }
 
   &--selected {
-    background-color: var(--mdk-tag-input-option-selected-bg);
+    color: var(--mdk-color-primary);
+    background-color: var(--mdk-color-primary-10);
+
+    &:hover {
+      background-color: var(--mdk-color-primary-10);
+    }
   }
 
-  &:hover {
-    background-color: var(
-      --mdk-tag-input-option-hover-bg,
-      var(--mdk-color-white-transparent)
-    );
+  &--disabled {
+    opacity: 0.5;
+    pointer-events: none;
   }
 }
 

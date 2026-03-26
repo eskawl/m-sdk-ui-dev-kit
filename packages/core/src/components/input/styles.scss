@@ -1,13 +1,6 @@
 @use '../../styles/mixins' as *;
-/**
- * Input Component Styles (mining-os theme)
- *
- * - Default: Dark gray bg, no border
- * - Hover: Light gray border
- * - Focus: Orange/amber border
- * - Search variant: Magnifying glass icon on the right
- * - Prefix/Suffix: Additional content before/after input
- */
+$input-default-padding: 9px 12px;
+$input-medium-padding: 6px 12px;
 
 .mdk-input-root {
   @include flex_column;
@@ -18,7 +11,7 @@
 }
 
 .mdk-input__label {
-  color: var(--mdk-color-white, #ffffff);
+  color: var(--mdk-color-white);
   font-size: var(--mdk-font-size, 14px);
   line-height: var(--mdk-line-height, 22px);
 }
@@ -61,20 +54,20 @@
 
   &--error {
     .mdk-input {
-      border-color: rgb(var(--mdk-color-error, #ef4444));
+      border-color: rgb(var(--mdk-color-error));
     }
 
     .mdk-input:hover:not(:disabled):not(:focus),
     .mdk-input:focus {
-      border-color: rgb(var(--mdk-color-error, #ef4444));
+      border-color: rgb(var(--mdk-color-error));
     }
   }
 }
 
 .mdk-input__error {
+  color: rgb(var(--mdk-color-error));
   font-size: var(--mdk-font-size, 14px);
   line-height: var(--mdk-line-height, 22px);
-  color: rgb(var(--mdk-color-error, #ef4444));
 }
 
 .mdk-input__prefix,
@@ -83,10 +76,15 @@
   @include flex_center;
 
   position: absolute;
-  color: var(--mdk-input-placeholder-color, #999999);
   pointer-events: none;
   font-size: var(--mdk-font-size, 14px);
   line-height: var(--mdk-line-height, 22px);
+  color: var(--mdk-input-placeholder-color);
+}
+
+.mdk-input__icon {
+  width: 16px;
+  height: 16px;
 }
 
 .mdk-input__prefix {
@@ -102,46 +100,57 @@
   @include flex_align;
 
   width: 100%;
-  height: 2.5rem;
-  padding: 0 0.75rem;
-  font-size: var(--mdk-font-size, 14px);
-  line-height: var(--mdk-line-height, 22px);
-  font-family: inherit;
-  color: var(--mdk-color-white, #ffffff);
-  background: var(--mdk-input-bg, #363636);
-  border: 1px solid transparent;
-  border-radius: 0;
   outline: none;
+  font-size: 14px;
   transition:
     border-color 0.2s,
     background-color 0.2s;
+  border-radius: 0;
+  line-height: 20px;
+  font-family: inherit;
+  border: 1px solid transparent;
+  padding: $input-default-padding;
+  color: var(--mdk-color-text-disabled);
+  background-color: var(--mdk-color-white-transparent);
+
+  &--size-medium {
+    padding: $input-medium-padding;
+  }
 
   &::placeholder {
-    color: var(--mdk-input-placeholder-color, #999999);
+    color: var(--mdk-input-placeholder-color);
   }
 
   &:hover:not(:disabled):not(:focus) {
-    border-color: var(--mdk-input-border-hover, #777777);
+    border-color: var(--mdk-color-white-alpha-04d);
+    background-color: var(--mdk-color-white-alpha-026);
   }
 
   &:focus {
-    border-color: var(--mdk-color-primary, #f7931a);
+    border-color: var(--mdk-color-primary);
+    background-color: var(--mdk-color-white-2);
   }
 
   &:disabled {
     cursor: not-allowed;
   }
 
-  /* Hide number input spinner arrows - Chrome, Safari, Edge, Opera */
+  /* Hide number input spinner arrows */
   &[type='number']::-webkit-outer-spin-button,
   &[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
 
-  /* Hide number input spinner arrows - Firefox */
   &[type='number'] {
     -moz-appearance: textfield;
     appearance: textfield;
+  }
+}
+
+.mdk-input__wrapper--size-medium {
+  .mdk-input__icon {
+    width: 14px;
+    height: 14px;
   }
 }

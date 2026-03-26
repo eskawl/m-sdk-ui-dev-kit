@@ -84,7 +84,7 @@ export const DatePicker = React.forwardRef<HTMLButtonElement, DatePickerProps>(
         <PopoverTrigger asChild>
           <Button
             ref={ref}
-            variant="outline"
+            variant="secondary"
             className={cn('mdk-date-picker__trigger', triggerClassName)}
             disabled={disabled}
             icon={<CalendarIcon className="mdk-date-picker__icon" />}
@@ -298,7 +298,7 @@ export const DateRangePicker = React.forwardRef<HTMLButtonElement, DateRangePick
         <PopoverTrigger asChild>
           <Button
             ref={ref}
-            variant="outline"
+            variant="secondary"
             className={cn('mdk-date-picker__trigger', triggerClassName)}
             disabled={disabled}
             icon={<CalendarIcon className="mdk-date-picker__icon" />}
@@ -352,7 +352,6 @@ export const DateRangePicker = React.forwardRef<HTMLButtonElement, DateRangePick
                     <Button
                       key={preset.label}
                       variant={isPresetActive(preset) ? 'primary' : 'secondary'}
-                      size="sm"
                       onClick={() => handlePresetClick(preset)}
                     >
                       {preset.label}
