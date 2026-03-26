@@ -1,11 +1,14 @@
 import { describe, expect, it } from 'vitest'
+import type { ContainerActionValue, MinerActionValue, ThingActionValue } from '../actions'
 import {
   ACTION_NAMES_MAP,
   ACTION_STATUS_TYPES,
   ACTION_SUFFIXES,
   ACTION_TYPES,
+  ActionErrorMessages,
   BATCH_ACTION_TYPE,
   BATCH_ACTION_TYPES,
+  CONFIRMATION_ACTIONS,
   CONTAINER_ACTIONS,
   MINER_ACTIONS,
   THING_ACTIONS,
@@ -119,18 +122,18 @@ describe('actions constants', () => {
       const thingSet = new Set(THING_ACTIONS)
 
       MINER_ACTIONS.forEach((action) => {
-        expect(containerSet.has(action)).toBe(false)
-        expect(thingSet.has(action)).toBe(false)
+        expect(containerSet.has(action as ContainerActionValue)).toBe(false)
+        expect(thingSet.has(action as ThingActionValue)).toBe(false)
       })
 
       CONTAINER_ACTIONS.forEach((action) => {
-        expect(minerSet.has(action)).toBe(false)
-        expect(thingSet.has(action)).toBe(false)
+        expect(minerSet.has(action as MinerActionValue)).toBe(false)
+        expect(thingSet.has(action as ThingActionValue)).toBe(false)
       })
 
       THING_ACTIONS.forEach((action) => {
-        expect(minerSet.has(action)).toBe(false)
-        expect(containerSet.has(action)).toBe(false)
+        expect(minerSet.has(action as MinerActionValue)).toBe(false)
+        expect(containerSet.has(action as ContainerActionValue)).toBe(false)
       })
     })
 
@@ -180,6 +183,30 @@ describe('actions constants', () => {
       expect(statuses).toContain('COMPLETED')
       expect(statuses).toContain('FAILED')
       expect(statuses).toContain('DENIED')
+    })
+  })
+
+  describe('action error messages', () => {
+    it('should have defined error messages', () => {
+      expect(ActionErrorMessages).toBeDefined()
+      expect(ActionErrorMessages.ERR_WRITE_PERM_REQUIRED).toBe(
+        'Invalid permissions or no action found',
+      )
+    })
+  })
+
+  describe('confirmation actions', () => {
+    it('should have defined confirmation actions', () => {
+      expect(CONFIRMATION_ACTIONS).toBeDefined()
+      expect(CONFIRMATION_ACTIONS.approve).toBe('approve')
+      expect(CONFIRMATION_ACTIONS.approveAll).toBe('approve all')
+      expect(CONFIRMATION_ACTIONS.reject).toBe('reject')
+      expect(CONFIRMATION_ACTIONS.rejectAll).toBe('reject all')
+      expect(CONFIRMATION_ACTIONS.submit).toBe('submit')
+      expect(CONFIRMATION_ACTIONS.discard).toBe('discard')
+      expect(CONFIRMATION_ACTIONS.submitAll).toBe('submit all')
+      expect(CONFIRMATION_ACTIONS.discardAll).toBe('discard all')
+      expect(CONFIRMATION_ACTIONS.cancel).toBe('cancel request')
     })
   })
 })

@@ -125,6 +125,22 @@ export const ACTION_STATUS_TYPES = {
   FAILED: 'FAILED',
 } as const
 
+export const ActionErrorMessages = {
+  ERR_WRITE_PERM_REQUIRED: 'Invalid permissions or no action found',
+}
+
+export const CONFIRMATION_ACTIONS = {
+  submit: 'submit',
+  submitAll: 'submit all',
+  discard: 'discard',
+  discardAll: 'discard all',
+  reject: 'reject',
+  approve: 'approve',
+  cancel: 'cancel request',
+  approveAll: 'approve all',
+  rejectAll: 'reject all',
+}
+
 // Type exports
 export type ActionTypeKey = keyof typeof ACTION_TYPES
 export type ActionTypeValue = (typeof ACTION_TYPES)[ActionTypeKey]

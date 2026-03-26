@@ -1,9 +1,12 @@
 /* eslint-disable ts/ban-ts-comment */
 import { UNITS } from '@mdk/core'
 import { describe, expect, it } from 'vitest'
+import { MINER_TYPE } from '../../constants/device-constants'
 import type { Device } from '../../types/device'
 import {
   appendContainerToTag,
+  appendIdToTag,
+  appendIdToTags,
   formatPowerConsumption,
   getCabinetTitle,
   getConfig,
@@ -18,17 +21,24 @@ import {
   getMinerName,
   getOnOffText,
   getPowerModeColor,
+  getRackNameFromId,
   getRootTempSensorTempValue,
   getSnap,
   getStats,
+  getSupportedPowerModes,
   getTransformerCabinetTitle,
+  isAntminer,
+  isAvalon,
+  isContainer,
   isMiner,
   isMinerOffline,
   isTransformerCabinet,
+  isWhatsminer,
   megaToTera,
   PowerModeColors,
   removeContainerPrefix,
 } from '../device-utils'
+import { MINER_POWER_MODE } from '../status-utils'
 
 describe('device utils', () => {
   describe('formatHashRate', () => {
@@ -998,6 +1008,292 @@ describe('device utils', () => {
 
     it('is case sensitive (does not match uppercase)', () => {
       expect(isMiner('MINER-s19')).toBe(false)
+    })
+  })
+
+  describe('isContainer', () => {
+    it('returns true for container type', () => {
+      expect(isContainer('container-s19')).toBe(true)
+    })
+
+    it('returns false for non-container type', () => {
+      expect(isContainer('miner-s19')).toBe(false)
+    })
+
+    it('returns false for undefined', () => {
+      expect(isContainer(undefined)).toBe(false)
+    })
+
+    it('is case sensitive (does not match uppercase)', () => {
+      expect(isContainer('CONTAINER-s19')).toBe(false)
+    })
+  })
+
+  describe('getRackNameFromId', () => {
+    it('extracts the first three dash-separated segments', () => {
+      expect(getRackNameFromId('site-row-rack-slot-1')).toBe('site-row-rack')
+    })
+
+    it('returns the full string when it has exactly three segments', () => {
+      expect(getRackNameFromId('site-row-rack')).toBe('site-row-rack')
+    })
+
+    it('returns empty string when fewer than three segments', () => {
+      expect(getRackNameFromId('site-row')).toBe('')
+    })
+
+    it('returns empty string for a single segment', () => {
+      expect(getRackNameFromId('site')).toBe('')
+    })
+
+    it('returns empty string for an empty string', () => {
+      expect(getRackNameFromId('')).toBe('')
+    })
+
+    it('handles segments with numbers', () => {
+      expect(getRackNameFromId('dc1-row2-rack3-slot4')).toBe('dc1-row2-rack3')
+    })
+
+    it('handles long ids with many segments', () => {
+      expect(getRackNameFromId('a-b-c-d-e-f')).toBe('a-b-c')
+    })
+
+    it('handles ids where segments contain underscores', () => {
+      expect(getRackNameFromId('site_1-row_2-rack_3-extra')).toBe('site_1-row_2-rack_3')
+    })
+  })
+
+  describe('appendIdToTag', () => {
+    it('prepends "id-" to a device id', () => {
+      expect(appendIdToTag('abc123')).toBe('id-abc123')
+    })
+
+    it('handles numeric string ids', () => {
+      expect(appendIdToTag('42')).toBe('id-42')
+    })
+
+    it('handles ids that already contain dashes', () => {
+      expect(appendIdToTag('site-row-rack')).toBe('id-site-row-rack')
+    })
+
+    it('handles empty string', () => {
+      expect(appendIdToTag('')).toBe('id-')
+    })
+
+    it('handles ids with special characters', () => {
+      expect(appendIdToTag('device:001')).toBe('id-device:001')
+    })
+  })
+
+  describe('appendIdToTags', () => {
+    it('prepends "id-" to each device id in the list', () => {
+      expect(appendIdToTags(['a', 'b', 'c'])).toEqual(['id-a', 'id-b', 'id-c'])
+    })
+
+    it('returns empty array for empty input', () => {
+      expect(appendIdToTags([])).toEqual([])
+    })
+
+    it('handles a single-element list', () => {
+      expect(appendIdToTags(['only'])).toEqual(['id-only'])
+    })
+
+    it('preserves order of elements', () => {
+      const ids = ['z', 'a', 'm']
+      expect(appendIdToTags(ids)).toEqual(['id-z', 'id-a', 'id-m'])
+    })
+
+    it('does not mutate the input array', () => {
+      const ids = ['x', 'y']
+      const copy = [...ids]
+      appendIdToTags(ids)
+      expect(ids).toEqual(copy)
+    })
+
+    it('each result is consistent with appendIdToTag applied individually', () => {
+      const ids = ['foo', 'bar', 'baz']
+      const result = appendIdToTags(ids)
+      ids.forEach((id, i) => {
+        expect(result[i]).toBe(appendIdToTag(id))
+      })
+    })
+  })
+
+  describe('getSupportedPowerModes', () => {
+    describe('undefined / unrecognised model', () => {
+      it('returns empty array when model is undefined', () => {
+        expect(getSupportedPowerModes(undefined)).toEqual([])
+      })
+
+      it('returns empty array when model is an empty string', () => {
+        expect(getSupportedPowerModes('')).toEqual([])
+      })
+
+      it('returns empty array for an unrecognised model', () => {
+        expect(getSupportedPowerModes('unknown-device-x')).toEqual([])
+      })
+    })
+
+    describe('Whatsminer', () => {
+      it('returns SLEEP, LOW, NORMAL, HIGH for an exact whatsminer model', () => {
+        expect(getSupportedPowerModes(MINER_TYPE.WHATSMINER)).toEqual([
+          MINER_POWER_MODE.SLEEP,
+          MINER_POWER_MODE.LOW,
+          MINER_POWER_MODE.NORMAL,
+          MINER_POWER_MODE.HIGH,
+        ])
+      })
+
+      it('matches case-insensitively', () => {
+        const model = MINER_TYPE.WHATSMINER.toUpperCase()
+        expect(getSupportedPowerModes(model)).toEqual([
+          MINER_POWER_MODE.SLEEP,
+          MINER_POWER_MODE.LOW,
+          MINER_POWER_MODE.NORMAL,
+          MINER_POWER_MODE.HIGH,
+        ])
+      })
+
+      it('matches when model is a longer type string containing whatsminer', () => {
+        expect(getSupportedPowerModes(`container-${MINER_TYPE.WHATSMINER}-m56`)).toEqual([
+          MINER_POWER_MODE.SLEEP,
+          MINER_POWER_MODE.LOW,
+          MINER_POWER_MODE.NORMAL,
+          MINER_POWER_MODE.HIGH,
+        ])
+      })
+
+      it('includes LOW mode (unlike antminer)', () => {
+        const modes = getSupportedPowerModes(MINER_TYPE.WHATSMINER)
+        expect(modes).toContain(MINER_POWER_MODE.LOW)
+      })
+    })
+
+    describe('Antminer', () => {
+      it('returns SLEEP and NORMAL for an exact antminer model', () => {
+        expect(getSupportedPowerModes(MINER_TYPE.ANTMINER)).toEqual([
+          MINER_POWER_MODE.SLEEP,
+          MINER_POWER_MODE.NORMAL,
+        ])
+      })
+
+      it('matches case-insensitively', () => {
+        const model = MINER_TYPE.ANTMINER.toUpperCase()
+        expect(getSupportedPowerModes(model)).toEqual([
+          MINER_POWER_MODE.SLEEP,
+          MINER_POWER_MODE.NORMAL,
+        ])
+      })
+
+      it('matches when model is a longer type string containing antminer', () => {
+        expect(getSupportedPowerModes(`${MINER_TYPE.ANTMINER}-s19-pro`)).toEqual([
+          MINER_POWER_MODE.SLEEP,
+          MINER_POWER_MODE.NORMAL,
+        ])
+      })
+
+      it('does not include LOW or HIGH modes', () => {
+        const modes = getSupportedPowerModes(MINER_TYPE.ANTMINER)
+        expect(modes).not.toContain(MINER_POWER_MODE.LOW)
+        expect(modes).not.toContain(MINER_POWER_MODE.HIGH)
+      })
+    })
+
+    describe('Avalon', () => {
+      it('returns SLEEP, NORMAL, HIGH for an exact avalon model', () => {
+        expect(getSupportedPowerModes(MINER_TYPE.AVALON)).toEqual([
+          MINER_POWER_MODE.SLEEP,
+          MINER_POWER_MODE.NORMAL,
+          MINER_POWER_MODE.HIGH,
+        ])
+      })
+
+      it('matches case-insensitively', () => {
+        const model = MINER_TYPE.AVALON.toUpperCase()
+        expect(getSupportedPowerModes(model)).toEqual([
+          MINER_POWER_MODE.SLEEP,
+          MINER_POWER_MODE.NORMAL,
+          MINER_POWER_MODE.HIGH,
+        ])
+      })
+
+      it('matches when model is a longer type string containing avalon', () => {
+        expect(getSupportedPowerModes(`${MINER_TYPE.AVALON}-a1346`)).toEqual([
+          MINER_POWER_MODE.SLEEP,
+          MINER_POWER_MODE.NORMAL,
+          MINER_POWER_MODE.HIGH,
+        ])
+      })
+
+      it('does not include LOW mode', () => {
+        const modes = getSupportedPowerModes(MINER_TYPE.AVALON)
+        expect(modes).not.toContain(MINER_POWER_MODE.LOW)
+      })
+
+      it('includes HIGH mode (unlike antminer)', () => {
+        const modes = getSupportedPowerModes(MINER_TYPE.AVALON)
+        expect(modes).toContain(MINER_POWER_MODE.HIGH)
+      })
+    })
+
+    describe('SLEEP mode present for all recognised types', () => {
+      it.each([MINER_TYPE.WHATSMINER, MINER_TYPE.ANTMINER, MINER_TYPE.AVALON])(
+        'includes SLEEP for %s',
+        (model) => {
+          expect(getSupportedPowerModes(model)).toContain(MINER_POWER_MODE.SLEEP)
+        },
+      )
+    })
+
+    describe('return value order', () => {
+      it('Whatsminer modes are in the order SLEEP, LOW, NORMAL, HIGH', () => {
+        const modes = getSupportedPowerModes(MINER_TYPE.WHATSMINER)
+        expect(modes.indexOf(MINER_POWER_MODE.SLEEP)).toBeLessThan(
+          modes.indexOf(MINER_POWER_MODE.LOW),
+        )
+        expect(modes.indexOf(MINER_POWER_MODE.LOW)).toBeLessThan(
+          modes.indexOf(MINER_POWER_MODE.NORMAL),
+        )
+        expect(modes.indexOf(MINER_POWER_MODE.NORMAL)).toBeLessThan(
+          modes.indexOf(MINER_POWER_MODE.HIGH),
+        )
+      })
+
+      it('Antminer modes are in the order SLEEP, NORMAL', () => {
+        const modes = getSupportedPowerModes(MINER_TYPE.ANTMINER)
+        expect(modes.indexOf(MINER_POWER_MODE.SLEEP)).toBeLessThan(
+          modes.indexOf(MINER_POWER_MODE.NORMAL),
+        )
+      })
+
+      it('Avalon modes are in the order SLEEP, NORMAL, HIGH', () => {
+        const modes = getSupportedPowerModes(MINER_TYPE.AVALON)
+        expect(modes.indexOf(MINER_POWER_MODE.SLEEP)).toBeLessThan(
+          modes.indexOf(MINER_POWER_MODE.NORMAL),
+        )
+        expect(modes.indexOf(MINER_POWER_MODE.NORMAL)).toBeLessThan(
+          modes.indexOf(MINER_POWER_MODE.HIGH),
+        )
+      })
+    })
+  })
+
+  describe('isAvalon', () => {
+    it('returns true for avalon model', () => {
+      expect(isAvalon('miner-av')).toBe(true)
+      expect(isAvalon('miner-av-something')).toBe(true)
+    })
+  })
+  describe('isWhatsminer', () => {
+    it('returns true for whatsminer model', () => {
+      expect(isWhatsminer('miner-wm')).toBe(true)
+      expect(isWhatsminer('miner-wm-something')).toBe(true)
+    })
+  })
+  describe('isAntminer', () => {
+    it('returns true for antiminer model', () => {
+      expect(isAntminer('miner-am')).toBe(true)
+      expect(isAntminer('miner-am-something')).toBe(true)
     })
   })
 })

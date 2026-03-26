@@ -13,8 +13,9 @@ import {
   CONTAINER_TYPE_NAME_MAP,
   MAINTENANCE_CONTAINER,
 } from '../constants/container-constants'
-import { separateByHyphenRegExp, separateByTwoHyphensRegExp } from './device-utils'
+import { isContainer, separateByHyphenRegExp, separateByTwoHyphensRegExp } from './device-utils'
 import { CONTAINER_STATUS } from './status-utils'
+import { CONTAINERS_MINER_TYPE, MINER_TYPE } from '../constants/device-constants'
 
 export const isContainerOffline = (snap: { stats?: { status?: string } } | undefined): boolean =>
   snap?.stats?.status === CONTAINER_STATUS.OFFLINE
@@ -109,4 +110,32 @@ export const getContainerSettingsModel = (containerType: string): string | null 
   }
 
   return null
+}
+
+export const isAvalonContainer = (type: string | undefined): boolean =>
+  isContainer(type) && _includes(type || '', CONTAINERS_MINER_TYPE.A1346)
+
+export const isWhatsminerContainer = (type: string | undefined): boolean =>
+  isContainer(type) &&
+  (_includes(type || '', CONTAINERS_MINER_TYPE.M56) ||
+    _includes(type || '', CONTAINERS_MINER_TYPE.M30) ||
+    isMicroBT(type || ''))
+
+export const isAntminerContainer = (type: string | undefined): boolean =>
+  isContainer(type) &&
+  (_includes(type || '', CONTAINERS_MINER_TYPE.S19XP) ||
+    isAntspaceImmersion(type || '') ||
+    isAntspaceHydro(type || ''))
+
+export const getMinerTypeFromContainerType = (type: string): string | undefined => {
+  if (isAvalonContainer(type)) {
+    return MINER_TYPE.AVALON
+  }
+  if (isWhatsminerContainer(type)) {
+    return MINER_TYPE.WHATSMINER
+  }
+  if (isAntminerContainer(type)) {
+    return MINER_TYPE.ANTMINER
+  }
+  return undefined
 }

@@ -24,8 +24,19 @@ export type DevicesState = {
   selectedLvCabinets: Record<string, unknown>
 }
 
+export type PendingSubmissionAction = {
+  id: number
+  tags?: string[]
+  [key: string]: unknown
+}
+
+export type ActionsState = {
+  pendingSubmissions: PendingSubmissionAction[]
+}
+
 export type RootState = {
   auth: AuthState
+  actions: ActionsState
   notifications: NotificationState
   timezone: TimezoneState
   devices: DevicesState

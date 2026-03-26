@@ -309,3 +309,44 @@ export const getIsMinerPowerReadingAvailable = (model: string | undefined): bool
 }
 
 export const isMiner = (type: string | undefined): boolean => _startsWith(type, 'miner-')
+
+export const isContainer = (type: string | undefined): boolean => _startsWith(type, 'container-')
+
+export const getRackNameFromId = (id: string): string => {
+  const rackRegex = /^([^-]+-[^-]+-[^-]+)/
+
+  const match = id.match(rackRegex)
+  return match && match[1] ? match[1] : ''
+}
+
+export const appendIdToTag = (deviceId: string): string => `id-${deviceId}`
+
+export const appendIdToTags = (deviceIdList: string[]): string[] =>
+  _map(deviceIdList, (deviceId) => appendIdToTag(deviceId))
+
+export const getSupportedPowerModes = (model: string | undefined): string[] => {
+  if (model && _includes(_toLower(model), MINER_TYPE.WHATSMINER)) {
+    return [
+      MINER_POWER_MODE.SLEEP,
+      MINER_POWER_MODE.LOW,
+      MINER_POWER_MODE.NORMAL,
+      MINER_POWER_MODE.HIGH,
+    ]
+  }
+  if (model && _includes(_toLower(model), MINER_TYPE.ANTMINER)) {
+    return [MINER_POWER_MODE.SLEEP, MINER_POWER_MODE.NORMAL]
+  }
+  if (model && _includes(_toLower(model), MINER_TYPE.AVALON)) {
+    return [MINER_POWER_MODE.SLEEP, MINER_POWER_MODE.NORMAL, MINER_POWER_MODE.HIGH]
+  }
+  return []
+}
+
+export const isAvalon = (type: string | undefined) =>
+  isMiner(type) && _includes(type || '', MINER_TYPE.AVALON)
+
+export const isWhatsminer = (type: string | undefined) =>
+  isMiner(type) && _includes(type || '', MINER_TYPE.WHATSMINER)
+
+export const isAntminer = (type: string | undefined): boolean =>
+  isMiner(type) && _includes(type, MINER_TYPE.ANTMINER)

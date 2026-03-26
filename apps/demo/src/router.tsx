@@ -2,6 +2,7 @@ import { Spinner } from '@mdk/core'
 import { lazy, Suspense } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import App from './App'
+import { AlertExample } from './examples/alert-example'
 import { ListViewFilterExample } from './examples/list-view-filter-example/list-view-filter-example'
 import { ChartWrapperPage } from './pages'
 import { BitdeerPage } from './pages/explorer-containers/bitdeer/bitdeer-page'
@@ -10,14 +11,14 @@ import BitmainPage from './pages/explorer-containers/bitmain/bitmain-page'
 import { MicroBTPage } from './pages/explorer-containers/micro-bt/micro-bt-page'
 import { MinerChipsCardDemo } from './pages/explorer-details-view/miner-chips-card/miner-chips-card-demo'
 import { MinerInfoCardDemo } from './pages/explorer-details-view/miner-info-card/miner-info-card.demo'
+import { MinerPowerModeDemo } from './pages/explorer-details-view/miner-power-mode/miner-power-mode-demo'
+import { MinersActivityChartDemo } from './pages/explorer-details-view/miners-activity-chart/miners-activity-chart-demo'
 import { SecondaryStatCardDemo } from './pages/explorer-details-view/secondary-stat-card/secondary-stat-card-demo'
 import { SingleStatCardDemo } from './pages/explorer-details-view/single-stat-card/single-stat-card-demo'
 import { StatsGroupCardDemo } from './pages/explorer-details-view/stats-group-card/stats-group-card-demo'
 import { MosaicPageDemo } from './pages/mosaic-page/mosaic.page'
 import { StateExportsPage } from './pages/stats-export-page'
 import { WidgetTopRowPage } from './pages/widget-top-row-page'
-import { AlertExample } from './examples/alert-example'
-import { MinersActivityChartDemo } from './pages/explorer-details-view/miners-activity-chart/miners-activity-chart-demo'
 
 // Lazy load ALL pages to eliminate unused JavaScript and CSS
 const HomePage = lazy(() => import('./pages/home-page').then((m) => ({ default: m.HomePage })))
@@ -312,6 +313,7 @@ export const router = createBrowserRouter(
         { path: 'miner-info-card', element: withSuspense(MinerInfoCardDemo) },
         { path: 'miner-chips-card', element: withSuspense(MinerChipsCardDemo) },
         { path: 'miners-activity-chart', element: withSuspense(MinersActivityChartDemo) },
+        { path: 'miner-power-mode', element: withSuspense(MinerPowerModeDemo) },
         { path: '*', element: withSuspense(NotFoundPage) },
       ],
     },

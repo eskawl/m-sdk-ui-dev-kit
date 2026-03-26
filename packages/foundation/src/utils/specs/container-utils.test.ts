@@ -3,13 +3,17 @@ import { CONTAINER_SETTINGS_MODEL } from '../../constants/container-constants'
 import {
   getContainerName,
   getContainerSettingsModel,
+  getMinerTypeFromContainerType,
+  isAntminerContainer,
   isAntspaceHydro,
   isAntspaceImmersion,
+  isAvalonContainer,
   isBitdeer,
   isBitmainImmersion,
   isContainerOffline,
   isMicroBT,
   isMicroBTKehua,
+  isWhatsminerContainer,
 } from '../container-utils'
 
 const GET_CONTAINER_NAME_TEST_ARGS = {
@@ -247,6 +251,122 @@ describe('container utils', () => {
 
     it('returns null for unknown type', () => {
       expect(getContainerSettingsModel('unknown-type')).toBeNull()
+    })
+  })
+  describe('isAvalonContainer', () => {
+    it('returns false when isContainer is false', () => {
+      expect(isAvalonContainer('containerttt-a1346')).toBe(false)
+    })
+
+    it('returns true when isContainer is true and type includes A1346 token', () => {
+      expect(isAvalonContainer('container-a1346')).toBe(true)
+    })
+
+    it('returns false when isContainer is true but type does not include A1346 token', () => {
+      expect(isAvalonContainer('container-m56')).toBe(false)
+    })
+
+    it('returns false when type is undefined', () => {
+      expect(isAvalonContainer(undefined)).toBe(false)
+    })
+  })
+
+  describe('isWhatsminerContainer', () => {
+    it('returns false when isContainer is false', () => {
+      expect(isWhatsminerContainer('containerrrr-m56')).toBe(false)
+    })
+
+    it('returns true when type includes M56 token', () => {
+      expect(isWhatsminerContainer('container-m56')).toBe(true)
+    })
+
+    it('returns true when type includes M30 token', () => {
+      expect(isWhatsminerContainer('container-m30')).toBe(true)
+    })
+
+    it('returns true when isMicroBT returns true', () => {
+      expect(isWhatsminerContainer('container-microbt')).toBe(true)
+    })
+
+    it('returns false when no whatsminer condition matches', () => {
+      expect(isWhatsminerContainer('container-s19xp')).toBe(false)
+    })
+
+    it('returns false when type is undefined', () => {
+      expect(isWhatsminerContainer(undefined)).toBe(false)
+    })
+  })
+
+  describe('isAntminerContainer', () => {
+    it('returns false when isContainer is false', () => {
+      expect(isAntminerContainer('containerrr-s19xp')).toBe(false)
+    })
+
+    it('returns true when type includes S19XP token', () => {
+      expect(isAntminerContainer('container-s19xp')).toBe(true)
+    })
+
+    it('returns true when isAntspaceImmersion returns true', () => {
+      expect(isAntminerContainer('container-as-immersion')).toBe(true)
+    })
+
+    it('returns true when isAntspaceHydro returns true', () => {
+      expect(isAntminerContainer('container-as-hk3')).toBe(true)
+    })
+
+    it('returns false when no antminer condition matches', () => {
+      expect(isAntminerContainer('container-m56')).toBe(false)
+    })
+
+    it('returns false when type is undefined', () => {
+      expect(isAntminerContainer(undefined)).toBe(false)
+    })
+  })
+
+  describe('getMinerTypeFromContainerType', () => {
+    it('returns AVALON when isAvalonContainer matches', () => {
+      expect(getMinerTypeFromContainerType('container-a1346')).toBe('av')
+    })
+
+    it('returns WHATSMINER when isWhatsminerContainer matches via M56', () => {
+      expect(getMinerTypeFromContainerType('container-m56')).toBe('wm')
+    })
+
+    it('returns WHATSMINER when isWhatsminerContainer matches via M30', () => {
+      expect(getMinerTypeFromContainerType('container-m30')).toBe('wm')
+    })
+
+    it('returns WHATSMINER when isMicroBT returns true', () => {
+      expect(getMinerTypeFromContainerType('container-microbt')).toBe('wm')
+    })
+
+    it('returns ANTMINER when isAntminerContainer matches via S19XP', () => {
+      expect(getMinerTypeFromContainerType('container-s19xp')).toBe('am')
+    })
+
+    it('returns ANTMINER when isAntspaceImmersion returns true', () => {
+      expect(getMinerTypeFromContainerType('container-as-immersion')).toBe('am')
+    })
+
+    it('returns ANTMINER when isAntspaceHydro returns true', () => {
+      expect(getMinerTypeFromContainerType('container-as-hk3')).toBe('am')
+    })
+
+    it('returns undefined when no type matches', () => {
+      expect(getMinerTypeFromContainerType('container-unknown')).toBeUndefined()
+    })
+
+    it('returns undefined when isContainer is false for all checks', () => {
+      expect(getMinerTypeFromContainerType('containerrr-a1346')).toBeUndefined()
+    })
+
+    it('AVALON takes priority over WHATSMINER when type matches both', () => {
+      // type contains both a1346 and m56 tokens
+      expect(getMinerTypeFromContainerType('container-a1346-m56')).toBe('av')
+    })
+
+    it('WHATSMINER takes priority over ANTMINER when type matches both', () => {
+      expect(getMinerTypeFromContainerType('container-m56-s19xp')).toBe('wm')
     })
   })
 })

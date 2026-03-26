@@ -44,4 +44,7 @@ export type ApiError = {
   error: string
   message: string
   status: number
+  data?: {
+    message?: string
+  }
 }

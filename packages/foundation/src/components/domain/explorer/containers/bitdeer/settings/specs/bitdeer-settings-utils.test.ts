@@ -18,8 +18,8 @@ import {
   shouldBitdeerTankPressureSuperflash,
 } from '../bitdeer-settings-utils'
 
-vi.mock('@/utils/device-utils', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@/utils/device-utils')>()
+vi.mock('../../../../../../../utils/device-utils', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../../../../../../../utils/device-utils')>()
   return {
     ...actual,
     getContainerSpecificStats: vi.fn((data) => data?.container_specific),
