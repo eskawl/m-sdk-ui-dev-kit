@@ -168,8 +168,8 @@ export const ChartContainer = React.forwardRef<HTMLDivElement, ChartContainerPro
                 </div>
               )}
             </div>
-            <div className="mdk-chart-container__highlight-area">
-              {highlightedValue && (
+            {highlightedValue && (
+              <div className="mdk-chart-container__highlight-area">
                 <div
                   className={cn(
                     'mdk-chart-container__highlighted-value',
@@ -186,8 +186,8 @@ export const ChartContainer = React.forwardRef<HTMLDivElement, ChartContainerPro
                     </span>
                   )}
                 </div>
-              )}
-            </div>
+              </div>
+            )}
             <div className="mdk-chart-container__chart-area">
               {loading && (
                 <div className="mdk-chart-container__loading-overlay">

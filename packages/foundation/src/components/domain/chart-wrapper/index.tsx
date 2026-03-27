@@ -1,11 +1,8 @@
 import * as React from 'react'
 
-import type { SpinnerProps } from '@mdk/core'
-import { cn, EmptyState, Spinner } from '@mdk/core'
+import { cn, EmptyState, Loader } from '@mdk/core'
 import { CHART_EMPTY_DESCRIPTION } from '../../../constants/charts'
 import { useChartDataCheck } from '../../../hooks'
-
-const SPINNER_COLOR: SpinnerProps['color'] = 'secondary'
 
 type ChartWrapperProps = {
   /**
@@ -112,18 +109,17 @@ const ChartWrapper: React.FC<ChartWrapperProps> = ({
   dataset,
   isLoading = false,
   showNoDataPlaceholder = true,
-  customLoader,
+  customLoader = <Loader />,
   customNoDataMessage,
-  minHeight,
-  loadingMinHeight,
+  minHeight = 400,
+  loadingMinHeight = minHeight,
   className,
 }) => {
   // Check if chart has data
   const hasNoData = useChartDataCheck({ data, dataset })
 
   // Determine visibility states
-  const isPlaceholderVisible = !isLoading && hasNoData && showNoDataPlaceholder
-  const isContentVisible = !(isLoading || isPlaceholderVisible)
+  const isDataVisible = !(hasNoData || isLoading)
 
   // Get empty message
   const emptyMessage = React.useMemo(() => {
@@ -139,14 +135,14 @@ const ChartWrapper: React.FC<ChartWrapperProps> = ({
       <div
         className={cn(
           'mdk-chart-wrapper__content',
-          !isContentVisible && 'mdk-chart-wrapper__content--hidden',
+          !isDataVisible && 'mdk-chart-wrapper__content--hidden',
         )}
       >
         {children}
       </div>
 
       {/* Empty State */}
-      {isPlaceholderVisible && (
+      {!isLoading && hasNoData && showNoDataPlaceholder && (
         <div
           className="mdk-chart-wrapper__empty"
           style={minHeight ? { minHeight: `${minHeight}px` } : undefined}
@@ -165,7 +161,7 @@ const ChartWrapper: React.FC<ChartWrapperProps> = ({
           className="mdk-chart-wrapper__loading"
           style={{ minHeight: `${loadingMinHeight || minHeight || 400}px` }}
         >
-          {customLoader || <Spinner type="circle" color={SPINNER_COLOR} />}
+          {customLoader}
         </div>
       )}
     </div>
