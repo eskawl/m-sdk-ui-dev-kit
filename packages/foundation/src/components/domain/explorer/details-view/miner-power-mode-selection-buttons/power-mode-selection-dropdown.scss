@@ -9,6 +9,7 @@
   cursor: pointer;
   border: 1px solid rgba(var(--mdk-color-white-rgb), 0.1);
   transition: border-color 0.2s ease;
+  font-size: 14px;
 
   &:hover {
     border-color: rgba(var(--mdk-color-white-rgb), 0.2);
@@ -22,15 +23,5 @@
     &:hover {
       border-color: rgba(var(--mdk-color-white-rgb), 0.1);
     }
-  }
-
-  &--open {
-    svg {
-      transform: rotate(180deg);
-    }
-  }
-
-  svg {
-    transition: transform 0.3s ease;
   }
 }

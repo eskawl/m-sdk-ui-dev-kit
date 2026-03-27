@@ -41,7 +41,7 @@ export const PowerModeSelectionDropdown = ({
       )}
     >
       <div>{disabled ? 'Set Power Mode' : buttonText}</div>
-      <ArrowIcon isOpen={isOpen} />
+      <ArrowIcon isOpen={!isOpen} />
     </div>
   )
 
@@ -56,7 +56,7 @@ export const PowerModeSelectionDropdown = ({
           <span>{trigger}</span>
         )}
       </DropdownMenu.Trigger>
-      <DropdownMenu.Content align="start" side="top">
+      <DropdownMenu.Content alignWidth side="top">
         {powerModeItems.map(({ key, label }) => (
           <DropdownMenu.Item
             key={key}
