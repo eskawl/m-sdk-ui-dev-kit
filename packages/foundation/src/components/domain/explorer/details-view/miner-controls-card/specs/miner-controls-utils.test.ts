@@ -7,11 +7,11 @@ import {
   groupTailLogByMinersByType,
   recreateSubmission,
 } from '../miner-controls-utils'
-import { MINER_TYPE, MinerStatuses } from '../../../../../../constants/device-constants'
-import { MINER_POWER_MODE } from '../../../../../../utils/status-utils'
-import type { Device } from '../../../../../../types'
+import { MINER_TYPE, MinerStatuses } from '@/constants/device-constants'
+import { MINER_POWER_MODE } from '@/utils/status-utils'
+import type { Device } from '@/types'
 
-vi.mock('../../../../../../utils/containerUtils', () => ({
+vi.mock('@/utils/containerUtils', () => ({
   getMinerTypeFromContainerType: vi.fn((type: string) => {
     if (type.includes('antminer')) return MINER_TYPE.ANTMINER
     if (type.includes('whatsminer')) return MINER_TYPE.WHATSMINER

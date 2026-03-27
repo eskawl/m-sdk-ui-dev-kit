@@ -50,7 +50,6 @@
     &[data-state='active'] {
       text-shadow: 0 0 0.25px currentcolor;
       color: var(--mdk-color-primary);
-      box-shadow: inset 0 -2px 0 var(--mdk-color-primary);
     }
 
     &[data-disabled] {
@@ -60,12 +59,11 @@
 
     &--side {
       padding: 0.5rem 1.063rem;
-      height: 34px;
+      height: 40px;
       font-size: 14px;
       color: var(--mdk-color-text-secondary);
       border: 1px solid var(--mdk-button-secondary-border);
       background: transparent;
-      box-shadow: var(--mdk-shadow-light);
       transition:
         color 0.3s ease-in-out,
         background 0.3s ease-in-out,
@@ -82,7 +80,6 @@
 
       &[data-state='active'],
       &.active {
-        box-shadow: var(--mdk-shadow-light);
         border-color: transparent;
         background: var(--color-primary-transparent-20);
         color: var(--mdk-color-primary);

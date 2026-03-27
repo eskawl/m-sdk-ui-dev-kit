@@ -8,6 +8,24 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import './App.scss'
 import { COMPONENT_NAV } from './constants/navigation'
 
+const sortMenuItems = (items: SidebarMenuItem[]): SidebarMenuItem[] =>
+  [...items]
+    .sort((a, b) => a.label.localeCompare(b.label))
+    .map((item) => (item.items ? { ...item, items: sortMenuItems(item.items) } : item))
+
+const filterMenuItems = (items: SidebarMenuItem[], query: string): SidebarMenuItem[] =>
+  items.reduce<SidebarMenuItem[]>((acc, item) => {
+    if (item.items) {
+      const filteredChildren = filterMenuItems(item.items, query)
+      if (filteredChildren.length > 0 || item.label.toLowerCase().includes(query)) {
+        acc.push({ ...item, items: filteredChildren.length > 0 ? filteredChildren : item.items })
+      }
+    } else if (item.label.toLowerCase().includes(query)) {
+      acc.push(item)
+    }
+    return acc
+  }, [])
+
 const App = (): JSX.Element => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -17,15 +35,11 @@ const App = (): JSX.Element => {
   const activeSection = location.pathname === '/' ? '' : location.pathname.slice(1)
 
   const sortedAndFilteredNav = useMemo(() => {
-    // First sort all items alphabetically
     const sorted = COMPONENT_NAV.map((section) => ({
       ...section,
-      items: section.items
-        ? [...section.items].sort((a, b) => a.label.localeCompare(b.label))
-        : undefined,
+      items: section.items ? sortMenuItems(section.items) : undefined,
     }))
 
-    // Then apply search filter if there's a query
     if (!searchQuery.trim()) {
       return sorted
     }
@@ -38,9 +52,7 @@ const App = (): JSX.Element => {
           return section.label.toLowerCase().includes(query) ? section : null
         }
 
-        const filteredItems = section.items.filter((item) =>
-          item.label.toLowerCase().includes(query),
-        )
+        const filteredItems = filterMenuItems(section.items, query)
 
         if (filteredItems.length === 0 && !section.label.toLowerCase().includes(query)) {
           return null
@@ -63,6 +75,8 @@ const App = (): JSX.Element => {
     <div className="demo-app__search">
       <MagnifyingGlassIcon className="demo-app__search-icon" />
       <input
+        id="sidebar-search"
+        name="sidebar-search"
         type="text"
         placeholder="Search components..."
         value={searchQuery}

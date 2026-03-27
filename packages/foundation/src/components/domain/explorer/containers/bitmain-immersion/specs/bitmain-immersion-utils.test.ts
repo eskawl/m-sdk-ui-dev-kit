@@ -1,12 +1,12 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import type { Device } from '../../../../../../types/device'
+import type { Device } from '@/types/device'
 import {
   getColorFromThresholds,
   getShouldFlashFromThresholds,
   getShouldFlashWidgetFromThresholds,
   transformThresholdsForUtility,
-} from '../../../../../../utils/container-threshold-utils'
-import { CONTAINER_STATUS } from '../../../../../../utils/status-utils'
+} from '@/utils/container-threshold-utils'
+import { CONTAINER_STATUS } from '@/utils/status-utils'
 import {
   BITMAIN_IMMERSION_OIL_TEMP_MIN_BY_CHARACTER_MAP,
   getImmersionTemperatureColor,
@@ -16,7 +16,7 @@ import {
 } from '../bitmain-immersion-utils'
 
 // Mock dependencies
-vi.mock('../../../../../../utils/container-threshold-utils', () => ({
+vi.mock('@/utils/container-threshold-utils', () => ({
   getColorFromThresholds: vi.fn((temp, thresholds) => {
     if (temp < thresholds.criticalLow) return 'red'
     if (temp < thresholds.alert) return 'red'

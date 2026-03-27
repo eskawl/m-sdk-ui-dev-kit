@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import type { ActionsState, PendingSubmissionAction } from '../../../types/redux'
+import type { ActionsState, PendingSubmissionAction } from '@/types/redux'
 import { actionsSlice, getExistedIndex } from '../actions-slice'
 
 const makeSubmission = (

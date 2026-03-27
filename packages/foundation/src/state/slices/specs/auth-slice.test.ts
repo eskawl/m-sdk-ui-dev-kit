@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import type { AuthState, RootState } from '../../../types/redux'
-import type { AuthConfig } from '../../../utils/auth-utils'
+import type { AuthState, RootState } from '@/types/redux'
+import type { AuthConfig } from '@/utils/auth-utils'
 import { authSlice, selectPermissions, selectToken } from '../auth-slice'
 
 describe('authSlice', () => {

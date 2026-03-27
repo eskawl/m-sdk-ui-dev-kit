@@ -56,7 +56,7 @@ export const PowerModeSelectionDropdown = ({
           <span>{trigger}</span>
         )}
       </DropdownMenu.Trigger>
-      <DropdownMenu.Content alignWidth side="top">
+      <DropdownMenu.Content side="top">
         {powerModeItems.map(({ key, label }) => (
           <DropdownMenu.Item
             key={key}

@@ -1,7 +1,7 @@
 import { UNITS } from '@mdk/core'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import type { Device } from '../../../../../types'
-import { isBitdeer, isMicroBT } from '../../../../../utils/container-utils'
+import type { Device } from '@/types'
+import { isBitdeer, isMicroBT } from '@/utils/container-utils'
 import { getBitdeerParameterSettingsData } from '../bitdeer'
 import type { ParameterSettings } from '../container-params-settings-utils'
 import {
@@ -11,7 +11,7 @@ import {
 } from '../container-params-settings-utils'
 import { getMicroBTThresholdSettingsData } from '../micro-bt/settings/micro-bt-utils'
 
-vi.mock('../../../../../utils/container-utils', () => ({
+vi.mock('@/utils/container-utils', () => ({
   isBitdeer: vi.fn((type) => type === 'bitdeer' || type === 'bitdeer-immersion'),
   isMicroBT: vi.fn((type) => type === 'microbt' || type === 'microbt-kehua'),
 }))

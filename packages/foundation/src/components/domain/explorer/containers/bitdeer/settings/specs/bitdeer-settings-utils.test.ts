@@ -1,7 +1,8 @@
 import { COLOR } from '@mdk/core'
 import { describe, expect, it, vi } from 'vitest'
-import type { Container } from '../../../../../../../types/device'
-import { CONTAINER_STATUS } from '../../../../../../../utils/status-utils'
+import type * as DeviceUtils from '@/utils/device-utils'
+import type { Container } from '@/types/device'
+import { CONTAINER_STATUS } from '@/utils/status-utils'
 import {
   bitdeerHasAlarmingValue,
   getBitdeerCoolingSystemData,
@@ -18,8 +19,8 @@ import {
   shouldBitdeerTankPressureSuperflash,
 } from '../bitdeer-settings-utils'
 
-vi.mock('../../../../../../../utils/device-utils', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('../../../../../../../utils/device-utils')>()
+vi.mock('@/utils/device-utils', async (importOriginal) => {
+  const actual = await importOriginal<typeof DeviceUtils>()
   return {
     ...actual,
     getContainerSpecificStats: vi.fn((data) => data?.container_specific),

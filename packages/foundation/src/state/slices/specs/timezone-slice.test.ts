@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import type { TimezoneState } from '../../../types/redux'
+import type { TimezoneState } from '@/types/redux'
 import { timezoneSlice } from '../timezone-slice'
 
 describe('timezoneSlice', () => {

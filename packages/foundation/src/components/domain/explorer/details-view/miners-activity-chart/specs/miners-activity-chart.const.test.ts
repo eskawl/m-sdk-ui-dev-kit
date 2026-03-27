@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 
-import { MinerStatuses } from '../../../../../../constants/device-constants'
-import { PowerModeColors } from '../../../../../../utils/device-utils'
-import { MINER_POWER_MODE, SOCKET_STATUSES } from '../../../../../../utils/status-utils'
+import { MinerStatuses } from '@/constants/device-constants'
+import { PowerModeColors } from '@/utils/device-utils'
+import { MINER_POWER_MODE, SOCKET_STATUSES } from '@/utils/status-utils'
 import {
   MINERS_ACTIVITY_ITEMS,
   MINERS_ACTIVITY_LABELS,

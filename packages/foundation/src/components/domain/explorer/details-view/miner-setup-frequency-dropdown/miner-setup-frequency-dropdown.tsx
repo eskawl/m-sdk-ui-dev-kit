@@ -23,8 +23,7 @@ export const MinerSetupFrequencyDropdown = ({
         <Button variant="secondary">{buttonText}</Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content align="start" side="top">
-        <DropdownMenu.DropdownMenuGroup>
-          <DropdownMenu.Label>{buttonText}</DropdownMenu.Label>
+        <DropdownMenu.Group>
           {Array.from({ length: FREQUENCY_COUNT }, (_, index) => {
             const key = String(index)
             return (
@@ -37,7 +36,7 @@ export const MinerSetupFrequencyDropdown = ({
               </DropdownMenu.StaticCheckboxItem>
             )
           })}
-        </DropdownMenu.DropdownMenuGroup>
+        </DropdownMenu.Group>
       </DropdownMenu.Content>
     </DropdownMenu.Root>
   )

@@ -1,6 +1,5 @@
 import * as React from 'react'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
-import { CheckIcon, ChevronRightIcon } from '@radix-ui/react-icons'
 
 import { cn } from '../../utils'
 import { Checkbox } from '../checkbox'
@@ -11,7 +10,6 @@ const DropdownMenu = DropdownMenuPrimitive.Root
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
 const DropdownMenuGroup = DropdownMenuPrimitive.Group
 const DropdownMenuPortal = DropdownMenuPrimitive.Portal
-const DropdownMenuSub = DropdownMenuPrimitive.Sub
 
 // Types
 type DropdownMenuSize = 'sm' | 'md' | 'lg'
@@ -30,23 +28,20 @@ type DropdownMenuContentProps = React.ComponentPropsWithoutRef<
 > & {
   /** @default 'md' */
   size?: DropdownMenuSize
-  /** Aligns the dropdown width to the trigger width */
-  alignWidth?: boolean
 }
 
 const DropdownMenuContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Content>,
   DropdownMenuContentProps
->(({ className, sideOffset = 4, alignWidth = false, align, size = 'md', ...props }, ref) => (
+>(({ className, sideOffset = 4, size = 'md', ...props }, ref) => (
   <DropdownMenuSizeContext.Provider value={size}>
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.Content
         ref={ref}
         sideOffset={sideOffset}
-        align={align ?? (alignWidth ? 'start' : undefined)}
         className={cn(
           'mdk-dropdown-menu__content',
-          alignWidth && 'mdk-dropdown-menu__content--align-width',
+          `mdk-dropdown-menu__content--size-${size}`,
           className,
         )}
         {...props}
@@ -64,7 +59,15 @@ type DropdownMenuStaticContentProps = React.HTMLAttributes<HTMLDivElement> & {
 const DropdownMenuStaticContent = React.forwardRef<HTMLDivElement, DropdownMenuStaticContentProps>(
   ({ className, size = 'md', ...props }, ref) => (
     <DropdownMenuSizeContext.Provider value={size}>
-      <div ref={ref} className={cn('mdk-dropdown-menu__content', className)} {...props} />
+      <div
+        ref={ref}
+        className={cn(
+          'mdk-dropdown-menu__content',
+          `mdk-dropdown-menu__content--size-${size}`,
+          className,
+        )}
+        {...props}
+      />
     </DropdownMenuSizeContext.Provider>
   ),
 )
@@ -78,16 +81,20 @@ type DropdownMenuItemProps = React.ComponentPropsWithoutRef<typeof DropdownMenuP
 const DropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Item>,
   DropdownMenuItemProps
->(({ className, icon, children, ...props }, ref) => (
-  <DropdownMenuPrimitive.Item
-    ref={ref}
-    className={cn('mdk-dropdown-menu__item', className)}
-    {...props}
-  >
-    {icon && <span className="mdk-dropdown-menu__item-icon">{icon}</span>}
-    {children}
-  </DropdownMenuPrimitive.Item>
-))
+>(({ className, icon, children, ...props }, ref) => {
+  const size = React.useContext(DropdownMenuSizeContext)
+
+  return (
+    <DropdownMenuPrimitive.Item
+      ref={ref}
+      className={cn('mdk-dropdown-menu__item', `mdk-dropdown-menu__item--size-${size}`, className)}
+      {...props}
+    >
+      {icon && <span className="mdk-dropdown-menu__item-icon">{icon}</span>}
+      {children}
+    </DropdownMenuPrimitive.Item>
+  )
+})
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName
 
 type DropdownMenuStaticItemProps = React.HTMLAttributes<HTMLDivElement> &
@@ -96,18 +103,26 @@ type DropdownMenuStaticItemProps = React.HTMLAttributes<HTMLDivElement> &
   }
 
 const DropdownMenuStaticItem = React.forwardRef<HTMLDivElement, DropdownMenuStaticItemProps>(
-  ({ className, icon, disabled, active, children, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn('mdk-dropdown-menu__item', className)}
-      data-disabled={disabled || undefined}
-      data-active={active || undefined}
-      {...props}
-    >
-      {icon && <span className="mdk-dropdown-menu__item-icon">{icon}</span>}
-      {children}
-    </div>
-  ),
+  ({ className, icon, disabled, active, children, ...props }, ref) => {
+    const size = React.useContext(DropdownMenuSizeContext)
+
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          'mdk-dropdown-menu__item',
+          `mdk-dropdown-menu__item--size-${size}`,
+          className,
+        )}
+        data-disabled={disabled || undefined}
+        data-active={active || undefined}
+        {...props}
+      >
+        {icon && <span className="mdk-dropdown-menu__item-icon">{icon}</span>}
+        {children}
+      </div>
+    )
+  },
 )
 DropdownMenuStaticItem.displayName = 'DropdownMenuStaticItem'
 
@@ -118,20 +133,21 @@ type DropdownMenuCheckboxItemProps = React.ComponentPropsWithoutRef<
 const DropdownMenuCheckboxItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>,
   DropdownMenuCheckboxItemProps
->(({ className, children, checked, ...props }, ref) => (
-  <DropdownMenuPrimitive.CheckboxItem
-    ref={ref}
-    className={cn('mdk-dropdown-menu__checkbox-item', className)}
-    checked={checked}
-    {...props}
-  >
-    <Checkbox checked={checked === true} size="xs" />
-    {children}
-    <DropdownMenuPrimitive.ItemIndicator className="mdk-dropdown-menu__item-indicator">
-      <CheckIcon />
-    </DropdownMenuPrimitive.ItemIndicator>
-  </DropdownMenuPrimitive.CheckboxItem>
-))
+>(({ className, children, checked, ...props }, ref) => {
+  const size = React.useContext(DropdownMenuSizeContext)
+
+  return (
+    <DropdownMenuPrimitive.CheckboxItem
+      ref={ref}
+      className={cn('mdk-dropdown-menu__item', `mdk-dropdown-menu__item--size-${size}`, className)}
+      checked={checked}
+      {...props}
+    >
+      <Checkbox checked={checked === true} size="xs" />
+      {children}
+    </DropdownMenuPrimitive.CheckboxItem>
+  )
+})
 DropdownMenuCheckboxItem.displayName = DropdownMenuPrimitive.CheckboxItem.displayName
 
 type DropdownMenuStaticCheckboxItemProps = React.HTMLAttributes<HTMLDivElement> &
@@ -142,54 +158,23 @@ type DropdownMenuStaticCheckboxItemProps = React.HTMLAttributes<HTMLDivElement> 
 const DropdownMenuStaticCheckboxItem = React.forwardRef<
   HTMLDivElement,
   DropdownMenuStaticCheckboxItemProps
->(({ className, checked, disabled, active, children, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn('mdk-dropdown-menu__item', className)}
-    data-disabled={disabled || undefined}
-    data-active={active || undefined}
-    {...props}
-  >
-    <Checkbox checked={checked} size="xs" />
-    {children}
-  </div>
-))
+>(({ className, checked, disabled, active, children, ...props }, ref) => {
+  const size = React.useContext(DropdownMenuSizeContext)
+
+  return (
+    <div
+      ref={ref}
+      className={cn('mdk-dropdown-menu__item', `mdk-dropdown-menu__item--size-${size}`, className)}
+      data-disabled={disabled || undefined}
+      data-active={active || undefined}
+      {...props}
+    >
+      <Checkbox checked={checked} size="xs" />
+      {children}
+    </div>
+  )
+})
 DropdownMenuStaticCheckboxItem.displayName = 'DropdownMenuStaticCheckboxItem'
-
-/**
- * DropdownMenuRadioItem - A menu item with radio state
- */
-const DropdownMenuRadioItem = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.RadioItem>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioItem>
->(({ className, children, ...props }, ref) => (
-  <DropdownMenuPrimitive.RadioItem
-    ref={ref}
-    className={cn('mdk-dropdown-menu__radio-item', className)}
-    {...props}
-  >
-    {children}
-    <DropdownMenuPrimitive.ItemIndicator className="mdk-dropdown-menu__item-indicator">
-      <CheckIcon />
-    </DropdownMenuPrimitive.ItemIndicator>
-  </DropdownMenuPrimitive.RadioItem>
-))
-DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName
-
-/**
- * DropdownMenuLabel - Non-interactive label for a group
- */
-const DropdownMenuLabel = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.Label>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label>
->(({ className, ...props }, ref) => (
-  <DropdownMenuPrimitive.Label
-    ref={ref}
-    className={cn('mdk-dropdown-menu__label', className)}
-    {...props}
-  />
-))
-DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName
 
 const DropdownMenuSeparator = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Separator>,
@@ -203,31 +188,24 @@ const DropdownMenuSeparator = React.forwardRef<
 ))
 DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName
 
-/**
- * DropdownMenuShortcut - Keyboard shortcut display (e.g. ⌘C)
- */
-const DropdownMenuShortcut = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLSpanElement>): React.ReactElement => (
-  <span className={cn('mdk-dropdown-menu__item-shortcut', className)} {...props} />
-)
-DropdownMenuShortcut.displayName = 'DropdownMenuShortcut'
-
 type DropdownMenuSearchProps = React.ComponentPropsWithoutRef<typeof Input>
 
 const DropdownMenuSearch = React.forwardRef<HTMLInputElement, DropdownMenuSearchProps>(
-  ({ className, placeholder = 'Search', ...props }, ref) => (
-    <div className="mdk-dropdown-menu__search">
-      <Input
-        ref={ref}
-        variant="search"
-        placeholder={placeholder}
-        className={cn('mdk-dropdown-menu__search-input', className)}
-        {...props}
-      />
-    </div>
-  ),
+  ({ className, placeholder = 'Search', ...props }, ref) => {
+    const size = React.useContext(DropdownMenuSizeContext)
+
+    return (
+      <div className={cn('mdk-dropdown-menu__search', `mdk-dropdown-menu__search--size-${size}`)}>
+        <Input
+          ref={ref}
+          variant="search"
+          placeholder={placeholder}
+          className={cn('mdk-dropdown-menu__search-input', className)}
+          {...props}
+        />
+      </div>
+    )
+  },
 )
 DropdownMenuSearch.displayName = 'DropdownMenuSearch'
 
@@ -236,45 +214,24 @@ type DropdownMenuEmptyProps = React.HTMLAttributes<HTMLDivElement> & {
   message?: string
 }
 
-/**
- * DropdownMenuSubTrigger - Opens a submenu
- */
-const DropdownMenuSubTrigger = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.SubTrigger>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubTrigger>
->(({ className, children, ...props }, ref) => (
-  <DropdownMenuPrimitive.SubTrigger
-    ref={ref}
-    className={cn('mdk-dropdown-menu__sub-trigger', className)}
-    {...props}
-  >
-    {children}
-    <ChevronRightIcon className="mdk-dropdown-menu__item-icon" />
-  </DropdownMenuPrimitive.SubTrigger>
-))
-DropdownMenuSubTrigger.displayName = DropdownMenuPrimitive.SubTrigger.displayName
-
-/**
- * DropdownMenuSubContent - Submenu panel
- */
-const DropdownMenuSubContent = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.SubContent>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubContent>
->(({ className, ...props }, ref) => (
-  <DropdownMenuPrimitive.SubContent
-    ref={ref}
-    className={cn('mdk-dropdown-menu__sub-content', className)}
-    {...props}
-  />
-))
-DropdownMenuSubContent.displayName = DropdownMenuPrimitive.SubContent.displayName
-
 const DropdownMenuEmpty = React.forwardRef<HTMLDivElement, DropdownMenuEmptyProps>(
-  ({ className, message = 'No matching results found', children, ...props }, ref) => (
-    <div ref={ref} className={cn('mdk-dropdown-menu__empty', className)} {...props}>
-      {children || message}
-    </div>
-  ),
+  ({ className, message = 'No matching results found', children, ...props }, ref) => {
+    const size = React.useContext(DropdownMenuSizeContext)
+
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          'mdk-dropdown-menu__empty',
+          `mdk-dropdown-menu__empty--size-${size}`,
+          className,
+        )}
+        {...props}
+      >
+        {children || message}
+      </div>
+    )
+  },
 )
 DropdownMenuEmpty.displayName = 'DropdownMenuEmpty'
 
@@ -332,7 +289,6 @@ const DropdownMenuSearchable: React.FC<DropdownMenuSearchableProps> = ({
 DropdownMenuSearchable.displayName = 'DropdownMenuSearchable'
 
 export {
-  // Aliases
   DropdownMenuCheckboxItem as CheckboxItem,
   DropdownMenuContent as Content,
   DropdownMenu,
@@ -341,36 +297,24 @@ export {
   DropdownMenuEmpty,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuPortal,
-  DropdownMenuRadioItem,
   DropdownMenuSearch,
   DropdownMenuSearchable,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuStaticCheckboxItem,
   DropdownMenuStaticContent,
   DropdownMenuStaticItem,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
   DropdownMenuEmpty as Empty,
   DropdownMenuGroup as Group,
   DropdownMenuItem as Item,
-  DropdownMenuLabel as Label,
   DropdownMenuPortal as Portal,
-  DropdownMenuRadioItem as RadioItem,
   DropdownMenu as Root,
   DropdownMenuSearch as Search,
   DropdownMenuSearchable as Searchable,
   DropdownMenuSeparator as Separator,
-  DropdownMenuShortcut as Shortcut,
   DropdownMenuStaticCheckboxItem as StaticCheckboxItem,
   DropdownMenuStaticContent as StaticContent,
   DropdownMenuStaticItem as StaticItem,
-  DropdownMenuSub as Sub,
-  DropdownMenuSubContent as SubContent,
-  DropdownMenuSubTrigger as SubTrigger,
   DropdownMenuTrigger as Trigger,
 }

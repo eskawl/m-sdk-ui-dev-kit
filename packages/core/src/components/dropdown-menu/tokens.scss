@@ -76,8 +76,8 @@ $dropdown-sizes: (
     font-size: map.get($config, item-font-size);
     line-height: map.get($config, item-line-height);
 
-    .mining-sdk-dropdown-menu__item-icon,
-    .mining-sdk-checkbox {
+    .mdk-dropdown-menu__item-icon,
+    .mdk-checkbox {
       width: map.get($config, item-icon-size);
       height: map.get($config, item-icon-size);
       margin-right: map.get($config, item-icon-gap);
@@ -87,7 +87,7 @@ $dropdown-sizes: (
 
 @mixin dropdown-search-size($size, $config) {
   &--size-#{$size} {
-    .mining-sdk-dropdown-menu__search-input {
+    .mdk-dropdown-menu__search-input {
       padding: map.get($config, search-input-padding);
       padding-right: 32px;
       height: map.get($config, search-input-height);
@@ -95,7 +95,7 @@ $dropdown-sizes: (
       line-height: map.get($config, search-input-line-height);
     }
 
-    .mining-sdk-input__icon {
+    .mdk-input__icon {
       width: map.get($config, search-icon-size);
       height: map.get($config, search-icon-size);
     }

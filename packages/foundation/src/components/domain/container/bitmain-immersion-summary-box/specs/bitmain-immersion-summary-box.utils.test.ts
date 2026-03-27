@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { DEVICE_STATUS } from '../../../../../constants/devices'
+import { DEVICE_STATUS } from '@/constants/devices'
 import { getPumpStatus, pumpStatusToIndicatorColor } from '../bitmain-immersion-summary-box.utils'
 
 describe('bitmain-immersion-summary-box.utils', () => {

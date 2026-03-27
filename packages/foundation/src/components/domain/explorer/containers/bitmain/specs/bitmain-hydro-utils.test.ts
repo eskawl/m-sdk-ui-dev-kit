@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import type { Device } from '../../../../../../types/device'
-import { getDeviceData } from '../../../../../../utils/device-utils'
+import type { Device } from '@/types/device'
+import { getDeviceData } from '@/utils/device-utils'
 import {
   antspaceHydroHasAlarmingValue,
   BITMAIN_HYDRO_SUPPLY_LIQUID_PRESSURE_MIN_BY_CHARACTER_MAP,
@@ -14,14 +14,14 @@ import {
 } from '../bitmain-hydro-utils'
 
 // Mock dependencies
-vi.mock('../../../../../../utils/container-threshold-utils', () => ({
+vi.mock('@/utils/container-threshold-utils', () => ({
   getColorFromThresholds: vi.fn((value) => (value > 50 ? 'red' : 'green')),
   getShouldFlashFromThresholds: vi.fn((value) => value > 55),
   getShouldFlashWidgetFromThresholds: vi.fn((value) => value > 60),
   transformThresholdsForUtility: vi.fn(() => ({})),
 }))
 
-vi.mock('../../../../../../utils/device-utils', () => ({
+vi.mock('@/utils/device-utils', () => ({
   getDeviceData: vi.fn((data) => [
     undefined,
     {

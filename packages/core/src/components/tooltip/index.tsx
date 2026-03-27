@@ -85,7 +85,7 @@ const TooltipContent = React.forwardRef<
       className={cn('mdk-tooltip__content', className)}
       {...props}
     >
-      <div className="mining-sdk-tooltip__content-main">{children}</div>
+      <div className="mdk-tooltip__content-main">{children}</div>
       {showArrow && <TooltipArrow />}
     </TooltipPrimitive.Content>
   </TooltipPortal>
