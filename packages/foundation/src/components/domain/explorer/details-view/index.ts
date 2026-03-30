@@ -1,4 +1,5 @@
 export * from './miner-chips-card'
+export * from './miner-controls-card/miner-controls-card'
 export * from './miner-info-card/miner-info-card'
 export * from './miner-metric-card/miner-metric-card'
 export * from './miner-power-mode-selection-buttons/miner-power-mode-selection-buttons'

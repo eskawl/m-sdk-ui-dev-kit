@@ -1,18 +1,18 @@
 import * as React from 'react'
 import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form'
 
+import type { CascaderOption, CascaderValue } from '../cascader'
+import { Cascader } from '../cascader'
 import { Checkbox } from '../checkbox'
 import { DatePicker } from '../date-picker'
 import { Input } from '../input'
+import { Label } from '../label'
 import { Radio, RadioGroup } from '../radio'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../select'
 import { Switch } from '../switch'
-import { TextArea } from '../textarea'
-import { Label } from '../label'
-import { TagInput } from '../tag-input'
 import type { TagInputOption } from '../tag-input'
-import { Cascader } from '../cascader'
-import type { CascaderOption, CascaderValue } from '../cascader'
+import { TagInput } from '../tag-input'
+import { TextArea } from '../textarea'
 
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './index'
 
@@ -218,7 +218,7 @@ export type FormCheckboxProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 > = BaseFormFieldProps<TFieldValues, TName> & {
-  checkboxProps?: Omit<React.ComponentProps<typeof Checkbox>, 'checked' | 'onCheckedChange'>
+  checkboxProps?: React.ComponentProps<typeof Checkbox>
   layout?: 'row' | 'column'
 }
 

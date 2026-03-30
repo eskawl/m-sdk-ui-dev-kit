@@ -32,6 +32,10 @@ export type CheckboxProps = {
    * Custom className for the indicator element
    */
   indicatorClassName?: string
+  /**
+   * Callback when the checked state changes
+   */
+  onCheckedChange?: (checked: CheckboxPrimitive.CheckedState) => void
 } & React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
 
 /**
@@ -48,6 +52,7 @@ const Checkbox = React.forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root
     ref,
   ) => (
     <CheckboxPrimitive.Root
+      onCheckedChange={props.onCheckedChange}
       ref={ref}
       className={cn(
         'mdk-checkbox',

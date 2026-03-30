@@ -1,5 +1,5 @@
-import * as React from 'react'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
+import * as React from 'react'
 
 import { cn } from '../../utils'
 import { Checkbox } from '../checkbox'
@@ -26,6 +26,7 @@ const DropdownMenuSizeContext = React.createContext<DropdownMenuSize>('md')
 type DropdownMenuContentProps = React.ComponentPropsWithoutRef<
   typeof DropdownMenuPrimitive.Content
 > & {
+  alignWidth?: boolean
   /** @default 'md' */
   size?: DropdownMenuSize
 }
@@ -33,7 +34,7 @@ type DropdownMenuContentProps = React.ComponentPropsWithoutRef<
 const DropdownMenuContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Content>,
   DropdownMenuContentProps
->(({ className, sideOffset = 4, size = 'md', ...props }, ref) => (
+>(({ className, sideOffset = 4, alignWidth = false, size = 'md', ...props }, ref) => (
   <DropdownMenuSizeContext.Provider value={size}>
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.Content
@@ -42,6 +43,7 @@ const DropdownMenuContent = React.forwardRef<
         className={cn(
           'mdk-dropdown-menu__content',
           `mdk-dropdown-menu__content--size-${size}`,
+          alignWidth && 'mdk-dropdown-menu__content--align-width',
           className,
         )}
         {...props}

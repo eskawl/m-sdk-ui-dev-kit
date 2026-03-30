@@ -14,6 +14,13 @@
         max-width: map.get($config, content-max-width);
       }
     }
+
+    &--align-width {
+      width: var(--radix-dropdown-menu-trigger-width);
+      min-width: unset;
+      max-width: unset;
+      max-height: var(--radix-dropdown-menu-content-available-height);
+    }
   }
 
   &__item {

@@ -13,9 +13,10 @@ import {
   CONTAINER_TYPE_NAME_MAP,
   MAINTENANCE_CONTAINER,
 } from '../constants/container-constants'
+import { CONTAINERS_MINER_TYPE, MINER_TYPE } from '../constants/device-constants'
+import type { ContainerPosInfo } from '../types/device'
 import { isContainer, separateByHyphenRegExp, separateByTwoHyphensRegExp } from './device-utils'
 import { CONTAINER_STATUS } from './status-utils'
-import { CONTAINERS_MINER_TYPE, MINER_TYPE } from '../constants/device-constants'
 
 export const isContainerOffline = (snap: { stats?: { status?: string } } | undefined): boolean =>
   snap?.stats?.status === CONTAINER_STATUS.OFFLINE
@@ -138,4 +139,13 @@ export const getMinerTypeFromContainerType = (type: string): string | undefined 
     return MINER_TYPE.ANTMINER
   }
   return undefined
+}
+
+export const getDeviceContainerPosText = (containerPosInfo: Partial<ContainerPosInfo>): string => {
+  const { containerInfo, pdu, socket, pos } = containerPosInfo || {}
+  if ((!pdu || !socket) && !pos) {
+    return `${getContainerName(containerInfo?.container)}`
+  }
+  const destination = pos || `${pdu}_${socket}`
+  return `${getContainerName(containerInfo?.container)} ${destination}`
 }

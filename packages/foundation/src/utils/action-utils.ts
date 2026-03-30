@@ -6,6 +6,7 @@ import {
   BATCH_ACTION_TYPE,
   CONTAINER_ACTIONS,
   MINER_ACTIONS,
+  SUBMIT_ACTION_TYPES,
   THING_ACTIONS,
 } from '../constants/actions'
 import { COMPLETE_CONTAINER_TYPE, CONTAINER_TYPE_NAME_MAP } from '../constants/container-constants'
@@ -316,7 +317,10 @@ export const executeCreateAction = async ({
     delete newActionPayload.codesList
   }
 
-  const { data, error } = await apiDelegate({ ...newActionPayload, type: 'voting' })
+  const { data, error } = await apiDelegate({
+    ...newActionPayload,
+    type: SUBMIT_ACTION_TYPES.VOTING,
+  })
 
   return { newActionPayload, isBatch, data, error }
 }

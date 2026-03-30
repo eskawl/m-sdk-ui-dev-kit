@@ -10,6 +10,7 @@ import { BitmainImmersionPage } from './pages/explorer-containers/bitmain-immers
 import BitmainPage from './pages/explorer-containers/bitmain/bitmain-page'
 import { MicroBTPage } from './pages/explorer-containers/micro-bt/micro-bt-page'
 import { MinerChipsCardDemo } from './pages/explorer-details-view/miner-chips-card/miner-chips-card-demo'
+import { MinerControlsCardDemo } from './pages/explorer-details-view/miner-controls-card/miner-controls-card-demo'
 import { MinerInfoCardDemo } from './pages/explorer-details-view/miner-info-card/miner-info-card.demo'
 import { MinerPowerModeDemo } from './pages/explorer-details-view/miner-power-mode/miner-power-mode-demo'
 import { MinersActivityChartDemo } from './pages/explorer-details-view/miners-activity-chart/miners-activity-chart-demo'
@@ -314,6 +315,7 @@ export const router = createBrowserRouter(
         { path: 'miner-chips-card', element: withSuspense(MinerChipsCardDemo) },
         { path: 'miners-activity-chart', element: withSuspense(MinersActivityChartDemo) },
         { path: 'miner-power-mode', element: withSuspense(MinerPowerModeDemo) },
+        { path: 'miner-controls-card', element: withSuspense(MinerControlsCardDemo) },
         { path: '*', element: withSuspense(NotFoundPage) },
       ],
     },

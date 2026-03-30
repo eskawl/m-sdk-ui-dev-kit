@@ -1,5 +1,5 @@
-import * as React from 'react'
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
+import * as React from 'react'
 
 import type { Position } from '../../types'
 import { cn } from '../../utils'
@@ -145,6 +145,8 @@ const SimpleTooltip: React.FC<SimpleTooltipProps> = ({
   className,
   children,
 }) => {
+  if (!content) return <>{children}</>
+
   return (
     <TooltipProvider delayDuration={delayDuration}>
       <Tooltip>

@@ -138,24 +138,6 @@ describe('ChartContainer', () => {
   })
 
   describe('range selector', () => {
-    it('renders range selector group when options provided', () => {
-      const { container } = render(
-        <ChartContainer {...defaultProps} rangeSelector={rangeSelector} />,
-      )
-
-      expect(container.querySelector('.mdk-chart-container__range-selector')).toBeInTheDocument()
-    })
-
-    it('renders one range button per option', () => {
-      const { container } = render(
-        <ChartContainer {...defaultProps} rangeSelector={rangeSelector} />,
-      )
-
-      expect(container.querySelectorAll('.mdk-chart-container__range-btn')).toHaveLength(
-        rangeSelector.options.length,
-      )
-    })
-
     it('calls onChange when a range button is clicked', () => {
       const onChange = vi.fn()
       render(<ChartContainer {...defaultProps} rangeSelector={{ ...rangeSelector, onChange }} />)

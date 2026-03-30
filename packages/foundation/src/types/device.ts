@@ -6,9 +6,17 @@ export type DeviceLast = {
   [key: string]: unknown
 }
 
+export type PosHistoryEntry = {
+  container: string
+  pos: string
+  removedAt: number
+}
 export type DeviceInfo = {
   container?: string
   pos?: string
+  serialNum?: string
+  macAddress?: string | null
+  posHistory?: Partial<PosHistoryEntry[]>
   [key: string]: unknown
 }
 
@@ -22,6 +30,7 @@ export type Device = {
   info?: DeviceInfo
   containerId?: string
   address?: string | null
+  code?: string
   [key: string]: unknown
 }
 
@@ -53,6 +62,14 @@ export type ContainerInfo = {
   return_liquid_pressure: number
 }
 
+export type ContainerPosInfo = {
+  containerInfo: Partial<{ container: string; type: string }>
+  pdu: string | number
+  socket: string | number
+  pos: string
+  [key: string]: unknown
+}
+
 export type ChipData = {
   index: number
   current: number
@@ -79,6 +96,11 @@ export type StatsFrequencyMhz = {
   [key: string]: unknown
 }
 
+export type MinerSpecificStats = {
+  upfreq_speed: number
+  [key: string]: unknown
+}
+
 export type ContainerStats = {
   status: string
   ambient_temp_c: number
@@ -90,6 +112,7 @@ export type ContainerStats = {
   stats: Record<string, unknown>
   temperature_c: Partial<StatsTemperatureC>
   frequency_mhz: Partial<StatsFrequencyMhz>
+  miner_specific: Partial<MinerSpecificStats>
   [key: string]: unknown
 }
 

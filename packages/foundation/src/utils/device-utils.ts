@@ -350,3 +350,15 @@ export const isWhatsminer = (type: string | undefined) =>
 
 export const isAntminer = (type: string | undefined): boolean =>
   isMiner(type) && _includes(type, MINER_TYPE.ANTMINER)
+
+export const getMinerShortCode = (
+  code: string | undefined,
+  tags: string[] | undefined,
+  defaultValue = 'N/A',
+): string => {
+  if (code) return code
+
+  const codeTag = tags?.find((tag) => tag.startsWith('code-') && !tag.endsWith('undefined'))
+
+  return codeTag ? codeTag.replace('code-', '') : defaultValue
+}

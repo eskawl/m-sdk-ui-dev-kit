@@ -170,6 +170,7 @@ export const COMPONENT_NAV: SidebarMenuItem[] = [
           { id: 'miner-chips-card', label: 'Miner chips card' },
           { id: 'miners-activity-chart', label: 'Miners activity chart' },
           { id: 'miner-power-mode', label: 'Miner power mode' },
+          { id: 'miner-controls-card', label: 'Miner controls card' },
         ],
       },
     ],

@@ -36,6 +36,10 @@ export const ACTION_SUFFIXES = {
   REPAIR: 'repair',
 }
 
+export const SUBMIT_ACTION_TYPES = {
+  VOTING: 'voting',
+}
+
 export const BATCH_ACTION_TYPES = {
   // Repair actions
   ATTACH_SPARE_PARTS: 'attachSpareParts',

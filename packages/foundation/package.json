@@ -61,6 +61,7 @@
     "vitest": "^3.0.0"
   },
   "dependencies": {
+    "@hookform/resolvers": "catalog:",
     "@mdk/core": "workspace:*",
     "@radix-ui/react-icons": "catalog:",
     "@radix-ui/react-use-controllable-state": "catalog:",
@@ -80,7 +81,8 @@
     "jsdom": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
+    "react-hook-form": "catalog:",
     "react-redux": "catalog:",
-    "vitest": "catalog:"
+    "zod": "catalog:"
   }
 }

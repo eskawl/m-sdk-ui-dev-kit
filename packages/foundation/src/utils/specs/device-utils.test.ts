@@ -19,6 +19,7 @@ import {
   getLvCabinetTempSensorColor,
   getLvCabinetTitle,
   getMinerName,
+  getMinerShortCode,
   getOnOffText,
   getPowerModeColor,
   getRackNameFromId,
@@ -1294,6 +1295,47 @@ describe('device utils', () => {
     it('returns true for antiminer model', () => {
       expect(isAntminer('miner-am')).toBe(true)
       expect(isAntminer('miner-am-something')).toBe(true)
+    })
+  })
+
+  describe('getMinerShortCode', () => {
+    it('should return the explicit code if it is provided', () => {
+      const result = getMinerShortCode('M123', ['code-ignored'])
+      expect(result).toBe('M123')
+    })
+
+    it('should extract the code from tags if explicit code is missing', () => {
+      const tags = ['site-1', 'code-B45', 'pos-01_02']
+      const result = getMinerShortCode(undefined, tags)
+      expect(result).toBe('B45')
+    })
+
+    it('should ignore tags that end with "undefined"', () => {
+      const tags = ['code-undefined', 'code-C78']
+      const result = getMinerShortCode(undefined, tags)
+      expect(result).toBe('C78')
+    })
+
+    it('should return the default value if no code or valid tag is found', () => {
+      const tags = ['site-1', 'pos-01_02']
+      const result = getMinerShortCode(undefined, tags)
+      expect(result).toBe('N/A')
+    })
+
+    it('should return a custom default value if provided', () => {
+      const result = getMinerShortCode(undefined, [], 'Unknown')
+      expect(result).toBe('Unknown')
+    })
+
+    it('should handle undefined tags array gracefully', () => {
+      const result = getMinerShortCode(undefined, undefined)
+      expect(result).toBe('N/A')
+    })
+
+    it('should return the first valid code tag found if multiple exist', () => {
+      const tags = ['code-FIRST', 'code-SECOND']
+      const result = getMinerShortCode(undefined, tags)
+      expect(result).toBe('FIRST')
     })
   })
 })

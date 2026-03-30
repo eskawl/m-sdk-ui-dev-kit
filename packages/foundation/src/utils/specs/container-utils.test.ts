@@ -3,6 +3,7 @@ import { CONTAINER_SETTINGS_MODEL } from '../../constants/container-constants'
 import {
   getContainerName,
   getContainerSettingsModel,
+  getDeviceContainerPosText,
   getMinerTypeFromContainerType,
   isAntminerContainer,
   isAntspaceHydro,
@@ -367,6 +368,62 @@ describe('container utils', () => {
 
     it('WHATSMINER takes priority over ANTMINER when type matches both', () => {
       expect(getMinerTypeFromContainerType('container-m56-s19xp')).toBe('wm')
+    })
+  })
+
+  describe('getDeviceContainerPosText', () => {
+    it('should return only the container name if pdu and socket are missing', () => {
+      const info = {
+        containerInfo: { container: GET_CONTAINER_NAME_TEST_ARGS.bitdeer.container },
+      }
+      const result = getDeviceContainerPosText(info)
+      expect(result).toBe('Bitdeer 5a')
+    })
+
+    it('should return container name and built destination string from pdu and socket', () => {
+      const info = {
+        containerInfo: { container: GET_CONTAINER_NAME_TEST_ARGS.bitdeer.container },
+        pdu: 'P1',
+        socket: '05',
+      }
+      const result = getDeviceContainerPosText(info)
+      expect(result).toBe('Bitdeer 5a P1_05')
+    })
+
+    it('should prioritize the "pos" property over pdu and socket', () => {
+      const info = {
+        containerInfo: { container: GET_CONTAINER_NAME_TEST_ARGS.bitdeer.container },
+        pdu: 'P1',
+        socket: '05',
+        pos: 'OVERRIDE_POS',
+      }
+      const result = getDeviceContainerPosText(info)
+      expect(result).toBe('Bitdeer 5a OVERRIDE_POS')
+    })
+
+    it('should handle numeric pdu and socket values correctly', () => {
+      const info = {
+        containerInfo: { container: GET_CONTAINER_NAME_TEST_ARGS.bitdeer.container },
+        pdu: 10,
+        socket: 2,
+      }
+      const result = getDeviceContainerPosText(info)
+      expect(result).toBe('Bitdeer 5a 10_2')
+    })
+
+    it('should return the mocked "Unknown Container" text if container is missing', () => {
+      const info = {
+        pdu: 'P1',
+        socket: 'S1',
+      }
+      const result = getDeviceContainerPosText(info)
+      expect(result).toBe(' P1_S1')
+    })
+
+    it('should handle an empty object or null input gracefully', () => {
+      // @ts-expect-error - testing runtime resilience
+      const result = getDeviceContainerPosText(null)
+      expect(result).toBe('')
     })
   })
 })
